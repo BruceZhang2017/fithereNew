@@ -144,21 +144,30 @@ class MyClockViewController: UIViewController {
         guard var image = currentImage else {
             return
         }
+        
+        // 保存原始图片到沙盒
+        saveImageToSandbox(image, name: "original_image")
+        
         let owidth: CGFloat = image.size.width
         let oheight: CGFloat = image.size.height
         while true {
             guard let rawImageData = image.rawImageData else {
                 return
             }
+            
             XLogger.shared.log("rawImageData count: \(rawImageData.count)")
             var width = Int32(owidth * imageScale)
             var height = Int32(oheight * imageScale)
+            
             if let parData = ParTool.par(fromRaw: rawImageData,
-                                    width: width,
-                                    height: height,
-                                    runAlpha: false,
-                                    useFilter: false,
-                                    supportRotate: false) {
+                                        width: width,
+                                        height: height,
+                                        runAlpha: false,
+                                        useFilter: false,
+                                        supportRotate: false) {
+                // 保存PAR数据到沙盒
+                saveDataToSandbox(parData, name: "par_data")
+                
                 if parData.count <= 100 * 1024 {
                     let message = "Convert image to rotate PAR successfully. PAR info: size=\(parData.count) width=\(width) height=\(height)"
                     XLogger.shared.log(message)
@@ -167,7 +176,7 @@ class MyClockViewController: UIViewController {
                     imageScale = 1.0
                     break
                 } else {
-                    XLogger.shared.log("parData size exceeds 50K limit, recompressing...")
+                    XLogger.shared.log("parData size exceeds 100K limit, recompressing...")
                     imageScale -= 0.1
                     if imageScale <= 0 {
                         return
@@ -175,11 +184,63 @@ class MyClockViewController: UIViewController {
                     width = Int32(owidth * imageScale)
                     height = Int32(oheight * imageScale)
                     image = resizeAndReduceRGB(image: image, targetSize: CGSize(width: CGFloat(width), height: CGFloat(height))) ?? UIImage()
+                    
+                    // 保存调整后的图片到沙盒
+                    saveImageToSandbox(image, name: "resized_image_scale_\(imageScale)")
                 }
             } else {
                 XLogger.shared.log("Failed to convert image to PAR format")
                 return
             }
+        }
+    }
+
+    // 保存图片到沙盒
+    private func saveImageToSandbox(_ image: UIImage, name: String) {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileName = "\(name)_\(Date().timeIntervalSince1970).jpg"
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        
+        guard let data = image.jpegData(compressionQuality: 1.0) else { return }
+        
+        do {
+            try data.write(to: fileURL)
+            XLogger.shared.log("Saved image to: \(fileURL.path)")
+            // 验证文件存在
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: fileURL.path) {
+                let fileSize = try fileManager.attributesOfItem(atPath: fileURL.path)[.size] as? Int ?? 0
+                XLogger.shared.log("图片大小: \(fileSize) 字节")
+            }
+        } catch {
+            XLogger.shared.log("Error saving image: \(error.localizedDescription)")
+        }
+    }
+
+    // 保存数据到沙盒
+    private func saveDataToSandbox(_ data: Data, name: String) {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            XLogger.shared.log("无法获取Documents目录")
+            return
+        }
+        
+        let fileName = "\(name)_\(Date().timeIntervalSince1970).bin"
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        
+        XLogger.shared.log("尝试保存文件到: \(fileURL.path)")
+        
+        do {
+            try data.write(to: fileURL, options: .atomic)
+            XLogger.shared.log("保存成功: \(fileURL.path)")
+            
+            // 验证文件存在
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: fileURL.path) {
+                let fileSize = try fileManager.attributesOfItem(atPath: fileURL.path)[.size] as? Int ?? 0
+                XLogger.shared.log("文件大小: \(fileSize) 字节")
+            }
+        } catch {
+            XLogger.shared.log("保存失败: \(error.localizedDescription)")
         }
     }
     

@@ -181,10 +181,6 @@ class XGZTBlueToothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDele
         }
         if let peripheral = centralManager?.retrieveConnectedPeripherals(withServices: [CBUUID(string: "0000FF12-0000-1000-8000-00805F9B34FB")]).first {
             if mac.count > 0 {
-//                let peripheralInfo = PeripheralInfo(peripheral: peripheral, macAddress: mac)
-//                discoveredPeripherals.append(peripheralInfo)
-//                deletePeripheralInfo = peripheralInfo
-//                NotificationCenter.default.post(name: Notification.Name.SearchDevice, object: "scan") // 搜索页面
                 XLogger.shared.log("执行搜索功能，不应该存在，因为mac地址在变化")
             } else {
                 if (lastestDeviceMac.count == 0 || device != nil){

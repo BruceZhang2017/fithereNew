@@ -108,7 +108,7 @@ class AboutUSViewController: BaseViewController {
                     preferredStyle: .alert
                 )
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Update", comment: "Update button title"), style: .default, handler: { _ in
-                    if let url = URL(string: "https://apps.apple.com/app/6444815466") {
+                    if let url = URL(string: "https://apps.apple.com/app/1509404233") {
                         UIApplication.shared.open(url)
                     }
                 }))

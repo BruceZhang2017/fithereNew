@@ -139,17 +139,17 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         documentController = UIDocumentInteractionController(url: fileURL)
         documentController?.delegate = self
         
-//        // 创建按钮
-//            let button = UIBarButtonItem(
-//                title: "日志",
-//                style: .plain,
-//                target: self,
-//                action: #selector(didTapRightButton)
-//            )
-//            button.tintColor = .red  // 设置按钮颜色
-//
-//            // 添加到右上角
-//            navigationItem.rightBarButtonItem = button
+        // 创建按钮
+            let button = UIBarButtonItem(
+                title: "日志",
+                style: .plain,
+                target: self,
+                action: #selector(didTapRightButton)
+            )
+            button.tintColor = .red  // 设置按钮颜色
+
+            // 添加到右上角
+            navigationItem.rightBarButtonItem = button
     }
     
     // 处理点击事件（注意使用 @objc 标记）
@@ -585,6 +585,19 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                                         break
                                     }
                                 }
+                            } else {
+                                BLEManager.shared.startScan()
+                                Async.main(after: 1) {
+                                    if bleSelf.bleModels.count > 0 {
+                                        for model in bleSelf.bleModels {
+                                            let m = model.mac.replacingOccurrences(of: ":", with: "").lowercased()
+                                            if m == mac.lowercased() {
+                                                bleSelf.connectBleDevice(model: model)
+                                                break
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -733,6 +746,25 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                     }
                 } else {
                     NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "2000")
+                    let count = DeviceManager.shared.devices.count
+                    if count <= 1 {
+                        if count > 0 {
+                            NotificationCenter.default.post(name: Notification.Name("HealthViewController"), object: "delete", userInfo: ["mac": DeviceManager.shared.devices[0].mac])
+                        }
+                        NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: nil)
+                        BLEManager.shared.unbind()
+                        UserDefaults.standard.removeObject(forKey: "LastestDeviceMac")
+                    } else {
+                        NotificationCenter.default.post(name: Notification.Name("HealthViewController"), object: "delete", userInfo: ["mac": localMac])
+                        let lastestDeviceMac = UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? ""
+                        if lastestDeviceMac == localMac {
+                            BLEManager.shared.unbind()
+                            UserDefaults.standard.removeObject(forKey: "LastestDeviceMac")
+                            NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: nil)
+                        }
+                    }
+                    
+                    
                 }
             }))
             present(alert, animated: true) {

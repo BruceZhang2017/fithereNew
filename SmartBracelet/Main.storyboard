@@ -606,7 +606,9 @@
         <scene sceneID="8sb-t0-b6K">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tul-k6-1Ss" customClass="HNavigationController" customModule="FitDAY" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="健康" image="tabbar_health_unsel" selectedImage="tabbar_health_sel" id="DDN-of-MxZ"/>
+                    <tabBarItem key="tabBarItem" title="健康" image="tabbar_health_unsel" selectedImage="tabbar_health_sel" id="DDN-of-MxZ">
+                        <color key="badgeColor" red="1" green="0.20784313730000001" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nlh-KA-Bna">
                         <rect key="frame" x="0.0" y="96" width="414" height="44"/>
@@ -644,7 +646,9 @@
         <scene sceneID="4sj-99-y2C">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Af0-YM-0mN" customClass="MNavigationController" customModule="FitDAY" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设备" image="tabbar_equipment_unsel" selectedImage="tabbar_equipment_sel" id="0wb-Nu-UTI"/>
+                    <tabBarItem key="tabBarItem" title="设备" image="tabbar_equipment_unsel" selectedImage="tabbar_equipment_sel" id="0wb-Nu-UTI">
+                        <color key="badgeColor" red="1" green="0.20784313730000001" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xn3-VJ-e75">
                         <rect key="frame" x="0.0" y="96" width="414" height="44"/>

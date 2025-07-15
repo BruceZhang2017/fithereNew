@@ -42,6 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         openCount += 1
         UserDefaults.standard.set(openCount, forKey: "APPOPEN")
 
+        // 设置全局TabBar样式
+        UITabBar.appearance().tintColor = .brand // 选中颜色
+        UITabBar.appearance().unselectedItemTintColor = .gray // 未选中颜色
+        
         return true
     }
 

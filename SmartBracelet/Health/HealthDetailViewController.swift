@@ -369,8 +369,8 @@ class HealthDetailViewController: BaseViewController {
     
     /// 设置图表
     private func setupChart() {
-        if type == 0 {
-            valueView.isHidden = true 
+        if type == 0 && bleSelf.bleModel.isBond == false {
+            valueView.isHidden = true
         }
         valueView.addSubview(lineChartView)
         lineChartView.snp.makeConstraints { make in
@@ -629,7 +629,7 @@ class HealthDetailViewController: BaseViewController {
                     }
                 }
 
-                if array1.count > 0 && bleSelf.step > totalValue && mDate.isToday() {
+                if bleSelf.step > totalValue && mDate.isToday() {
                     let zero = mDate.zeroTimeStamp()
                     let x = (Int(Date().timeIntervalSince1970) - Int(zero)) / 3600
                     values[x].y += Double((bleSelf.step - totalValue)) / Double(scale)
