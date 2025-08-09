@@ -17,6 +17,15 @@
 		6358A1BC7537C0FAECF400E2 /* Pods_SmartBracelet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */; };
 		9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4425BDB1CD0006FB94 /* OTACMD.m */; };
 		9A037E4825BDB1EC0006FB94 /* OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4725BDB1EC0006FB94 /* OTA.m */; };
+		9A06980D2E477D0C00A74A7A /* LBXScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698082E477D0C00A74A7A /* LBXScanView.swift */; };
+		9A06980E2E477D0C00A74A7A /* LBXScanViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */; };
+		9A06980F2E477D0C00A74A7A /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */; };
+		9A0698102E477D0C00A74A7A /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */; };
+		9A0698112E477D0C00A74A7A /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */; };
+		9A0698122E477D0C00A74A7A /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */; };
+		9A0698132E477D0C00A74A7A /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698052E477D0C00A74A7A /* LBXPermissions.swift */; };
+		9A0698152E477D3300A74A7A /* CardBagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */; };
+		9A0698172E477D4F00A74A7A /* QRBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698162E477D4F00A74A7A /* QRBindViewController.swift */; };
 		9A08C673262C757A00E178DA /* WeatherTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C672262C757A00E178DA /* WeatherTestViewController.swift */; };
 		9A08C6EB262F17D500E178DA /* OTAUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6EA262F17D500E178DA /* OTAUpgradeViewController.m */; };
 		9A08C6EF262F17FE00E178DA /* OTCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6ED262F17FE00E178DA /* OTCModel.m */; };
@@ -548,6 +557,15 @@
 		9A037E4425BDB1CD0006FB94 /* OTACMD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTACMD.m; sourceTree = "<group>"; };
 		9A037E4625BDB1EC0006FB94 /* OTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTA.h; sourceTree = "<group>"; };
 		9A037E4725BDB1EC0006FB94 /* OTA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTA.m; sourceTree = "<group>"; };
+		9A0698052E477D0C00A74A7A /* LBXPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
+		9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
+		9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
+		9A0698082E477D0C00A74A7A /* LBXScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanView.swift; sourceTree = "<group>"; };
+		9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
+		9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanViewStyle.swift; sourceTree = "<group>"; };
+		9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
+		9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBagTableViewController.swift; sourceTree = "<group>"; };
+		9A0698162E477D4F00A74A7A /* QRBindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBindViewController.swift; sourceTree = "<group>"; };
 		9A08C672262C757A00E178DA /* WeatherTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTestViewController.swift; sourceTree = "<group>"; };
 		9A08C6E9262F17D500E178DA /* OTAUpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAUpgradeViewController.h; sourceTree = "<group>"; };
 		9A08C6EA262F17D500E178DA /* OTAUpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAUpgradeViewController.m; sourceTree = "<group>"; };
@@ -1276,6 +1294,20 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		9A06980C2E477D0C00A74A7A /* scan */ = {
+			isa = PBXGroup;
+			children = (
+				9A0698052E477D0C00A74A7A /* LBXPermissions.swift */,
+				9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */,
+				9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */,
+				9A0698082E477D0C00A74A7A /* LBXScanView.swift */,
+				9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */,
+				9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */,
+				9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */,
+			);
+			path = scan;
+			sourceTree = "<group>";
+		};
 		9A08C653262C5A1100E178DA /* lefun */ = {
 			isa = PBXGroup;
 			children = (
@@ -1549,6 +1581,7 @@
 		9A4E624224F7E91F00A0E878 /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				9A06980C2E477D0C00A74A7A /* scan */,
 				9A5E933125164B2D0060AB13 /* AddDevice */,
 				9A6D092A2501D96500B4972F /* ClockManage */,
 				9A4E624524F8926300A0E878 /* DevicesViewController.swift */,
@@ -1572,6 +1605,8 @@
 				9A4CADF12940941F00B0BDF8 /* JXWebViewController.swift */,
 				9A4CADF32940944300B0BDF8 /* JXLocalizedString.swift */,
 				9A869E0C2D12CCC200B78FDF /* OTAInfoManager.swift */,
+				9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */,
+				9A0698162E477D4F00A74A7A /* QRBindViewController.swift */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -2950,6 +2985,7 @@
 				9AF0AA2025AAF1CE000BDAED /* CMDData.swift in Sources */,
 				9A56D2A825216FC70082CC08 /* ScatterChartDataSet.swift in Sources */,
 				9A60DEEF252F401100E0D849 /* AlarmViewController.swift in Sources */,
+				9A0698152E477D3300A74A7A /* CardBagTableViewController.swift in Sources */,
 				9A56D2BF25216FC70082CC08 /* CandleChartDataProvider.swift in Sources */,
 				9A56D2A925216FC70082CC08 /* ScatterChartData.swift in Sources */,
 				9A820B7424CEA1CC00A62C6F /* BaseViewController.swift in Sources */,
@@ -2995,6 +3031,13 @@
 				9A21BFF92D0082E00048CF53 /* OtaConstants.swift in Sources */,
 				9A21BFFA2D0082E00048CF53 /* Logger.swift in Sources */,
 				9A21BFFB2D0082E00048CF53 /* DataReader.swift in Sources */,
+				9A06980D2E477D0C00A74A7A /* LBXScanView.swift in Sources */,
+				9A06980E2E477D0C00A74A7A /* LBXScanViewStyle.swift in Sources */,
+				9A06980F2E477D0C00A74A7A /* LBXScanWrapper.swift in Sources */,
+				9A0698102E477D0C00A74A7A /* LBXScanLineAnimation.swift in Sources */,
+				9A0698112E477D0C00A74A7A /* LBXScanViewController.swift in Sources */,
+				9A0698122E477D0C00A74A7A /* LBXScanNetAnimation.swift in Sources */,
+				9A0698132E477D0C00A74A7A /* LBXPermissions.swift in Sources */,
 				9A21BFFC2D0082E00048CF53 /* LoggerDelegate.swift in Sources */,
 				9A21BFFD2D0082E00048CF53 /* OtaCommandGenerator.swift in Sources */,
 				9A21BFFE2D0082E00048CF53 /* ABOtaManager.swift in Sources */,
@@ -3065,6 +3108,7 @@
 				9A8CA51925272C5200EC01A7 /* CVScrollDirection.swift in Sources */,
 				9A60DEDE252F002D00E0D849 /* UIColor+Hex.swift in Sources */,
 				9A56D2C425216FC70082CC08 /* BubbleChartDataProvider.swift in Sources */,
+				9A0698172E477D4F00A74A7A /* QRBindViewController.swift in Sources */,
 				9A56D28125216FC60082CC08 /* TransformerHorizontalBarChart.swift in Sources */,
 				9A8CA51A25272C5200EC01A7 /* CVCalendarTouchController.swift in Sources */,
 				9A61685C25DBDA7800918EFC /* SportDataModel.swift in Sources */,
@@ -3310,7 +3354,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
@@ -3359,7 +3403,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;

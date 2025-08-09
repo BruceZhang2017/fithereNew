@@ -337,7 +337,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     
     public func refreshHeight() {
         // 将 deviceSettingsViewHeightMultiplier 修改为 14
-        deviceSettingsViewHeightMultiplier = 14
+        deviceSettingsViewHeightMultiplier = 15
             
         deviceSettingsView?.view.snp.remakeConstraints {
             $0.left.equalTo(0)
