@@ -51,6 +51,9 @@ class MTabBarController: UITabBarController {
         ToastView.appearance().textColor = UIColor.white
         ToastView.appearance().textInsets = UIEdgeInsets(top: 12, left: 20, bottom: 12, right: 20)
         
+        
+        BluetoothWatchDevice.loadAll() // 加载一下缓存信息
+        
     }
     
     // 设置最后连接的设备MAC地址

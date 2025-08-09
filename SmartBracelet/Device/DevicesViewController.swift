@@ -49,7 +49,6 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                name: AVAudioSession.routeChangeNotification,
                object: nil
            )
-        BluetoothWatchDevice.loadAll() // 加载一下缓存信息
         deviceView = DevicesView().then {
             $0.backgroundColor = UIColor.white
             $0.layer.cornerRadius = 16
@@ -582,17 +581,19 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                                     let m = model.mac.replacingOccurrences(of: ":", with: "").lowercased()
                                     if m == mac.lowercased() {
                                         bleSelf.connectBleDevice(model: model)
+                                        XLogger.shared.log("连接旧设备：\(m)")
                                         break
                                     }
                                 }
                             } else {
                                 BLEManager.shared.startScan()
-                                Async.main(after: 1) {
+                                Async.main(after: 1.5) {
                                     if bleSelf.bleModels.count > 0 {
                                         for model in bleSelf.bleModels {
                                             let m = model.mac.replacingOccurrences(of: ":", with: "").lowercased()
                                             if m == mac.lowercased() {
                                                 bleSelf.connectBleDevice(model: model)
+                                                XLogger.shared.log("连接旧设备：\(m)")
                                                 break
                                             }
                                         }
@@ -608,24 +609,34 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                         
                         // 手动解析k参数值（避免URLComponents旧系统兼容问题）
                         if let kParamStart = code.range(of: "k=")?.upperBound {
+                            // 找到k参数的结束位置（&符号或字符串结尾）
                             let kParamEnd = code[kParamStart...].range(of: "&")?.lowerBound ?? code.endIndex
                             let kValueStr = String(code[kParamStart..<kParamEnd])
                             XLogger.shared.log("解析k参数的原始值：\(kValueStr)")
                             
-                            guard let pipeIndex = kValueStr.firstIndex(of: "|") else {
-                                XLogger.shared.log("扫描的结果有错误1：参数k的值中未找到|分隔符")
+                            // 按|分割字符串，获取所有部分
+                            let components = kValueStr.components(separatedBy: "|")
+                            
+                            // 检查是否有足够的部分
+                            guard components.count >= 2 else {
+                                XLogger.shared.log("扫描的结果有错误1：参数k的值格式不正确，至少需要3个|分隔的部分，实际有\(components.count)个")
                                 self?.dismiss(animated: true, completion: nil)
                                 return
                             }
                             
-                            let macAddress = String(kValueStr[..<pipeIndex]).trimmingCharacters(in: .whitespacesAndNewlines)
+                            // 提取各个部分并去除首尾空格
+                            let macAddress = components[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                            let deviceName = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
+                            
                             XLogger.shared.log("解析到的mac地址是：\(macAddress)")
+                            XLogger.shared.log("解析到的设备名称是：\(deviceName)")
                             
                             if XGZTBlueToothManager.shared.isCurrentBleStateOFF() {
                                 Toast(text: "ble_off".localized()).show()
                                 XLogger.shared.log("蓝牙没有开启")
                             } else {
-                                XGZTBlueToothManager.shared.connectAndScan(to: macAddress)
+                                // 可以根据需要使用所有解析出的参数
+                                XGZTBlueToothManager.shared.connectAndScan(to: macAddress, deviceName: deviceName)
                             }
                         } else {
                             XLogger.shared.log("扫描的结果有错误2：未找到k参数")

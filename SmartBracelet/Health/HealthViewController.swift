@@ -37,6 +37,7 @@ class HealthViewController: BaseViewController {
     var flag = 0 // 属性的作用
     private var hud: JGProgressHUD? // loading图标
     private var loadingViewCheckTimer: Timer?
+    private var continueReadFootValueTimer: Timer?
     var header: MJRefreshNormalHeader?
     var isFirst = false
     var indexBigData:Int = 0
@@ -194,7 +195,7 @@ class HealthViewController: BaseViewController {
                                 }
                             } else {
                                 BLEManager.shared.startScan()
-                                Async.main(after: 1) {
+                                Async.main(after: 1.5) {
                                     if bleSelf.bleModels.count > 0 {
                                         for model in bleSelf.bleModels {
                                             let m = model.mac.replacingOccurrences(of: ":", with: "").lowercased()
@@ -215,24 +216,34 @@ class HealthViewController: BaseViewController {
                         
                         // 手动解析k参数值（避免URLComponents旧系统兼容问题）
                         if let kParamStart = code.range(of: "k=")?.upperBound {
+                            // 找到k参数的结束位置（&符号或字符串结尾）
                             let kParamEnd = code[kParamStart...].range(of: "&")?.lowerBound ?? code.endIndex
                             let kValueStr = String(code[kParamStart..<kParamEnd])
                             XLogger.shared.log("解析k参数的原始值：\(kValueStr)")
                             
-                            guard let pipeIndex = kValueStr.firstIndex(of: "|") else {
-                                XLogger.shared.log("扫描的结果有错误1：参数k的值中未找到|分隔符")
+                            // 按|分割字符串，获取所有部分
+                            let components = kValueStr.components(separatedBy: "|")
+                            
+                            // 检查是否有足够的部分
+                            guard components.count >= 2 else {
+                                XLogger.shared.log("扫描的结果有错误1：参数k的值格式不正确，至少需要3个|分隔的部分，实际有\(components.count)个")
                                 self?.dismiss(animated: true, completion: nil)
                                 return
                             }
                             
-                            let macAddress = String(kValueStr[..<pipeIndex]).trimmingCharacters(in: .whitespacesAndNewlines)
+                            // 提取各个部分并去除首尾空格
+                            let macAddress = components[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                            let deviceName = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
+                            
                             XLogger.shared.log("解析到的mac地址是：\(macAddress)")
+                            XLogger.shared.log("解析到的设备名称是：\(deviceName)")
                             
                             if XGZTBlueToothManager.shared.isCurrentBleStateOFF() {
                                 Toast(text: "ble_off".localized()).show()
                                 XLogger.shared.log("蓝牙没有开启")
                             } else {
-                                XGZTBlueToothManager.shared.connectAndScan(to: macAddress)
+                                // 可以根据需要使用所有解析出的参数
+                                XGZTBlueToothManager.shared.connectAndScan(to: macAddress, deviceName: deviceName)
                             }
                         } else {
                             XLogger.shared.log("扫描的结果有错误2：未找到k参数")
@@ -494,6 +505,9 @@ class HealthViewController: BaseViewController {
             } else {
                 DispatchQueue.main.async {
                     [weak self] in
+                    if BLEManager.shared.heartArray.count == 0 {
+                        return
+                    }
                     var heart = 0
                     heart = BLEManager.shared.heartArray[0].heart
                     let v = NSMutableAttributedString()
@@ -526,6 +540,9 @@ class HealthViewController: BaseViewController {
             } else {
                 DispatchQueue.main.async {
                     [weak self] in
+                    if BLEManager.shared.bloodArray.count == 0 {
+                        return
+                    }
                     var min = 0
                     var max = 0
                     min = BLEManager.shared.bloodArray[0].min
@@ -767,6 +784,21 @@ class HealthViewController: BaseViewController {
                 return
             }
             manager.syncTemprature() //  连接成功后，则同步天气。
+            BLEManager.shared.currentReadProgress = 0
+            if bleSelf.isConnected == false {
+                continueReadFootValueTimer?.invalidate()
+                continueReadFootValueTimer = nil
+            }
+            if continueReadFootValueTimer != nil {
+                return
+            }
+            continueReadFootValueTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { t in
+                if BLEManager.shared.needContinueRead() {
+                    BLEManager.shared.startContinueRead() // 每秒都读取一下步数
+                }
+            })
+            RunLoop.current.add(continueReadFootValueTimer!, forMode: .common)
+            
         }
         if obj == 100 {
             let userinfo = notification.userInfo as? [String : String]
