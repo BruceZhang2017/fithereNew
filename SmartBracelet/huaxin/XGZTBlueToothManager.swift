@@ -140,12 +140,16 @@ class XGZTBlueToothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDele
         if let peripherals = centralManager?.retrieveConnectedPeripherals(withServices: [CBUUID(string: "0000FF12-0000-1000-8000-00805F9B34FB")]) {
             for peripheral in peripherals {
                 if peripheral.name == deviceName {
-                    let peripheralInfo = PeripheralInfo(peripheral: peripheral, macAddress: macAddress)
-                    discoveredPeripherals.append(peripheralInfo)
-                    XLogger.shared.log("连接指定的mac地址\(macAddress)的蓝牙设备4")
-                    centralManager?.connect(peripheral, options: nil)
-                    scanMacAddress = ""
-                    return
+                    if let dd = BluetoothWatchDevice.loadFromSandbox(deviceName: deviceName) {
+                        if dd.max == macAddress {
+                            let peripheralInfo = PeripheralInfo(peripheral: peripheral, macAddress: macAddress)
+                            discoveredPeripherals.append(peripheralInfo)
+                            XLogger.shared.log("连接指定的mac地址\(macAddress)的蓝牙设备4")
+                            centralManager?.connect(peripheral, options: nil)
+                            scanMacAddress = ""
+                            return
+                        }
+                    }
                 }
             }
         } else {
