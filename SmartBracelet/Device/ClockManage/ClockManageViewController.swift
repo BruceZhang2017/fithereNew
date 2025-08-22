@@ -68,7 +68,7 @@ class ClockManageViewController: BaseViewController {
         }
         automaticallyAdjustsScrollViewInsets = false
         scrollView.contentInsetAdjustmentBehavior = .never
-  
+        scrollView.isScrollEnabled = false 
         scrollView.bounces = false
         scrollView.delegate = self
         setupUI()
@@ -94,17 +94,33 @@ class ClockManageViewController: BaseViewController {
         if contentView.subviews.count >= 2 {
             return
         }
+        
         let storyboard = UIStoryboard(name: "Device", bundle: nil)
-
-        let marketClockVC = storyboard.instantiateViewController(withIdentifier: "MarketClockViewController") as! MarketClockViewController
-        marketClockVC.current = index
-        contentView.addSubview(marketClockVC.view)
-        marketClockVC.bShowDetail = true
-        addChild(marketClockVC)
-        marketClockVC.view.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.width.equalTo(ScreenWidth)
-            $0.top.bottom.equalToSuperview()
+        var vc: UIViewController?
+        
+        if isXGZT {
+            let controller = TripleTableViewController()
+            controller.current = index
+            contentView.addSubview(controller.view)
+            addChild(controller)
+            controller.view.snp.makeConstraints {
+                $0.left.equalToSuperview()
+                $0.width.equalTo(ScreenWidth)
+                $0.top.bottom.equalToSuperview()
+            }
+            vc = controller
+        } else {
+            let marketClockVC = storyboard.instantiateViewController(withIdentifier: "MarketClockViewController") as! MarketClockViewController
+            marketClockVC.current = index
+            contentView.addSubview(marketClockVC.view)
+            marketClockVC.bShowDetail = true
+            addChild(marketClockVC)
+            marketClockVC.view.snp.makeConstraints {
+                $0.left.equalToSuperview()
+                $0.width.equalTo(ScreenWidth)
+                $0.top.bottom.equalToSuperview()
+            }
+            vc = marketClockVC
         }
         
         let myClockVC = storyboard.instantiateViewController(withIdentifier: "MyClockViewController") as! MyClockViewController
@@ -112,7 +128,7 @@ class ClockManageViewController: BaseViewController {
         contentView.addSubview(myClockVC.view)
         addChild(myClockVC)
         myClockVC.view.snp.makeConstraints {
-            $0.left.equalTo(marketClockVC.view.snp.right)
+            $0.left.equalTo(vc!.view.snp.right)
             $0.width.equalTo(ScreenWidth)
             $0.top.bottom.equalToSuperview()
         }

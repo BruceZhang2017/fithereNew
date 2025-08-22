@@ -136,6 +136,9 @@ class DeviceSettingsViewController: UIViewController {
                 }
                 
                 if (mSwitch?.isOn ?? false) {
+                    if device.longsit == nil {
+                        device.longsit = ReminderInfoResponse(eventType: 0, cycle: 0, startHour: 8, startMinute: 0, endHour: 0x14, endMinute: 0, period: 0x00)
+                    }
                     device.longsit?.cycle = 0b11111111
                     device.longsit?.startHour = 8
                     device.longsit?.startMinute = 0
@@ -149,6 +152,9 @@ class DeviceSettingsViewController: UIViewController {
                         XGZTCommand.setReminderInfo(response: device.longsit!)
                     }
                 } else {
+                    if device.longsit == nil {
+                        device.longsit = ReminderInfoResponse(eventType: 0, cycle: 0, startHour: 8, startMinute: 0, endHour: 0x14, endMinute: 0, period: 0x00)
+                    }
                     if device.longsit != nil {
                         device.longsit?.cycle = 0b01111111
                         XGZTCommand.setReminderInfo(response: device.longsit!)
@@ -348,7 +354,11 @@ extension DeviceSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isXGZT ? titles.count : (titles.count - 2)
+        var value = 1
+        if ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15 & 0x0f) > 0 {
+            value = 0
+        }
+        return isXGZT ? (titles.count - value) : (titles.count - 2)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

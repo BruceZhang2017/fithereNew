@@ -1245,6 +1245,7 @@ public class XGZTCommand {
                 XGZTBlueToothManager.shared.device?.screenHeight = (Int(response[40]) << 8) | Int(response[39])
                 XGZTBlueToothManager.shared.device?.functioncontrolflags = getIntFromBytes(response, 10)
                 XGZTBlueToothManager.shared.device?.healthcontrolflags = getIntFromBytes(response, 14)
+                NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "1999")
             }
             guard response.count >= 45 else {
                 XLogger.shared.log("getDeviceInfo command response error")
@@ -1259,6 +1260,7 @@ public class XGZTCommand {
             XGZTBlueToothManager.shared.device?.screenHeight = (Int(response[44]) << 8) | Int(response[43])
             XGZTBlueToothManager.shared.device?.functioncontrolflags = getIntFromBytes(response, 14)
             XGZTBlueToothManager.shared.device?.healthcontrolflags = getIntFromBytes(response, 18)
+            NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "1999")
             
         case.setAppInfo:
             guard response.count >= 7 else {

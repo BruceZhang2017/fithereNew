@@ -139,16 +139,16 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         documentController?.delegate = self
         
         // 创建按钮
-            let button = UIBarButtonItem(
-                title: "日志",
-                style: .plain,
-                target: self,
-                action: #selector(didTapRightButton)
-            )
-            button.tintColor = .red  // 设置按钮颜色
-
-            // 添加到右上角
-            navigationItem.rightBarButtonItem = button
+//            let button = UIBarButtonItem(
+//                title: "日志",
+//                style: .plain,
+//                target: self,
+//                action: #selector(didTapRightButton)
+//            )
+//            button.tintColor = .red  // 设置按钮颜色
+//
+//            // 添加到右上角
+//            navigationItem.rightBarButtonItem = button
     }
     
     // 处理点击事件（注意使用 @objc 标记）
@@ -337,7 +337,12 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     
     public func refreshHeight() {
         // 将 deviceSettingsViewHeightMultiplier 修改为 14
-        deviceSettingsViewHeightMultiplier = 15
+        if ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15 & 0x0f) > 0 {
+            deviceSettingsViewHeightMultiplier = 15
+        } else {
+            deviceSettingsViewHeightMultiplier = 14
+        }
+        
             
         deviceSettingsView?.view.snp.remakeConstraints {
             $0.left.equalTo(0)
@@ -430,6 +435,13 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     
     @objc private func handleNotification(_ notification: Notification) {
         if let obj = notification.object as? String, obj.count > 0 {
+            if obj == "1999" {
+                DispatchQueue.main.async {
+                    [weak self] in
+                    self?.refreshHeight()
+                }
+                return
+            }
             if obj == "2000" {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     guard localMac.count > 0 else {

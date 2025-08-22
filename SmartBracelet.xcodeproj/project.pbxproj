@@ -26,6 +26,7 @@
 		9A0698132E477D0C00A74A7A /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698052E477D0C00A74A7A /* LBXPermissions.swift */; };
 		9A0698152E477D3300A74A7A /* CardBagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */; };
 		9A0698172E477D4F00A74A7A /* QRBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698162E477D4F00A74A7A /* QRBindViewController.swift */; };
+		9A06995F2E56AE0400A74A7A /* TripleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */; };
 		9A08C673262C757A00E178DA /* WeatherTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C672262C757A00E178DA /* WeatherTestViewController.swift */; };
 		9A08C6EB262F17D500E178DA /* OTAUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6EA262F17D500E178DA /* OTAUpgradeViewController.m */; };
 		9A08C6EF262F17FE00E178DA /* OTCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6ED262F17FE00E178DA /* OTCModel.m */; };
@@ -566,6 +567,7 @@
 		9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
 		9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBagTableViewController.swift; sourceTree = "<group>"; };
 		9A0698162E477D4F00A74A7A /* QRBindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBindViewController.swift; sourceTree = "<group>"; };
+		9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleTableViewController.swift; sourceTree = "<group>"; };
 		9A08C672262C757A00E178DA /* WeatherTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTestViewController.swift; sourceTree = "<group>"; };
 		9A08C6E9262F17D500E178DA /* OTAUpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAUpgradeViewController.h; sourceTree = "<group>"; };
 		9A08C6EA262F17D500E178DA /* OTAUpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAUpgradeViewController.m; sourceTree = "<group>"; };
@@ -1963,6 +1965,7 @@
 		9A6D092A2501D96500B4972F /* ClockManage */ = {
 			isa = PBXGroup;
 			children = (
+				9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */,
 				9A6D092D2501E3EC00B4972F /* Device.md */,
 				9A6D092B2501D99400B4972F /* ClockManageViewController.swift */,
 				9A521068250322E500F64A7A /* ClockCollectionViewCell.swift */,
@@ -2710,6 +2713,7 @@
 				9A56D2A625216FC70082CC08 /* BubbleChartData.swift in Sources */,
 				9A56D24C25216FC60082CC08 /* ChevronDownShapeRenderer.swift in Sources */,
 				9A56D2B025216FC70082CC08 /* LineScatterCandleRadarChartDataSet.swift in Sources */,
+				9A06995F2E56AE0400A74A7A /* TripleTableViewController.swift in Sources */,
 				9A56D29725216FC70082CC08 /* BarChartDataSet.swift in Sources */,
 				9A56D26325216FC60082CC08 /* CandleStickChartView.swift in Sources */,
 				9A56D29525216FC70082CC08 /* ChartData.swift in Sources */,
@@ -3354,7 +3358,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
@@ -3378,7 +3382,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 1.5.7;
+				MARKETING_VERSION = 1.5.8;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;
@@ -3403,7 +3407,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;
@@ -3426,7 +3430,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 1.5.7;
+				MARKETING_VERSION = 1.5.8;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;
