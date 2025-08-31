@@ -25,7 +25,8 @@ class AboutUSViewController: BaseViewController {
         if let v:String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             localVersion = v
         }
-        versionLabel.text = "v\(localVersion)  \("mine_version".localized())"
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+        versionLabel.text = "v\(localVersion)  \("mine_version".localized()) - build\(build)"
         ownerLabel.text = "＠ VPI6  \("mine_about_desc".localized())"
         ownerLabel.textColor = UIColor.text_third
         ownerLabel.font = UIFont.body2()
@@ -92,7 +93,7 @@ class AboutUSViewController: BaseViewController {
                     }
                 }
             } catch {
-                print("Error parsing JSON: \(error)")
+                XLogger.shared.log("Error parsing JSON: \(error)")
             }
         }
         task.resume()
@@ -107,7 +108,7 @@ class AboutUSViewController: BaseViewController {
                     preferredStyle: .alert
                 )
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Update", comment: "Update button title"), style: .default, handler: { _ in
-                    if let url = URL(string: "https://apps.apple.com/app/6444815466") {
+                    if let url = URL(string: "https://apps.apple.com/app/1509404233") {
                         UIApplication.shared.open(url)
                     }
                 }))

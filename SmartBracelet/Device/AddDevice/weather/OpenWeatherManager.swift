@@ -8,11 +8,12 @@
 
 import Foundation
 
-
+var flag_time: TimeInterval = 0
 
 public class OpenWeatherManager: NSObject {
     
     var callback: ((CurrentWeatherData) -> Void)?
+    var flag = 0
     
     private let viewModel = ViewModel()
     lazy var locationManager: CLLocationManager = {
@@ -23,30 +24,49 @@ public class OpenWeatherManager: NSObject {
         return location
     }()
     
-    public func syncTemprature() {
-        checkLocationAuthorization()
+    public func syncTemprature(flag: Int = 0) {
+        self.flag = flag
+        let delayTime = DispatchTime.now() + .milliseconds(100)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            [weak self] in
+            self?.checkLocationAuthorization()
+        }
     }
     
     func checkLocationAuthorization() {
-        if CLLocationManager.locationServicesEnabled() {
-            if #available(iOS 14.0, *) {
-                switch self.locationManager.authorizationStatus {
-                case .notDetermined:
-                    self.locationManager.requestWhenInUseAuthorization()
-                case .restricted, .denied:
-                    // Handle the case where location services are restricted or denied
-                    self.showLocationServicesDeniedAlert()
-                case .authorizedWhenInUse, .authorizedAlways:
-                    self.requestLocation()
-                @unknown default:
-                    fatalError("Unknown authorization status")
+        var isEnabled = false
+            
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                isEnabled = true
+            }
+        }
+        
+        let delayTime = DispatchTime.now() + .milliseconds(300)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            [weak self] in
+            guard let sself = self else {
+                return
+            }
+            if isEnabled {
+                if #available(iOS 14.0, *) {
+                    switch sself.locationManager.authorizationStatus {
+                    case .notDetermined:
+                        sself.locationManager.requestWhenInUseAuthorization()
+                    case .restricted, .denied:
+                        // Handle the case where location services are restricted or denied
+                        sself.showLocationServicesDeniedAlert()
+                    case .authorizedWhenInUse, .authorizedAlways:
+                        sself.requestLocation()
+                    @unknown default:
+                        fatalError("Unknown authorization status")
+                    }
+                } else {
+                    // Fallback on earlier versions
                 }
             } else {
-                // Fallback on earlier versions
+                sself.showLocationServicesDisabledAlert()
             }
-        } else {
-            // Handle the case where location services are not enabled
-            self.showLocationServicesDisabledAlert()
         }
     }
     
@@ -65,28 +85,42 @@ public class OpenWeatherManager: NSObject {
     }
     
     func syncTemprature(weather: CurrentWeatherData) {
-        if isXGZT { //type 0晴天 1多云 2下雨 3下雪 4阴天
+        if isXGZT { //type 0未知 1晴天 2多云 3下雨 4下雪 5阴天
+            if flag_time == 0 {
+                flag_time = Date().timeIntervalSince1970
+            } else {
+                let t = Date().timeIntervalSince1970
+                if t - flag_time < 3 {
+                    flag_time = t
+                    return
+                } else {
+                    flag_time = t 
+                }
+            }
             let count = min(3, weather.list.count)
             for i in 0..<count {
                 let temp = Int(tempratureKToC(temp: weather.list[i].temp.day ))
                 let max: Int = Int(tempratureKToC(temp: weather.list[i].temp.max ))
                 let min: Int = Int(tempratureKToC(temp: weather.list[i].temp.min ))
                 let weather = weather.list[i].weather.first?.icon ?? ""
-                var type = 1
+                var type = 0
                 if weather.hasPrefix("02") || weather.hasPrefix("03") {
-                    type = 0
+                    type = 2
                 }
                 if weather.hasPrefix("09") || weather.hasPrefix("10") || weather.hasPrefix("11")  {
                     type = 3
                 }
                 if weather.hasPrefix("13") {
-                    type = 2
-                }
-                if weather.hasPrefix("04") {
                     type = 4
                 }
-                print("发送给手表的数据：\(temp) \(type) \(i)")
-                XGZTCommand.setWeatherInfo(dateType: i, weatherType: type, currTemp: temp, lTemp: min, hTemp: max)
+                if weather.hasPrefix("04") {
+                    type = 5
+                }
+                if weather.hasPrefix("01") {
+                    type = 1
+                }
+                XLogger.shared.log("发送给手表的数据2：\(temp) \(type) \(i)")
+                XGZTCommand.setWeatherInfo(dateType: i, weatherType: type, currTemp: temp, lTemp: min, hTemp: max, cmd: flag > 0 ? 2 : 1)
             }
             return
         }
@@ -113,7 +147,7 @@ public class OpenWeatherManager: NSObject {
                 if weather.hasPrefix("04") {
                     type = 4
                 }
-                print("发送给手表的数据：\(temp) \(type) \(i)")
+                XLogger.shared.log("发送给手表的数据：\(temp) \(type) \(i)")
                 bleSelf.setWeatherForSevenDays(temper: temp, type: UInt8(type), max: max, min: min, day: i, pressure: 1000, altitude: 1000)
             }
         } else {
@@ -162,7 +196,7 @@ extension OpenWeatherManager: CLLocationManagerDelegate {
     }
 
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
+        XLogger.shared.log(error.localizedDescription)
     }
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

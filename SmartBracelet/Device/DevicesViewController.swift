@@ -14,7 +14,9 @@ import UIKit
 import TJDWristbandSDK
 import Toaster
 
-class DevicesViewController: BaseViewController {
+var localMac = ""
+
+class DevicesViewController: BaseViewController, UIDocumentInteractionControllerDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -22,6 +24,7 @@ class DevicesViewController: BaseViewController {
     @IBOutlet weak var bottomLConstraint: NSLayoutConstraint!
     @IBOutlet weak var dialView: UIView!
     @IBOutlet weak var deviceBGImageView: UIImageView!
+    @IBOutlet weak var dialViewHeightLC: NSLayoutConstraint!
     @IBOutlet weak var btView: UIView!
     let changeButton = UIButton(type: .system)
     let dialButton = VerticalButton(type: .system)
@@ -34,10 +37,19 @@ class DevicesViewController: BaseViewController {
     var deviceSettingsViewHeightMultiplier = 13
     var deviceSettingsView: DeviceSettingsViewController?
     var lblTitle: UILabel?
+    var refreshTimer: DispatchSourceTimer?
+    var documentController: UIDocumentInteractionController?
+    var bHavenScanResult = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "device".localized()
+        NotificationCenter.default.addObserver(
+               self,
+               selector: #selector(audioRouteChanged),
+               name: AVAudioSession.routeChangeNotification,
+               object: nil
+           )
         deviceView = DevicesView().then {
             $0.backgroundColor = UIColor.white
             $0.layer.cornerRadius = 16
@@ -106,7 +118,53 @@ class DevicesViewController: BaseViewController {
             height =  width
         }
         
-        print("width: \(width) height: \(height)")
+        XLogger.shared.log("width: \(width) height: \(height)")
+        
+        // 获取 AppDelegate 实例
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.foregroundObserver = { [weak self] isActive in
+                if isActive {
+                    self?.appDidBecomeActive()
+                } else {
+                    self?.appWillResignActive()
+                }
+            }
+        }
+        
+        // 初始化并缓存 documentController，避免每次点击重复创建
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return
+        }
+        let fileURL = documentsDirectory.appendingPathComponent("log.txt")
+        documentController = UIDocumentInteractionController(url: fileURL)
+        documentController?.delegate = self
+        
+        // 创建按钮
+//            let button = UIBarButtonItem(
+//                title: "日志",
+//                style: .plain,
+//                target: self,
+//                action: #selector(didTapRightButton)
+//            )
+//            button.tintColor = .red  // 设置按钮颜色
+//
+//            // 添加到右上角
+//            navigationItem.rightBarButtonItem = button
+    }
+    
+    // 处理点击事件（注意使用 @objc 标记）
+    @objc private func didTapRightButton() {
+        guard let documentController else { return }
+        // 构造一个以视图中心为原点的极小矩形作为锚点
+        let centerRect = CGRect(
+            x: view.bounds.midX - 1,
+            y: view.bounds.midY - 1,
+            width: 2,
+            height: 2
+        )
+        
+        // 直接使用 view 的 bounds 和 view 自身作为参数
+        documentController.presentOpenInMenu(from: centerRect, in: view, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,55 +179,6 @@ class DevicesViewController: BaseViewController {
         
         if isXGZT {
             refreshHeight()
-            
-            let delayTime = DispatchTime.now() + .milliseconds(1000)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                guard let device = XGZTBlueToothManager.shared.device else {
-                    return
-                }
-                var p0: UInt8 = 0
-                var p1: UInt8 = 0
-                var p2: UInt8 = 0
-                var p3: UInt8 = 0
-                p0 |= 1 << 0
-                p0 |= device.isIncomingCall ? 1 << 1 : 0
-                p0 |= 1 << 2
-                p0 |= 1 << 3
-                p0 |= 1 << 4
-                p0 |= 1 << 5
-                p0 |= 1 << 6
-                p0 |= 1 << 7
-
-                // 处理 response[8]
-                p1 |= 1 << 0
-                p1 |= 1 << 1
-                p1 |= 1 << 2
-                p1 |= 1 << 3
-                p1 |= 1 << 4
-                p1 |= 1 << 5
-                p1 |= 1 << 6
-                p1 |= 1 << 7
-                
-                // 处理 response[9]
-                p2 |= 1 << 0
-                p2 |= 1 << 1
-                p2 |= 1 << 2
-                p2 |= 1 << 3
-                p2 |= 1 << 4
-                p2 |= 1 << 5
-                p2 |= 1 << 6
-                p2 |= 1 << 7
-                
-                // 处理 response[9]
-                p3 |= 1 << 0
-                p3 |= 1 << 2
-                p3 |= 1 << 3
-                p3 |= 1 << 4
-                p3 |= 1 << 5
-                p3 |= 1 << 6
-                
-                XGZTCommand.setSwitchTableExtension(p0: p0, p1: p1, p2: p2, p3: p3)
-            }
             
         } else {
             Async.main(after: 1) {
@@ -188,6 +197,24 @@ class DevicesViewController: BaseViewController {
                 }
             }
         }
+        
+        // 创建一个定时器，每 2 秒触发一次，并绑定到主线程队列
+        refreshTimer = DispatchSource.makeTimerSource(queue: .main)
+        refreshTimer?.schedule(deadline: .now(), repeating: 4.0)
+        refreshTimer?.setEventHandler { [weak self] in
+            // 在主线程刷新视图（实际代码根据你的需求调整）
+            self?.deviceView?.refreshData()
+            XLogger.shared.log("每4秒钟刷新一次")
+        }
+        refreshTimer?.resume()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // 取消定时器并释放引用
+        refreshTimer?.cancel()
+        refreshTimer = nil
+        
     }
     
     private func refreshDevices() {
@@ -226,7 +253,48 @@ class DevicesViewController: BaseViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        // 解除回调
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.foregroundObserver = nil
+        }
     }
+    
+    private func appDidBecomeActive() {
+        XLogger.shared.log("App 进入前台")
+        deviceView.refreshData()
+        changeButtonAttr()
+    }
+    
+    private func appWillResignActive() {
+        XLogger.shared.log("App 进入后台")
+    }
+    
+    @objc func audioRouteChanged(notification: Notification) {
+           guard let reason = notification.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt else { return }
+
+           switch AVAudioSession.RouteChangeReason(rawValue: reason) {
+           case .newDeviceAvailable:
+               XLogger.shared.log("经典蓝牙设备已连接")
+               checkBluetoothDevice()
+           case .oldDeviceUnavailable:
+               XLogger.shared.log("经典蓝牙设备已断开")
+               // 处理断开逻辑
+               deviceView.refreshData(value: 100)
+           default:
+               break
+           }
+       }
+
+       func checkBluetoothDevice() {
+           let session = AVAudioSession.sharedInstance()
+           let currentRoute = session.currentRoute
+
+           for output in currentRoute.outputs {
+               if output.portType == .bluetoothA2DP || output.portType == .carAudio {
+                   XLogger.shared.log("检测到蓝牙设备：\(output.portName)")
+               }
+           }
+       }
     
     // 设备设置
     private func initializeDeviceSettings() {
@@ -270,7 +338,12 @@ class DevicesViewController: BaseViewController {
     
     public func refreshHeight() {
         // 将 deviceSettingsViewHeightMultiplier 修改为 14
-        deviceSettingsViewHeightMultiplier = 14
+        if ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15 & 0x0f) > 0 {
+            deviceSettingsViewHeightMultiplier = 15
+        } else {
+            deviceSettingsViewHeightMultiplier = 14
+        }
+        
             
         deviceSettingsView?.view.snp.remakeConstraints {
             $0.left.equalTo(0)
@@ -330,13 +403,15 @@ class DevicesViewController: BaseViewController {
             if let image = UIImage(named: "icon_add_device") {
                 changeButton.setImage(image, for: .normal)
             }
+            changeButton.tag = 1
         } else {
             changeButton.tintColor = UIColor.brand
             changeButton.backgroundColor = .white
-            changeButton.setTitle("switch_device".localized(), for: .normal)
+            changeButton.setTitle("deivce_unbind".localized(), for: .normal)
             if let image = UIImage(named: "icon_change_device") {
                 changeButton.setImage(image, for: .normal)
             }
+            changeButton.tag = 2
         }
     }
     
@@ -361,13 +436,271 @@ class DevicesViewController: BaseViewController {
     
     @objc private func handleNotification(_ notification: Notification) {
         if let obj = notification.object as? String, obj.count > 0 {
-            print("刷新设备列表数据")
-            deviceView?.refreshData()
-            changeButtonAttr()
-            refreshDevices()
-            return
+            if obj == "1999" {
+                DispatchQueue.main.async {
+                    [weak self] in
+                    self?.refreshHeight()
+                }
+                return
+            }
+            if obj == "2000" {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    guard localMac.count > 0 else {
+                        return
+                    }
+                    if XGZTBlueToothManager.shared.device != nil && localMac == lastestDeviceMac {
+                        XGZTBlueToothManager.shared.disconnectDevice()
+                        UserDefaults.standard.set(lastestDeviceMac, forKey: "deleteLastestDeviceMac")
+                        UserDefaults.standard.synchronize()
+                        lastestDeviceMac = ""
+                        UserDefaults.standard.removeObject(forKey: "LastestDeviceMac")
+                        XGZTBlueToothManager.shared.stopScanning() // 停止扫描
+                    }
+                    BluetoothWatchDevice.deleteFromSandbox(mac: localMac)
+                    localMac = ""
+                    if (cacheDevices.count) > 0 {
+                        if lastestDeviceMac == "" {
+                            let model = cacheDevices.last
+                            lastestDeviceMac = model?.max ?? ""
+                            UserDefaults.standard.setValue(lastestDeviceMac, forKey: "LastestDeviceMac")
+                            UserDefaults.standard.synchronize()
+                        } else {
+                            var temp = false
+                            for model in cacheDevices {
+                                if model.max ?? "" == lastestDeviceMac {
+                                    temp = true
+                                    break
+                                }
+                            }
+                            if !temp {
+                                let model = cacheDevices.last
+                                lastestDeviceMac = model?.max ?? ""
+                                UserDefaults.standard.setValue(lastestDeviceMac, forKey: "LastestDeviceMac")
+                                UserDefaults.standard.synchronize()
+                            }
+                        }
+                    } else {
+                        if DeviceManager.shared.devices.count > 0 {
+                            if lastestDeviceMac == "" {
+                                lastestDeviceMac = DeviceManager.shared.devices.first?.mac ?? ""
+                                UserDefaults.standard.setValue(lastestDeviceMac, forKey: "LastestDeviceMac")
+                                UserDefaults.standard.synchronize()
+                            }
+                        }
+                    }
+                    XLogger.shared.log("删除后2，新的macaddress=\(lastestDeviceMac)")
+                    NotificationCenter.default.post(name: Notification.Name("DeviceList"), object: "2")
+                }
+                return
+            }
+            if obj == "3000" {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    guard localMac.count > 0 else {
+                        return
+                    }
+                    XGZTBlueToothManager.shared.disconnectDevice()
+                    UserDefaults.standard.set(lastestDeviceMac, forKey: "deleteLastestDeviceMac")
+                    UserDefaults.standard.synchronize()
+                    lastestDeviceMac = ""
+                    UserDefaults.standard.removeObject(forKey: "LastestDeviceMac")
+                    XGZTBlueToothManager.shared.stopScanning() // 停止扫描
+                    BluetoothWatchDevice.deleteFromSandbox(mac: localMac)
+                    localMac = ""
+                    if (cacheDevices.count) > 0 {
+                        if lastestDeviceMac == "" {
+                            let model = cacheDevices.last
+                            lastestDeviceMac = model?.max ?? ""
+                            UserDefaults.standard.setValue(lastestDeviceMac, forKey: "LastestDeviceMac")
+                            UserDefaults.standard.synchronize()
+                        } else {
+                            var temp = false
+                            for model in cacheDevices {
+                                if model.max ?? "" == lastestDeviceMac {
+                                    temp = true
+                                    break
+                                }
+                            }
+                            if !temp {
+                                let model = cacheDevices.last
+                                lastestDeviceMac = model?.max ?? ""
+                                UserDefaults.standard.setValue(lastestDeviceMac, forKey: "LastestDeviceMac")
+                                UserDefaults.standard.synchronize()
+                            }
+                        }
+                    } else {
+                        if DeviceManager.shared.devices.count > 0 {
+                            if lastestDeviceMac == "" {
+                                lastestDeviceMac = DeviceManager.shared.devices.first?.mac ?? ""
+                                UserDefaults.standard.setValue(lastestDeviceMac, forKey: "LastestDeviceMac")
+                                UserDefaults.standard.synchronize()
+                            }
+                        }
+                    }
+                    XLogger.shared.log("删除后，新的macaddress=\(lastestDeviceMac)")
+      
+                    NotificationCenter.default.post(name: Notification.Name("HealthViewController"), object: "delete", userInfo: ["mac": localMac])
+                    NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: nil)
+                    
+                    NotificationCenter.default.post(name: Notification.Name("DeviceList"), object: "3")
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "1000")
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        XGZTBlueToothManager.shared.cancelAllConnections()
+                    }
+                }
+                return
+            }
+            if obj == "4000" {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    [weak self] in
+                    let vc = UIStoryboard(name: "Device", bundle: nil).instantiateViewController(withIdentifier: "DeviceSearchViewController")
+                    vc.title = "device_add".localized()
+                    vc.hidesBottomBarWhenPushed = true
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                return
+            }
+            if obj == "5000" {
+                self.bHavenScanResult = false
+                /// 创建二维码扫描
+                let vc = ScannerVC()
+                vc.modalPresentationStyle = .fullScreen
+                //设置标题、颜色、扫描样式（线条、网格）、提示文字
+                vc.setupScanner("device_scan".localized(), .blue, .grid, "device_scan_add_device".localized()) {[weak self] (code) in
+                    // 扫描回调方法
+                    XLogger.shared.log("扫描的结果是：\(code)")
+                    
+                    if self?.bHavenScanResult ?? false {
+                        XLogger.shared.log("扫描的结果是重复了")
+                        return
+                    }
+                    
+                    guard !code.isEmpty else {
+                        XLogger.shared.log("扫描的结果是无设备4")
+                        self?.dismiss(animated: true, completion: nil)
+                        return
+                    }
+                    
+                    // 处理旧设备（含mac参数）
+                    if code.contains("mac=") {
+                        XLogger.shared.log("扫描的结果是旧设备")
+                        self?.bHavenScanResult = true
+                        if let mac = self?.extractMacValue(from: code) {
+                            if bleSelf.bleModels.count > 0 {
+                                for model in bleSelf.bleModels {
+                                    let m = model.mac.replacingOccurrences(of: ":", with: "").lowercased()
+                                    if m == mac.lowercased() {
+                                        bleSelf.connectBleDevice(model: model)
+                                        XLogger.shared.log("连接旧设备：\(m)")
+                                        break
+                                    }
+                                }
+                            } else {
+                                BLEManager.shared.startScan()
+                                Async.main(after: 1.5) {
+                                    if bleSelf.bleModels.count > 0 {
+                                        for model in bleSelf.bleModels {
+                                            let m = model.mac.replacingOccurrences(of: ":", with: "").lowercased()
+                                            if m == mac.lowercased() {
+                                                bleSelf.connectBleDevice(model: model)
+                                                XLogger.shared.log("连接旧设备：\(m)")
+                                                break
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // 处理新设备（含k参数）
+                    else if code.contains("k=") {
+                        XLogger.shared.log("扫描的结果是新设备")
+                        self?.bHavenScanResult = true
+                        
+                        // 手动解析k参数值（避免URLComponents旧系统兼容问题）
+                        if let kParamStart = code.range(of: "k=")?.upperBound {
+                            // 找到k参数的结束位置（&符号或字符串结尾）
+                            let kParamEnd = code[kParamStart...].range(of: "&")?.lowerBound ?? code.endIndex
+                            let kValueStr = String(code[kParamStart..<kParamEnd])
+                            XLogger.shared.log("解析k参数的原始值：\(kValueStr)")
+                            
+                            // 按|分割字符串，获取所有部分
+                            let components = kValueStr.components(separatedBy: "|")
+                            
+                            // 检查是否有足够的部分
+                            guard components.count >= 2 else {
+                                XLogger.shared.log("扫描的结果有错误1：参数k的值格式不正确，至少需要3个|分隔的部分，实际有\(components.count)个")
+                                self?.dismiss(animated: true, completion: nil)
+                                return
+                            }
+                            
+                            // 提取各个部分并去除首尾空格
+                            let macAddress = components[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                            let deviceName = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
+                            
+                            XLogger.shared.log("解析到的mac地址是：\(macAddress)")
+                            XLogger.shared.log("解析到的设备名称是：\(deviceName)")
+                            
+                            if XGZTBlueToothManager.shared.isCurrentBleStateOFF() {
+                                Toast(text: "ble_off".localized()).show()
+                                XLogger.shared.log("蓝牙没有开启")
+                            } else {
+                                // 可以根据需要使用所有解析出的参数
+                                XGZTBlueToothManager.shared.connectAndScan(to: macAddress, deviceName: deviceName)
+                            }
+                        } else {
+                            XLogger.shared.log("扫描的结果有错误2：未找到k参数")
+                            self?.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                    else {
+                        XLogger.shared.log("扫描的结果有错误3：代码格式不匹配")
+                    }
+                    
+                    // 关闭扫描页面（无论是否成功均关闭）
+                    self?.dismiss(animated: true, completion: nil)
+                }
+
+                //Present到扫描页面
+                self.navigationController?.present(vc, animated: true, completion: nil)
+                return
+            }
+            XLogger.shared.log("刷新设备列表数据")
+            DispatchQueue.main.async {
+                [weak self] in
+                
+                if obj == "100" {
+                    self?.deviceView?.refreshData(value: 100)
+                    return
+                }
+                
+                if obj == "1000" {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        [weak self] in
+                        self?.deleteDeviceSetting() // 调整到设置页面
+                    }
+                    return
+                }
+                
+                self?.deviceView?.refreshData()
+                self?.changeButtonAttr()
+                self?.refreshDevices()
+            }
         }
-        //self.perform(#selector(pushToMobileSettings), with: nil, afterDelay: 0.3)
+    }
+
+    func extractMacValue(from string: String) -> String? {
+        let pattern = "mac="
+        guard let range = string.range(of: pattern, options: .backwards) else {
+            // 如果没有找到 "mac="，返回 nil
+            return nil
+        }
+        // 截取 "mac=" 之后的字符串
+        let macValue = string[range.upperBound...]
+        return String(macValue)
     }
     
     @objc private func pushToMobileSettings() {
@@ -376,10 +709,16 @@ class DevicesViewController: BaseViewController {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }
     }
+    
+    private func deleteDeviceSetting() {
+        let vc = RemoveDeviceViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     /// 表盘管理
     func pushToClockManage(index: Int) {
-        if bleSelf.bleModel.screenWidth == 80 {
+        if bleSelf.bleModel.screenWidth == 80 && !isXGZT {
             let storyboard = UIStoryboard(name: "Device", bundle: nil)
             let myClockVC = storyboard.instantiateViewController(withIdentifier: "MyClockViewController") as! MyClockViewController
             myClockVC.index = index
@@ -398,19 +737,63 @@ class DevicesViewController: BaseViewController {
     }
     
     @objc public func addDevice() {
-        var count = DeviceManager.shared.devices.count
-        count += BluetoothWatchDevice.loadAll()?.count ?? 0
-        let storyboard = UIStoryboard(name: "Device", bundle: nil)
-        if count == 0 {
-            let vc = storyboard.instantiateViewController(withIdentifier: "DeviceSearchViewController")
-            vc.title = "device_add".localized()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
+        if changeButton.tag == 1 {
+            var count = DeviceManager.shared.devices.count
+            count += cacheDevices.count
+            let storyboard = UIStoryboard(name: "Device", bundle: nil)
+            if count == 0 {
+                let vc = SelectAddActionViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self.navigationController?.tabBarController?.present(vc, animated: false)
+            } else {
+                let vc = storyboard.instantiateViewController(withIdentifier: "DeviceListViewController")
+                vc.title = "device_change".localized()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            }
         } else {
-            let vc = storyboard.instantiateViewController(withIdentifier: "DeviceListViewController")
-            vc.title = "device_change".localized()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
+            let alert = UIAlertController(title: "device_tip".localized(), message: "unbind_device_desc".localized(), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "mine_cancel".localized(), style: .cancel, handler: { (action) in
+                
+            }))
+            alert.addAction(UIAlertAction(title: "mine_confirm".localized(), style: .default, handler: { (action) in
+                localMac = lastestDeviceMac
+                if XGZTBlueToothManager.shared.device != nil {
+                    if XGZTBlueToothManager.shared.isReconnectingNow {
+                        NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "2000")
+                        return
+                    }
+                    XGZTBlueToothManager.shared.switchAutoDisconnect = true
+                    XGZTCommand.bindDevice(value: 2) // 解除绑定
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        XGZTBlueToothManager.shared.cancelAllConnections()
+                    }
+                } else {
+                    NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "2000")
+                    let count = DeviceManager.shared.devices.count
+                    if count <= 1 {
+                        if count > 0 {
+                            NotificationCenter.default.post(name: Notification.Name("HealthViewController"), object: "delete", userInfo: ["mac": DeviceManager.shared.devices[0].mac])
+                        }
+                        NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: nil)
+                        BLEManager.shared.unbind()
+                        UserDefaults.standard.removeObject(forKey: "LastestDeviceMac")
+                    } else {
+                        NotificationCenter.default.post(name: Notification.Name("HealthViewController"), object: "delete", userInfo: ["mac": localMac])
+                        let lastestDeviceMac = UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? ""
+                        if lastestDeviceMac == localMac {
+                            BLEManager.shared.unbind()
+                            UserDefaults.standard.removeObject(forKey: "LastestDeviceMac")
+                            NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: nil)
+                        }
+                    }
+                    
+                    
+                }
+            }))
+            present(alert, animated: true) {
+                
+            }
         }
     }
     
@@ -420,6 +803,11 @@ class DevicesViewController: BaseViewController {
             return
         }
         pushToClockManage(index: 0)
+    }
+    
+    // 实现 delegate 方法
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
     }
 }
 
@@ -434,7 +822,7 @@ extension DevicesViewController: UICollectionViewDataSource {
         if indexPath.row < clockArray.count  {
             let item = clockArray[indexPath.item]
             let array = item.components(separatedBy: "&&")
-            if array[0] == "_" || (DeviceManager.shared.devices.count == 0 && (BluetoothWatchDevice.loadAll()?.count ?? 0) == 0) {
+            if array[0] == "_" || (DeviceManager.shared.devices.count == 0 && (cacheDevices.count) == 0) {
                 cell.clockImageView.isHidden = true
                 cell.addImageView.isHidden = false
                 cell.clockBGView.backgroundColor = UIColor.fill
@@ -443,7 +831,7 @@ extension DevicesViewController: UICollectionViewDataSource {
                 cell.addImageView.isHidden = true
                 cell.clockBGView.backgroundColor = UIColor.clear
                 if array[1].contains(".png") || array[1].contains(".jpg") || array[1].contains(".jpeg") {
-                    print("保存的图片路径：\(array[1])")
+                    XLogger.shared.log("保存的图片路径：\(array[1])")
                     if array[1].contains("Documents") {
                         cell.clockImageView.image = UIImage(contentsOfFile: array[1])
                     } else {
@@ -539,3 +927,5 @@ class VerticalButton: UIButton {
         return CGSize(width: width, height: height)
     }
 }
+
+

@@ -23,18 +23,6 @@ class DeviceSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if isXGZT { // 如果是自研产品
-            XGZTCommand.getSwitchStatus()
-            XGZTCommand.getSwitchTableExtension()
-            var delayTime = DispatchTime.now() + .milliseconds(50)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                XGZTCommand.getReminderInfo(eventType: 0) // 久坐
-            }
-            
-            delayTime = DispatchTime.now() + .milliseconds(100)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                XGZTCommand.getReminderInfo(eventType: 1) //喝水
-            }
-            
             
         } else {
             bleSelf.getAncsSwitchForWristband() // 苹果推送消息
@@ -84,7 +72,31 @@ class DeviceSettingsViewController: UIViewController {
                     self?.cameraViewController?.dismiss(animated: true, completion: nil)
                     self?.cameraViewController = nil
                 }
+            } else if obj == 200 {
+                guard let device = XGZTBlueToothManager.shared.device else {
+                    Toast(text: "mine_unconnect".localized()).show()
+                    return
+                }
+                if device.longsit != nil {
+                    return
+                }
+                XGZTCommand.getSwitchStatus()
+                XGZTCommand.getSwitchTableExtension()
+                var delayTime = DispatchTime.now() + .milliseconds(50)
+                DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                    XGZTCommand.getReminderInfo(eventType: 0) // 久坐
+                }
+                
+                delayTime = DispatchTime.now() + .milliseconds(100)
+                DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                    XGZTCommand.getReminderInfo(eventType: 1) //喝水
+                }
             }
+        }
+        
+        if isXGZT {
+            NotificationCenter.default.post(name: Notification.Name("HealthVCLoading"), object: 10000)
+            return
         }
         
         let current = Date().timeIntervalSince1970
@@ -97,6 +109,12 @@ class DeviceSettingsViewController: UIViewController {
         if #available(iOS 3.1, *) {
             DispatchQueue.main.async {
                 [weak self] in
+                if UIApplication.shared.applicationState == .background {
+                    return
+                }
+                if self?.cameraViewController == nil {
+                    return
+                }
                 self?.cameraViewController?.capturePhoto()
             }
         }
@@ -108,10 +126,19 @@ class DeviceSettingsViewController: UIViewController {
         let tag = mSwitch?.tag ?? 0
         if tag == 1002 { // 长坐提醒
             if isXGZT {
-                guard let device = XGZTBlueToothManager.shared.device else {
+                guard var device = XGZTBlueToothManager.shared.device else {
+                    Toast(text: "mine_unconnect".localized()).show()
                     return
                 }
+                if XGZTBlueToothManager.shared.isReconnectingNow {
+                    Toast(text: "mine_unconnect".localized()).show()
+                    return
+                }
+                
                 if (mSwitch?.isOn ?? false) {
+                    if device.longsit == nil {
+                        device.longsit = ReminderInfoResponse(eventType: 0, cycle: 0, startHour: 8, startMinute: 0, endHour: 0x14, endMinute: 0, period: 0x00)
+                    }
                     device.longsit?.cycle = 0b11111111
                     device.longsit?.startHour = 8
                     device.longsit?.startMinute = 0
@@ -119,17 +146,21 @@ class DeviceSettingsViewController: UIViewController {
                     device.longsit?.endMinute = 0
                     if (device.longsit?.period ?? 0) == 0 {
                         device.longsit?.period = 0x0a
-                        tableView.reloadData()
+                        tableView.reloadRows(at: [IndexPath(item: 4, section: 0)], with: .none)
                     }
                     if device.longsit != nil {
                         XGZTCommand.setReminderInfo(response: device.longsit!)
                     }
                 } else {
+                    if device.longsit == nil {
+                        device.longsit = ReminderInfoResponse(eventType: 0, cycle: 0, startHour: 8, startMinute: 0, endHour: 0x14, endMinute: 0, period: 0x00)
+                    }
                     if device.longsit != nil {
                         device.longsit?.cycle = 0b01111111
                         XGZTCommand.setReminderInfo(response: device.longsit!)
                     }
                 }
+                XGZTBlueToothManager.shared.device = device
             } else {
                 bleSelf.functionSwitchModel.isLongSit = mSwitch?.isOn ?? false
                 bleSelf.setSwitchForWristband(bleSelf.functionSwitchModel)
@@ -242,7 +273,12 @@ class DeviceSettingsViewController: UIViewController {
             
         } else { // 喝水提醒
             if isXGZT {
-                guard let device = XGZTBlueToothManager.shared.device else {
+                guard var device = XGZTBlueToothManager.shared.device else {
+                    Toast(text: "mine_unconnect".localized()).show()
+                    return
+                }
+                if XGZTBlueToothManager.shared.isReconnectingNow {
+                    Toast(text: "mine_unconnect".localized()).show()
                     return
                 }
                 if (mSwitch?.isOn ?? false) {
@@ -256,7 +292,7 @@ class DeviceSettingsViewController: UIViewController {
                     device.drinkWater?.endMinute = 0
                     if (device.drinkWater?.period ?? 0) == 0 {
                         device.drinkWater?.period = 0x0a
-                        tableView.reloadData()
+                        tableView.reloadRows(at: [IndexPath(item: 6, section: 0)], with: .none)
                         
                     }
                     if device.drinkWater != nil {
@@ -268,6 +304,7 @@ class DeviceSettingsViewController: UIViewController {
                         XGZTCommand.setReminderInfo(response: device.drinkWater!)
                     }
                 }
+                XGZTBlueToothManager.shared.device = device
             } else {
                 bleSelf.functionSwitchModel.isDrink = mSwitch?.isOn ?? false
                 bleSelf.setSwitchForWristband(bleSelf.functionSwitchModel)
@@ -276,20 +313,27 @@ class DeviceSettingsViewController: UIViewController {
     }
     
     private func takePhoto() {
+        if isXGZT {
+            NotificationCenter.default.post(name: Notification.Name("HealthVCLoading"), object: 10001)
+            return
+        }
         DispatchQueue.main.async {
             [weak self] in
+            if UIApplication.shared.applicationState == .background {
+                return
+            }
+            if self?.cameraViewController != nil {
+                return
+            }
             var croppingParameters: CroppingParameters {
                 return CroppingParameters(isEnabled: false, allowResizing: false, allowMoving: false, minimumSize: CGSize(width: 60, height: 60))
             }
             self?.cameraViewController = CameraViewController(croppingParameters: croppingParameters, allowsLibraryAccess: true) { [weak self] image, asset in
                 self?.dismiss(animated: true, completion: nil)
                 self?.cameraViewController = nil
-                if isXGZT {
-                    XGZTCommand.remotePhoto(action: 0)
-                } else {
-                    bleSelf.setCameraForWristband(false)
-                    bleSelf.responseCameraForWristband()
-                }
+                bleSelf.setCameraForWristband(false)
+                bleSelf.responseCameraForWristband()
+                
             }
             self?.cameraViewController?.modalPresentationStyle = .fullScreen
             self?.parent?.present(self!.cameraViewController!, animated: true, completion: nil)
@@ -310,7 +354,11 @@ extension DeviceSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isXGZT ? titles.count : (titles.count - 1)
+        var value = 1
+        if ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15 & 0x0f) > 0 {
+            value = 0
+        }
+        return isXGZT ? (titles.count - value) : (titles.count - 2)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -380,6 +428,10 @@ extension DeviceSettingsViewController: UITableViewDelegate {
             Toast(text: "mine_unconnect".localized()).show()
             return
         }
+        if XGZTBlueToothManager.shared.isReconnectingNow {
+            Toast(text: "mine_unconnect".localized()).show()
+            return
+        }
         if indexPath.section == 0 {
             if indexPath.row == 0 { // 推送设置
                 let storyboard = UIStoryboard(name: .kDevice, bundle: nil)
@@ -387,18 +439,27 @@ extension DeviceSettingsViewController: UITableViewDelegate {
                 vc.hidesBottomBarWhenPushed = true
                 parent?.navigationController?.pushViewController(vc, animated: true)
             } else if indexPath.row == 4 {
-                let vc = storyboard?.instantiateViewController(withIdentifier: "LongsitSettingsViewController")
-                vc?.hidesBottomBarWhenPushed = true
-                parent?.navigationController?.pushViewController(vc!, animated: true)
+                let delayTime = DispatchTime.now() + .milliseconds(500)
+                DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                    [weak self] in
+                    let vc = self?.storyboard?.instantiateViewController(withIdentifier: "LongsitSettingsViewController")
+                    vc?.hidesBottomBarWhenPushed = true
+                    self?.parent?.navigationController?.pushViewController(vc!, animated: true)
+                }
             } else if indexPath.row == 7 {
                 let vc = OpenWeatherViewController()
                 vc.hidesBottomBarWhenPushed = true
                 parent?.navigationController?.pushViewController(vc, animated: true)
             }  else if indexPath.row == 6 {
-                let vc = storyboard?.instantiateViewController(withIdentifier: "LongsitSettingsViewController") as? LongsitSettingsViewController
-                vc?.flag = 1
-                vc?.hidesBottomBarWhenPushed = true
-                parent?.navigationController?.pushViewController(vc!, animated: true)
+                let delayTime = DispatchTime.now() + .milliseconds(200)
+                DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                    [weak self] in
+                    let vc = self?.storyboard?.instantiateViewController(withIdentifier: "LongsitSettingsViewController") as? LongsitSettingsViewController
+                    vc?.flag = 1
+                    vc?.hidesBottomBarWhenPushed = true
+                    self?.parent?.navigationController?.pushViewController(vc!, animated: true)
+                }
+                
             }
         }
         if indexPath.row == 11 {
@@ -420,15 +481,15 @@ extension DeviceSettingsViewController: UITableViewDelegate {
             parent?.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 8 { // 闹钟设置
             if isXGZT {
-                XGZTCommand.getAlarmInfo()
+                XGZTCommand.getAlarmInfo(type: 1)
             } else {
                 bleSelf.getAlarmForWristband() // 获取闹钟信息
             }
             perform(#selector(readAlarm), with: nil, afterDelay: 0.3)
         } else if indexPath.row == 12 { // 同步数据
             if isXGZT {
+                NotificationCenter.default.post(name: Notification.Name("HealthVCLoading"), object: 1000)
                 XGZTBlueToothManager.shared.handler.syncDevcieInfo()
-                Toast(text: "synchronize_data_finish".localized()).show()
             } else {
                 if bleSelf.isConnected {
                     NotificationCenter.default.post(name: Notification.Name("HealthVCLoading"), object: 2)
@@ -441,6 +502,10 @@ extension DeviceSettingsViewController: UITableViewDelegate {
             let vc = storyboard.instantiateViewController(withIdentifier: "ABOtaViewController") as! ABOtaViewController
             vc.hidesBottomBarWhenPushed = true
             parent?.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 14 { // 卡包
+            let cardVC = CardBagTableViewController()
+            cardVC.hidesBottomBarWhenPushed = true
+            parent?.navigationController?.pushViewController(cardVC, animated: true)
         }
     }
     
@@ -451,7 +516,7 @@ extension DeviceSettingsViewController: UITableViewDelegate {
 
 extension DeviceSettingsViewController {
     var titles: [String] {
-        return ["device_push_settings".localized(), "device_call_amind".localized(), "device_hand_up_screen".localized(), "device_longsit_amind".localized(), "device_longsit_amind_time".localized(),"drink_water_reminder".localized(), "drink_water_reminder_time".localized(), "device_weather_push".localized(), "device_alarm_settings".localized(), "device_search_settings".localized(), "device_device_info".localized(),"device_shark_photo".localized(), "synchronize_data".localized(), "OTA"]
+        return ["device_push_settings".localized(), "device_call_amind".localized(), "device_hand_up_screen".localized(), "device_longsit_amind".localized(), "device_longsit_amind_time".localized(),"drink_water_reminder".localized(), "drink_water_reminder_time".localized(), "device_weather_push".localized(), "device_alarm_settings".localized(), "device_search_settings".localized(), "device_device_info".localized(),"device_shark_photo".localized(), "synchronize_data".localized(), "ota".localized(), "cardbag".localized()]
     }
 }
 

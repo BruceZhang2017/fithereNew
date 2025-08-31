@@ -81,15 +81,77 @@ class DevicesView: UIView {
         }
     }
 
-    public func refreshData() {
+    public func refreshData(value: Int? = 0) {
         DeviceManager.shared.initializeDevices()
         
         var count = DeviceManager.shared.devices.count
-        count += BluetoothWatchDevice.loadAll()?.count ?? 0
+        count += cacheDevices.count
         if count == 0 {
             self.isHidden = true
         } else {
             self.isHidden = false
+
+            if (cacheDevices.count) > 0 {
+                XLogger.shared.log("Item already exists at index \(index)")
+                self.isHidden = false
+                cardImgView.image = UIImage(named: "icon_ewatch")
+                if let device = BluetoothWatchDevice.loadFromSandbox(mac: lastestDeviceMac) {
+                    cardNameLabel.text = device.deviceName ?? ""
+                    if device.max == lastestDeviceMac && (device.max == XGZTBlueToothManager.shared.device?.max && XGZTBlueToothManager.shared.device != nil) {
+                        if XGZTBlueToothManager.shared.centralManager?.state == .poweredOff {
+                            bConnected = false
+                            btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                        } else {
+                            if value == 100 || XGZTBlueToothManager.shared.isReconnectingNow {
+                                bConnected = false
+                                btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                            } else {
+                                if XGZTBlueToothManager.shared.checkConnectedDevicesIsEmpty() {
+                                    bConnected = false
+                                    btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                                } else {
+                                    bConnected = true
+                                    btImgView.image = UIImage(named: "content_blueteeth_link")
+                                }
+                            }
+                            
+                        }
+                    } else {
+                        btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                    }
+                    macLabel.text = device.max ?? ""
+                    return
+                }
+                let deviceName = XGZTBlueToothManager.shared.getDeviceName(mac: lastestDeviceMac)
+                if deviceName.count > 0 {
+                    cardNameLabel.text = deviceName
+                    if lastestDeviceMac == XGZTBlueToothManager.shared.device?.max && XGZTBlueToothManager.shared.device != nil {
+                        if XGZTBlueToothManager.shared.centralManager?.state == .poweredOff {
+                            bConnected = false
+                            btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                        } else {
+                            if value == 100 || XGZTBlueToothManager.shared.isReconnectingNow {
+                                bConnected = false
+                                btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                            } else {
+                                if XGZTBlueToothManager.shared.checkConnectedDevicesIsEmpty() {
+                                    bConnected = false
+                                    btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                                } else {
+                                    bConnected = true
+                                    btImgView.image = UIImage(named: "content_blueteeth_link")
+                                }
+                            }
+                            
+                        }
+                    } else {
+                        btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                    }
+                    macLabel.text = lastestDeviceMac
+                    return
+                }
+            }
+            
             currentModel = nil
             if count > 0 {
                 for item in DeviceManager.shared.devices {
@@ -100,25 +162,6 @@ class DevicesView: UIView {
                     }
                 }
             }
-
-            if (BluetoothWatchDevice.loadAll()?.count ?? 0) > 0 {
-                print("Item already exists at index \(index)")
-                self.isHidden = false
-                cardImgView.image = UIImage(named: "icon_ewatch")
-                if let device = BluetoothWatchDevice.loadFromSandbox(mac: lastestDeviceMac) {
-                    cardNameLabel.text = device.deviceName ?? ""
-                    if device.max == lastestDeviceMac && (device.max == XGZTBlueToothManager.shared.device?.max && XGZTBlueToothManager.shared.device != nil) {
-                        bConnected = true
-                        btImgView.image = UIImage(named: "content_blueteeth_link")
-                    } else {
-                        btImgView.image = UIImage(named: "content_blueteeth_unlink")
-                    }
-                    macLabel.text = device.max ?? ""
-                    
-                    return
-                }
-            }
-            
             
             if currentModel == nil {
                 self.isHidden = true
@@ -127,8 +170,19 @@ class DevicesView: UIView {
                 cardImgView.image = UIImage(named: AppDelegate.IsDeviceNotRound() ? "icon_ewatch" : "icon_ewatch_2")
                 cardNameLabel.text = (currentModel?.name ?? "") + " - \(bleSelf.bleModel.screenWidth)*\(bleSelf.bleModel.screenHeight)"
                 if currentModel!.mac == lastestDeviceMac && bleSelf.isConnected {
-                    bConnected = true
-                    btImgView.image = UIImage(named: "content_blueteeth_link")
+                    if XGZTBlueToothManager.shared.centralManager?.state == .poweredOff {
+                        bConnected = false
+                        btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                    } else {
+                        if value == 100 || XGZTBlueToothManager.shared.isReconnectingNow {
+                            bConnected = false
+                            btImgView.image = UIImage(named: "content_blueteeth_unlink")
+                        } else {
+                            bConnected = true
+                            btImgView.image = UIImage(named: "content_blueteeth_link")
+                        }
+                    }
+                    
                 } else {
                     btImgView.image = UIImage(named: "content_blueteeth_unlink")
                 }

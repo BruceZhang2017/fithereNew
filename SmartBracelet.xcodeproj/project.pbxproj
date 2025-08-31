@@ -17,12 +17,25 @@
 		6358A1BC7537C0FAECF400E2 /* Pods_SmartBracelet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */; };
 		9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4425BDB1CD0006FB94 /* OTACMD.m */; };
 		9A037E4825BDB1EC0006FB94 /* OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4725BDB1EC0006FB94 /* OTA.m */; };
+		9A06980D2E477D0C00A74A7A /* LBXScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698082E477D0C00A74A7A /* LBXScanView.swift */; };
+		9A06980E2E477D0C00A74A7A /* LBXScanViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */; };
+		9A06980F2E477D0C00A74A7A /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */; };
+		9A0698102E477D0C00A74A7A /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */; };
+		9A0698112E477D0C00A74A7A /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */; };
+		9A0698122E477D0C00A74A7A /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */; };
+		9A0698132E477D0C00A74A7A /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698052E477D0C00A74A7A /* LBXPermissions.swift */; };
+		9A0698152E477D3300A74A7A /* CardBagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */; };
+		9A0698172E477D4F00A74A7A /* QRBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698162E477D4F00A74A7A /* QRBindViewController.swift */; };
+		9A06995F2E56AE0400A74A7A /* TripleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */; };
 		9A08C673262C757A00E178DA /* WeatherTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C672262C757A00E178DA /* WeatherTestViewController.swift */; };
 		9A08C6EB262F17D500E178DA /* OTAUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6EA262F17D500E178DA /* OTAUpgradeViewController.m */; };
 		9A08C6EF262F17FE00E178DA /* OTCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6ED262F17FE00E178DA /* OTCModel.m */; };
 		9A08C6FB262F182000E178DA /* OTAListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6F5262F182000E178DA /* OTAListCell.m */; };
 		9A08C6FC262F182000E178DA /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6F8262F182000E178DA /* ProgressView.m */; };
 		9A08C701262F19EC00E178DA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6FF262F19EC00E178DA /* MBProgressHUD.m */; };
+		9A0B86E32DD1C3E100E1E936 /* RemoveDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0B86E22DD1C3D500E1E936 /* RemoveDeviceViewController.swift */; };
+		9A0B86E62DD1CC1000E1E936 /* delete_device2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0B86E52DD1CC1000E1E936 /* delete_device2.png */; };
+		9A0B86E72DD1CC1000E1E936 /* delete_device1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0B86E42DD1CC1000E1E936 /* delete_device1.png */; };
 		9A0C34952B341D6600E798F1 /* DFUnits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34932B341D6100E798F1 /* DFUnits.framework */; };
 		9A0C34962B341D6600E798F1 /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */; };
 		9A127EAE2BC2ACE300126836 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */; };
@@ -124,8 +137,10 @@
 		9A3C55CF2BD3ECA3007737A2 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C55CE2BD3ECA3007737A2 /* RoundView.swift */; };
 		9A3C55D12BD3F41B007737A2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C55D02BD3F41B007737A2 /* TestView.swift */; };
 		9A40E02C25D37477001879B3 /* DStepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A40E02B25D37477001879B3 /* DStepModel.swift */; };
-		9A491EEF2BA07C43000CF726 /* AliIotConnectKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A491EED2BA07A8C000CF726 /* AliIotConnectKit.framework */; };
-		9A491EF02BA07C43000CF726 /* AliIotConnectKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A491EED2BA07A8C000CF726 /* AliIotConnectKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9A410C762DCB5372006240A6 /* XLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410C752DCB5368006240A6 /* XLogger.swift */; };
+		9A46063D2DD5FF580011017F /* delete_device20.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A46063C2DD5FF580011017F /* delete_device20.png */; };
+		9A46063E2DD5FF580011017F /* delete_device10.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A46063B2DD5FF580011017F /* delete_device10.png */; };
+		9A4B80A72DE1F5BB0001817F /* SelectAddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B80A62DE1F5BB0001817F /* SelectAddActionViewController.swift */; };
 		9A4CADEE294032F200B0BDF8 /* CommonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CADED294032F100B0BDF8 /* CommonResponse.swift */; };
 		9A4CADF029406E6E00B0BDF8 /* QuestionItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CADEF29406E6E00B0BDF8 /* QuestionItemResponse.swift */; };
 		9A4CADF22940941F00B0BDF8 /* JXWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CADF12940941F00B0BDF8 /* JXWebViewController.swift */; };
@@ -346,7 +361,6 @@
 		9A820B8224D0522300A62C6F /* Sport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A820B8124D0522300A62C6F /* Sport.storyboard */; };
 		9A820B8724D061E000A62C6F /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A820B8624D061E000A62C6F /* UIDevice+Extension.swift */; };
 		9A820B8F24D1B15B00A62C6F /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A820B8E24D1B15B00A62C6F /* UIButton+Extension.swift */; };
-		9A839BEA255F72F000714CBE /* PopupBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A839BE9255F72F000714CBE /* PopupBViewController.swift */; };
 		9A839BEF255FE5A300714CBE /* HImagePickerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A839BEE255FE5A300714CBE /* HImagePickerUtils.swift */; };
 		9A839BF1255FF3B700714CBE /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A839BF0255FF3B700714CBE /* FileCache.swift */; };
 		9A839C0325602BB700714CBE /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A839C0225602BB700714CBE /* BaseResponse.swift */; };
@@ -467,6 +481,8 @@
 		9AC2B9212D27BBE10064903C /* CutDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B9202D27BBE10064903C /* CutDownView.swift */; };
 		9AC2B9232D27C35F0064903C /* JRDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B9222D27C35F0064903C /* JRDB.swift */; };
 		9AC58A1528C37A3800992836 /* ClockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC58A1428C37A3800992836 /* ClockResponse.swift */; };
+		9AC961822DA5531D00699C7F /* AliIotConnectKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC961802DA5527900699C7F /* AliIotConnectKit.framework */; };
+		9AC961832DA5531D00699C7F /* AliIotConnectKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC961802DA5527900699C7F /* AliIotConnectKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AE1A16B2629465F00B8B10D /* ErrorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1A1552629465F00B8B10D /* ErrorCode.m */; };
 		9AE1A16C2629465F00B8B10D /* JCBlutoothInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1A1582629465F00B8B10D /* JCBlutoothInfoModel.m */; };
 		9AE1A16D2629465F00B8B10D /* OTAManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1A1592629465F00B8B10D /* OTAManager.m */; };
@@ -518,12 +534,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				9AC961832DA5531D00699C7F /* AliIotConnectKit.framework in Embed Frameworks */,
 				9AB5BE262A06648E00680757 /* ZipZap.framework in Embed Frameworks */,
 				9A99CCEB26CB57DE00D6972A /* TJDWristbandSDK.framework in Embed Frameworks */,
 				9A869E122D17DDFC00B78FDF /* ABParTool.xcframework in Embed Frameworks */,
 				9AB5BE2A2A06649700680757 /* RTKOTASDK.framework in Embed Frameworks */,
 				9AB5BE282A06649300680757 /* RTKLEFoundation.framework in Embed Frameworks */,
-				9A491EF02BA07C43000CF726 /* AliIotConnectKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +564,16 @@
 		9A037E4425BDB1CD0006FB94 /* OTACMD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTACMD.m; sourceTree = "<group>"; };
 		9A037E4625BDB1EC0006FB94 /* OTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTA.h; sourceTree = "<group>"; };
 		9A037E4725BDB1EC0006FB94 /* OTA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTA.m; sourceTree = "<group>"; };
+		9A0698052E477D0C00A74A7A /* LBXPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
+		9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
+		9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
+		9A0698082E477D0C00A74A7A /* LBXScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanView.swift; sourceTree = "<group>"; };
+		9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
+		9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanViewStyle.swift; sourceTree = "<group>"; };
+		9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
+		9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBagTableViewController.swift; sourceTree = "<group>"; };
+		9A0698162E477D4F00A74A7A /* QRBindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBindViewController.swift; sourceTree = "<group>"; };
+		9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleTableViewController.swift; sourceTree = "<group>"; };
 		9A08C672262C757A00E178DA /* WeatherTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTestViewController.swift; sourceTree = "<group>"; };
 		9A08C6E9262F17D500E178DA /* OTAUpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAUpgradeViewController.h; sourceTree = "<group>"; };
 		9A08C6EA262F17D500E178DA /* OTAUpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAUpgradeViewController.m; sourceTree = "<group>"; };
@@ -560,6 +586,9 @@
 		9A08C6FD262F183800E178DA /* ColorDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDefine.h; sourceTree = "<group>"; };
 		9A08C6FF262F19EC00E178DA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		9A08C700262F19EC00E178DA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		9A0B86E22DD1C3D500E1E936 /* RemoveDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDeviceViewController.swift; sourceTree = "<group>"; };
+		9A0B86E42DD1CC1000E1E936 /* delete_device1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_device1.png; sourceTree = "<group>"; };
+		9A0B86E52DD1CC1000E1E936 /* delete_device2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_device2.png; sourceTree = "<group>"; };
 		9A0C34932B341D6100E798F1 /* DFUnits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFUnits.framework; sourceTree = "<group>"; };
 		9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
 		9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -573,13 +602,13 @@
 		9A20FA432D2A4B920027A26F /* ImageLabelsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelsCollectionCell.swift; sourceTree = "<group>"; };
 		9A20FA452D2A4D860027A26F /* LocationConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationConverter.h; sourceTree = "<group>"; };
 		9A20FA462D2A4D860027A26F /* LocationConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationConverter.m; sourceTree = "<group>"; };
+		9A1E2D2F2DB6631E00B50C5D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A2181622557EDBE000330E5 /* apple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpeg; sourceTree = "<group>"; };
 		9A2181632557EDBE000330E5 /* walk.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk.jpeg; sourceTree = "<group>"; };
 		9A2181642557EDBE000330E5 /* water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = water.jpg; sourceTree = "<group>"; };
 		9A218420255A3335000330E5 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		9A218422255A3351000330E5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		9A218424255A335F000330E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9A21843C255A3A52000330E5 /* SmartBracelet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartBracelet-Bridging-Header.h"; sourceTree = "<group>"; };
 		9A2184D7255AE3D4000330E5 /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		9A21859D255BBDD8000330E5 /* root.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = root.jpg; sourceTree = "<group>"; };
 		9A2185A7255BC6A9000330E5 /* new2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = new2.jpg; sourceTree = "<group>"; };
@@ -663,7 +692,10 @@
 		9A3C55CE2BD3ECA3007737A2 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		9A3C55D02BD3F41B007737A2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		9A40E02B25D37477001879B3 /* DStepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DStepModel.swift; sourceTree = "<group>"; };
-		9A491EED2BA07A8C000CF726 /* AliIotConnectKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliIotConnectKit.framework; path = ../Downloads/AliIotConnectKit.framework; sourceTree = "<group>"; };
+		9A410C752DCB5368006240A6 /* XLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogger.swift; sourceTree = "<group>"; };
+		9A46063B2DD5FF580011017F /* delete_device10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_device10.png; sourceTree = "<group>"; };
+		9A46063C2DD5FF580011017F /* delete_device20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_device20.png; sourceTree = "<group>"; };
+		9A4B80A62DE1F5BB0001817F /* SelectAddActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddActionViewController.swift; sourceTree = "<group>"; };
 		9A4CADED294032F100B0BDF8 /* CommonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
 		9A4CADEF29406E6E00B0BDF8 /* QuestionItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItemResponse.swift; sourceTree = "<group>"; };
 		9A4CADF12940941F00B0BDF8 /* JXWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXWebViewController.swift; sourceTree = "<group>"; };
@@ -682,6 +714,36 @@
 		9A52107425049FD900F64A7A /* DeviceSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		9A5210762504D47C00F64A7A /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		9A5210782504E02000F64A7A /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
+		9A543A912DBA1A100013BCB3 /* is */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = is; path = is.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543A922DBA2E2A0013BCB3 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543A932DBA2E2A0013BCB3 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543A942DBA6B1A0013BCB3 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543A952DBA6B1A0013BCB3 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543A962DBB36510013BCB3 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lt; path = lt.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543A972DBB36520013BCB3 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lt; path = lt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543A982DBB3E680013BCB3 /* lv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lv; path = lv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543A992DBB3E690013BCB3 /* lv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lv; path = lv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543A9A2DBB41A00013BCB3 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543A9B2DBB41A00013BCB3 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543A9C2DBB62640013BCB3 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543A9D2DBB62640013BCB3 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543A9E2DBB633B0013BCB3 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543A9F2DBB643B0013BCB3 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543AA02DBB643C0013BCB3 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543AA12DBB7E340013BCB3 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543AA22DBB7E340013BCB3 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543AA32DBB7F570013BCB3 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543AA42DBB7F570013BCB3 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543AA52DBB80440013BCB3 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543AA62DBB80440013BCB3 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543AA72DBB81420013BCB3 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543AA82DBB81430013BCB3 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543AA92DBB830A0013BCB3 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543AAA2DBB830A0013BCB3 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543AAB2DBB84300013BCB3 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543AAC2DBB84300013BCB3 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A543AAD2DBB86A20013BCB3 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A543AAE2DBB86A20013BCB3 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A5613F02524875400C43C6A /* CommonCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCalendarView.swift; sourceTree = "<group>"; };
 		9A5613F22524879600C43C6A /* CommonCalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonCalendarView.xib; sourceTree = "<group>"; };
 		9A5613F425248BFC00C43C6A /* AudioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioButtonView.swift; sourceTree = "<group>"; };
@@ -889,7 +951,6 @@
 		9A820B8124D0522300A62C6F /* Sport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sport.storyboard; sourceTree = "<group>"; };
 		9A820B8624D061E000A62C6F /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		9A820B8E24D1B15B00A62C6F /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		9A839BE9255F72F000714CBE /* PopupBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupBViewController.swift; sourceTree = "<group>"; };
 		9A839BEE255FE5A300714CBE /* HImagePickerUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HImagePickerUtils.swift; sourceTree = "<group>"; };
 		9A839BF0255FF3B700714CBE /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		9A839C0225602BB700714CBE /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -1026,6 +1087,8 @@
 		9AC2B9202D27BBE10064903C /* CutDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutDownView.swift; sourceTree = "<group>"; };
 		9AC2B9222D27C35F0064903C /* JRDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JRDB.swift; sourceTree = "<group>"; };
 		9AC58A1428C37A3800992836 /* ClockResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockResponse.swift; sourceTree = "<group>"; };
+		9AC961802DA5527900699C7F /* AliIotConnectKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliIotConnectKit.framework; sourceTree = "<group>"; };
+		9ACA8AFB2DA4F349000E4F8E /* SmartBracelet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartBracelet-Bridging-Header.h"; sourceTree = "<group>"; };
 		9AD431F6271B2671001A6E8F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9AD431F7271B2671001A6E8F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9AD431F8271B2678001A6E8F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -1142,6 +1205,7 @@
 				9AB5BE252A06648E00680757 /* ZipZap.framework in Frameworks */,
 				9A0C34952B341D6600E798F1 /* DFUnits.framework in Frameworks */,
 				9A218423255A3351000330E5 /* CoreTelephony.framework in Frameworks */,
+				9AC961822DA5531D00699C7F /* AliIotConnectKit.framework in Frameworks */,
 				9A99CCEA26CB57DE00D6972A /* TJDWristbandSDK.framework in Frameworks */,
 				9AB5BE152A06644500680757 /* JL_BLEKit.framework in Frameworks */,
 				9A218425255A335F000330E5 /* SystemConfiguration.framework in Frameworks */,
@@ -1149,7 +1213,6 @@
 				9AB5BE202A06644500680757 /* DFUnits.framework in Frameworks */,
 				9AB5BE1C2A06644500680757 /* libJL_BmpConvert.a in Frameworks */,
 				9AB5BE1F2A06644500680757 /* JLDialUnit.framework in Frameworks */,
-				9A491EEF2BA07C43000CF726 /* AliIotConnectKit.framework in Frameworks */,
 				9A869E112D17DDFB00B78FDF /* ABParTool.xcframework in Frameworks */,
 				9AB5BE272A06649300680757 /* RTKLEFoundation.framework in Frameworks */,
 				9AAF85CC25C6D42000960BDD /* MapKit.framework in Frameworks */,
@@ -1214,8 +1277,8 @@
 		18385EB124517F7700EA380A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AC961802DA5527900699C7F /* AliIotConnectKit.framework */,
 				9A869E0F2D17DDEB00B78FDF /* ABParTool.xcframework */,
-				9A491EED2BA07A8C000CF726 /* AliIotConnectKit.framework */,
 				9A0C34932B341D6100E798F1 /* DFUnits.framework */,
 				9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */,
 				9AB5BE212A06645A00680757 /* RTKLEFoundation.framework */,
@@ -1233,6 +1296,10 @@
 		9A037E4025BDACDB0006FB94 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9A0B86E42DD1CC1000E1E936 /* delete_device1.png */,
+				9A0B86E52DD1CC1000E1E936 /* delete_device2.png */,
+				9A46063B2DD5FF580011017F /* delete_device10.png */,
+				9A46063C2DD5FF580011017F /* delete_device20.png */,
 				9AF3F2DA2BCBFF2600AFBC55 /* icon_default.png */,
 				9A7F13812A8C8099006C0F61 /* loading.gif */,
 				9A2676AB26B1969B0096BC61 /* Alarm.mp3 */,
@@ -1240,6 +1307,20 @@
 				9AAF861B25C83E5000960BDD /* IdleResources.bundle */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		9A06980C2E477D0C00A74A7A /* scan */ = {
+			isa = PBXGroup;
+			children = (
+				9A0698052E477D0C00A74A7A /* LBXPermissions.swift */,
+				9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */,
+				9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */,
+				9A0698082E477D0C00A74A7A /* LBXScanView.swift */,
+				9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */,
+				9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */,
+				9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */,
+			);
+			path = scan;
 			sourceTree = "<group>";
 		};
 		9A08C653262C5A1100E178DA /* lefun */ = {
@@ -1314,8 +1395,8 @@
 		9A21843B255A3A13000330E5 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				9ACA8AFB2DA4F349000E4F8E /* SmartBracelet-Bridging-Header.h */,
 				9A08C6EC262F17EE00E178DA /* OTA */,
-				9A21843C255A3A52000330E5 /* SmartBracelet-Bridging-Header.h */,
 				9A037E4325BDB1CD0006FB94 /* OTACMD.h */,
 				9A037E4425BDB1CD0006FB94 /* OTACMD.m */,
 				9A037E4625BDB1EC0006FB94 /* OTA.h */,
@@ -1465,7 +1546,6 @@
 			isa = PBXGroup;
 			children = (
 				9A5210762504D47C00F64A7A /* PopupViewController.swift */,
-				9A839BE9255F72F000714CBE /* PopupBViewController.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -1516,6 +1596,7 @@
 		9A4E624224F7E91F00A0E878 /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				9A06980C2E477D0C00A74A7A /* scan */,
 				9A5E933125164B2D0060AB13 /* AddDevice */,
 				9A6D092A2501D96500B4972F /* ClockManage */,
 				9A4E624524F8926300A0E878 /* DevicesViewController.swift */,
@@ -1539,6 +1620,8 @@
 				9A4CADF12940941F00B0BDF8 /* JXWebViewController.swift */,
 				9A4CADF32940944300B0BDF8 /* JXLocalizedString.swift */,
 				9A869E0C2D12CCC200B78FDF /* OTAInfoManager.swift */,
+				9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */,
+				9A0698162E477D4F00A74A7A /* QRBindViewController.swift */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -1847,6 +1930,7 @@
 		9A5E933125164B2D0060AB13 /* AddDevice */ = {
 			isa = PBXGroup;
 			children = (
+				9A4B80A62DE1F5BB0001817F /* SelectAddActionViewController.swift */,
 				9A7315C02871B0A300D378A7 /* weather */,
 				9A5E933225164B410060AB13 /* DeviceSearchViewController.swift */,
 				9A60DEFC25301FEE00E0D849 /* DeviceSearchTableViewCell.swift */,
@@ -1894,6 +1978,7 @@
 		9A6D092A2501D96500B4972F /* ClockManage */ = {
 			isa = PBXGroup;
 			children = (
+				9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */,
 				9A6D092D2501E3EC00B4972F /* Device.md */,
 				9A6D092B2501D99400B4972F /* ClockManageViewController.swift */,
 				9A521068250322E500F64A7A /* ClockCollectionViewCell.swift */,
@@ -2068,13 +2153,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		9A869E0E2D16D66B00B78FDF /* CustomDeal */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomDeal;
-			sourceTree = "<group>";
-		};
 		9A8CA4E625272C5200EC01A7 /* CVCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2142,7 +2220,8 @@
 		9A93EE542CFDE78C00C02370 /* huaxin */ = {
 			isa = PBXGroup;
 			children = (
-				9A869E0E2D16D66B00B78FDF /* CustomDeal */,
+				9A0B86E22DD1C3D500E1E936 /* RemoveDeviceViewController.swift */,
+				9A410C752DCB5368006240A6 /* XLogger.swift */,
 				9A93EE4D2CFDE78C00C02370 /* OTA */,
 				9A93EE4F2CFDE78C00C02370 /* XGZTBlueToothManager.swift */,
 				9A93EE502CFDE78C00C02370 /* XGZTBusinessHandler.swift */,
@@ -2463,6 +2542,23 @@
 				fi,
 				"zh-HK",
 				ms,
+				sv,
+				is,
+				et,
+				nb,
+				lt,
+				lv,
+				sl,
+				sk,
+				hr,
+				bg,
+				ro,
+				hu,
+				cs,
+				da,
+				el,
+				fa,
+				he,
 			);
 			mainGroup = 18385E9124517F1600EA380A;
 			productRefGroup = 18385E9B24517F1600EA380A /* Products */;
@@ -2486,8 +2582,12 @@
 				9A2185AD255BC6AA000330E5 /* new3.jpg in Resources */,
 				9A33D31426AD9A4F00DF9618 /* CameraView.strings in Resources */,
 				9A2181652557EDBE000330E5 /* apple.jpeg in Resources */,
+				9A0B86E62DD1CC1000E1E936 /* delete_device2.png in Resources */,
+				9A0B86E72DD1CC1000E1E936 /* delete_device1.png in Resources */,
 				9A60DEE3252F003800E0D849 /* hotCities.plist in Resources */,
 				9A3C55C92BD36981007737A2 /* SCBreathAnimationView.xib in Resources */,
+				9A46063D2DD5FF580011017F /* delete_device20.png in Resources */,
+				9A46063E2DD5FF580011017F /* delete_device10.png in Resources */,
 				9A2185B0255BC6AA000330E5 /* new5.jpg in Resources */,
 				9A4E624424F7E94E00A0E878 /* Device.storyboard in Resources */,
 				9AA2E0582B343C9C0008CA56 /* Media.xcassets in Resources */,
@@ -2527,9 +2627,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2583,9 +2687,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2620,9 +2728,12 @@
 				9AE1A16F2629465F00B8B10D /* JCDataConvert.m in Sources */,
 				9A8CA51C25272C5200EC01A7 /* CVCalendarViewPresentationMode.swift in Sources */,
 				9A56D27925216FC60082CC08 /* Transformer.swift in Sources */,
+				9A410C762DCB5372006240A6 /* XLogger.swift in Sources */,
+				9A2181962558290B000330E5 /* SetTargetCViewController.swift in Sources */,
 				9A56D2A625216FC70082CC08 /* BubbleChartData.swift in Sources */,
 				9A56D24C25216FC60082CC08 /* ChevronDownShapeRenderer.swift in Sources */,
 				9A56D2B025216FC70082CC08 /* LineScatterCandleRadarChartDataSet.swift in Sources */,
+				9A06995F2E56AE0400A74A7A /* TripleTableViewController.swift in Sources */,
 				9A56D29725216FC70082CC08 /* BarChartDataSet.swift in Sources */,
 				9A56D26325216FC60082CC08 /* CandleStickChartView.swift in Sources */,
 				9A56D29525216FC70082CC08 /* ChartData.swift in Sources */,
@@ -2725,7 +2836,6 @@
 				9A93EE592CFDE78C00C02370 /* XGZTCommands.swift in Sources */,
 				9A56D26D25216FC60082CC08 /* ScatterChartView.swift in Sources */,
 				9A56D27A25216FC60082CC08 /* Platform+Touch Handling.swift in Sources */,
-				9A839BEA255F72F000714CBE /* PopupBViewController.swift in Sources */,
 				9A350BE924EA765F004CEE6A /* UserInfoViewController.swift in Sources */,
 				9A56D26A25216FC60082CC08 /* BubbleChartView.swift in Sources */,
 				18385E9E24517F1600EA380A /* AppDelegate.swift in Sources */,
@@ -2909,6 +3019,7 @@
 				9AF0AA2025AAF1CE000BDAED /* CMDData.swift in Sources */,
 				9A56D2A825216FC70082CC08 /* ScatterChartDataSet.swift in Sources */,
 				9A60DEEF252F401100E0D849 /* AlarmViewController.swift in Sources */,
+				9A0698152E477D3300A74A7A /* CardBagTableViewController.swift in Sources */,
 				9A56D2BF25216FC70082CC08 /* CandleChartDataProvider.swift in Sources */,
 				9A56D2A925216FC70082CC08 /* ScatterChartData.swift in Sources */,
 				9A820B7424CEA1CC00A62C6F /* BaseViewController.swift in Sources */,
@@ -2952,6 +3063,13 @@
 				9A21BFF92D0082E00048CF53 /* OtaConstants.swift in Sources */,
 				9A21BFFA2D0082E00048CF53 /* Logger.swift in Sources */,
 				9A21BFFB2D0082E00048CF53 /* DataReader.swift in Sources */,
+				9A06980D2E477D0C00A74A7A /* LBXScanView.swift in Sources */,
+				9A06980E2E477D0C00A74A7A /* LBXScanViewStyle.swift in Sources */,
+				9A06980F2E477D0C00A74A7A /* LBXScanWrapper.swift in Sources */,
+				9A0698102E477D0C00A74A7A /* LBXScanLineAnimation.swift in Sources */,
+				9A0698112E477D0C00A74A7A /* LBXScanViewController.swift in Sources */,
+				9A0698122E477D0C00A74A7A /* LBXScanNetAnimation.swift in Sources */,
+				9A0698132E477D0C00A74A7A /* LBXPermissions.swift in Sources */,
 				9A21BFFC2D0082E00048CF53 /* LoggerDelegate.swift in Sources */,
 				9A21BFFD2D0082E00048CF53 /* OtaCommandGenerator.swift in Sources */,
 				9A21BFFE2D0082E00048CF53 /* ABOtaManager.swift in Sources */,
@@ -2991,8 +3109,10 @@
 				9A56D2A425216FC70082CC08 /* ChartDataEntry.swift in Sources */,
 				9A56D2BE25216FC70082CC08 /* ChartDataProvider.swift in Sources */,
 				9A56D28325216FC60082CC08 /* ChartUtils.swift in Sources */,
+				9A0B86E32DD1C3E100E1E936 /* RemoveDeviceViewController.swift in Sources */,
 				9A56D26F25216FC60082CC08 /* ChartAnimationEasing.swift in Sources */,
 				9A56D2A225216FC70082CC08 /* BubbleChartDataEntry.swift in Sources */,
+				9A4B80A72DE1F5BB0001817F /* SelectAddActionViewController.swift in Sources */,
 				9A56D25225216FC60082CC08 /* XAxisRendererHorizontalBarChart.swift in Sources */,
 				9A21BFD82D00339F0048CF53 /* Utils.swift in Sources */,
 				9A20FA472D2A4D860027A26F /* LocationConverter.m in Sources */,
@@ -3021,6 +3141,7 @@
 				9A8CA51925272C5200EC01A7 /* CVScrollDirection.swift in Sources */,
 				9A60DEDE252F002D00E0D849 /* UIColor+Hex.swift in Sources */,
 				9A56D2C425216FC70082CC08 /* BubbleChartDataProvider.swift in Sources */,
+				9A0698172E477D4F00A74A7A /* QRBindViewController.swift in Sources */,
 				9A56D28125216FC60082CC08 /* TransformerHorizontalBarChart.swift in Sources */,
 				9A8CA51A25272C5200EC01A7 /* CVCalendarTouchController.swift in Sources */,
 				9A367B7825BD208100BFB4C3 /* Query.swift in Sources */,
@@ -3072,6 +3193,21 @@
 				9AD43216271B2B23001A6E8F /* fi */,
 				9AD43218271B2B33001A6E8F /* zh-HK */,
 				9AD4321A271B2B52001A6E8F /* ms */,
+				9A543A922DBA2E2A0013BCB3 /* et */,
+				9A543A942DBA6B1A0013BCB3 /* nb */,
+				9A543A962DBB36510013BCB3 /* lt */,
+				9A543A982DBB3E680013BCB3 /* lv */,
+				9A543A9A2DBB41A00013BCB3 /* sl */,
+				9A543A9C2DBB62640013BCB3 /* sk */,
+				9A543A9E2DBB633B0013BCB3 /* hr */,
+				9A543A9F2DBB643B0013BCB3 /* bg */,
+				9A543AA12DBB7E340013BCB3 /* ro */,
+				9A543AA32DBB7F570013BCB3 /* hu */,
+				9A543AA52DBB80440013BCB3 /* cs */,
+				9A543AA72DBB81420013BCB3 /* da */,
+				9A543AA92DBB830A0013BCB3 /* el */,
+				9A543AAB2DBB84300013BCB3 /* fa */,
+				9A543AAD2DBB86A20013BCB3 /* he */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -3098,6 +3234,22 @@
 				9AD43217271B2B23001A6E8F /* fi */,
 				9AD43219271B2B33001A6E8F /* zh-HK */,
 				9AD4321B271B2B52001A6E8F /* ms */,
+				9A1E2D2F2DB6631E00B50C5D /* sv */,
+				9A543A912DBA1A100013BCB3 /* is */,
+				9A543A932DBA2E2A0013BCB3 /* et */,
+				9A543A952DBA6B1A0013BCB3 /* nb */,
+				9A543A972DBB36520013BCB3 /* lt */,
+				9A543A992DBB3E690013BCB3 /* lv */,
+				9A543A9B2DBB41A00013BCB3 /* sl */,
+				9A543A9D2DBB62640013BCB3 /* sk */,
+				9A543AA02DBB643C0013BCB3 /* bg */,
+				9A543AA22DBB7E340013BCB3 /* ro */,
+				9A543AA42DBB7F570013BCB3 /* hu */,
+				9A543AA62DBB80440013BCB3 /* cs */,
+				9A543AA82DBB81430013BCB3 /* da */,
+				9A543AAA2DBB830A0013BCB3 /* el */,
+				9A543AAC2DBB84300013BCB3 /* fa */,
+				9A543AAE2DBB86A20013BCB3 /* he */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -3233,10 +3385,10 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
-				DEVELOPMENT_TEAM = 6BTCM549U7;
+				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64=arm64 arm64e armv7 armv7s armv6 armv8 EXCLUDED_ARCHS=$(inherited) $(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT))";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64=arm64 arm64 arm64e armv7 armv7s armv8 EXCLUDED_ARCHS=$(inherited) $(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT))";
@@ -3257,9 +3409,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 1.5.8;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sinophy.uwatch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -3282,9 +3434,9 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
-				DEVELOPMENT_TEAM = 6BTCM549U7;
+				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64=arm64 arm64e armv7 armv7s armv6 armv8 EXCLUDED_ARCHS=$(inherited) $(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT))";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64=arm64 arm64 arm64e armv7 armv7s armv8 EXCLUDED_ARCHS=$(inherited) $(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT))";
@@ -3305,9 +3457,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 1.5.8;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sinophy.uwatch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
