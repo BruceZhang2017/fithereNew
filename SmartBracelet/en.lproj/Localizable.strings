@@ -423,3 +423,4 @@
 "i_know"="Got it";
 "send_success"="Sent Successfully";
 "send_fail"="Sending Failed";
+"ota"="Firmware Update";

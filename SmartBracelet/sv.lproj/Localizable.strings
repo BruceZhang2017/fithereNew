@@ -257,3 +257,4 @@
 "i_know"="Förstått";
 "send_success"="Skickat framgångsrikt";
 "send_fail"="Sändning misslyckades";
+"ota"="Firmware-uppdatering";

@@ -458,7 +458,7 @@ extension TripleTableViewController: UICollectionViewDelegate, UICollectionViewD
         let item = rightViewModel.items[indexPath.row]
         vc?.index = indexPath.row + 1 // 代表什么含义
         vc?.current = current
-        vc?.currentClock = ClockResponse(previewPic: item.previewImageUrl, resourcesUrl: item.dialBinUrl, resolutionRatio: "\(item.width ?? 0)*\(item.height ?? 0)", isPublish: "true")
+        vc?.currentClock = ClockResponse(previewPic: item.previewImageUrl?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), resourcesUrl: item.dialBinUrl?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), resolutionRatio: "\(item.width ?? 0)*\(item.height ?? 0)", isPublish: "true")
         parent?.navigationController?.pushViewController(vc!, animated: true)
     }
 }
@@ -496,6 +496,8 @@ class RightCollectionCell: UICollectionViewCell {
     }
     
     func configure(with item: ClockItem) {
+        
+        itemImageView.kf.cancelDownloadTask() // 取消之前的任务
         // 设置默认占位图
         itemImageView.image = UIImage(systemName: "photo")
         
@@ -504,7 +506,7 @@ class RightCollectionCell: UICollectionViewCell {
             return
         }
         // 使用Kingfisher加载图片并处理结果
-        itemImageView.kf.setImage(with: imageUrl) { [weak self] result in
+        itemImageView.kf.setImage(with: imageUrl, options: [.forceRefresh]) { [weak self] result in
             guard let self = self else { return }
             
             switch result {

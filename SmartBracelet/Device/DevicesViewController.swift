@@ -24,6 +24,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     @IBOutlet weak var bottomLConstraint: NSLayoutConstraint!
     @IBOutlet weak var dialView: UIView!
     @IBOutlet weak var deviceBGImageView: UIImageView!
+    @IBOutlet weak var dialViewHeightLC: NSLayoutConstraint!
     @IBOutlet weak var btView: UIView!
     let changeButton = UIButton(type: .system)
     let dialButton = VerticalButton(type: .system)

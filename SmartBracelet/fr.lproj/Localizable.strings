@@ -421,3 +421,4 @@
 "i_know"="Compris";
 "send_success"="Envoyé avec succès";
 "send_fail"="Échec de l'envoi";
+"ota"="Mise à jour du firmware";

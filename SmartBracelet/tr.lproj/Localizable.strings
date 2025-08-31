@@ -421,3 +421,4 @@
 "i_know"="Anladım";
 "send_success"="Başarıyla gönderildi";
 "send_fail"="Gönderim başarısız";
+"ota"="Firmware Güncellemesi";

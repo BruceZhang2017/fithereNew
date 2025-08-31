@@ -422,3 +422,4 @@
 "i_know"="Verstanden";
 "send_success"="Erfolgreich gesendet";
 "send_fail"="Senden fehlgeschlagen";
+"ota"="Firmware-Update";

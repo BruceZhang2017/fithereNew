@@ -152,7 +152,7 @@
             <objects>
                 <viewController storyboardIdentifier="HealthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L3w-SP-2HP" customClass="HealthViewController" customModule="FitDAY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dvO-iA-4Dz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="779"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFR-ea-yS8">
@@ -281,7 +281,7 @@
             <objects>
                 <viewController id="fEI-qL-rja" customClass="DevicesViewController" customModule="FitDAY" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pMq-Ai-mrG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="779"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IAA-Pc-LWA">
@@ -479,6 +479,7 @@
                         <outlet property="deviceBGImageView" destination="b68-7K-jo0" id="B5s-t6-EId"/>
                         <outlet property="dialManagmentLabel" destination="Bw4-Os-NVl" id="n1m-P5-obF"/>
                         <outlet property="dialView" destination="29Q-vy-Wz1" id="eFL-WC-gAp"/>
+                        <outlet property="dialViewHeightLC" destination="NQF-Wk-PVu" id="bk2-D0-hgd"/>
                         <outlet property="topView" destination="V3N-BV-Ics" id="0QT-H9-kB7"/>
                     </connections>
                 </viewController>
@@ -611,7 +612,6 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nlh-KA-Bna">
-                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -630,7 +630,6 @@
                     <tabBarItem key="tabBarItem" title="运动" image="tab_icon_sport_default" selectedImage="tab_icon_sport_highlight" id="u47-ha-UNE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HhP-M0-JMy">
-                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -651,7 +650,6 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xn3-VJ-e75">
-                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -672,7 +670,6 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e7n-Fn-XSc">
-                        <rect key="frame" x="0.0" y="96" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>

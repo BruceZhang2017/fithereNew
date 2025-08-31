@@ -516,7 +516,7 @@ extension DeviceSettingsViewController: UITableViewDelegate {
 
 extension DeviceSettingsViewController {
     var titles: [String] {
-        return ["device_push_settings".localized(), "device_call_amind".localized(), "device_hand_up_screen".localized(), "device_longsit_amind".localized(), "device_longsit_amind_time".localized(),"drink_water_reminder".localized(), "drink_water_reminder_time".localized(), "device_weather_push".localized(), "device_alarm_settings".localized(), "device_search_settings".localized(), "device_device_info".localized(),"device_shark_photo".localized(), "synchronize_data".localized(), "OTA", "cardbag".localized()]
+        return ["device_push_settings".localized(), "device_call_amind".localized(), "device_hand_up_screen".localized(), "device_longsit_amind".localized(), "device_longsit_amind_time".localized(),"drink_water_reminder".localized(), "drink_water_reminder_time".localized(), "device_weather_push".localized(), "device_alarm_settings".localized(), "device_search_settings".localized(), "device_device_info".localized(),"device_shark_photo".localized(), "synchronize_data".localized(), "ota".localized(), "cardbag".localized()]
     }
 }
 

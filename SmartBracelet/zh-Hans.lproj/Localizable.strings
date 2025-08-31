@@ -431,3 +431,4 @@
 "i_know"="知道了";
 "send_success"="发送成功";
 "send_fail"="发送失败";
+"ota"="固件更新";
