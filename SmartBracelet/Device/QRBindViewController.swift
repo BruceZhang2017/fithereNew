@@ -112,7 +112,7 @@ class QRBindViewController: BaseViewController, UIImagePickerControllerDelegate,
                     let picker = UIImagePickerController()
                   
                     picker.sourceType = UIImagePickerController.SourceType.photoLibrary
-                    picker.delegate = self;
+                    picker.delegate = self
 
                     picker.allowsEditing = true
                    strongSelf.present(picker, animated: true, completion: nil)
