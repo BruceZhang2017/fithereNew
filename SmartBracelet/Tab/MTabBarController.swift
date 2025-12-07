@@ -110,8 +110,8 @@ class MTabBarController: UITabBarController {
         let and = "and".localized()
         let fullText = "\(pp) \(and) \(up)"
         let attributedString = NSMutableAttributedString(string: fullText)
-        attributedString.SetAsLink(textToFind: pp, linkURL: "http://www.sinophy.com/arc_syzc.html")
-        attributedString.SetAsLink(textToFind: up, linkURL: "http://www.sinophy.com/arc_yhxy.html")
+        attributedString.SetAsLink(textToFind: pp, linkURL: "http://www.jbycn.com/yszc.html")
+        attributedString.SetAsLink(textToFind: up, linkURL: "http://www.jbycn.com/yhxy.html")
         
         // 优化段落样式和字体属性的设置
         let paragraph = NSMutableParagraphStyle()

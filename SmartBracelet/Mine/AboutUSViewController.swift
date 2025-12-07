@@ -50,8 +50,8 @@ class AboutUSViewController: BaseViewController {
         Txt.dataDetectorTypes = UIDataDetectorTypes.link
         Txt.textColor = UIColor.brand
         let attributedString = NSMutableAttributedString(string:"\(pp) | \(up)")
-        attributedString.SetAsLink(textToFind: pp, linkURL: "http://www.sinophy.com/Arc_See.aspx?aid=185#")
-        attributedString.SetAsLink(textToFind: up, linkURL: "http://www.sinophy.com/Arc_See.aspx?aid=188")
+        attributedString.SetAsLink(textToFind: pp, linkURL: "http://www.jbycn.com/yszc.html")
+        attributedString.SetAsLink(textToFind: up, linkURL: "http://www.jbycn.com/yhxy.html")
         attributedString.addAttribute(.font, value: UIFont.body1(), range:  NSMakeRange(0, attributedString.length))
         attributedString.addAttribute(.foregroundColor, value: UIColor.brand, range: NSMakeRange(0, attributedString.length))
         let paragraph = NSMutableParagraphStyle()

@@ -544,6 +544,7 @@ class RightViewModel {
             "pageNum": 0,
             "width": screenWidth,
             "height": screenHeight,
+            "shape": XGZTBlueToothManager.shared.device?.screenType == 1 ? "round" : "square",
             "type": type,
             "style": style
         ]
@@ -611,6 +612,7 @@ class RightViewModel {
             "pageNum": nextPage,
             "width": screenWidth,
             "height": screenHeight,
+            "shape": XGZTBlueToothManager.shared.device?.screenType == 1 ? "round" : "square",
             "type": type,
             "style": style
         ]

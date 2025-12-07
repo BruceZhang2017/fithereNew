@@ -830,7 +830,7 @@ extension DevicesViewController: UICollectionViewDataSource {
                 cell.clockImageView.isHidden = false
                 cell.addImageView.isHidden = true
                 cell.clockBGView.backgroundColor = UIColor.clear
-                if array[1].contains(".png") || array[1].contains(".jpg") || array[1].contains(".jpeg") {
+                if array[1].contains(".png") || array[1].contains(".jpg") || array[1].contains(".jpeg") || array[1].contains(".webp") {
                     XLogger.shared.log("保存的图片路径：\(array[1])")
                     if array[1].contains("Documents") {
                         cell.clockImageView.image = UIImage(contentsOfFile: array[1])

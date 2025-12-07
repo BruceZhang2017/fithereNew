@@ -25,7 +25,7 @@ public class BluetoothWatchDevice {
     var hardwareVersion: Int?
     /// 固件版本
     var firmwareVersion: String?
-    /// 1 方形， 2 圆形,  自定义：屏幕形状: 0x00: 正方形, 0x01: 圆形, 0x02: 长方形
+    /// 自定义：屏幕形状: 0x00: 正方形, 0x01: 圆形, 0x02: 长方形
     var screenType: Int = 1
     /// 表盘宽 默认240
     var screenWidth: Int = 240
