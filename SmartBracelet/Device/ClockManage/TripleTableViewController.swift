@@ -132,21 +132,22 @@ class TripleTableViewController: UIViewController {
     // MARK: - 数据处理
     private func downloadStyle() {
         // 打印方法开始日志
-        XLogger.shared.log("🔍 开始执行downloadStyle方法，准备下载样式数据")
+        print("🔍 开始执行downloadStyle方法，准备下载样式数据")
         
         // 定义要上传的参数
         let width = XGZTBlueToothManager.shared.device?.screenWidth ?? 240
         let height = XGZTBlueToothManager.shared.device?.screenHeight ?? 284 // 根据实际需求设置的高度值
         
         // 打印请求参数日志
-        XLogger.shared.log("📤 请求参数 - width: \(width), height: \(height)")
+        print("📤 请求参数 - width: \(width), height: \(height)")
         let urlString = "https://u-watch.com.cn/api/app/ota/otaType"
-        XLogger.shared.log("📡 请求URL: \(urlString)")
+        print("📡 请求URL: \(urlString)")
         
         // 准备表单参数
         let parameters: [String: Any] = [
             "width": width,
-            "height": height
+            "height": height,
+            "lang": LanguageManager.getInterfaceLang()
         ]
         
         // 使用x-www-form-urlencoded格式发送POST请求
@@ -158,53 +159,53 @@ class TripleTableViewController: UIViewController {
         )
         .responseData { [weak self] response in
             guard let self = self else {
-                XLogger.shared.log("⚠️ self已释放，无法继续处理响应")
+                print("⚠️ self已释放，无法继续处理响应")
                 return
             }
             
             // 打印响应状态码
             if let statusCode = response.response?.statusCode {
-                XLogger.shared.log("📥 收到响应，状态码: \(statusCode)")
+                print("📥 收到响应，状态码: \(statusCode)")
             } else {
-                XLogger.shared.log("📥 收到响应，但未获取到状态码")
+                print("📥 收到响应，但未获取到状态码")
             }
             
             switch response.result {
             case .success(let data):
-                XLogger.shared.log("✅ 网络请求成功，数据大小: \(data.count) bytes")
+                print("✅ 网络请求成功，数据大小: \(data.count) bytes")
                 
                 // 打印原始JSON用于调试
                 if let jsonString = String(data: data, encoding: .utf8) {
-                    XLogger.shared.log("📄 原始JSON数据: \(jsonString)")
+                    print("📄 原始JSON数据: \(jsonString)")
                 } else {
-                    XLogger.shared.log("❌ 无法将响应数据转换为UTF-8字符串")
+                    print("❌ 无法将响应数据转换为UTF-8字符串")
                 }
                 
                 do {
                     // 禁用蛇形命名转换，使用原始键名
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .useDefaultKeys
-                    XLogger.shared.log("🔄 开始解析JSON数据...")
+                    print("🔄 开始解析JSON数据...")
                     mResponse = try decoder.decode(Response<OTAData>.self, from: data)
-                    XLogger.shared.log("✅ JSON数据解析成功")
+                    print("✅ JSON数据解析成功")
                     
                     // 配置分段控制器
                     if let types = mResponse?.data.otaType, !types.isEmpty {
-                        XLogger.shared.log("📊 共获取到\(types.count)种OTA类型")
+                        print("📊 共获取到\(types.count)种OTA类型")
                         segmentControl.removeAllSegments()
                         for (index, type) in types.enumerated() {
                             let typeName = type.dictValue
                             segmentControl.insertSegment(withTitle: typeName, at: index, animated: false)
-                            XLogger.shared.log("➕ 添加分段控制器选项: \(typeName)")
+                            print("➕ 添加分段控制器选项: \(typeName)")
                         }
                         segmentControl.selectedSegmentIndex = 0
                         rightViewModel.type = types[0].dictValue
-                        XLogger.shared.log("🎯 默认选中第一个OTA类型: \(types[0].dictValue)")
+                        print("🎯 默认选中第一个OTA类型: \(types[0].dictValue)")
                     } else {
-                        XLogger.shared.log("⚠️ 未获取到有效的OTA类型数据")
+                        print("⚠️ 未获取到有效的OTA类型数据")
                     }
                     
-                    XLogger.shared.log("🔄 刷新中间表格视图")
+                    print("🔄 刷新中间表格视图")
                     if mResponse?.data.otaStyle.count ?? 0 > 0 {
                         let array = mResponse?.data.otaStyle.filter {
                             (item) in
@@ -222,38 +223,38 @@ class TripleTableViewController: UIViewController {
                             self.fetchInitialData()
                         }
                     }
-                    XLogger.shared.log("🔄 调用fetchInitialData方法获取初始数据")
+                    print("🔄 调用fetchInitialData方法获取初始数据")
                     
                 } catch {
-                    XLogger.shared.log("❌ 解析错误: \(error)")
+                    print("❌ 解析错误: \(error)")
                     if let decodingError = error as? DecodingError {
-                        XLogger.shared.log("❌ 解码错误详情: \(decodingError.localizedDescription)")
+                        print("❌ 解码错误详情: \(decodingError.localizedDescription)")
                         // 更详细的解码错误信息
                         switch decodingError {
                         case .typeMismatch(let type, let context):
-                            XLogger.shared.log("类型不匹配: 期望\(type)，上下文: \(context.debugDescription)")
+                            print("类型不匹配: 期望\(type)，上下文: \(context.debugDescription)")
                         case .valueNotFound(let type, let context):
-                            XLogger.shared.log("值未找到: 期望\(type)，上下文: \(context.debugDescription)")
+                            print("值未找到: 期望\(type)，上下文: \(context.debugDescription)")
                         case .keyNotFound(let key, let context):
-                            XLogger.shared.log("键未找到: \(key.stringValue)，上下文: \(context.debugDescription)")
+                            print("键未找到: \(key.stringValue)，上下文: \(context.debugDescription)")
                         case .dataCorrupted(let context):
-                            XLogger.shared.log("数据损坏: \(context.debugDescription)")
+                            print("数据损坏: \(context.debugDescription)")
                         @unknown default:
-                            XLogger.shared.log("未知解码错误")
+                            print("未知解码错误")
                         }
                     }
                 }
                 
             case .failure(let error):
-                XLogger.shared.log("❌ 网络请求失败：\(error.localizedDescription)")
+                print("❌ 网络请求失败：\(error.localizedDescription)")
                 // 打印更详细的错误信息
                 if let underlyingError = error.underlyingError {
-                    XLogger.shared.log("   底层错误: \(underlyingError.localizedDescription)")
+                    print("   底层错误: \(underlyingError.localizedDescription)")
                 }
                 // 可以添加错误提示UI
             }
             
-            XLogger.shared.log("📌 downloadStyle方法执行完毕")
+            print("📌 downloadStyle方法执行完毕")
         }
     }
 
@@ -343,15 +344,15 @@ class TripleTableViewController: UIViewController {
     }
     
     private func showEmptyState() {
-        XLogger.shared.log("显示空状态视图")
+        print("显示空状态视图")
     }
     
     private func hideEmptyState() {
-        XLogger.shared.log("隐藏空状态视图")
+        print("隐藏空状态视图")
     }
     
     private func showErrorState() {
-        XLogger.shared.log("显示错误状态视图")
+        print("显示错误状态视图")
     }
     
     // 分段控制器值变化
@@ -445,8 +446,8 @@ extension TripleTableViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RightCollectionCell", for: indexPath) as! RightCollectionCell
         let item = rightViewModel.items[indexPath.row]
-        cell.tag = indexPath.row
         cell.configure(with: item)
+        cell.tag = indexPath.row
         return cell
     }
     
@@ -496,7 +497,6 @@ class RightCollectionCell: UICollectionViewCell {
     }
     
     func configure(with item: ClockItem) {
-        
         itemImageView.kf.cancelDownloadTask() // 取消之前的任务
         // 设置默认占位图
         itemImageView.image = UIImage(systemName: "photo")
@@ -546,12 +546,13 @@ class RightViewModel {
             "height": screenHeight,
             "shape": XGZTBlueToothManager.shared.device?.screenType == 1 ? "round" : "square",
             "type": type,
-            "style": style
+            "style": style,
+            "lang": LanguageManager.getInterfaceLang()
         ]
         
         // 打印请求参数
-        XLogger.shared.log("请求参数:")
-        parameters.forEach { XLogger.shared.log("\($0.key): \($0.value)") }
+        print("请求参数:")
+        parameters.forEach { print("\($0.key): \($0.value)") }
         
         // 使用AF.request发送POST请求，采用x-www-form-urlencoded编码
         AF.request(
@@ -567,9 +568,9 @@ class RightViewModel {
             case .success(let data):
                 // 打印原始响应数据
                 if let responseString = String(data: data, encoding: .utf8) {
-                    XLogger.shared.log("网络请求返回内容：\n\(responseString)")
+                    print("网络请求返回内容：\n\(responseString)")
                 } else {
-                    XLogger.shared.log("网络请求返回数据无法转换为字符串")
+                    print("网络请求返回数据无法转换为字符串")
                 }
                 
                 do {
@@ -581,12 +582,12 @@ class RightViewModel {
                     self.hasMoreData = model.rows.count >= 20
                     completion(true)
                 } catch {
-                    XLogger.shared.log("刷新数据解析错误: \(error)")
+                    print("刷新数据解析错误: \(error)")
                     completion(false)
                 }
                 
             case .failure(let error):
-                XLogger.shared.log("刷新网络请求失败：\(error)")
+                print("刷新网络请求失败：\(error)")
                 completion(false)
             }
         }
@@ -594,7 +595,7 @@ class RightViewModel {
     
     func loadMoreData(completion: @escaping (Bool) -> Void) {
         guard !isLoading, hasMoreData else {
-            XLogger.shared.log("无需加载更多数据：isLoading=\(isLoading), hasMoreData=\(hasMoreData)")
+            print("无需加载更多数据：isLoading=\(isLoading), hasMoreData=\(hasMoreData)")
             completion(false)
             return
         }
@@ -614,12 +615,13 @@ class RightViewModel {
             "height": screenHeight,
             "shape": XGZTBlueToothManager.shared.device?.screenType == 1 ? "round" : "square",
             "type": type,
-            "style": style
+            "style": style,
+            "lang": LanguageManager.getInterfaceLang()
         ]
         
         // 打印请求参数
-        XLogger.shared.log("开始加载第\(nextPage)页数据，请求参数：")
-        parameters.forEach { XLogger.shared.log("\($0.key): \($0.value)") }
+        print("开始加载第\(nextPage)页数据，请求参数：")
+        parameters.forEach { print("\($0.key): \($0.value)") }
         
         // 使用AF.request发送POST请求，采用x-www-form-urlencoded编码
         AF.request(
@@ -633,15 +635,15 @@ class RightViewModel {
             self.isLoading = false
             
             // 打印响应状态
-            XLogger.shared.log("请求完成，状态码：\(response.response?.statusCode ?? -1)")
+            print("请求完成，状态码：\(response.response?.statusCode ?? -1)")
             
             switch response.result {
             case .success(let data):
                 // 打印原始响应数据
                 if let responseString = String(data: data, encoding: .utf8) {
-                    XLogger.shared.log("网络请求返回内容：\n\(responseString)")
+                    print("网络请求返回内容：\n\(responseString)")
                 } else {
-                    XLogger.shared.log("网络请求返回数据无法转换为字符串")
+                    print("网络请求返回数据无法转换为字符串")
                 }
                 
                 do {
@@ -651,22 +653,22 @@ class RightViewModel {
                     self.items.append(contentsOf: model.rows)
                     self.currentPage = nextPage
                     self.hasMoreData = model.rows.count >= 20
-                    XLogger.shared.log("加载成功，新增\(model.rows.count)条数据，当前总数据量：\(self.items.count)")
+                    print("加载成功，新增\(model.rows.count)条数据，当前总数据量：\(self.items.count)")
                     completion(true)
                 } catch {
-                    XLogger.shared.log("加载更多解析错误: \(error)")
+                    print("加载更多解析错误: \(error)")
                     // 打印错误时的原始数据，便于调试
                     if let errorDataString = String(data: data, encoding: .utf8) {
-                        XLogger.shared.log("解析错误时的原始数据：\(errorDataString)")
+                        print("解析错误时的原始数据：\(errorDataString)")
                     }
                     completion(false)
                 }
                 
             case .failure(let error):
-                XLogger.shared.log("加载更多网络请求失败：\(error)")
+                print("加载更多网络请求失败：\(error)")
                 // 打印Alamofire错误详情
                 if let underlyingError = error.underlyingError {
-                    XLogger.shared.log("底层错误：\(underlyingError)")
+                    print("底层错误：\(underlyingError)")
                 }
                 completion(false)
             }
@@ -798,5 +800,131 @@ struct AnyCodable: Codable {
         default:
             throw EncodingError.invalidValue(value, EncodingError.Context(codingPath: encoder.codingPath, debugDescription: "不支持的类型"))
         }
+    }
+}
+
+import Foundation
+
+/// 语种工具类：统一管理接口lang字段的赋值逻辑
+class LanguageManager {
+    /// 获取接口需要的lang字段值（自动适配系统语言，兼容iOS 13+）
+    static func getInterfaceLang() -> String {
+        // 获取设备首选语言（iOS系统返回格式如"zh-Hans-CN"、"en-US"、"ja-JP"等）
+        let preferredLang = Locale.preferredLanguages.first ?? "en"
+        let locale = Locale(identifier: preferredLang)
+        
+        // 1. 兼容获取语言码（iOS 13+通用）
+        let langCode: String
+        if #available(iOS 16, *) {
+            langCode = locale.language.languageCode?.identifier ?? "en"
+        } else {
+            // iOS 13-15：使用旧版API获取语言码
+            langCode = locale.languageCode ?? "en"
+        }
+        
+        // 2. 映射iOS语言码到接口要求的lang字段值
+        switch langCode {
+        case "zh":
+            // 区分简体/繁体中文（兼容iOS 13+）
+            let scriptCode: String?
+            if #available(iOS 16, *) {
+                scriptCode = locale.language.script?.identifier
+            } else {
+                // iOS 13-15：从语言标识字符串中解析脚本类型（zh-Hans -> Hans，zh-Hant -> Hant）
+                scriptCode = parseScriptCode(from: preferredLang)
+            }
+            return scriptCode == "Hant" ? "chinese_traditional" : "chinese_sim"
+            
+        case "ja":
+            return "japanese"
+            
+        case "en":
+            // 区分美式/英式英语（兼容iOS 13+）
+            let regionCode = locale.regionCode
+            return regionCode == "GB" ? "english_uk" : "english_us"
+            
+        case "pt":
+            // 区分巴西葡语/欧洲葡语（兼容iOS 13+）
+            let regionCode = locale.regionCode
+            return regionCode == "BR" ? "portuguese_br" : "portuguese_pt"
+            
+        case "ko":
+            return "korean"
+        case "fr":
+            return "french"
+        case "de":
+            return "german"
+        case "es":
+            // 区分西班牙语（西班牙/墨西哥）
+            let regionCode = locale.regionCode
+            return regionCode == "MX" ? "spanish_mx" : "spanish"
+        case "ru":
+            return "russian"
+        case "ar":
+            return "arabic"
+        case "it":
+            return "italian"
+        case "nl":
+            return "dutch"
+        case "th":
+            return "thai"
+        case "vi":
+            return "vietnamese"
+        case "id":
+            return "indonesian"
+        case "ms":
+            return "malay"
+        case "tr":
+            return "turkish"
+        case "pl":
+            return "polish"
+            
+        default:
+            // 未匹配的语言默认返回英语
+            return "english"
+        }
+    }
+    
+    /// 手动指定语种获取lang字段值（适用于用户手动切换语言的场景）
+    /// - Parameter language: 自定义语种枚举
+    /// - Returns: 接口需要的lang字段值
+    static func getInterfaceLang(by language: CustomLanguage) -> String {
+        switch language {
+        case .simplifiedChinese: return "chinese_sim"
+        case .traditionalChinese: return "chinese_traditional"
+        case .english: return "english"
+        case .japanese: return "japanese"
+        case .portuguese: return "portuguese"
+        case .polish: return "polish"
+        // 可扩展更多语种
+        }
+    }
+    
+    // MARK: - 私有工具方法
+    /// 解析语言标识中的脚本类型（兼容iOS 13-15）
+    /// - Parameter langIdentifier: 系统语言标识（如zh-Hans-CN、zh-Hant-TW）
+    /// - Returns: 脚本码（Hans/Hant）
+    private static func parseScriptCode(from langIdentifier: String) -> String? {
+        let components = langIdentifier.components(separatedBy: "-")
+        // 语言标识格式：语言码-脚本码-地区码（如zh-Hans-CN） 或 语言码-地区码（如en-US）
+        if components.count >= 2 {
+            let secondComponent = components[1]
+            if secondComponent == "Hans" || secondComponent == "Hant" {
+                return secondComponent
+            }
+        }
+        // 默认返回简体（适配无脚本码的中文标识，如zh-CN）
+        return "Hans"
+    }
+    
+    /// 自定义语种枚举（适配用户手动切换语言的场景）
+    enum CustomLanguage {
+        case simplifiedChinese    // 简体中文
+        case traditionalChinese   // 繁体中文
+        case english              // 英语
+        case japanese             // 日语
+        case portuguese           // 葡萄牙语
+        case polish               // 波兰语
+        // 可根据需求添加其他语种
     }
 }

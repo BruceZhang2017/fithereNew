@@ -61,13 +61,13 @@
 "mine_battery_level_low" = "Yetersiz pil";
 "mine_device_info" = "Cihaz bilgisi";
 "mine_repeat_mode" = "deseni tekrarla";
-"mine_monday" = "Pazartesi gününde";
-"mine_satuday" = "Salı";
-"mine_wednesday" = "Çarşamba";
-"mine_thursday" = "Perşembe";
-"mine_friday" = "Cuma";
-"mine_saturday" = "Cumartesi";
-"mine_sunday" = "Pazar";
+"mine_monday" = "Mon";
+"mine_satuday" = "Tue";
+"mine_wednesday" = "Wed";
+"mine_thursday" = "Thu";
+"mine_friday" = "Fri";
+"mine_saturday" = "Sat";
+"mine_sunday" = "Sun";
 "mine_delete" = "silmek";
 "mine_null" = "olmadan";
 "mine_alarm_late_amind" = "Daha sonra hatırlat";
@@ -87,7 +87,7 @@
 "mine_device_ota_fail" = "OTA yükseltmesi başarısız oldu";
 "mine_about" = "hakkında";
 "mine_version" = "Sürüm";
-"mine_about_desc" = "Tüm yorumlama hakları Fit-here yorumlamaya aittir.";
+"mine_about_desc" = "Tüm yorumlama hakları u-watch yorumlamaya aittir.";
 "mine_account_info" = "Hesap Bilgileri";
 "mine_userinfo" = "kişisel bilgi";
 "mine_head_image" = "avatar";
@@ -109,19 +109,10 @@
 "mine_weight" = "ağırlık";
 "mine_kg_unit" = "KG";
 
-"mine_unconnect" = "bağlı değil";
 "device_settings" = "Cihaz ayarları";
 "health_distance" = "Distance";
 
 "every_day_goal" = "günlük adım hedefi";
-"week_1" = "Pazartesi günü";
-"week_2" = "Salı";
-"week_3" = "Çarşamba günü";
-"week_4" = "Perşembe günü";
-"week_5" = "Cuma";
-"week_6" = "Cumartesi";
-"week_7" = "Pazar";
-"mine_unconnect" = "bağlı değil";
 "device_settings" = "Cihaz ayarları";
 "health_distance" = "mesafe";
 "setting_goal" = "Bir hedef belirleyin";
@@ -243,13 +234,6 @@
 "mine_battery_level_low" = "Yetersiz pil kaldı";
 "mine_device_info" = "Cihaz bilgisi";
 "mine_repeat_mode" = "yinelenen desen";
-"mine_monday" = "Pazartesi gününde";
-"mine_satuday" = "Salı";
-"mine_wednesday" = "Çarşamba";
-"mine_thursday" = "Perşembe";
-"mine_friday" = "cuma";
-"mine_saturday" = "Cumartesi";
-"mine_sunday" = "Pazar";
 "mine_delete" = "silmek";
 "mine_null" = "hiçbiri";
 "mine_alarm_late_amind" = "Daha sonra hatırlat";
@@ -269,7 +253,7 @@
 "mine_device_ota_fail" = "OTA yükseltmesi başarısız oldu";
 "mine_about" = "hakkında";
 "mine_version" = "Sürüm";
-"mine_about_desc" = "Tüm yorumlama hakları Fit-here'a aittir.";
+"mine_about_desc" = "Tüm yorumlama hakları u-watch'a aittir.";
 "mine_account_info" = "Hesap Bilgileri";
 "mine_userinfo" = "kişisel bilgi";
 "mine_head_image" = "avatar";
@@ -354,8 +338,8 @@
 "feedback_not_null" = "Geri bildirim içeriği boş olamaz";
 "feedback_success" = "geri bildirim başarısı";
 "feedback_failed" = "Geri bildirim başarısız oldu";
-"dialog_location_permission_explain_above_s" = "Sağlık verileri izleme işlevini desteklemek için Fit-here, Bluetooth verilerini ve konum bilgisi verilerini toplayacaktır, başvuru süreci kapatılsa veya kullanımda olmasa bile bu tür veriler toplanmaya devam edecektir.";
-"dialog_location_permission_explain" = "Sağlık verileri izleme işlevini desteklemek için Fit-here, uygulama kapalı olsa veya kullanımda olmasa bile konum bilgisi verilerini toplayacaktır, bu tür veriler toplanmaya devam edecektir.";
+"dialog_location_permission_explain_above_s" = "Sağlık verileri izleme işlevini desteklemek için u-watch, Bluetooth verilerini ve konum bilgisi verilerini toplayacaktır, başvuru süreci kapatılsa veya kullanımda olmasa bile bu tür veriler toplanmaya devam edecektir.";
+"dialog_location_permission_explain" = "Sağlık verileri izleme işlevini desteklemek için u-watch, uygulama kapalı olsa veya kullanımda olmasa bile konum bilgisi verilerini toplayacaktır, bu tür veriler toplanmaya devam edecektir.";
 "go_to_setting_open_permissions" = "Yasaklanan izinler, bu uygulamayı normal şekilde kullanamamanıza neden olur, yukarıdaki izinleri etkinleştirmek için ayarlar sayfasına gidebilirsiniz.";
 "permission_description" = "İzin Açıklaması";
 "add_contact" = "Kişileri ekleyin";
@@ -402,10 +386,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Cihazı Sil";
-"delete_device_2" = "Cihaz Fit-here'ten kaldırıldı ancak hala telefonunuza bağlı. Bu cihazı tamamen silmek için aşağıdaki işlemleri tamamlayın:";
+"delete_device_2" = "Cihaz U-Watch'ten kaldırıldı ancak hala telefonunuza bağlı. Bu cihazı tamamen silmek için aşağıdaki işlemleri tamamlayın:";
 "delete_device_3" = "1. Telefonunuzun Ayarları > Bluetooth > Cihazlarım bölümünde 'e watch'ı bulun ve sağdaki 'i'ye dokunun.";
 "delete_device_4" = "2. 'Bu cihazı unut' seçeneğini belirleyin.";
-"delete_device_5" = "3. Tamamlandıktan sonra 'Fit-here' Uygulamasına geri dönün.";
+"delete_device_5" = "3. Tamamlandıktan sonra 'U-Watch' Uygulamasına geri dönün.";
 "delete_device_6" = "Yukarıdaki işlemleri tamamladım";
 "delete_device_7" = "Onayla";
 
@@ -422,3 +406,6 @@
 "send_success"="Başarıyla gönderildi";
 "send_fail"="Gönderim başarısız";
 "ota"="Firmware Güncellemesi";
+"please_choose_day" = "Lütfen bir hafta günü seçin";
+"add_contact_fail1" = "Kişi eklenemedi, lütfen cihazın kişi senkronizasyonu özelliğine sahip olup olmadığını kontrol edin!";
+"add_contact_fail2" = "Kişi eklenemedi, cihaz henüz komuta yanıt vermedi.";

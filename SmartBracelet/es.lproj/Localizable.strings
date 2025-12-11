@@ -61,13 +61,13 @@
 "mine_battery_level_low" = "Insufficient battery";
 "mine_device_info" = "Device Information";
 "mine_repeat_mode" = "Repeat pattern";
-"mine_monday" = "Monday";
-"mine_satuday" = "Tuesday";
-"mine_wednesday" = "Wednesday";
-"mine_thursday" = "Thursday";
-"mine_friday" = "Friday";
-"mine_saturday" = "Saturday";
-"mine_sunday" = "Sunday";
+"mine_monday" = "Mon";
+"mine_satuday" = "Tue";
+"mine_wednesday" = "Wed";
+"mine_thursday" = "Thu";
+"mine_friday" = "Fri";
+"mine_saturday" = "Sat";
+"mine_sunday" = "Sun";
 "mine_delete" = "delete";
 "mine_null" = "without";
 "mine_alarm_late_amind" = "Remind later";
@@ -87,7 +87,7 @@
 "mine_device_ota_fail" = "OTA upgrade failed";
 "mine_about" = "about";
 "mine_version" = "Version";
-"mine_about_desc" = "All interpretation rights belong to Fit-here interpretation";
+"mine_about_desc" = "All interpretation rights belong to u-watch interpretation";
 "mine_account_info" = "account information";
 "mine_userinfo" = "personal information";
 "mine_head_image" = "Avatar";
@@ -108,20 +108,11 @@
 "mine_cm_unit" = "CM";
 "mine_weight" = "weight";
 "mine_kg_unit" = "KG";
-"mine_unconnect" = "no está conectado";
 
 "device_settings" = "Configuración de dispositivo";
 "health_distance" = "Distance";
 
 "every_day_goal" = "objetivo de pasos diarios";
-"week_1" = "lunes";
-"week_2" = "martes";
-"week_3" = "miércoles";
-"week_4" = "jueves";
-"week_5" = "viernes";
-"week_6" = "sábado";
-"week_7" = "domingo";
-"mine_unconnect" = "no conectado";
 "device_settings" = "Configuración de dispositivo";
 "health_distance" = "distancia";
 "setting_goal" = "Pon una meta";
@@ -243,13 +234,6 @@
 "mine_battery_level_low" = "Batería restante insuficiente";
 "mine_device_info" = "Información del dispositivo";
 "mine_repeat_mode" = "patrón repetitivo";
-"mine_monday" = "los lunes";
-"mine_satuday" = "Martes";
-"mine_wednesday" = "Miércoles";
-"mine_thursday" = "Jueves";
-"mine_friday" = "viernes";
-"mine_saturday" = "Sábado";
-"mine_sunday" = "domingo";
 "mine_delete" = "borrar";
 "mine_null" = "ninguno";
 "mine_alarm_late_amind" = "recordar más tarde";
@@ -269,7 +253,7 @@
 "mine_device_ota_fail" = "Actualización OTA fallida";
 "mine_about" = "acerca de";
 "mine_version" = "Versión";
-"mine_about_desc" = "Todos los derechos de interpretación pertenecen a Fit-here";
+"mine_about_desc" = "Todos los derechos de interpretación pertenecen a u-watch";
 "mine_account_info" = "Información de la cuenta";
 "mine_userinfo" = "informacion personal";
 "mine_head_image" = "avatar";
@@ -354,8 +338,8 @@
 "feedback_not_null" = "El contenido de los comentarios no puede estar vacío";
 "feedback_success" = "retroalimentacion exito";
 "feedback_failed" = "Comentarios fallidos";
-"dialog_location_permission_explain_above_s" = "Para respaldar la función de seguimiento de datos de salud, Fit-here recopilará datos de Bluetooth e información de ubicación, incluso si el proceso de aplicación está cerrado o no está en uso, dichos datos aún se recopilarán.";
-"dialog_location_permission_explain" = "Para respaldar la función de seguimiento de datos de salud, Fit-here recopilará datos de información de ubicación, incluso si la aplicación está cerrada o no está en uso, dichos datos aún se recopilarán.";
+"dialog_location_permission_explain_above_s" = "Para respaldar la función de seguimiento de datos de salud, u-watch recopilará datos de Bluetooth e información de ubicación, incluso si el proceso de aplicación está cerrado o no está en uso, dichos datos aún se recopilarán.";
+"dialog_location_permission_explain" = "Para respaldar la función de seguimiento de datos de salud, u-watch recopilará datos de información de ubicación, incluso si la aplicación está cerrada o no está en uso, dichos datos aún se recopilarán.";
 "go_to_setting_open_permissions" = "Los permisos prohibidos harán que no pueda usar esta aplicación normalmente, puede ir a la página de configuración para habilitar los permisos anteriores.";
 "permission_description" = "Descripción del permiso";
 "add_contact" = "Añadir contactos";
@@ -403,10 +387,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Eliminar dispositivo";
-"delete_device_2" = "El dispositivo se ha eliminado de Fit-here pero sigue conectado a tu teléfono. Para eliminar completamente este dispositivo, completa los siguientes pasos:";
+"delete_device_2" = "El dispositivo se ha eliminado de U-Watch pero sigue conectado a tu teléfono. Para eliminar completamente este dispositivo, completa los siguientes pasos:";
 "delete_device_3" = "1. En la configuración de tu teléfono > Bluetooth > Mis dispositivos, encuentra 'e watch' y toca la 'i' de la derecha.";
 "delete_device_4" = "2. Selecciona 'Olvidar este dispositivo'.";
-"delete_device_5" = "3. Después de completar, regresa a la App 'Fit-here'.";
+"delete_device_5" = "3. Después de completar, regresa a la App 'U-Watch'.";
 "delete_device_6" = "He completado los pasos anteriores";
 "delete_device_7" = "Confirmar";
 
@@ -423,3 +407,6 @@
 "send_success"="Enviado con éxito";
 "send_fail"="Error al enviar";
 "ota"="Actualización de Firmware";
+"please_choose_day" = "Por favor, elige un día de la semana";
+"add_contact_fail1" = "Error al agregar contacto, por favor verifique si el dispositivo tiene la función de sincronización de contactos!";
+"add_contact_fail2" = "Error al agregar contacto, el dispositivo aún no ha respondido al comando.";

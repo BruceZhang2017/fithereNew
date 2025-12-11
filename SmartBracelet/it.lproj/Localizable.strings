@@ -62,13 +62,13 @@
 "mine_battery_level_low" = "Batteria insufficiente";
 "mine_device_info" = "Informazioni sul dispositivo";
 "mine_repeat_mode" = "Ripeti il";
-"mine_monday" = "Lunedì";
-"mine_satuday" = "Martedì";
-"mine_wednesday" = "Mercoledì";
-"mine_thursday" = "Giovedì";
-"mine_friday" = "Venerdì";
-"mine_saturday" = "Sabato";
-"mine_sunday" = "Domenica";
+"mine_monday" = "Mon";
+"mine_satuday" = "Tue";
+"mine_wednesday" = "Wed";
+"mine_thursday" = "Thu";
+"mine_friday" = "Fri";
+"mine_saturday" = "Sat";
+"mine_sunday" = "Sun";
 "mine_delete" = "Elimina";
 "mine_null" = "Nessun dato";
 "mine_alarm_late_amind" = "Ricorda più tardi";
@@ -88,7 +88,7 @@
 "mine_device_ota_fail" = "Aggiornamento non riuscito";
 "mine_about" = "Informazioni";
 "mine_version" = "Versione";
-"mine_about_desc" = "Tutti i diritti di interpretazione appartengono a Fit-here";
+"mine_about_desc" = "Tutti i diritti di interpretazione appartengono a u-watch";
 "mine_account_info" = "Informazioni account";
 "mine_userinfo" = "Informazioni personali";
 "mine_head_image" = "Avatar";
@@ -198,8 +198,8 @@
 "feedback_not_null" = "Il contenuto del feedback non può essere vuoto";
 "feedback_success" = "Feedback riuscito";
 "feedback_failed" = "Feedback non riuscito";
-"dialog_location_permission_explain_above_s" = "Al fine di supportare la funzione di tracciamento dei dati sanitari, Fit-here raccoglierà i dati Bluetooth e i dati sulle informazioni sulla posizione, anche se il processo di applicazione è chiuso o non è in uso, tali dati verranno comunque raccolti.";
-"dialog_location_permission_explain" = "Al fine di supportare la funzione di tracciamento dei dati sanitari, Fit-here raccoglierà i dati relativi alle informazioni sulla posizione, anche se l'applicazione è chiusa o non è in uso, tali dati verranno comunque raccolti.";
+"dialog_location_permission_explain_above_s" = "Al fine di supportare la funzione di tracciamento dei dati sanitari, u-watch raccoglierà i dati Bluetooth e i dati sulle informazioni sulla posizione, anche se il processo di applicazione è chiuso o non è in uso, tali dati verranno comunque raccolti.";
+"dialog_location_permission_explain" = "Al fine di supportare la funzione di tracciamento dei dati sanitari, u-watch raccoglierà i dati relativi alle informazioni sulla posizione, anche se l'applicazione è chiusa o non è in uso, tali dati verranno comunque raccolti.";
 "go_to_setting_open_permissions" = "Le autorizzazioni proibite ti impediranno di utilizzare normalmente questa app, puoi andare alla pagina delle impostazioni per abilitare le autorizzazioni di cui sopra.";
 "permission_description" = "Descrizione del permesso";
 "add_contact" = "Aggiungi contatti";
@@ -229,10 +229,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Elimina dispositivo";
-"delete_device_2" = "Il dispositivo è stato rimosso da Fit-here ma è ancora connesso al tuo telefono. Per eliminare completamente questo dispositivo, completa i seguenti passaggi:";
+"delete_device_2" = "Il dispositivo è stato rimosso da U-Watch ma è ancora connesso al tuo telefono. Per eliminare completamente questo dispositivo, completa i seguenti passaggi:";
 "delete_device_3" = "1. Nelle impostazioni del tuo telefono > Bluetooth > I miei dispositivi, trova 'e watch' e tocca l' 'i' sulla destra.";
 "delete_device_4" = "2. Seleziona 'Dimentica questo dispositivo'.";
-"delete_device_5" = "3. Dopo aver completato, torna all'App 'Fit-here'.";
+"delete_device_5" = "3. Dopo aver completato, torna all'App 'U-Watch'.";
 "delete_device_6" = "Ho completato i passaggi precedenti";
 "delete_device_7" = "Conferma";
 
@@ -249,3 +249,6 @@
 "send_success"="Inviato con successo";
 "send_fail"="Invio fallito";
 "ota"="Aggiornamento del Firmware";
+"please_choose_day" = "Scegli un giorno della settimana, per favore";
+"add_contact_fail1" = "Impossibile aggiungere il contatto, verificare se il dispositivo ha la funzione di sincronizzazione dei contatti!";
+"add_contact_fail2" = "Impossibile aggiungere il contatto, il dispositivo non ha ancora risposto al comando.";

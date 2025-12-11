@@ -109,7 +109,7 @@ class DatabaseManager {
     
     // Create or Update
     func addStepObj(stepObj: StepObj) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 try? realm.write {
@@ -122,7 +122,7 @@ class DatabaseManager {
     
     // Read
     func getStepObj(byDate date: String, completion: @escaping (Results<StepObj>?) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 let objs = realm.objects(StepObj.self).filter("date == %@", date)
@@ -137,7 +137,7 @@ class DatabaseManager {
     }
     
     func getAllStepObjs(completion: @escaping (Results<StepObj>) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 let objs = realm.objects(StepObj.self)
@@ -150,7 +150,7 @@ class DatabaseManager {
     
     // Create or Update
     func addSleepObj(sleepObj: SleepObj) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 try? realm.write {
@@ -163,7 +163,7 @@ class DatabaseManager {
     
     // Read
     func getSleepObj(byDate date: String, completion: @escaping (Results<SleepObj>?) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 let objs = realm.objects(SleepObj.self).filter("date == %@", date)
@@ -178,7 +178,7 @@ class DatabaseManager {
     }
     
     func getAllSleepObjs(completion: @escaping (Results<SleepObj>) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 let objs = realm.objects(SleepObj.self)
@@ -191,7 +191,7 @@ class DatabaseManager {
     
     // Create or Update
     func addHeartObj(heartObj: HeartObj) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 try? realm.write {
@@ -204,23 +204,48 @@ class DatabaseManager {
     
     // Read
     func getHeartObj(byDate date: String, completion: @escaping (Results<HeartObj>?) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
-                guard let startDate = self.dateFormatter.date(from: date) else {
+                
+                // 1. 配置 UTC 时区的日期格式化器（与 getOxgenObj 保持一致，确保时区统一）
+                let utcDateFormatter = DateFormatter()
+                utcDateFormatter.dateFormat = self.dateFormatter.dateFormat // 复用原有格式（假设已正确配置，如 "yyyy-MM-dd"）
+                utcDateFormatter.timeZone = TimeZone(identifier: "UTC")!
+                utcDateFormatter.locale = Locale(identifier: "en_US_POSIX") // 避免区域设置影响解析
+                
+                // 2. 解析日期为 UTC 时区的 "当天0点"
+                guard let startDateUTC = utcDateFormatter.date(from: date) else {
                     DispatchQueue.main.async {
                         completion(nil)
                     }
                     return
                 }
-                let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)!
-                let startTime = Int(startDate.timeIntervalSince1970)
-                let endTime = Int(endDate.timeIntervalSince1970)
+                
+                // 3. 用 UTC 时区计算结束时间（UTC 下一天0点）
+                var utcCalendar = Calendar(identifier: .gregorian)
+                utcCalendar.timeZone = TimeZone(identifier: "UTC")!
+                guard let endDateUTC = utcCalendar.date(byAdding: .day, value: 1, to: startDateUTC) else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+                }
+                
+                // 4. 转换为 UTC 时间戳（与嵌入式设备的 time 字段时区一致）
+                let startTime = Int(startDateUTC.timeIntervalSince1970)
+                let endTime = Int(endDateUTC.timeIntervalSince1970)
+                
+                // 5. Realm 查询（条件与嵌入式设备时间戳时区匹配）
                 let objs = realm.objects(HeartObj.self).filter("time >= %@ AND time < %@", startTime, endTime)
                 let threadSafeResults = ThreadSafeReference(to: objs)
+                
                 DispatchQueue.main.async {
                     let realm = try! Realm()
-                    guard let results = realm.resolve(threadSafeResults) else { return }
+                    guard let results = realm.resolve(threadSafeResults) else {
+                        completion(nil)
+                        return
+                    }
                     completion(results)
                 }
             }
@@ -228,7 +253,7 @@ class DatabaseManager {
     }
     
     func getAllHeartObjs(completion: @escaping (Results<HeartObj>) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 let objs = realm.objects(HeartObj.self)
@@ -241,7 +266,7 @@ class DatabaseManager {
     
     // Create or Update
     func addBloodObj(bloodObj: BloodObj) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 try? realm.write {
@@ -253,20 +278,57 @@ class DatabaseManager {
     }
     
     // Read
-    func getBloodObj(byDate date: String, completion: @escaping (BloodObj?) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+    func getBloodObj(byDate date: String, completion: @escaping (Results<BloodObj>?) -> Void) {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
-                let obj = realm.object(ofType: BloodObj.self, forPrimaryKey: date)
+                
+                // 1. 配置 UTC 时区的日期格式化器（与 getOxgenObj 保持一致，确保时区统一）
+                let utcDateFormatter = DateFormatter()
+                utcDateFormatter.dateFormat = self.dateFormatter.dateFormat // 复用原有格式（假设已正确配置，如 "yyyy-MM-dd"）
+                utcDateFormatter.timeZone = TimeZone(identifier: "UTC")!
+                utcDateFormatter.locale = Locale(identifier: "en_US_POSIX") // 避免区域设置影响解析
+                
+                // 2. 解析日期为 UTC 时区的 "当天0点"
+                guard let startDateUTC = utcDateFormatter.date(from: date) else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+                }
+                
+                // 3. 用 UTC 时区计算结束时间（UTC 下一天0点）
+                var utcCalendar = Calendar(identifier: .gregorian)
+                utcCalendar.timeZone = TimeZone(identifier: "UTC")!
+                guard let endDateUTC = utcCalendar.date(byAdding: .day, value: 1, to: startDateUTC) else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+                }
+                
+                // 4. 转换为 UTC 时间戳（与嵌入式设备的 time 字段时区一致）
+                let startTime = Int(startDateUTC.timeIntervalSince1970)
+                let endTime = Int(endDateUTC.timeIntervalSince1970)
+                
+                // 5. Realm 查询（条件与嵌入式设备时间戳时区匹配）
+                let objs = realm.objects(BloodObj.self).filter("time >= %@ AND time < %@", startTime, endTime)
+                let threadSafeResults = ThreadSafeReference(to: objs)
+                
                 DispatchQueue.main.async {
-                    completion(obj)
+                    let realm = try! Realm()
+                    guard let results = realm.resolve(threadSafeResults) else {
+                        completion(nil)
+                        return
+                    }
+                    completion(results)
                 }
             }
         }
     }
     
     func getAllBloodObjs(completion: @escaping (Results<BloodObj>) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 let objs = realm.objects(BloodObj.self)
@@ -279,7 +341,7 @@ class DatabaseManager {
     
     // Create or Update
     func addOxgenObj(oxgenObj: OxgenObj) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 try? realm.write {
@@ -292,23 +354,48 @@ class DatabaseManager {
     
     // Read
     func getOxgenObj(byDate date: String, completion: @escaping (Results<OxgenObj>?) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
-                guard let startDate = self.dateFormatter.date(from: date) else {
+                
+                // 1. 配置 dateFormatter 为 UTC 时区（关键：确保日期解析基于 UTC）
+                let utcDateFormatter = DateFormatter()
+                utcDateFormatter.dateFormat = self.dateFormatter.dateFormat // 复用原有格式（假设已正确配置，如 "yyyy-MM-dd"）
+                utcDateFormatter.timeZone = TimeZone(identifier: "UTC")! // 强制 UTC 时区
+                utcDateFormatter.locale = Locale(identifier: "en_US_POSIX") // 避免区域设置影响解析（建议添加）
+                
+                // 2. 解析日期为 UTC 时区的 "当天0点"
+                guard let startDateUTC = utcDateFormatter.date(from: date) else {
                     DispatchQueue.main.async {
                         completion(nil)
                     }
                     return
                 }
-                let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)!
-                let startTime = Int(startDate.timeIntervalSince1970)
-                let endTime = Int(endDate.timeIntervalSince1970)
+                
+                // 3. 用 UTC 时区计算结束时间（UTC 下一天0点）
+                var utcCalendar = Calendar(identifier: .gregorian)
+                utcCalendar.timeZone = TimeZone(identifier: "UTC")!
+                guard let endDateUTC = utcCalendar.date(byAdding: .day, value: 1, to: startDateUTC) else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+                }
+                
+                // 4. 转换为 UTC 时间戳（与嵌入式设备的 time 字段时区一致）
+                let startTime = Int(startDateUTC.timeIntervalSince1970)
+                let endTime = Int(endDateUTC.timeIntervalSince1970)
+                
+                // 5. Realm 查询（条件与嵌入式设备时间戳时区匹配）
                 let objs = realm.objects(OxgenObj.self).filter("time >= %@ AND time < %@", startTime, endTime)
                 let threadSafeResults = ThreadSafeReference(to: objs)
+                
                 DispatchQueue.main.async {
                     let realm = try! Realm()
-                    guard let results = realm.resolve(threadSafeResults) else { return }
+                    guard let results = realm.resolve(threadSafeResults) else {
+                        completion(nil)
+                        return
+                    }
                     completion(results)
                 }
             }
@@ -316,7 +403,7 @@ class DatabaseManager {
     }
     
     func getAllOxgenObjs(completion: @escaping (Results<OxgenObj>) -> Void) {
-        DispatchQueue(label: "com.zhao.herefit").async {
+        DispatchQueue(label: "com.sinophy.uwatch").async {
             autoreleasepool {
                 let realm = try! Realm()
                 let objs = realm.objects(OxgenObj.self)

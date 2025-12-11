@@ -168,6 +168,7 @@ class BLEManager: NSObject {
             Async.main(after: 0.1) {
                 NotificationCenter.default.post(name: Notification.Name.SearchDevice, object: "scan") // 搜索页面
             }
+
         }
         
         if notify.name == WUBleManagerNotifyKeys.connected {
@@ -182,6 +183,7 @@ class BLEManager: NSObject {
             Async.main(after: 0.1) {
                 NotificationCenter.default.post(name: Notification.Name.SearchDevice, object: "connected") // 通知搜索页面
             }
+
             NotificationCenter.default.post(name: Notification.Name("MTabBarController"), object: nil) // 通知主控页面
             Async.main(after: 0.5) {
                 NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "1")
@@ -367,7 +369,7 @@ class BLEManager: NSObject {
         }
                 
         if notify.name == WristbandNotifyKeys.read_Sport {
-            wuPrint("current step：%d %d %d", bleSelf.step, bleSelf.cal, bleSelf.distance)
+            wuPrint("current step：%d", bleSelf.step)
             NotificationCenter.default.post(name: Notification.Name("HealthViewController"), object: "step")
             if currentReadProgress == 3 {
                 currentReadProgress = 4
@@ -959,7 +961,7 @@ extension BLEManager {
     public func needContinueRead() -> Bool {
         if bleSelf.isConnected {
             if bleSelf.bleModel.internalNumberString == "ZK41" && bleSelf.bleModel.vendorNumberString == "TJDJ" {
-                return true
+                return true 
             }
         }
         return false
@@ -971,5 +973,4 @@ extension BLEManager {
         }
         bleSelf.getStep()
     }
-
 }

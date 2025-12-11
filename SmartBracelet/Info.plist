@@ -4,12 +4,14 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.zhao.herefit</string>
+		<string>com.sinophy.uwatch</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Fit-here</string>
+	<string>U-Watch</string>
+	<key>CFBundleDocumentTypes</key>
+	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

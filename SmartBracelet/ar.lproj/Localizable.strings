@@ -61,13 +61,13 @@
 "mine_battery_level_low" = "بطارية غير كافية";
 "mine_device_info" = "معلومات الجهاز";
 "mine_repeat_mode" = "كرر النمط";
-"mine_monday" = "في يوم الاثنين";
-"mine_satuday" = "يوم الثلاثاء";
-"mine_wednesday" = "الأربعاء";
-"mine_thursday" = "يوم الخميس";
-"mine_friday" = "جمعة";
-"mine_saturday" = "السبت";
-"mine_sunday" = "يوم الأحد";
+"mine_monday" = "Mon";
+"mine_satuday" = "Tue";
+"mine_wednesday" = "Wed";
+"mine_thursday" = "Thu";
+"mine_friday" = "Fri";
+"mine_saturday" = "Sat";
+"mine_sunday" = "Sun";
 "mine_delete" = "حذف";
 "mine_null" = "بدون";
 "mine_alarm_late_amind" = "تذكر لاحقا";
@@ -87,7 +87,7 @@
 "mine_device_ota_fail" = "فشلت ترقية OTA";
 "mine_about" = "حول";
 "mine_version" = "إصدار";
-"mine_about_desc" = "تنتمي جميع حقوق التفسير إلى تفسير Fit-here";
+"mine_about_desc" = "تنتمي جميع حقوق التفسير إلى تفسير u-watch";
 "mine_account_info" = "معلومات الحساب";
 "mine_userinfo" = "معلومات شخصية";
 "mine_head_image" = "الصورة الرمزية";
@@ -109,19 +109,10 @@
 "mine_weight" = "وزن";
 "mine_kg_unit" = "KG";
 
-"mine_unconnect" = "البلوتوث غير متصل";
 "device_settings" = "إعدادات الجهاز";
 "health_distance" = "Distance";
 
 "every_day_goal" = "هدف الخطوة اليومية";
-"week_1" = "الإثنين";
-"week_2" = "يوم الثلاثاء";
-"week_3" = "الأربعاء";
-"week_4" = "يوم الخميس";
-"week_5" = "يوم الجمعة";
-"week_6" = "يوم السبت";
-"week_7" = "الأحد";
-"mine_unconnect" = "غير متصل";
 "device_settings" = "إعدادات الجهاز";
 "health_distance" = "مسافه: بعد";
 "setting_goal" = "ضع هدف";
@@ -243,13 +234,6 @@
 "mine_battery_level_low" = "البطارية المتبقية غير كافية";
 "mine_device_info" = "معلومات الجهاز";
 "mine_repeat_mode" = "تكرار النمط";
-"mine_monday" = "في يوم الاثنين";
-"mine_satuday" = "يوم الثلاثاء";
-"mine_wednesday" = "الأربعاء";
-"mine_thursday" = "يوم الخميس";
-"mine_friday" = "جمعة";
-"mine_saturday" = "السبت";
-"mine_sunday" = "الأحد";
 "mine_delete" = "يمسح";
 "mine_null" = "لا أحد";
 "mine_alarm_late_amind" = "تذكر لاحقا";
@@ -269,7 +253,7 @@
 "mine_device_ota_fail" = "فشلت ترقية OTA";
 "mine_about" = "عن";
 "mine_version" = "إصدار";
-"mine_about_desc" = "تنتمي جميع حقوق الترجمة الفورية إلى Fit-here";
+"mine_about_desc" = "تنتمي جميع حقوق الترجمة الفورية إلى u-watch";
 "mine_account_info" = "معلومات الحساب";
 "mine_userinfo" = "معلومات شخصية";
 "mine_head_image" = "الصورة الرمزية";
@@ -354,8 +338,8 @@
 "feedback_not_null" = "لا يمكن أن يكون محتوى التعليقات فارغًا";
 "feedback_success" = "نجاح ردود الفعل";
 "feedback_failed" = "فشلت التعليقات";
-"dialog_location_permission_explain_above_s" = "من أجل دعم وظيفة تتبع البيانات الصحية ، ستجمع Fit-here بيانات Bluetooth وبيانات معلومات الموقع ، حتى إذا كانت عملية التطبيق مغلقة أو غير مستخدمة ، فسيستمر جمع هذه البيانات.";
-"dialog_location_permission_explain" = "من أجل دعم وظيفة تتبع البيانات الصحية ، ستجمع Fit-here بيانات معلومات الموقع ، حتى إذا كان التطبيق مغلقًا أو غير مستخدم ، فسيستمر جمع هذه البيانات.";
+"dialog_location_permission_explain_above_s" = "من أجل دعم وظيفة تتبع البيانات الصحية ، ستجمع u-watch بيانات Bluetooth وبيانات معلومات الموقع ، حتى إذا كانت عملية التطبيق مغلقة أو غير مستخدمة ، فسيستمر جمع هذه البيانات.";
+"dialog_location_permission_explain" = "من أجل دعم وظيفة تتبع البيانات الصحية ، ستجمع u-watch بيانات معلومات الموقع ، حتى إذا كان التطبيق مغلقًا أو غير مستخدم ، فسيستمر جمع هذه البيانات.";
 "go_to_setting_open_permissions" = "ستؤدي الأذونات المحظورة إلى عدم قدرتك على استخدام هذا التطبيق بشكل طبيعي ، يمكنك الانتقال إلى صفحة الإعدادات لتمكين الأذونات المذكورة أعلاه.";
 "permission_description" = "وصف الإذن";
 "add_contact" = "اضف جهات اتصال";
@@ -402,10 +386,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "حذف الجهاز";
-"delete_device_2" = "تمت إزالة الجهاز من Fit-here لكنه لا يزال متصلًا بجهازك المحمول. لإزالة الجهاز بالكامل، الرجاء تنفيذ الخطوات التالية:";
+"delete_device_2" = "تمت إزالة الجهاز من U-Watch لكنه لا يزال متصلًا بجهازك المحمول. لإزالة الجهاز بالكامل، الرجاء تنفيذ الخطوات التالية:";
 "delete_device_3" = "1. في إعدادات هاتفك > بلوتوث > أجهزتي، ابحث عن 'e watch' واضغط على 'i' справа.";
 "delete_device_4" = "2. اختر 'نسي هذا الجهاز'.";
-"delete_device_5" = "3. بعد الانتهاء، عد إلى تطبيق 'Fit-here'.";
+"delete_device_5" = "3. بعد الانتهاء، عد إلى تطبيق 'U-Watch'.";
 "delete_device_6" = "لقد أكملت الخطوات أعلاه";
 "delete_device_7" = "تأكيد";
 
@@ -422,3 +406,6 @@
 "send_success"="أرسل بنجاح";
 "send_fail"="فشل الإرسال";
 "ota"="تحديث البرامج الثابتة";
+"please_choose_day" = "اختر يومًا من الأيام الأسبوعية من فضلك";
+"add_contact_fail1" = "فشل في إضافة جهة الاتصال، يرجى التحقق من وجود وظيفة مزامنة جهات الاتصال على الجهاز!";
+"add_contact_fail2" = "فشل في إضافة جهة الاتصال، لم يستجب الجهاز للأمر بعد.";

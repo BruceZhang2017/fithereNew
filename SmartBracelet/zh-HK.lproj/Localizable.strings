@@ -87,7 +87,7 @@
 "mine_device_ota_fail" = "OTA升級失敗";
 "mine_about" = "關於";
 "mine_version" = "版本";
-"mine_about_desc" = "所有解釋權歸Fit-here解釋";
+"mine_about_desc" = "所有解釋權歸u-watch解釋";
 "mine_account_info" = "賬號信息";
 "mine_userinfo" = "個人信息";
 "mine_head_image" = "頭像";
@@ -109,19 +109,10 @@
 "mine_weight" = "體重";
 "mine_kg_unit" = "KG";
 
-"mine_unconnect" = "未連接";
 "device_settings" = "設備設置";
 "health_distance" = "Distance";
 
 "every_day_goal" = "每日步數目標";
-"week_1" = "星期一";
-"week_2" = "星期二";
-"week_3" = "星期三";
-"week_4" = "星期四";
-"week_5" = "星期五";
-"week_6" = "星期六";
-"week_7" = "星期日";
-"mine_unconnect" = "未連接";
 "device_settings" = "設備設置";
 "health_distance" = "距離";
 "setting_goal" = "設定目標";
@@ -243,13 +234,6 @@
 "mine_battery_level_low" = "剩餘電量不足";
 "mine_device_info" = "設備信息";
 "mine_repeat_mode" = "重複模式";
-"mine_monday" = "週一";
-"mine_satuday" = "週二";
-"mine_wednesday" = "週三";
-"mine_thursday" = "週四";
-"mine_friday" = "週五";
-"mine_saturday" = "週六";
-"mine_sunday" = "週日";
 "mine_delete" = "刪除";
 "mine_null" = "無";
 "mine_alarm_late_amind" = "稍後提醒";
@@ -269,7 +253,7 @@
 "mine_device_ota_fail" = "OTA升級失敗";
 "mine_about" = "關於";
 "mine_version" = "版本";
-"mine_about_desc" = "所有解釋權歸Fit-here解釋";
+"mine_about_desc" = "所有解釋權歸u-watch解釋";
 "mine_account_info" = "賬號信息";
 "mine_userinfo" = "個人信息";
 "mine_head_image" = "頭像";
@@ -354,8 +338,8 @@
 "feedback_not_null" = "反饋內容不能為空";
 "feedback_success" = "反饋成功";
 "feedback_failed" = "反饋失敗";
-"dialog_location_permission_explain_above_s" = "為支持健康數據追踪功能，Fit-here會收集藍牙數據和位置信息數據，即使應用處理關閉或未使用狀態，也仍會收集這類數據。";
-"dialog_location_permission_explain" = "為支持健康數據追踪功能，Fit-here會收集位置信息數據，即使應用處於關閉或未使用狀態，也仍會收集這類數據。";
+"dialog_location_permission_explain_above_s" = "為支持健康數據追踪功能，u-watch會收集藍牙數據和位置信息數據，即使應用處理關閉或未使用狀態，也仍會收集這類數據。";
+"dialog_location_permission_explain" = "為支持健康數據追踪功能，u-watch會收集位置信息數據，即使應用處於關閉或未使用狀態，也仍會收集這類數據。";
 "go_to_setting_open_permissions" = "禁止權限會導致你無法正常使用本應用，你可以去設置頁面開啟以上權限。";
 "permission_description" = "權限說明";
 "add_contact" = "添加聯繫人";
@@ -402,10 +386,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "刪除裝置";
-"delete_device_2" = "裝置已從Fit-here刪除，但仍與手機連接。若要完全刪除此裝置，請完成以下操作：";
+"delete_device_2" = "裝置已從U-Watch刪除，但仍與手機連接。若要完全刪除此裝置，請完成以下操作：";
 "delete_device_3" = "1. 在手機「設定」>「藍牙」>「我的裝置」中找到「e watch」，點擊右側的「i」。";
 "delete_device_4" = "2. 選擇「忽略此裝置」。";
-"delete_device_5" = "3. 完成後，返回「Fit-here」應用程式。";
+"delete_device_5" = "3. 完成後，返回「U-Watch」應用程式。";
 "delete_device_6" = "已完成上述操作";
 "delete_device_7" = "確定";
 
@@ -422,3 +406,6 @@
 "send_success"="發送成功";
 "send_fail"="發送失敗";
 "ota"="固件更新";
+"please_choose_day" = "請揀一個星期幾";
+"add_contact_fail1" = "新增聯絡人失敗，請檢查裝置是否具有同步聯絡人功能！";
+"add_contact_fail2" = "新增聯絡人失敗，裝置端指令暫未回覆。";

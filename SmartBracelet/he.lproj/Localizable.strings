@@ -57,13 +57,13 @@
 "mine_battery_level_low" = "מצב בطارיה נמוך";
 "mine_device_info" = "מידע על המכשיר";
 "mine_repeat_mode" = "режим повтора";
-"mine_monday" = "יום שני";
-"mine_satuday" = "יום שלישי";
-"mine_wednesday" = "יום רביעי";
-"mine_thursday" = "יום חמישי";
-"mine_friday" = "יום שישי";
-"mine_saturday" = "שבת";
-"mine_sunday" = "ראשון";
+"mine_monday" = "Mon";
+"mine_satuday" = "Tue";
+"mine_wednesday" = "Wed";
+"mine_thursday" = "Thu";
+"mine_friday" = "Fri";
+"mine_saturday" = "Sat";
+"mine_sunday" = "Sun";
 "mine_delete" = "מחיקה";
 "mine_null" = "ללא";
 "mine_alarm_late_amind" = "תזכורת מאוחרת";
@@ -83,7 +83,7 @@
 "mine_device_ota_fail" = "עדכון OTA נכשל";
 "mine_about" = "אודות";
 "mine_version" = "גרסה";
-"mine_about_desc" = "כל הזכויות בפרשנות שייכות ל-Fit-here";
+"mine_about_desc" = "כל הזכויות בפרשנות שייכות ל-u-watch";
 "mine_account_info" = "מידע חשבון";
 "mine_userinfo" = "פרטי משתמש";
 "mine_head_image" = "תמונת פרופיל";
@@ -216,10 +216,10 @@
 "ble_off" = "בלוטוooth לא מופעל. נא להפעיל אותו קודם.";
 
 "delete_device_1" = "מחק מכשיר";
-"delete_device_2" = "המכשיר הוסר מFit-here אך עדיין מחובר לטלפון שלך. כדי למחוק את המכשיר הזה לחלוטין, השלם את השלבים הבאים:";
+"delete_device_2" = "המכשיר הוסר מU-Watch אך עדיין מחובר לטלפון שלך. כדי למחוק את המכשיר הזה לחלוטין, השלם את השלבים הבאים:";
 "delete_device_3" = "1. בהגדרות הטלפון שלך > Bluetooth > המכשירים שלי, מצא 'e watch' ו� тисни על ה-'i' מימין.";
 "delete_device_4" = "2. בחר 'שכח מכשיר זה'.";
-"delete_device_5" = "3. לאחר השלמה, חזור לאפליקציה 'Fit-here'.";
+"delete_device_5" = "3. לאחר השלמה, חזור לאפליקציה 'U-Watch'.";
 "delete_device_6" = "סיימתי את השלבים לעיל";
 "delete_device_7" = "אשר";
 
@@ -236,3 +236,6 @@
 "send_success"="נשלח בהצלחה";
 "send_fail"="שליחה נכשלה";
 "ota"="עדכון פרמ�ווייר";
+"please_choose_day" = "אנא בחר יום מהשבוע";
+"add_contact_fail1" = "הוספת איש קשר נכשלה, אנא בדוק אם למכשיר יש פונקציית סנכרון אנשי קשר!";
+"add_contact_fail2" = "הוספת איש קשר נכשלה, המכשיר עדיין לא הגיב לפקודה.";

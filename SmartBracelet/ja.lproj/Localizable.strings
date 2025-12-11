@@ -61,13 +61,13 @@
 "mine_battery_level_low" = "バッテリーが不足しています";
 "mine_device_info" = "デバイス情報";
 "mine_repeat_mode" = "パターンを繰り返す";
-"mine_monday" = "月曜日に";
-"mine_satuday" = "火曜日";
-"mine_wednesday" = "水曜日";
-"mine_thursday" = "木曜日";
-"mine_friday" = "金曜日";
-"mine_saturday" = "土曜日";
-"mine_sunday" = "日曜日";
+"mine_monday" = "Mon";
+"mine_satuday" = "Tue";
+"mine_wednesday" = "Wed";
+"mine_thursday" = "Thu";
+"mine_friday" = "Fri";
+"mine_saturday" = "Sat";
+"mine_sunday" = "Sun";
 "mine_delete" = "消去";
 "mine_null" = "それなし";
 "mine_alarm_late_amind" = "後で思い出させる";
@@ -87,7 +87,7 @@
 "mine_device_ota_fail" = "OTAアップグレードに失敗しました";
 "mine_about" = "だいたい";
 "mine_version" = "バージョン";
-"mine_about_desc" = "すべての解釈権はFit-here解釈に属します";
+"mine_about_desc" = "すべての解釈権はu-watch解釈に属します";
 "mine_account_info" = "口座情報";
 "mine_userinfo" = "個人情報";
 "mine_head_image" = "アバター";
@@ -109,19 +109,10 @@
 "mine_weight" = "重さ";
 "mine_kg_unit" = "KG";
 
-"mine_unconnect" = "が接続されていません";
 "device_settings" = "デバイスの設定";
 "health_distance" = "Distance";
 
 "every_day_goal" = "毎日の歩数目標";
-"week_1" = "月曜";
-"week_2" = "火曜日";
-"week_3" = "水曜日";
-"week_4" = "木曜日";
-"week_5" = "金曜日";
-"week_6" = "土曜日";
-"week_7" = "日曜日";
-"mine_unconnect" = "接続されていません";
 "device_settings" = "デバイスの設定";
 "health_distance" = "距離";
 "setting_goal" = "目標を設定します";
@@ -243,13 +234,6 @@
 "mine_battery_level_low" = "電池残量が少ない";
 "mine_device_info" = "デバイス情報";
 "mine_repeat_mode" = "繰り返しパターン";
-"mine_monday" = "月曜日に";
-"mine_satuday" = "火曜日";
-"mine_wednesday" = "水曜日";
-"mine_thursday" = "木曜日";
-"mine_friday" = "金曜日";
-"mine_saturday" = "土曜日";
-"mine_sunday" = "日曜日";
 "mine_delete" = "消去";
 "mine_null" = "なし";
 "mine_alarm_late_amind" = "後で思い出させる";
@@ -269,7 +253,7 @@
 "mine_device_ota_fail" = "OTA アップグレードに失敗しました";
 "mine_about" = "だいたい";
 "mine_version" = "バージョン";
-"mine_about_desc" = "すべての解釈権はFit-hereに帰属します";
+"mine_about_desc" = "すべての解釈権はu-watchに帰属します";
 "mine_account_info" = "口座情報";
 "mine_userinfo" = "個人情報";
 "mine_head_image" = "アバター";
@@ -354,8 +338,8 @@
 "feedback_not_null" = "フィードバックの内容を空にすることはできません";
 "feedback_success" = "フィードバックの成功";
 "feedback_failed" = "フィードバックに失敗しました";
-"dialog_location_permission_explain_above_s" = "健康データの追跡機能をサポートするために、Fit-here は Bluetooth データと位置情報データを収集します。アプリケーション プロセスが閉じられている場合や使用されていない場合でも、そのようなデータは引き続き収集されます。";
-"dialog_location_permission_explain" = "健康データの追跡機能をサポートするために、Fit-here は位置情報データを収集します。アプリケーションが閉じられている場合や使用されていない場合でも、そのようなデータは引き続き収集されます。";
+"dialog_location_permission_explain_above_s" = "健康データの追跡機能をサポートするために、u-watch は Bluetooth データと位置情報データを収集します。アプリケーション プロセスが閉じられている場合や使用されていない場合でも、そのようなデータは引き続き収集されます。";
+"dialog_location_permission_explain" = "健康データの追跡機能をサポートするために、u-watch は位置情報データを収集します。アプリケーションが閉じられている場合や使用されていない場合でも、そのようなデータは引き続き収集されます。";
 "go_to_setting_open_permissions" = "許可が禁止されていると、このアプリを正常に使用できなくなります。設定ページに移動して、上記の許可を有効にすることができます。";
 "permission_description" = "権限の説明";
 "add_contact" = "連絡先を追加";
@@ -402,10 +386,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "デバイスを削除";
-"delete_device_2" = "デバイスはFit-hereから削除されましたが、引き続き携帯電話に接続されています。このデバイスを完全に削除するには、次の操作を完了してください:";
+"delete_device_2" = "デバイスはU-Watchから削除されましたが、引き続き携帯電話に接続されています。このデバイスを完全に削除するには、次の操作を完了してください:";
 "delete_device_3" = "1. 携帯電話の「設定」>「Bluetooth」>「マイデバイス」で「e watch」を見つけ、右側の「i」をタップします。";
 "delete_device_4" = "2. 「このデバイスを忘れる」を選択します。";
-"delete_device_5" = "3. 完了後、「Fit-here」アプリに戻ります。";
+"delete_device_5" = "3. 完了後、「U-Watch」アプリに戻ります。";
 "delete_device_6" = "上記の操作を完了しました";
 "delete_device_7" = "確定";
 
@@ -422,3 +406,6 @@
 "send_success"="送信成功";
 "send_fail"="送信失敗";
 "ota"="ファームウェア更新";
+"please_choose_day" = "曜日を選択してください";
+"add_contact_fail1" = "連絡先の追加に失敗しました。デバイスに連絡先同期機能があるかご確認ください！";
+"add_contact_fail2" = "連絡先の追加に失敗しました。デバイス側のコマンドがまだ応答していません。";
