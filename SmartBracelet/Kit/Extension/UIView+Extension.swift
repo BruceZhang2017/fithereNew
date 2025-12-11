@@ -1,14 +1,14 @@
 //
 // Copyright © 2015-2018 Anker Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
-// 
+//
 //  UIView+Extension.swift
 //  SmartBracelet
 //
 //  Created by ANKER on 2020/7/27.
 //  Copyright © 2020 tjd. All rights reserved.
 //
-	
+    
 
 import UIKit
 import SafariServices
@@ -43,7 +43,7 @@ extension UIView {
     /// - 使用了自定义的 UIColor 扩展来通过十六进制颜色值创建 UIColor 对象
     /// - 在当前视图的 bounds 范围内添加了一个垂直渐变层
     func bg_base1() {
-        let topColor = UIColor(hex: 0x3990F9)
+        let topColor = UIColor(hex: 0xFF8010)
         let bottomColor = UIColor(hex: 0xFFFFFF)
         addVGradientLayer(at: self.bounds, colors: [topColor, bottomColor])
     }
@@ -52,8 +52,8 @@ extension UIView {
     /// - 使用了自定义的 UIColor 扩展来通过十六进制颜色值创建 UIColor 对象
     /// - 在当前视图的 bounds 范围内添加了一个垂直渐变层
     func bg_base2() {
-        let topColor = UIColor(hex: 0xAED3FF)
-        let bottomColor = UIColor(hex: 0xEFF5FC)
+        let topColor = UIColor(hex: 0xFAE5D2)
+        let bottomColor = UIColor(hex: 0xFAF5F0)
         addVGradientLayer(at: self.bounds, colors: [topColor, bottomColor])
     }
     
