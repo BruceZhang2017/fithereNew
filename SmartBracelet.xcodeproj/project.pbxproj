@@ -37,6 +37,7 @@
 		9A0B86E72DD1CC1000E1E936 /* delete_device1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0B86E42DD1CC1000E1E936 /* delete_device1.png */; };
 		9A0C34952B341D6600E798F1 /* DFUnits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34932B341D6100E798F1 /* DFUnits.framework */; };
 		9A0C34962B341D6600E798F1 /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */; };
+		9A0EC47C2EEAD55D0012C7E5 /* HealthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EC47B2EEAD55D0012C7E5 /* HealthTableViewCell.swift */; };
 		9A127EAE2BC2ACE300126836 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */; };
 		9A1F7CAC2E22932700EB3BBE /* TripleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F7CAB2E22932700EB3BBE /* TripleTableViewController.swift */; };
 		9A2181652557EDBE000330E5 /* apple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2181622557EDBE000330E5 /* apple.jpeg */; };
@@ -590,11 +591,10 @@
 		9A0B86E52DD1CC1000E1E936 /* delete_device2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_device2.png; sourceTree = "<group>"; };
 		9A0C34932B341D6100E798F1 /* DFUnits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFUnits.framework; sourceTree = "<group>"; };
 		9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
+		9A0EC47B2EEAD55D0012C7E5 /* HealthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCell.swift; sourceTree = "<group>"; };
 		9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		9A1E2D2F2DB6631E00B50C5D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A1F7CAB2E22932700EB3BBE /* TripleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleTableViewController.swift; sourceTree = "<group>"; };
-		9A1F7EBA2E2D070D00EB3BBE /* SmartBraceletDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartBraceletDebug.entitlements; sourceTree = "<group>"; };
-		9A1F7EBB2E2D0A2C00EB3BBE /* SmartBraceletRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartBraceletRelease.entitlements; sourceTree = "<group>"; };
 		9A2181622557EDBE000330E5 /* apple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpeg; sourceTree = "<group>"; };
 		9A2181632557EDBE000330E5 /* walk.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk.jpeg; sourceTree = "<group>"; };
 		9A2181642557EDBE000330E5 /* water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = water.jpg; sourceTree = "<group>"; };
@@ -1978,7 +1978,6 @@
 		9A6D092A2501D96500B4972F /* ClockManage */ = {
 			isa = PBXGroup;
 			children = (
-				9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */,
 				9A6D092D2501E3EC00B4972F /* Device.md */,
 				9A1F7CAB2E22932700EB3BBE /* TripleTableViewController.swift */,
 				9A6D092B2501D99400B4972F /* ClockManageViewController.swift */,
@@ -2029,6 +2028,7 @@
 		9A820B6C24CD066E00A62C6F /* Health */ = {
 			isa = PBXGroup;
 			children = (
+				9A0EC47B2EEAD55D0012C7E5 /* HealthTableViewCell.swift */,
 				9A48CE592EEA664000F4E5E4 /* FemaleCycleDataManager.swift */,
 				9A48CE552EE8218C00F4E5E4 /* AllDataViewController.swift */,
 				9A48CE562EE8218C00F4E5E4 /* DataDetailViewController.swift */,
@@ -2718,7 +2718,6 @@
 				9A56D24C25216FC60082CC08 /* ChevronDownShapeRenderer.swift in Sources */,
 				9A7084D62ECC0A690000D83D /* AlarmAdd2ViewController.swift in Sources */,
 				9A56D2B025216FC70082CC08 /* LineScatterCandleRadarChartDataSet.swift in Sources */,
-				9A06995F2E56AE0400A74A7A /* TripleTableViewController.swift in Sources */,
 				9A56D29725216FC70082CC08 /* BarChartDataSet.swift in Sources */,
 				9A56D26325216FC60082CC08 /* CandleStickChartView.swift in Sources */,
 				9A56D29525216FC70082CC08 /* ChartData.swift in Sources */,
@@ -2798,6 +2797,7 @@
 				9A56D29C25216FC70082CC08 /* CombinedChartData.swift in Sources */,
 				9A56D26C25216FC60082CC08 /* BarChartView.swift in Sources */,
 				9A52106F2503A62F00F64A7A /* MarketClockViewController.swift in Sources */,
+				9A0EC47C2EEAD55D0012C7E5 /* HealthTableViewCell.swift in Sources */,
 				9AB7AC462766425800D51DBC /* EditClcokBottomTableViewCell.swift in Sources */,
 				9A8CA51B25272C5200EC01A7 /* CVCalendarMonthContentViewController.swift in Sources */,
 				9AFAE87A2A8F21F7005EF8F8 /* JGProgressHUDRingIndicatorView.m in Sources */,
@@ -2996,7 +2996,6 @@
 				9AF0AA2025AAF1CE000BDAED /* CMDData.swift in Sources */,
 				9A56D2A825216FC70082CC08 /* ScatterChartDataSet.swift in Sources */,
 				9A60DEEF252F401100E0D849 /* AlarmViewController.swift in Sources */,
-				9A0698152E477D3300A74A7A /* CardBagTableViewController.swift in Sources */,
 				9A56D2BF25216FC70082CC08 /* CandleChartDataProvider.swift in Sources */,
 				9A56D2A925216FC70082CC08 /* ScatterChartData.swift in Sources */,
 				9A820B7424CEA1CC00A62C6F /* BaseViewController.swift in Sources */,
@@ -3044,13 +3043,6 @@
 				9A21BFF92D0082E00048CF53 /* OtaConstants.swift in Sources */,
 				9A21BFFA2D0082E00048CF53 /* Logger.swift in Sources */,
 				9A21BFFB2D0082E00048CF53 /* DataReader.swift in Sources */,
-				9A06980D2E477D0C00A74A7A /* LBXScanView.swift in Sources */,
-				9A06980E2E477D0C00A74A7A /* LBXScanViewStyle.swift in Sources */,
-				9A06980F2E477D0C00A74A7A /* LBXScanWrapper.swift in Sources */,
-				9A0698102E477D0C00A74A7A /* LBXScanLineAnimation.swift in Sources */,
-				9A0698112E477D0C00A74A7A /* LBXScanViewController.swift in Sources */,
-				9A0698122E477D0C00A74A7A /* LBXScanNetAnimation.swift in Sources */,
-				9A0698132E477D0C00A74A7A /* LBXPermissions.swift in Sources */,
 				9A21BFFC2D0082E00048CF53 /* LoggerDelegate.swift in Sources */,
 				9A21BFFD2D0082E00048CF53 /* OtaCommandGenerator.swift in Sources */,
 				9A21BFFE2D0082E00048CF53 /* ABOtaManager.swift in Sources */,
@@ -3131,7 +3123,6 @@
 				9A8CA51925272C5200EC01A7 /* CVScrollDirection.swift in Sources */,
 				9A60DEDE252F002D00E0D849 /* UIColor+Hex.swift in Sources */,
 				9A56D2C425216FC70082CC08 /* BubbleChartDataProvider.swift in Sources */,
-				9A0698172E477D4F00A74A7A /* QRBindViewController.swift in Sources */,
 				9A56D28125216FC60082CC08 /* TransformerHorizontalBarChart.swift in Sources */,
 				9A8CA51A25272C5200EC01A7 /* CVCalendarTouchController.swift in Sources */,
 				9A61685C25DBDA7800918EFC /* SportDataModel.swift in Sources */,
