@@ -162,7 +162,7 @@ class DataDetailViewController: BaseViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
         let timeString = dateFormatter.string(from: record.recordTime)
-        detailItems.append((timeString, "记录到'U-Watch'的时间"))
+        detailItems.append((timeString, "记录到'Fit-here'的时间"))
 
         XLogger.shared.log("加载数据详情: 日期=\(record.date), 流量=\(flowText), 痛经=\(painText), 性行为=\(sexualText), 心情=\(moodText), 身体症状数=\(bodySymptoms.count)")
 
