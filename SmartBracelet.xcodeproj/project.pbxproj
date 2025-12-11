@@ -17,15 +17,16 @@
 		6358A1BC7537C0FAECF400E2 /* Pods_SmartBracelet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */; };
 		9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4425BDB1CD0006FB94 /* OTACMD.m */; };
 		9A037E4825BDB1EC0006FB94 /* OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4725BDB1EC0006FB94 /* OTA.m */; };
-		9A0697672E4353BD00A74A7A /* CardBagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0697662E4353BD00A74A7A /* CardBagTableViewController.swift */; };
-		9A0697692E4357F700A74A7A /* QRBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0697682E4357F700A74A7A /* QRBindViewController.swift */; };
-		9A0697722E435DF600A74A7A /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06976C2E435DF600A74A7A /* LBXScanLineAnimation.swift */; };
-		9A0697732E435DF600A74A7A /* LBXScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06976E2E435DF600A74A7A /* LBXScanView.swift */; };
-		9A0697742E435DF600A74A7A /* LBXScanViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0697702E435DF600A74A7A /* LBXScanViewStyle.swift */; };
-		9A0697752E435DF600A74A7A /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06976D2E435DF600A74A7A /* LBXScanNetAnimation.swift */; };
-		9A0697762E435DF600A74A7A /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06976B2E435DF600A74A7A /* LBXPermissions.swift */; };
-		9A0697772E435DF600A74A7A /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06976F2E435DF600A74A7A /* LBXScanViewController.swift */; };
-		9A0697782E435DF600A74A7A /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0697712E435DF600A74A7A /* LBXScanWrapper.swift */; };
+		9A06980D2E477D0C00A74A7A /* LBXScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698082E477D0C00A74A7A /* LBXScanView.swift */; };
+		9A06980E2E477D0C00A74A7A /* LBXScanViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */; };
+		9A06980F2E477D0C00A74A7A /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */; };
+		9A0698102E477D0C00A74A7A /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */; };
+		9A0698112E477D0C00A74A7A /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */; };
+		9A0698122E477D0C00A74A7A /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */; };
+		9A0698132E477D0C00A74A7A /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698052E477D0C00A74A7A /* LBXPermissions.swift */; };
+		9A0698152E477D3300A74A7A /* CardBagTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */; };
+		9A0698172E477D4F00A74A7A /* QRBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0698162E477D4F00A74A7A /* QRBindViewController.swift */; };
+		9A06995F2E56AE0400A74A7A /* TripleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */; };
 		9A08C673262C757A00E178DA /* WeatherTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C672262C757A00E178DA /* WeatherTestViewController.swift */; };
 		9A08C6EB262F17D500E178DA /* OTAUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6EA262F17D500E178DA /* OTAUpgradeViewController.m */; };
 		9A08C6EF262F17FE00E178DA /* OTCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08C6ED262F17FE00E178DA /* OTCModel.m */; };
@@ -38,7 +39,6 @@
 		9A0C34952B341D6600E798F1 /* DFUnits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34932B341D6100E798F1 /* DFUnits.framework */; };
 		9A0C34962B341D6600E798F1 /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */; };
 		9A127EAE2BC2ACE300126836 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */; };
-		9A1F7CAC2E22932700EB3BBE /* TripleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F7CAB2E22932700EB3BBE /* TripleTableViewController.swift */; };
 		9A2181652557EDBE000330E5 /* apple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2181622557EDBE000330E5 /* apple.jpeg */; };
 		9A2181662557EDBE000330E5 /* walk.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2181632557EDBE000330E5 /* walk.jpeg */; };
 		9A2181672557EDBE000330E5 /* water.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2181642557EDBE000330E5 /* water.jpg */; };
@@ -132,11 +132,6 @@
 		9A410C762DCB5372006240A6 /* XLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A410C752DCB5368006240A6 /* XLogger.swift */; };
 		9A46063D2DD5FF580011017F /* delete_device20.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A46063C2DD5FF580011017F /* delete_device20.png */; };
 		9A46063E2DD5FF580011017F /* delete_device10.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A46063B2DD5FF580011017F /* delete_device10.png */; };
-		9A48CE522EE7CB7D00F4E5E4 /* FemaleCycleCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A48CE512EE7CB7D00F4E5E4 /* FemaleCycleCalendarViewController.swift */; };
-		9A48CE542EE815F500F4E5E4 /* BodySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A48CE532EE815F500F4E5E4 /* BodySymptomsViewController.swift */; };
-		9A48CE572EE8218C00F4E5E4 /* DataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A48CE562EE8218C00F4E5E4 /* DataDetailViewController.swift */; };
-		9A48CE582EE8218C00F4E5E4 /* AllDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A48CE552EE8218C00F4E5E4 /* AllDataViewController.swift */; };
-		9A48CE5A2EEA664000F4E5E4 /* FemaleCycleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A48CE592EEA664000F4E5E4 /* FemaleCycleDataManager.swift */; };
 		9A4B80A72DE1F5BB0001817F /* SelectAddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B80A62DE1F5BB0001817F /* SelectAddActionViewController.swift */; };
 		9A4CADEE294032F200B0BDF8 /* CommonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CADED294032F100B0BDF8 /* CommonResponse.swift */; };
 		9A4CADF029406E6E00B0BDF8 /* QuestionItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CADEF29406E6E00B0BDF8 /* QuestionItemResponse.swift */; };
@@ -300,6 +295,7 @@
 		9A56D2C325216FC70082CC08 /* ScatterChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A56D23725216FC60082CC08 /* ScatterChartDataProvider.swift */; };
 		9A56D2C425216FC70082CC08 /* BubbleChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A56D23825216FC60082CC08 /* BubbleChartDataProvider.swift */; };
 		9A58D8B626ABC4A1006C09A1 /* LongsitSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A58D8B526ABC4A0006C09A1 /* LongsitSettingsViewController.swift */; };
+		9A58D8B826AC1F09006C09A1 /* AlarmIntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A58D8B726AC1F09006C09A1 /* AlarmIntervalViewController.swift */; };
 		9A5E932A2515BB630060AB13 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E93292515BB630060AB13 /* UserModel.swift */; };
 		9A5E932D2515C9710060AB13 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E932C2515C9710060AB13 /* UserManager.swift */; };
 		9A5E93302515CC700060AB13 /* MTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E932F2515CC700060AB13 /* MTabBarController.swift */; };
@@ -326,6 +322,8 @@
 		9A60DEEF252F401100E0D849 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DEEE252F401100E0D849 /* AlarmViewController.swift */; };
 		9A60DEF1252F416E00E0D849 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DEF0252F416E00E0D849 /* AlarmTableViewCell.swift */; };
 		9A60DEF3252F418900E0D849 /* AlarmHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DEF2252F418900E0D849 /* AlarmHeaderView.swift */; };
+		9A60DEF5252F49A200E0D849 /* AlarmAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DEF4252F49A200E0D849 /* AlarmAddViewController.swift */; };
+		9A60DEF7252F50FF00E0D849 /* AlarmRepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DEF6252F50FF00E0D849 /* AlarmRepeatViewController.swift */; };
 		9A60DEF9252F5B7100E0D849 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DEF8252F5B7100E0D849 /* DeviceModel.swift */; };
 		9A60DEFB252F5B8200E0D849 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DEFA252F5B8200E0D849 /* AlarmModel.swift */; };
 		9A60DEFD25301FEE00E0D849 /* DeviceSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A60DEFC25301FEE00E0D849 /* DeviceSearchTableViewCell.swift */; };
@@ -343,14 +341,11 @@
 		9A64F0BA25DE19B30073E679 /* DHeartRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64F0B925DE19B30073E679 /* DHeartRateModel.swift */; };
 		9A64F0BC25DF50C30073E679 /* DAlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64F0BB25DF50C30073E679 /* DAlarmModel.swift */; };
 		9A6D092C2501D99400B4972F /* ClockManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6D092B2501D99400B4972F /* ClockManageViewController.swift */; };
-		9A7084D62ECC0A690000D83D /* AlarmAdd2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7084D52ECC0A690000D83D /* AlarmAdd2ViewController.swift */; };
-		9A7084D82ECD54CA0000D83D /* SyncContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7084D72ECD54CA0000D83D /* SyncContactsViewController.swift */; };
 		9A7315C22871B0BA00D378A7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7315C12871B0B900D378A7 /* NetworkManager.swift */; };
 		9A7315C62871B0CA00D378A7 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7315C52871B0C900D378A7 /* CurrentWeatherData.swift */; };
 		9A7315C82871B0D000D378A7 /* OpenWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7315C72871B0D000D378A7 /* OpenWeatherViewController.swift */; };
 		9A7315CA2871B0DE00D378A7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7315C92871B0DD00D378A7 /* ViewModel.swift */; };
 		9A7315CC2871B16C00D378A7 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7315CB2871B16C00D378A7 /* Constant.swift */; };
-		9A73D6F52E9F6DB6004EB209 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A73D6F42E9F6DB3004EB209 /* ContactManager.swift */; };
 		9A7C31A4276EFFAD00BC1BFB /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C31A3276EFFAD00BC1BFB /* UploadImageViewController.swift */; };
 		9A7D5E4225490EA20016E4BC /* MRGCDTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D5E4125490EA20016E4BC /* MRGCDTimer.swift */; };
 		9A7E27E8262326E000DA658B /* HttpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7E27E7262326E000DA658B /* HttpHelper.swift */; };
@@ -383,7 +378,6 @@
 		9A869E0D2D12CCC200B78FDF /* OTAInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A869E0C2D12CCC200B78FDF /* OTAInfoManager.swift */; };
 		9A869E112D17DDFB00B78FDF /* ABParTool.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A869E0F2D17DDEB00B78FDF /* ABParTool.xcframework */; };
 		9A869E122D17DDFC00B78FDF /* ABParTool.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A869E0F2D17DDEB00B78FDF /* ABParTool.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9A87D62F2E7AD09F00FC509B /* HealthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A87D62E2E7AD09F00FC509B /* HealthCollectionViewCell.swift */; };
 		9A8CA50725272C5200EC01A7 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CA4E725272C5200EC01A7 /* CVCalendarDayView.swift */; };
 		9A8CA50825272C5200EC01A7 /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CA4E825272C5200EC01A7 /* CVWeekdaySymbolType.swift */; };
 		9A8CA50925272C5200EC01A7 /* CVRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CA4E925272C5200EC01A7 /* CVRange.swift */; };
@@ -483,7 +477,6 @@
 		9AC58A1528C37A3800992836 /* ClockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC58A1428C37A3800992836 /* ClockResponse.swift */; };
 		9AC961822DA5531D00699C7F /* AliIotConnectKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC961802DA5527900699C7F /* AliIotConnectKit.framework */; };
 		9AC961832DA5531D00699C7F /* AliIotConnectKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC961802DA5527900699C7F /* AliIotConnectKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9AD6A5242EE1C7B000BAC61B /* FemaleHealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6A5232EE1C7B000BAC61B /* FemaleHealthViewController.swift */; };
 		9AE1A16B2629465F00B8B10D /* ErrorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1A1552629465F00B8B10D /* ErrorCode.m */; };
 		9AE1A16C2629465F00B8B10D /* JCBlutoothInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1A1582629465F00B8B10D /* JCBlutoothInfoModel.m */; };
 		9AE1A16D2629465F00B8B10D /* OTAManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1A1592629465F00B8B10D /* OTAManager.m */; };
@@ -511,6 +504,7 @@
 		9AEC22CD25B707C000DE899A /* BLEModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC22CC25B707C000DE899A /* BLEModel.swift */; };
 		9AEC230025B7114500DE899A /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC22FF25B7114500DE899A /* Data+Extension.swift */; };
 		9AF0AA2025AAF1CE000BDAED /* CMDData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0AA1F25AAF1CE000BDAED /* CMDData.swift */; };
+		9AF3F2D72BCBFA6500AFBC55 /* HealthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3F2D62BCBFA6500AFBC55 /* HealthTableViewCell.swift */; };
 		9AF3F2DB2BCBFF2600AFBC55 /* icon_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF3F2DA2BCBFF2600AFBC55 /* icon_default.png */; };
 		9AF3F2DD2BCC229B00AFBC55 /* HNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3F2DC2BCC229B00AFBC55 /* HNavigationController.swift */; };
 		9AFAE8712A8F21F7005EF8F8 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE85A2A8F21F7005EF8F8 /* JGProgressHUDIndeterminateIndicatorView.m */; };
@@ -564,15 +558,16 @@
 		9A037E4425BDB1CD0006FB94 /* OTACMD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTACMD.m; sourceTree = "<group>"; };
 		9A037E4625BDB1EC0006FB94 /* OTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTA.h; sourceTree = "<group>"; };
 		9A037E4725BDB1EC0006FB94 /* OTA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTA.m; sourceTree = "<group>"; };
-		9A0697662E4353BD00A74A7A /* CardBagTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBagTableViewController.swift; sourceTree = "<group>"; };
-		9A0697682E4357F700A74A7A /* QRBindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBindViewController.swift; sourceTree = "<group>"; };
-		9A06976B2E435DF600A74A7A /* LBXPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
-		9A06976C2E435DF600A74A7A /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
-		9A06976D2E435DF600A74A7A /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
-		9A06976E2E435DF600A74A7A /* LBXScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanView.swift; sourceTree = "<group>"; };
-		9A06976F2E435DF600A74A7A /* LBXScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
-		9A0697702E435DF600A74A7A /* LBXScanViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanViewStyle.swift; sourceTree = "<group>"; };
-		9A0697712E435DF600A74A7A /* LBXScanWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
+		9A0698052E477D0C00A74A7A /* LBXPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
+		9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
+		9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
+		9A0698082E477D0C00A74A7A /* LBXScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanView.swift; sourceTree = "<group>"; };
+		9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
+		9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanViewStyle.swift; sourceTree = "<group>"; };
+		9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
+		9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBagTableViewController.swift; sourceTree = "<group>"; };
+		9A0698162E477D4F00A74A7A /* QRBindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBindViewController.swift; sourceTree = "<group>"; };
+		9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleTableViewController.swift; sourceTree = "<group>"; };
 		9A08C672262C757A00E178DA /* WeatherTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTestViewController.swift; sourceTree = "<group>"; };
 		9A08C6E9262F17D500E178DA /* OTAUpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAUpgradeViewController.h; sourceTree = "<group>"; };
 		9A08C6EA262F17D500E178DA /* OTAUpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAUpgradeViewController.m; sourceTree = "<group>"; };
@@ -592,9 +587,6 @@
 		9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
 		9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		9A1E2D2F2DB6631E00B50C5D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9A1F7CAB2E22932700EB3BBE /* TripleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleTableViewController.swift; sourceTree = "<group>"; };
-		9A1F7EBA2E2D070D00EB3BBE /* SmartBraceletDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartBraceletDebug.entitlements; sourceTree = "<group>"; };
-		9A1F7EBB2E2D0A2C00EB3BBE /* SmartBraceletRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartBraceletRelease.entitlements; sourceTree = "<group>"; };
 		9A2181622557EDBE000330E5 /* apple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpeg; sourceTree = "<group>"; };
 		9A2181632557EDBE000330E5 /* walk.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk.jpeg; sourceTree = "<group>"; };
 		9A2181642557EDBE000330E5 /* water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = water.jpg; sourceTree = "<group>"; };
@@ -688,11 +680,6 @@
 		9A410C752DCB5368006240A6 /* XLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLogger.swift; sourceTree = "<group>"; };
 		9A46063B2DD5FF580011017F /* delete_device10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_device10.png; sourceTree = "<group>"; };
 		9A46063C2DD5FF580011017F /* delete_device20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_device20.png; sourceTree = "<group>"; };
-		9A48CE512EE7CB7D00F4E5E4 /* FemaleCycleCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleCycleCalendarViewController.swift; sourceTree = "<group>"; };
-		9A48CE532EE815F500F4E5E4 /* BodySymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySymptomsViewController.swift; sourceTree = "<group>"; };
-		9A48CE552EE8218C00F4E5E4 /* AllDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDataViewController.swift; sourceTree = "<group>"; };
-		9A48CE562EE8218C00F4E5E4 /* DataDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailViewController.swift; sourceTree = "<group>"; };
-		9A48CE592EEA664000F4E5E4 /* FemaleCycleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleCycleDataManager.swift; sourceTree = "<group>"; };
 		9A4B80A62DE1F5BB0001817F /* SelectAddActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddActionViewController.swift; sourceTree = "<group>"; };
 		9A4CADED294032F100B0BDF8 /* CommonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
 		9A4CADEF29406E6E00B0BDF8 /* QuestionItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItemResponse.swift; sourceTree = "<group>"; };
@@ -886,6 +873,7 @@
 		9A56D23725216FC60082CC08 /* ScatterChartDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScatterChartDataProvider.swift; sourceTree = "<group>"; };
 		9A56D23825216FC60082CC08 /* BubbleChartDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleChartDataProvider.swift; sourceTree = "<group>"; };
 		9A58D8B526ABC4A0006C09A1 /* LongsitSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongsitSettingsViewController.swift; sourceTree = "<group>"; };
+		9A58D8B726AC1F09006C09A1 /* AlarmIntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmIntervalViewController.swift; sourceTree = "<group>"; };
 		9A5E93292515BB630060AB13 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9A5E932B2515BBFC0060AB13 /* User.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = User.md; sourceTree = "<group>"; };
 		9A5E932C2515C9710060AB13 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -913,6 +901,8 @@
 		9A60DEEE252F401100E0D849 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		9A60DEF0252F416E00E0D849 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		9A60DEF2252F418900E0D849 /* AlarmHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmHeaderView.swift; sourceTree = "<group>"; };
+		9A60DEF4252F49A200E0D849 /* AlarmAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAddViewController.swift; sourceTree = "<group>"; };
+		9A60DEF6252F50FF00E0D849 /* AlarmRepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepeatViewController.swift; sourceTree = "<group>"; };
 		9A60DEF8252F5B7100E0D849 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		9A60DEFA252F5B8200E0D849 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		9A60DEFC25301FEE00E0D849 /* DeviceSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -933,14 +923,11 @@
 		9A64F0BB25DF50C30073E679 /* DAlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlarmModel.swift; sourceTree = "<group>"; };
 		9A6D092B2501D99400B4972F /* ClockManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockManageViewController.swift; sourceTree = "<group>"; };
 		9A6D092D2501E3EC00B4972F /* Device.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Device.md; sourceTree = "<group>"; };
-		9A7084D52ECC0A690000D83D /* AlarmAdd2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAdd2ViewController.swift; sourceTree = "<group>"; };
-		9A7084D72ECD54CA0000D83D /* SyncContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncContactsViewController.swift; sourceTree = "<group>"; };
 		9A7315C12871B0B900D378A7 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9A7315C52871B0C900D378A7 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		9A7315C72871B0D000D378A7 /* OpenWeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherViewController.swift; sourceTree = "<group>"; };
 		9A7315C92871B0DD00D378A7 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9A7315CB2871B16C00D378A7 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		9A73D6F42E9F6DB3004EB209 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		9A7C31A3276EFFAD00BC1BFB /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
 		9A7D5E3F254907AA0016E4BC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9A7D5E4125490EA20016E4BC /* MRGCDTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRGCDTimer.swift; sourceTree = "<group>"; };
@@ -979,7 +966,6 @@
 		9A839C6C25611FA900714CBE /* HHCountdowLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHCountdowLabel.m; sourceTree = "<group>"; };
 		9A869E0C2D12CCC200B78FDF /* OTAInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTAInfoManager.swift; sourceTree = "<group>"; };
 		9A869E0F2D17DDEB00B78FDF /* ABParTool.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ABParTool.xcframework; sourceTree = "<group>"; };
-		9A87D62E2E7AD09F00FC509B /* HealthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A8CA4E725272C5200EC01A7 /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
 		9A8CA4E825272C5200EC01A7 /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
 		9A8CA4E925272C5200EC01A7 /* CVRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVRange.swift; sourceTree = "<group>"; };
@@ -1122,7 +1108,6 @@
 		9AD43219271B2B33001A6E8F /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9AD4321A271B2B52001A6E8F /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9AD4321B271B2B52001A6E8F /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9AD6A5232EE1C7B000BAC61B /* FemaleHealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleHealthViewController.swift; sourceTree = "<group>"; };
 		9AE1A1542629465F00B8B10D /* ErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorCode.h; sourceTree = "<group>"; };
 		9AE1A1552629465F00B8B10D /* ErrorCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorCode.m; sourceTree = "<group>"; };
 		9AE1A1582629465F00B8B10D /* JCBlutoothInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCBlutoothInfoModel.m; sourceTree = "<group>"; };
@@ -1167,6 +1152,7 @@
 		9AEC22CC25B707C000DE899A /* BLEModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEModel.swift; sourceTree = "<group>"; };
 		9AEC22FF25B7114500DE899A /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		9AF0AA1F25AAF1CE000BDAED /* CMDData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMDData.swift; sourceTree = "<group>"; };
+		9AF3F2D62BCBFA6500AFBC55 /* HealthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCell.swift; sourceTree = "<group>"; };
 		9AF3F2DA2BCBFF2600AFBC55 /* icon_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_default.png; sourceTree = "<group>"; };
 		9AF3F2DC2BCC229B00AFBC55 /* HNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNavigationController.swift; sourceTree = "<group>"; };
 		9AFAE8582A8F21F7005EF8F8 /* JGProgressHUDSuccessIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDSuccessIndicatorView.h; sourceTree = "<group>"; };
@@ -1247,8 +1233,6 @@
 		18385E9C24517F1600EA380A /* SmartBracelet */ = {
 			isa = PBXGroup;
 			children = (
-				9A1F7EBB2E2D0A2C00EB3BBE /* SmartBraceletRelease.entitlements */,
-				9A1F7EBA2E2D070D00EB3BBE /* SmartBraceletDebug.entitlements */,
 				9A93EE542CFDE78C00C02370 /* huaxin */,
 				9A5E932E2515CC500060AB13 /* Tab */,
 				9A4E624224F7E91F00A0E878 /* Device */,
@@ -1312,16 +1296,16 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		9A06976A2E435DE800A74A7A /* scan */ = {
+		9A06980C2E477D0C00A74A7A /* scan */ = {
 			isa = PBXGroup;
 			children = (
-				9A06976B2E435DF600A74A7A /* LBXPermissions.swift */,
-				9A06976C2E435DF600A74A7A /* LBXScanLineAnimation.swift */,
-				9A06976D2E435DF600A74A7A /* LBXScanNetAnimation.swift */,
-				9A06976E2E435DF600A74A7A /* LBXScanView.swift */,
-				9A06976F2E435DF600A74A7A /* LBXScanViewController.swift */,
-				9A0697702E435DF600A74A7A /* LBXScanViewStyle.swift */,
-				9A0697712E435DF600A74A7A /* LBXScanWrapper.swift */,
+				9A0698052E477D0C00A74A7A /* LBXPermissions.swift */,
+				9A0698062E477D0C00A74A7A /* LBXScanLineAnimation.swift */,
+				9A0698072E477D0C00A74A7A /* LBXScanNetAnimation.swift */,
+				9A0698082E477D0C00A74A7A /* LBXScanView.swift */,
+				9A0698092E477D0C00A74A7A /* LBXScanViewController.swift */,
+				9A06980A2E477D0C00A74A7A /* LBXScanViewStyle.swift */,
+				9A06980B2E477D0C00A74A7A /* LBXScanWrapper.swift */,
 			);
 			path = scan;
 			sourceTree = "<group>";
@@ -1599,7 +1583,7 @@
 		9A4E624224F7E91F00A0E878 /* Device */ = {
 			isa = PBXGroup;
 			children = (
-				9A06976A2E435DE800A74A7A /* scan */,
+				9A06980C2E477D0C00A74A7A /* scan */,
 				9A5E933125164B2D0060AB13 /* AddDevice */,
 				9A6D092A2501D96500B4972F /* ClockManage */,
 				9A4E624524F8926300A0E878 /* DevicesViewController.swift */,
@@ -1615,15 +1599,16 @@
 				9A60DEEE252F401100E0D849 /* AlarmViewController.swift */,
 				9A60DEF0252F416E00E0D849 /* AlarmTableViewCell.swift */,
 				9A60DEF2252F418900E0D849 /* AlarmHeaderView.swift */,
-				9A7084D52ECC0A690000D83D /* AlarmAdd2ViewController.swift */,
+				9A60DEF4252F49A200E0D849 /* AlarmAddViewController.swift */,
+				9A58D8B726AC1F09006C09A1 /* AlarmIntervalViewController.swift */,
+				9A60DEF6252F50FF00E0D849 /* AlarmRepeatViewController.swift */,
 				9A64F0BB25DF50C30073E679 /* DAlarmModel.swift */,
 				9A4CADEF29406E6E00B0BDF8 /* QuestionItemResponse.swift */,
 				9A4CADF12940941F00B0BDF8 /* JXWebViewController.swift */,
 				9A4CADF32940944300B0BDF8 /* JXLocalizedString.swift */,
 				9A869E0C2D12CCC200B78FDF /* OTAInfoManager.swift */,
-				9A0697662E4353BD00A74A7A /* CardBagTableViewController.swift */,
-				9A0697682E4357F700A74A7A /* QRBindViewController.swift */,
-				9A7084D72ECD54CA0000D83D /* SyncContactsViewController.swift */,
+				9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */,
+				9A0698162E477D4F00A74A7A /* QRBindViewController.swift */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -1980,8 +1965,8 @@
 		9A6D092A2501D96500B4972F /* ClockManage */ = {
 			isa = PBXGroup;
 			children = (
+				9A06995E2E56AE0400A74A7A /* TripleTableViewController.swift */,
 				9A6D092D2501E3EC00B4972F /* Device.md */,
-				9A1F7CAB2E22932700EB3BBE /* TripleTableViewController.swift */,
 				9A6D092B2501D99400B4972F /* ClockManageViewController.swift */,
 				9A521068250322E500F64A7A /* ClockCollectionViewCell.swift */,
 				9A52106C2503A5D400F64A7A /* MyClockViewController.swift */,
@@ -2016,7 +2001,6 @@
 		9A7D5E4025490E850016E4BC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9A73D6F42E9F6DB3004EB209 /* ContactManager.swift */,
 				9A839C6B25611FA900714CBE /* HHCountdowLabel.h */,
 				9A839C6C25611FA900714CBE /* HHCountdowLabel.m */,
 				9A839BEE255FE5A300714CBE /* HImagePickerUtils.swift */,
@@ -2030,10 +2014,6 @@
 		9A820B6C24CD066E00A62C6F /* Health */ = {
 			isa = PBXGroup;
 			children = (
-				9A48CE592EEA664000F4E5E4 /* FemaleCycleDataManager.swift */,
-				9A48CE552EE8218C00F4E5E4 /* AllDataViewController.swift */,
-				9A48CE562EE8218C00F4E5E4 /* DataDetailViewController.swift */,
-				9A48CE532EE815F500F4E5E4 /* BodySymptomsViewController.swift */,
 				9A3C55CA2BD36A18007737A2 /* SCBreathAnimationView.swift */,
 				9A3C55C82BD36981007737A2 /* SCBreathAnimationView.xib */,
 				9AEBEC4126DE5B03008D13AA /* TTADataPickerTitleBarButtonItem.swift */,
@@ -2041,19 +2021,17 @@
 				9AEBEC3E26DE5AFC008D13AA /* TTADataPickerViewController.swift */,
 				9AEBEC3C26DE5AD0008D13AA /* TTADataPickerView.swift */,
 				9A820B6D24CD06AC00A62C6F /* HealthViewController.swift */,
-				9A87D62E2E7AD09F00FC509B /* HealthCollectionViewCell.swift */,
+				9AF3F2D62BCBFA6500AFBC55 /* HealthTableViewCell.swift */,
+				9A820B7524CEA2A500A62C6F /* HealthDetailViewController.swift */,
 				9A3C55C42BD35EE6007737A2 /* HealthValueView.swift */,
 				9A3C55CC2BD39A5E007737A2 /* FanView.swift */,
 				9A3C55CE2BD3ECA3007737A2 /* RoundView.swift */,
 				9A3C55D02BD3F41B007737A2 /* TestView.swift */,
 				9A5613F02524875400C43C6A /* CommonCalendarView.swift */,
-				9A820B7524CEA2A500A62C6F /* HealthDetailViewController.swift */,
 				9A5613F22524879600C43C6A /* CommonCalendarView.xib */,
 				9A5613F425248BFC00C43C6A /* AudioButtonView.swift */,
 				9AE1A180262AB9F900B8B10D /* HeartRateView.swift */,
 				9AE1A182262AF69400B8B10D /* HeartRateCollectionViewCell.swift */,
-				9AD6A5232EE1C7B000BAC61B /* FemaleHealthViewController.swift */,
-				9A48CE512EE7CB7D00F4E5E4 /* FemaleCycleCalendarViewController.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -2491,6 +2469,7 @@
 				18385E9824517F1600EA380A /* Resources */,
 				3C2BC16E5C3276174901A3C8 /* [CP] Copy Pods Resources */,
 				B0366B58887F6993DD4CCB8B /* [CP] Embed Pods Frameworks */,
+				9AE436382689BDAD006A588F /* ShellScript */,
 				9A99CCEC26CB57DE00D6972A /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -2508,7 +2487,7 @@
 		18385E9224517F1600EA380A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1640;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = tjd;
 				TargetAttributes = {
@@ -2641,6 +2620,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9AE436382689BDAD006A588F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #\nBUGLY_APP_ID=\"0c6ba8bb6a\"\n# #\nBUGLY_APP_KEY=\"e1bbfd26-ef91-4ea3-8a30-111ca8f18df8\"\n# #\nBUNDLE_IDENTIFIER=\"com.sinophy.smartbracelet\"\n# #\nUPLOAD_DSYM_ONLY=1\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\nUPLOAD_DEBUG_SYMBOLS=1\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\nUPLOAD_SIMULATOR_SYMBOLS=1\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\nUPLOAD_ARCHIVE_ONLY=0\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\n    BUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\n    echo \"--------------------------------\"\n    echo \"${1}\"\n    echo \"--------------------------------\"\n    exit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\n    P_APP_ID=\"$1\"\n    P_APP_KEY=\"$2\"\n    P_APP_BUNDLE_ID=\"$3\"\n    P_APP_VERSION=\"$4\"\n    P_BSYMBOL_ZIP_FILE=\"$5\"\n\n    #\n    P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\n    P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\n    P_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n\n    DSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\n    echo \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n\n    echo \"-----------------------------\"\n    STATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\n    echo \"-----------------------------\"\n\n    UPLOAD_RESULT=\"FAILTURE\"\n    echo \"Bugly server response: ${STATUS}\"\n    if [ ! \"${STATUS}\" ]; then\n        echo \"Error: Failed to upload the zip archive file.\"\n    elif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\n        echo \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\n        UPLOAD_RESULT=\"SUCCESS\"\n    else\n        echo \"Error: Failed to upload the zip archive file to Bugly.\"\n    fi\n\n    #Remove temp dSYM archive\n    #echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n    #/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n\n    if [ \"$?\" -ne 0 ]; then\n        exitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\n    fi\n\n    echo \"--------------------------------\"\n    echo \"${UPLOAD_RESULT} - dSYM upload complete.\"\n\n    if [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\n        echo \"--------------------------------\"\n        echo \"Failed to upload the dSYM\"\n        echo \"Please check the script and try it again.\"\n    fi\n}\n\n# .dSYM解析为bSYMBOL文件\nfunction dSYMParse() {\n    DSYM_FILE=\"$1\"\n    DSYM_SYMBOL_FILE=\"$2\"\n\n    echo \"--------------------------------\"\n    echo \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n    (/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\n    echo \"--------------------------------\"\n\n}\n\n# 执行\nfunction run() {\n\n    CONFIG_BUGLY_APP_ID=\"$1\"\n    CONFIG_BUGLY_APP_KEY=\"$2\"\n\n    CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\n    CONFIG_BUGLY_APP_VERSION=\"$4\"\n    CONFIG_DSYM_SOURCE_DIR=\"$5\"\n    CONFIG_DSYM_DEST_DIR=\"$6\"\n    CONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n\n    # 检查必须参数是否设置\n    if [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\n        exitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\n    fi\n\n    if [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\n        exitWithMessage \"Error: Bugly App ID not defined.\" 0\n    fi\n\n    if [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\n        exitWithMessage \"Error: Bugly App Key not defined.\" 0\n    fi\n\n    if [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\n        exitWithMessage \"Error: Bundle Identifier not defined.\" 0\n    fi\n\n    if [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\n        exitWithMessage \"Error: App Version not defined.\" 0\n    fi\n\n    if [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\n        exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\n    fi\n\n    if [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n        exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\n    fi\n\n    if [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n        mkdir ${CONFIG_DSYM_DEST_DIR}\n    fi\n\n    DSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\n    IFS=$'\\n'\n\n    echo \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\n    RET=\"F\"\n    \n    #\n    for dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\n        RET=\"T\"\n        echo \"Found dSYM file: $dsymFile\"\n\n        DSYM_FILE_NAME=${dsymFile##*/}\n        DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\n        DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\n        DSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n\n        if [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\n            if [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\n                rm -f $DSYM_SYMBOL_ZIP_FILE\n            fi\n            sleep 6\n            # 如果只上传dSYM，直接压缩dSYM目录\n            zip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\n        else\n            # 使用符号表工具来生成Symbol文件\n            dSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\n        fi\n        \n        # 上传\n        dSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\n    done\n\n    if [ $RET = \"F\" ]; then\n        exitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\n    fi\n}\n\n# 在Xcode工程中执行\nfunction runInXcode(){\n    echo \"Uploading dSYM to Bugly in Xcode ...\"\n\n    echo \"Info.Plist : ${INFOPLIST_FILE}\"\n\n    BUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\n    BUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n\n    # 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\n    if [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\n        BUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\n    else\n        BUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\n    fi\n\n    echo \"--------------------------------\"\n    echo \"Prepare application information.\"\n    echo \"--------------------------------\"\n\n    echo \"Product Name: ${PRODUCT_NAME}\"\n    echo \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\n    echo \"Version: ${BUNDLE_SHORT_VERSION}\"\n    echo \"Build: ${BUNDLE_VERSION}\"\n\n    echo \"Bugly App ID: ${BUGLY_APP_ID}\"\n    echo \"Bugly App key: ${BUGLY_APP_KEY}\"\n    echo \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n\n    echo \"--------------------------------\"\n    echo \"Check the arguments ...\"\n\n    ##检查模拟器编译是否允许上传符号\n    if [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\n    if [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\n        exitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\n    fi\n    fi\n\n    ##检查是否是Release模式编译\n    if [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\n    if [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\n        exitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\n    fi\n    fi\n\n    ##检查是否Archive操作\n    if [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\n    if [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\n        echo \"Archive the package\"\n    else\n        exitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\n    fi\n    fi\n\n    #\n    run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n}\n\n# 根据Xcode的环境变量判断是否处于Xcode环境\nINFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n\nBuildInXcode=\"F\"\nif [ -f \"${INFO_PLIST_FILE}\" ]; then\n    BuildInXcode=\"T\"\nfi\n\nif [ $BuildInXcode = \"T\" ]; then\n    runInXcode\nelse\n    echo \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n    # 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\n    BUGLY_APP_ID=\"$1\"\n    BUGLY_APP_KEY=\"$2\"\n    BUNDLE_IDENTIFIER=\"$3\"\n    BUGLY_APP_VERSION=\"$4\"\n    DWARF_DSYM_FOLDER_PATH=\"$5\"\n    SYMBOL_OUTPUT_PATH=\"$6\"\n    UPLOAD_DSYM_ONLY=$7\n    run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\nfi\n";
+		};
 		A24156E0CECCDDD3132674C8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2692,7 +2688,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A56D26525216FC60082CC08 /* BarLineChartViewBase.swift in Sources */,
-				9A48CE522EE7CB7D00F4E5E4 /* FemaleCycleCalendarViewController.swift in Sources */,
 				9A367B7B25BD208100BFB4C3 /* Variable.swift in Sources */,
 				9A8CA51225272C5200EC01A7 /* CVCalendarViewDelegate.swift in Sources */,
 				9A60DED2252EBDC700E0D849 /* InputHeightViewController.swift in Sources */,
@@ -2717,8 +2712,8 @@
 				9A2181962558290B000330E5 /* SetTargetCViewController.swift in Sources */,
 				9A56D2A625216FC70082CC08 /* BubbleChartData.swift in Sources */,
 				9A56D24C25216FC60082CC08 /* ChevronDownShapeRenderer.swift in Sources */,
-				9A7084D62ECC0A690000D83D /* AlarmAdd2ViewController.swift in Sources */,
 				9A56D2B025216FC70082CC08 /* LineScatterCandleRadarChartDataSet.swift in Sources */,
+				9A06995F2E56AE0400A74A7A /* TripleTableViewController.swift in Sources */,
 				9A56D29725216FC70082CC08 /* BarChartDataSet.swift in Sources */,
 				9A56D26325216FC60082CC08 /* CandleStickChartView.swift in Sources */,
 				9A56D29525216FC70082CC08 /* ChartData.swift in Sources */,
@@ -2748,7 +2743,6 @@
 				9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */,
 				9AB5BE142A06644500680757 /* JLBlueManager.swift in Sources */,
 				9A839BEF255FE5A300714CBE /* HImagePickerUtils.swift in Sources */,
-				9A1F7CAC2E22932700EB3BBE /* TripleTableViewController.swift in Sources */,
 				9A56D2B825216FC70082CC08 /* IChartDataSet.swift in Sources */,
 				9A8CA50825272C5200EC01A7 /* CVWeekdaySymbolType.swift in Sources */,
 				9A56D25525216FC60082CC08 /* YAxisRendererRadarChart.swift in Sources */,
@@ -2778,6 +2772,7 @@
 				9A56D27F25216FC60082CC08 /* Platform.swift in Sources */,
 				9A56D28525216FC60082CC08 /* IMarker.swift in Sources */,
 				9A5E933325164B410060AB13 /* DeviceSearchViewController.swift in Sources */,
+				9A58D8B826AC1F09006C09A1 /* AlarmIntervalViewController.swift in Sources */,
 				9AA2E0602B343C9C0008CA56 /* TorchMode.swift in Sources */,
 				9A4CADF22940941F00B0BDF8 /* JXWebViewController.swift in Sources */,
 				9A56D2A325216FC70082CC08 /* ChartDataEntryBase.swift in Sources */,
@@ -2810,6 +2805,7 @@
 				9A56D28825216FC60082CC08 /* LegendEntry.swift in Sources */,
 				9A56D23E25216FC60082CC08 /* BubbleChartRenderer.swift in Sources */,
 				9A60DED9252F002400E0D849 /* CurrentCityTableViewCell.swift in Sources */,
+				9AF3F2D72BCBFA6500AFBC55 /* HealthTableViewCell.swift in Sources */,
 				9A8CA52525272C5200EC01A7 /* CVPresent.swift in Sources */,
 				9A93EE552CFDE78C00C02370 /* XGZTSwitchDevice.swift in Sources */,
 				9A93EE562CFDE78C00C02370 /* XGZTBusinessHandler.swift in Sources */,
@@ -2835,11 +2831,11 @@
 				9A56D2B925216FC70082CC08 /* ICandleChartDataSet.swift in Sources */,
 				9AE66876267E491A00A8584A /* DOxygenModel.swift in Sources */,
 				9A8CA50A25272C5200EC01A7 /* CVCalendarMonthView.swift in Sources */,
+				9A60DEF5252F49A200E0D849 /* AlarmAddViewController.swift in Sources */,
 				9A32B06B2543C5C7008F0E26 /* BLEManager.swift in Sources */,
 				9AE1A16B2629465F00B8B10D /* ErrorCode.m in Sources */,
 				9A28DA78251CC6E800F7B260 /* DeviceListViewController.swift in Sources */,
 				9A839C652560F40300714CBE /* SGSportingViewController.m in Sources */,
-				9A0697672E4353BD00A74A7A /* CardBagTableViewController.swift in Sources */,
 				9A8CA51F25272C5200EC01A7 /* CVCalendarViewAnimator.swift in Sources */,
 				9A367B5325BD081D00BFB4C3 /* DeviceTableViewCell.swift in Sources */,
 				9A56D24425216FC60082CC08 /* CombinedChartRenderer.swift in Sources */,
@@ -2917,12 +2913,9 @@
 				9A350BEF24EB5DE0004CEE6A /* DataRecordViewController.swift in Sources */,
 				9A8CA52325272C5200EC01A7 /* CVShape.swift in Sources */,
 				9A56D29925216FC70082CC08 /* BarLineScatterCandleBubbleChartDataSet.swift in Sources */,
-				9A48CE572EE8218C00F4E5E4 /* DataDetailViewController.swift in Sources */,
-				9A48CE582EE8218C00F4E5E4 /* AllDataViewController.swift in Sources */,
 				9AC58A1528C37A3800992836 /* ClockResponse.swift in Sources */,
 				9A8CA529252CA8BA00EC01A7 /* DataRecordTableViewCell.swift in Sources */,
 				9AEBEC3426D2A3BE008D13AA /* BLEDeviceNameHandler.swift in Sources */,
-				9A87D62F2E7AD09F00FC509B /* HealthCollectionViewCell.swift in Sources */,
 				9A56D29825216FC70082CC08 /* RadarChartDataEntry.swift in Sources */,
 				9A56D29D25216FC70082CC08 /* LineChartData.swift in Sources */,
 				9AFAE8772A8F21F7005EF8F8 /* JGProgressHUDIndicatorView.m in Sources */,
@@ -2996,6 +2989,7 @@
 				9AF0AA2025AAF1CE000BDAED /* CMDData.swift in Sources */,
 				9A56D2A825216FC70082CC08 /* ScatterChartDataSet.swift in Sources */,
 				9A60DEEF252F401100E0D849 /* AlarmViewController.swift in Sources */,
+				9A0698152E477D3300A74A7A /* CardBagTableViewController.swift in Sources */,
 				9A56D2BF25216FC70082CC08 /* CandleChartDataProvider.swift in Sources */,
 				9A56D2A925216FC70082CC08 /* ScatterChartData.swift in Sources */,
 				9A820B7424CEA1CC00A62C6F /* BaseViewController.swift in Sources */,
@@ -3019,10 +3013,8 @@
 				9A820B8D24D11E3000A62C6F /* SetTargetBViewController.swift in Sources */,
 				9AA2E05C2B343C9C0008CA56 /* AVMetadataObject+Extensions.swift in Sources */,
 				9A56D24125216FC60082CC08 /* ChartDataRendererBase.swift in Sources */,
-				9A73D6F52E9F6DB6004EB209 /* ContactManager.swift in Sources */,
 				9A2185B2255BC7E8000330E5 /* GuideViewController.swift in Sources */,
 				9A56D24D25216FC60082CC08 /* IShapeRenderer.swift in Sources */,
-				9A0697692E4357F700A74A7A /* QRBindViewController.swift in Sources */,
 				9A521069250322E500F64A7A /* ClockCollectionViewCell.swift in Sources */,
 				9A7C31A4276EFFAD00BC1BFB /* UploadImageViewController.swift in Sources */,
 				9A5210712503DB2E00F64A7A /* ClockCCollectionViewCell.swift in Sources */,
@@ -3043,6 +3035,13 @@
 				9A21BFF92D0082E00048CF53 /* OtaConstants.swift in Sources */,
 				9A21BFFA2D0082E00048CF53 /* Logger.swift in Sources */,
 				9A21BFFB2D0082E00048CF53 /* DataReader.swift in Sources */,
+				9A06980D2E477D0C00A74A7A /* LBXScanView.swift in Sources */,
+				9A06980E2E477D0C00A74A7A /* LBXScanViewStyle.swift in Sources */,
+				9A06980F2E477D0C00A74A7A /* LBXScanWrapper.swift in Sources */,
+				9A0698102E477D0C00A74A7A /* LBXScanLineAnimation.swift in Sources */,
+				9A0698112E477D0C00A74A7A /* LBXScanViewController.swift in Sources */,
+				9A0698122E477D0C00A74A7A /* LBXScanNetAnimation.swift in Sources */,
+				9A0698132E477D0C00A74A7A /* LBXPermissions.swift in Sources */,
 				9A21BFFC2D0082E00048CF53 /* LoggerDelegate.swift in Sources */,
 				9A21BFFD2D0082E00048CF53 /* OtaCommandGenerator.swift in Sources */,
 				9A21BFFE2D0082E00048CF53 /* ABOtaManager.swift in Sources */,
@@ -3055,20 +3054,11 @@
 				9A820B8024CEDCDA00A62C6F /* UIColor+Extension.swift in Sources */,
 				9AE436372686BF6E006A588F /* CurveView.swift in Sources */,
 				9A8CA51825272C5200EC01A7 /* CVCalendarContentPresentationCoordinator.swift in Sources */,
-				9A48CE5A2EEA664000F4E5E4 /* FemaleCycleDataManager.swift in Sources */,
 				9A56D24F25216FC60082CC08 /* CrossShapeRenderer.swift in Sources */,
-				9A0697722E435DF600A74A7A /* LBXScanLineAnimation.swift in Sources */,
-				9A0697732E435DF600A74A7A /* LBXScanView.swift in Sources */,
-				9A0697742E435DF600A74A7A /* LBXScanViewStyle.swift in Sources */,
-				9A0697752E435DF600A74A7A /* LBXScanNetAnimation.swift in Sources */,
-				9A0697762E435DF600A74A7A /* LBXPermissions.swift in Sources */,
-				9A0697772E435DF600A74A7A /* LBXScanViewController.swift in Sources */,
-				9A0697782E435DF600A74A7A /* LBXScanWrapper.swift in Sources */,
 				9A33D30E26AD9A4F00DF9618 /* SingleImageSaver.swift in Sources */,
 				9A56D25925216FC60082CC08 /* BarHighlighter.swift in Sources */,
 				9A839C5B2560F3FA00714CBE /* SGPolyLine.m in Sources */,
 				9A58D8B626ABC4A1006C09A1 /* LongsitSettingsViewController.swift in Sources */,
-				9A48CE542EE815F500F4E5E4 /* BodySymptomsViewController.swift in Sources */,
 				9A56D29425216FC70082CC08 /* AnimatedMoveViewJob.swift in Sources */,
 				9A56D25B25216FC60082CC08 /* Highlight.swift in Sources */,
 				9A820B6E24CD06AC00A62C6F /* HealthViewController.swift in Sources */,
@@ -3114,7 +3104,6 @@
 				18385F0B2451819E00EA380A /* DetailViewController.swift in Sources */,
 				9AA2E0592B343C9C0008CA56 /* UIViewController+Extensions.swift in Sources */,
 				9A56D2AF25216FC70082CC08 /* BarChartData.swift in Sources */,
-				9A7084D82ECD54CA0000D83D /* SyncContactsViewController.swift in Sources */,
 				9A7D5E4225490EA20016E4BC /* MRGCDTimer.swift in Sources */,
 				9A56D2C025216FC70082CC08 /* CombinedChartDataProvider.swift in Sources */,
 				9AFAE8732A8F21F7005EF8F8 /* JGProgressHUDAnimation.m in Sources */,
@@ -3123,6 +3112,7 @@
 				9A8CA51925272C5200EC01A7 /* CVScrollDirection.swift in Sources */,
 				9A60DEDE252F002D00E0D849 /* UIColor+Hex.swift in Sources */,
 				9A56D2C425216FC70082CC08 /* BubbleChartDataProvider.swift in Sources */,
+				9A0698172E477D4F00A74A7A /* QRBindViewController.swift in Sources */,
 				9A56D28125216FC60082CC08 /* TransformerHorizontalBarChart.swift in Sources */,
 				9A8CA51A25272C5200EC01A7 /* CVCalendarTouchController.swift in Sources */,
 				9A61685C25DBDA7800918EFC /* SportDataModel.swift in Sources */,
@@ -3140,12 +3130,12 @@
 				9A56D28B25216FC60082CC08 /* XAxis.swift in Sources */,
 				9A56D25A25216FC60082CC08 /* RadarHighlighter.swift in Sources */,
 				9A56D26825216FC60082CC08 /* HorizontalBarChartView.swift in Sources */,
-				9AD6A5242EE1C7B000BAC61B /* FemaleHealthViewController.swift in Sources */,
 				9A3C55CD2BD39A5E007737A2 /* FanView.swift in Sources */,
 				9A33D31026AD9A4F00DF9618 /* PhotoLibraryAuthorizer.swift in Sources */,
 				9A5E932D2515C9710060AB13 /* UserManager.swift in Sources */,
 				9A7315C22871B0BA00D378A7 /* NetworkManager.swift in Sources */,
 				9AB5BE472A164CFA00680757 /* SCFloatingWindowReviewView.swift in Sources */,
+				9A60DEF7252F50FF00E0D849 /* AlarmRepeatViewController.swift in Sources */,
 				9A56D27125216FC60082CC08 /* IAxisValueFormatter.swift in Sources */,
 				9A8CA50B25272C5200EC01A7 /* CVCalendarViewAppearance.swift in Sources */,
 			);
@@ -3365,13 +3355,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = SmartBracelet/SmartBraceletDebug.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
-				DEVELOPMENT_TEAM = 6BTCM549U7;
+				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64=arm64 arm64e armv7 armv7s armv6 armv8 EXCLUDED_ARCHS=$(inherited) $(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT))";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64=arm64 arm64 arm64e armv7 armv7s armv8 EXCLUDED_ARCHS=$(inherited) $(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT))";
@@ -3392,9 +3382,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 2.5.9;
+				MARKETING_VERSION = 1.6.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sinophy.uwatch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -3414,12 +3404,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = SmartBracelet/SmartBraceletRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
-				DEVELOPMENT_TEAM = 6BTCM549U7;
+				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64=arm64 arm64e armv7 armv7s armv6 armv8 EXCLUDED_ARCHS=$(inherited) $(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT))";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_simulator__NATIVE_ARCH_64_BIT_x86_64=arm64 arm64 arm64e armv7 armv7s armv8 EXCLUDED_ARCHS=$(inherited) $(EXCLUDED_ARCHS__EFFECTIVE_PLATFORM_SUFFIX_$(EFFECTIVE_PLATFORM_SUFFIX)__NATIVE_ARCH_64_BIT_$(NATIVE_ARCH_64_BIT))";
@@ -3440,9 +3430,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 2.5.9;
+				MARKETING_VERSION = 1.6.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sinophy.uwatch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -62,6 +62,7 @@ class ClockManageViewController: BaseViewController {
         // 配置ScrollView
         automaticallyAdjustsScrollViewInsets = false
         scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.isScrollEnabled = false
         scrollView.bounces = false
         scrollView.isScrollEnabled = false // 禁用手动滑动
         scrollView.delegate = self

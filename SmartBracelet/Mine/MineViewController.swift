@@ -162,6 +162,7 @@ class MineViewController: BaseViewController {
                     } else if code.count > 0 && code.contains("k=") {
                         XLogger.shared.log("扫描的结果是新设备")
                         self?.bHavenScanResult = true
+                        
                         // 手动解析k参数值（避免URLComponents旧系统兼容问题）
                         if let kParamStart = code.range(of: "k=")?.upperBound {
                             // 找到k参数的结束位置（&符号或字符串结尾）
@@ -197,7 +198,6 @@ class MineViewController: BaseViewController {
                             XLogger.shared.log("扫描的结果有错误2：未找到k参数")
                             self?.dismiss(animated: true, completion: nil)
                         }
-
                     } else {
                         XLogger.shared.log("扫描的结果是无设备")
                     }

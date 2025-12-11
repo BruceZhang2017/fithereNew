@@ -213,6 +213,55 @@ class MyClockViewController: UIViewController {
             image.draw(in: CGRect(origin: .zero, size: targetSize))
         }
     }
+
+    // 保存图片到沙盒
+    private func saveImageToSandbox(_ image: UIImage, name: String) {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileName = "\(name)_\(Date().timeIntervalSince1970).jpg"
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        
+        guard let data = image.jpegData(compressionQuality: 1.0) else { return }
+        
+        do {
+            try data.write(to: fileURL)
+            XLogger.shared.log("Saved image to: \(fileURL.path)")
+            // 验证文件存在
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: fileURL.path) {
+                let fileSize = try fileManager.attributesOfItem(atPath: fileURL.path)[.size] as? Int ?? 0
+                XLogger.shared.log("图片大小: \(fileSize) 字节")
+            }
+        } catch {
+            XLogger.shared.log("Error saving image: \(error.localizedDescription)")
+        }
+    }
+
+    // 保存数据到沙盒
+    private func saveDataToSandbox(_ data: Data, name: String) {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            XLogger.shared.log("无法获取Documents目录")
+            return
+        }
+        
+        let fileName = "\(name)_\(Date().timeIntervalSince1970).bin"
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        
+        XLogger.shared.log("尝试保存文件到: \(fileURL.path)")
+        
+        do {
+            try data.write(to: fileURL, options: .atomic)
+            XLogger.shared.log("保存成功: \(fileURL.path)")
+            
+            // 验证文件存在
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: fileURL.path) {
+                let fileSize = try fileManager.attributesOfItem(atPath: fileURL.path)[.size] as? Int ?? 0
+                XLogger.shared.log("文件大小: \(fileSize) 字节")
+            }
+        } catch {
+            XLogger.shared.log("保存失败: \(error.localizedDescription)")
+        }
+    }
     
     func resizeAndReduceRGB(image: UIImage, targetSize: CGSize) -> UIImage? {
         // 首先调整图像大小
