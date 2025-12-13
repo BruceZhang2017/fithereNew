@@ -1377,6 +1377,19 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		9A0EC4802EED589B0012C7E5 /* Female */ = {
+			isa = PBXGroup;
+			children = (
+				9A48CE592EEA664000F4E5E4 /* FemaleCycleDataManager.swift */,
+				9A48CE552EE8218C00F4E5E4 /* AllDataViewController.swift */,
+				9A48CE562EE8218C00F4E5E4 /* DataDetailViewController.swift */,
+				9A48CE532EE815F500F4E5E4 /* BodySymptomsViewController.swift */,
+				9AD6A5232EE1C7B000BAC61B /* FemaleHealthViewController.swift */,
+				9A48CE512EE7CB7D00F4E5E4 /* FemaleCycleCalendarViewController.swift */,
+			);
+			path = Female;
+			sourceTree = "<group>";
+		};
 		9A2181612557ED9B000330E5 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -2028,11 +2041,8 @@
 		9A820B6C24CD066E00A62C6F /* Health */ = {
 			isa = PBXGroup;
 			children = (
+				9A0EC4802EED589B0012C7E5 /* Female */,
 				9A0EC47B2EEAD55D0012C7E5 /* HealthTableViewCell.swift */,
-				9A48CE592EEA664000F4E5E4 /* FemaleCycleDataManager.swift */,
-				9A48CE552EE8218C00F4E5E4 /* AllDataViewController.swift */,
-				9A48CE562EE8218C00F4E5E4 /* DataDetailViewController.swift */,
-				9A48CE532EE815F500F4E5E4 /* BodySymptomsViewController.swift */,
 				9A3C55CA2BD36A18007737A2 /* SCBreathAnimationView.swift */,
 				9A3C55C82BD36981007737A2 /* SCBreathAnimationView.xib */,
 				9AEBEC4126DE5B03008D13AA /* TTADataPickerTitleBarButtonItem.swift */,
@@ -2051,8 +2061,6 @@
 				9A5613F425248BFC00C43C6A /* AudioButtonView.swift */,
 				9AE1A180262AB9F900B8B10D /* HeartRateView.swift */,
 				9AE1A182262AF69400B8B10D /* HeartRateCollectionViewCell.swift */,
-				9AD6A5232EE1C7B000BAC61B /* FemaleHealthViewController.swift */,
-				9A48CE512EE7CB7D00F4E5E4 /* FemaleCycleCalendarViewController.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
