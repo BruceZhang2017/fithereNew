@@ -19,6 +19,29 @@ class DeviceSettingsViewController: UIViewController {
     //var footerView: UIView!
     var cameraViewController: CameraViewController?
     private var currentTime: TimeInterval = 0 // 当前时间戳
+    private var cachedDisplayTitles: [String]?
+    
+    private var displayTitles: [String] {
+        if let cached = cachedDisplayTitles {
+            return cached
+        }
+        let f15 = ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15) & 0x01
+        let f16 = ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 16) & 0x01
+        var filterCount = isXGZT ?
+            (f15 > 0 ? 0 : 1) : 3
+        if isXGZT {
+            if f16 == 0 {
+                filterCount += 1
+            }
+        }
+        let result = Array(titles.dropLast(filterCount))
+        cachedDisplayTitles = result
+        if isXGZT && f15 == 0 && f16 == 1 && cachedDisplayTitles?.count == 15 {
+            cachedDisplayTitles?[14] = "sync_contacts".localized()
+        }
+        XLogger.shared.log("f15=\(f15) f16=\(f16)")
+        return result
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +100,8 @@ class DeviceSettingsViewController: UIViewController {
                     Toast(text: "mine_unconnect".localized()).show()
                     return
                 }
+                guard isXGZT else { return }
+                cachedDisplayTitles = nil // 清除缓存
                 if device.longsit != nil {
                     return
                 }
@@ -354,16 +379,12 @@ extension DeviceSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var value = 1
-        if ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15 & 0x0f) > 0 {
-            value = 0
-        }
-        return isXGZT ? (titles.count - value) : (titles.count - 2)
+        return displayTitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .kCellIdentifier, for: indexPath) as! DeviceSettingsTableViewCell
-        cell.textLabel?.text = titles[indexPath.row]
+        cell.textLabel?.text = displayTitles[indexPath.row]
         cell.textLabel?.textColor = UIColor.text_secondary
         cell.textLabel?.font = UIFont.body1()
         if (indexPath.row >= 1 && indexPath.row <= 3) || indexPath.row == 5 {
@@ -503,9 +524,20 @@ extension DeviceSettingsViewController: UITableViewDelegate {
             vc.hidesBottomBarWhenPushed = true
             parent?.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 14 { // 卡包
-            let cardVC = CardBagTableViewController()
-            cardVC.hidesBottomBarWhenPushed = true
-            parent?.navigationController?.pushViewController(cardVC, animated: true)
+            let f15 = ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15) & 0x01
+            if f15 > 0 {
+                let cardVC = CardBagTableViewController()
+                cardVC.hidesBottomBarWhenPushed = true
+                parent?.navigationController?.pushViewController(cardVC, animated: true)
+            } else {
+                let vc = SyncContactsViewController()
+                vc.hidesBottomBarWhenPushed = true
+                parent?.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else if indexPath.row == 15 { // 同步联系人
+            let vc = SyncContactsViewController()
+            vc.hidesBottomBarWhenPushed = true
+            parent?.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -516,7 +548,7 @@ extension DeviceSettingsViewController: UITableViewDelegate {
 
 extension DeviceSettingsViewController {
     var titles: [String] {
-        return ["device_push_settings".localized(), "device_call_amind".localized(), "device_hand_up_screen".localized(), "device_longsit_amind".localized(), "device_longsit_amind_time".localized(),"drink_water_reminder".localized(), "drink_water_reminder_time".localized(), "device_weather_push".localized(), "device_alarm_settings".localized(), "device_search_settings".localized(), "device_device_info".localized(),"device_shark_photo".localized(), "synchronize_data".localized(), "ota".localized(), "cardbag".localized()]
+        return ["device_push_settings".localized(), "device_call_amind".localized(), "device_hand_up_screen".localized(), "device_longsit_amind".localized(), "device_longsit_amind_time".localized(),"drink_water_reminder".localized(), "drink_water_reminder_time".localized(), "device_weather_push".localized(), "device_alarm_settings".localized(), "device_search_settings".localized(), "device_device_info".localized(),"device_shark_photo".localized(), "synchronize_data".localized(), "ota".localized(), "cardbag".localized(), "sync_contacts".localized()]
     }
 }
 

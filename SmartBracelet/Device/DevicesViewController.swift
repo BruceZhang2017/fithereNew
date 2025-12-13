@@ -742,9 +742,10 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
             count += cacheDevices.count
             let storyboard = UIStoryboard(name: "Device", bundle: nil)
             if count == 0 {
-                let vc = SelectAddActionViewController()
-                vc.modalPresentationStyle = .fullScreen
-                self.navigationController?.tabBarController?.present(vc, animated: false)
+                let vc = storyboard.instantiateViewController(withIdentifier: "DeviceSearchViewController")
+                vc.title = "device_add".localized()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = storyboard.instantiateViewController(withIdentifier: "DeviceListViewController")
                 vc.title = "device_change".localized()
