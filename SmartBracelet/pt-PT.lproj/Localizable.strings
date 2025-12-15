@@ -409,3 +409,148 @@
 "please_choose_day" = "Por favor, escolha um dia da semana";
 "add_contact_fail1" = "Falha ao adicionar contato, verifique se o dispositivo possui a função de sincronização de contatos!";
 "add_contact_fail2" = "Falha ao adicionar contato, o dispositivo ainda não respondeu ao comando.";
+
+
+// Female Health Cycle - Ciclo de saúde feminino
+"female_cycle_title" = "Ciclo menstrual";
+"female_cycle_all_data" = "Todos os dados";
+"female_cycle_data_detail" = "Detalhes dos dados";
+"female_cycle_body_symptoms" = "Sintomas corporais";
+"female_cycle_settings" = "Configurações do ciclo";
+"female_cycle_overview" = "Visão geral do ciclo";
+"female_cycle_period" = "Período";
+"female_cycle_cycle" = "Ciclo";
+"female_cycle_ovulation" = "Ovulação";
+"female_cycle_predicted_period" = "Período previsto";
+"female_cycle_has_record" = "Tem registo";
+"female_cycle_daily_record" = "Registo diário";
+"female_cycle_day_number" = "Dia %d";
+"female_cycle_period_day" = "Dia %d\nPeríodo";
+"female_cycle_record_symptoms" = "Registar sintomas";
+"female_cycle_period_started" = "O seu período começou?";
+"female_cycle_start_prediction" = "Iniciar previsão";
+"female_cycle_save" = "Guardar";
+"female_cycle_confirm" = "Confirmar";
+"female_cycle_cancel" = "Cancelar";
+"female_cycle_today" = "Hoje";
+"female_cycle_future_tip" = "⚠️ Não é possível registar datas futuras";
+"female_cycle_weekday_0" = "Dom";
+"female_cycle_weekday_1" = "Seg";
+"female_cycle_weekday_2" = "Ter";
+"female_cycle_weekday_3" = "Qua";
+"female_cycle_weekday_4" = "Qui";
+"female_cycle_weekday_5" = "Sex";
+"female_cycle_weekday_6" = "Sáb";
+"female_cycle_total_days" = "Total %d dias";
+
+"female_cycle_question_period_days" = "Quantos dias dura normalmente o seu período?";
+"female_cycle_question_cycle_length" = "Qual é normalmente a duração do seu ciclo menstrual?";
+"female_cycle_question_last_period" = "Quando começou o seu último período?";
+"female_cycle_period_days" = "Dias do período";
+"female_cycle_cycle_length" = "Duração do ciclo";
+"female_cycle_last_period_date" = "Data do último período";
+"female_cycle_select_period_days" = "Selecionar dias do período";
+"female_cycle_select_cycle_length" = "Selecionar duração do ciclo";
+"female_cycle_select_date" = "Selecionar data";
+"female_cycle_days_unit" = "%d dias";
+
+"female_cycle_desc_general" = "O ciclo menstrual refere-se ao período desde o primeiro dia de um período até ao primeiro dia do seguinte. Um ciclo menstrual normal dura normalmente 21-35 dias e o período em si dura 2-7 dias. No entanto, a duração do ciclo varia de pessoa para pessoa e é influenciada por fatores como genética, níveis hormonais, estado de saúde, nutrição e estilo de vida.";
+"female_cycle_desc_period" = "Durante o seu período, preste atenção à higiene pessoal e ao descanso. Evite exercício intenso, água fria e alimentos picantes. Mantenha um bom humor e consuma alimentos ricos em ferro como carne vermelha e espinafres.";
+"female_cycle_desc_ovulation" = "Durante a ovulação, o ovário liberta um óvulo maduro pronto para fertilização. Este é normalmente o momento mais fértil. Mantenha hábitos de vida saudáveis, incluindo uma dieta apropriada, sono suficiente e exercício moderado, e evite stress e tensão excessivos.";
+"female_cycle_desc_safe_period" = "Período seguro";
+"female_cycle_record_time" = "Registado em 'Fit-here' a";
+
+"female_symptom_flow" = "Fluxo menstrual";
+"female_symptom_flow_light" = "Leve";
+"female_symptom_flow_medium" = "Médio";
+"female_symptom_flow_heavy" = "Abundante";
+"female_symptom_flow_none" = "Nenhum";
+
+"female_symptom_pain" = "Dor menstrual";
+"female_symptom_pain_mild" = "Leve";
+"female_symptom_pain_moderate" = "Moderada";
+"female_symptom_pain_severe" = "Severa";
+"female_symptom_pain_none" = "Nenhuma";
+
+"female_symptom_sexual" = "Relações sexuais";
+"female_symptom_sexual_protected" = "Protegidas";
+"female_symptom_sexual_unprotected" = "Desprotegidas";
+"female_symptom_sexual_none" = "Nenhuma";
+
+"female_symptom_mood" = "Humor";
+"female_symptom_mood_calm" = "Calmo";
+"female_symptom_mood_happy" = "Feliz";
+"female_symptom_mood_relaxed" = "Relaxado";
+"female_symptom_mood_energetic" = "Energético";
+"female_symptom_mood_sensitive" = "Sensível";
+"female_symptom_mood_anxious" = "Ansioso";
+"female_symptom_mood_irritable" = "Irritável";
+"female_symptom_mood_sad" = "Triste";
+"female_symptom_mood_none" = "Nenhum";
+
+"female_symptom_category_whole_body" = "Corpo inteiro";
+"female_symptom_normal" = "Normal";
+"female_symptom_cramp" = "Cãibras";
+"female_symptom_fatigue" = "Fadiga";
+"female_symptom_edema" = "Inchaço";
+
+"female_symptom_category_head" = "Cabeça";
+"female_symptom_headache" = "Dor de cabeça";
+"female_symptom_dizziness" = "Tonturas";
+"female_symptom_vomiting" = "Vômitos";
+"female_symptom_insomnia" = "Insônia";
+
+"female_symptom_category_abdomen" = "Abdômen";
+"female_symptom_diarrhea" = "Diarreia";
+"female_symptom_lower_abdominal_pain" = "Dor abdominal inferior";
+"female_symptom_abdominal_swelling" = "Inchaço abdominal";
+"female_symptom_abdominal_pain" = "Dor abdominal";
+
+"female_symptom_category_legs" = "Pernas";
+"female_symptom_thigh_soreness" = "Dor nas coxas";
+"female_symptom_thigh_spasm" = "Espasmos nas coxas";
+"female_symptom_calf_soreness" = "Dor nas panturrilhas";
+"female_symptom_calf_spasm" = "Espasmos nas panturrilhas";
+
+"female_symptom_category_other" = "Outro";
+"female_symptom_breast_tenderness" = "Sensibilidade mamária";
+"female_symptom_backache" = "Dor nas costas";
+"female_symptom_hot_flash" = "Afrontamentos";
+"female_symptom_cold" = "Sensação de frio";
+
+"female_symptom_category_discharge" = "Corrimento";
+"female_symptom_dry" = "Seco";
+"female_symptom_sticky" = "Pegajoso";
+"female_symptom_egg_white" = "Clara de ovo";
+"female_symptom_watery" = "Aquoso";
+"female_symptom_milky" = "Leitoso";
+
+"female_symptom_category_skin" = "Pele";
+"female_symptom_oily" = "Oleosa";
+"female_symptom_acne" = "Acne";
+"female_symptom_pimple" = "Espinha";
+"female_symptom_none" = "Nenhum";
+
+// Sport
+"sport_grade" = "Nível";
+"sport_distance" = "Distância";
+"sport_duration" = "Duração";
+"sport_pace" = "Ritmo";
+"sport_desc_come_on" = "Vamos lá";
+"sport_desc_love_route" = "O seu percurso favorito";
+"sport_desc_lifetime" = "Toda a vida";
+"sport_desc_beyond_half_marathon" = "Além da meia maratona";
+"sport_desc_beyond_full_marathon" = "Além da maratona";
+"sport_desc_beyond_yourself" = "Supere-se";
+"sport_month_suffix" = "Mês";
+"sport_title" = "Desporto";
+"sport_type_running" = "Corrida";
+"sport_type_cycling" = "Ciclismo";
+"sport_type_walking" = "Caminhada";
+"sport_location_unauthorized" = "Não autorizado";
+"sport_location_restricted" = "Acesso restrito";
+"sport_system_alert" = "Alerta do sistema";
+"sport_enable_location_permission" = "Por favor, vá a Definições -> Ativar permissão de localização";
+"sport_enable_location_service" = "Por favor, vá a Definições -> Ligar serviço de localização";
+"sport_authorized_always" = "Sempre autorizado";
+"sport_authorized_when_in_use" = "Autorizado durante a utilização";

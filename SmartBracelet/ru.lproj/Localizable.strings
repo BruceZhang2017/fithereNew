@@ -409,3 +409,148 @@
 "please_choose_day" = "Пожалуйста, выберите день недели";
 "add_contact_fail1" = "Не удалось добавить контакт, проверьте, есть ли у устройства функция синхронизации контактов!";
 "add_contact_fail2" = "Не удалось добавить контакт, устройство еще не ответило на команду.";
+
+
+// Female Health Cycle - Женский цикл здоровья
+"female_cycle_title" = "Менструальный цикл";
+"female_cycle_all_data" = "Все данные";
+"female_cycle_data_detail" = "Детали данных";
+"female_cycle_body_symptoms" = "Симптомы тела";
+"female_cycle_settings" = "Настройки цикла";
+"female_cycle_overview" = "Обзор цикла";
+"female_cycle_period" = "Период";
+"female_cycle_cycle" = "Цикл";
+"female_cycle_ovulation" = "Овуляция";
+"female_cycle_predicted_period" = "Прогнозируемый период";
+"female_cycle_has_record" = "Есть запись";
+"female_cycle_daily_record" = "Ежедневная запись";
+"female_cycle_day_number" = "День %d";
+"female_cycle_period_day" = "День %d\nПериод";
+"female_cycle_record_symptoms" = "Записать симптомы";
+"female_cycle_period_started" = "Начались ли месячные?";
+"female_cycle_start_prediction" = "Начать прогноз";
+"female_cycle_save" = "Сохранить";
+"female_cycle_confirm" = "Подтвердить";
+"female_cycle_cancel" = "Отмена";
+"female_cycle_today" = "Сегодня";
+"female_cycle_future_tip" = "⚠️ Будущие даты не могут быть записаны";
+"female_cycle_weekday_0" = "Вс";
+"female_cycle_weekday_1" = "Пн";
+"female_cycle_weekday_2" = "Вт";
+"female_cycle_weekday_3" = "Ср";
+"female_cycle_weekday_4" = "Чт";
+"female_cycle_weekday_5" = "Пт";
+"female_cycle_weekday_6" = "Сб";
+"female_cycle_total_days" = "Всего %d дней";
+
+"female_cycle_question_period_days" = "Сколько дней обычно длятся ваши месячные?";
+"female_cycle_question_cycle_length" = "Какова обычная продолжительность вашего менструального цикла?";
+"female_cycle_question_last_period" = "Когда начались ваши последние месячные?";
+"female_cycle_period_days" = "Дни периода";
+"female_cycle_cycle_length" = "Длина цикла";
+"female_cycle_last_period_date" = "Дата последних месячных";
+"female_cycle_select_period_days" = "Выберите дни периода";
+"female_cycle_select_cycle_length" = "Выберите длину цикла";
+"female_cycle_select_date" = "Выберите дату";
+"female_cycle_days_unit" = "%d дней";
+
+"female_cycle_desc_general" = "Менструальный цикл относится к периоду от первого дня одной менструации до первого дня следующей. Нормальный менструальный цикл обычно длится 21-35 дней, а сама менструация длится 2-7 дней. Однако длина цикла варьируется от человека к человеку и зависит от таких факторов, как генетика, уровень гормонов, состояние здоровья, питание и образ жизни.";
+"female_cycle_desc_period" = "Во время менструации обратите внимание на личную гигиену и отдых. Избегайте интенсивных физических упражнений, холодной воды и острой пищи. Поддерживайте хорошее настроение и употребляйте продукты, богатые железом, такие как красное мясо и шпинат.";
+"female_cycle_desc_ovulation" = "Во время овуляции яичник выпускает зрелую яйцеклетку, готовую к оплодотворению. Это обычно самое фертильное время. Поддерживайте здоровые привычки образа жизни, включая правильное питание, достаточный сон и умеренные физические упражнения, и избегайте чрезмерного стресса и напряжения.";
+"female_cycle_desc_safe_period" = "Безопасный период";
+"female_cycle_record_time" = "Записано в 'Fit-here' в";
+
+"female_symptom_flow" = "Менструальный поток";
+"female_symptom_flow_light" = "Легкий";
+"female_symptom_flow_medium" = "Средний";
+"female_symptom_flow_heavy" = "Обильный";
+"female_symptom_flow_none" = "Нет";
+
+"female_symptom_pain" = "Менструальная боль";
+"female_symptom_pain_mild" = "Легкая";
+"female_symptom_pain_moderate" = "Умеренная";
+"female_symptom_pain_severe" = "Сильная";
+"female_symptom_pain_none" = "Нет";
+
+"female_symptom_sexual" = "Половой акт";
+"female_symptom_sexual_protected" = "Защищенный";
+"female_symptom_sexual_unprotected" = "Незащищенный";
+"female_symptom_sexual_none" = "Нет";
+
+"female_symptom_mood" = "Настроение";
+"female_symptom_mood_calm" = "Спокойное";
+"female_symptom_mood_happy" = "Счастливое";
+"female_symptom_mood_relaxed" = "Расслабленное";
+"female_symptom_mood_energetic" = "Энергичное";
+"female_symptom_mood_sensitive" = "Чувствительное";
+"female_symptom_mood_anxious" = "Тревожное";
+"female_symptom_mood_irritable" = "Раздраженное";
+"female_symptom_mood_sad" = "Грустное";
+"female_symptom_mood_none" = "Нет";
+
+"female_symptom_category_whole_body" = "Все тело";
+"female_symptom_normal" = "Нормально";
+"female_symptom_cramp" = "Судороги";
+"female_symptom_fatigue" = "Усталость";
+"female_symptom_edema" = "Отек";
+
+"female_symptom_category_head" = "Голова";
+"female_symptom_headache" = "Головная боль";
+"female_symptom_dizziness" = "Головокружение";
+"female_symptom_vomiting" = "Рвота";
+"female_symptom_insomnia" = "Бессонница";
+
+"female_symptom_category_abdomen" = "Живот";
+"female_symptom_diarrhea" = "Диарея";
+"female_symptom_lower_abdominal_pain" = "Боль внизу живота";
+"female_symptom_abdominal_swelling" = "Вздутие живота";
+"female_symptom_abdominal_pain" = "Боль в животе";
+
+"female_symptom_category_legs" = "Ноги";
+"female_symptom_thigh_soreness" = "Боль в бедрах";
+"female_symptom_thigh_spasm" = "Спазмы бедер";
+"female_symptom_calf_soreness" = "Боль в икрах";
+"female_symptom_calf_spasm" = "Спазмы икр";
+
+"female_symptom_category_other" = "Другое";
+"female_symptom_breast_tenderness" = "Болезненность груди";
+"female_symptom_backache" = "Боль в спине";
+"female_symptom_hot_flash" = "Приливы жара";
+"female_symptom_cold" = "Ощущение холода";
+
+"female_symptom_category_discharge" = "Выделения";
+"female_symptom_dry" = "Сухие";
+"female_symptom_sticky" = "Липкие";
+"female_symptom_egg_white" = "Как яичный белок";
+"female_symptom_watery" = "Водянистые";
+"female_symptom_milky" = "Молочные";
+
+"female_symptom_category_skin" = "Кожа";
+"female_symptom_oily" = "Жирная";
+"female_symptom_acne" = "Акне";
+"female_symptom_pimple" = "Прыщ";
+"female_symptom_none" = "Нет";
+
+// Sport
+"sport_grade" = "Уровень";
+"sport_distance" = "Расстояние";
+"sport_duration" = "Продолжительность";
+"sport_pace" = "Темп";
+"sport_desc_come_on" = "Давай";
+"sport_desc_love_route" = "Любимый маршрут";
+"sport_desc_lifetime" = "На всю жизнь";
+"sport_desc_beyond_half_marathon" = "Превзойти полумарафон";
+"sport_desc_beyond_full_marathon" = "Превзойти марафон";
+"sport_desc_beyond_yourself" = "Превзойти себя";
+"sport_month_suffix" = "Месяц";
+"sport_title" = "Спорт";
+"sport_type_running" = "Бег";
+"sport_type_cycling" = "Велоспорт";
+"sport_type_walking" = "Ходьба";
+"sport_location_unauthorized" = "Не авторизовано";
+"sport_location_restricted" = "Доступ ограничен";
+"sport_system_alert" = "Системное уведомление";
+"sport_enable_location_permission" = "Пожалуйста, перейдите в Настройки -> Включить разрешение на местоположение";
+"sport_enable_location_service" = "Пожалуйста, перейдите в Настройки -> Включить службу определения местоположения";
+"sport_authorized_always" = "Всегда разрешено";
+"sport_authorized_when_in_use" = "Разрешено при использовании";

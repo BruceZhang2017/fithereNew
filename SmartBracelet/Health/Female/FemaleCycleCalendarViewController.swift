@@ -111,7 +111,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
 
     private let cycleInfoTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "周期概况"
+        label.text = "female_cycle_overview".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = UIColor(hex: 0x333333)
         return label
@@ -143,7 +143,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
 
     private let cycleDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "月经周期通常是指自月经的第一天开始至下一次月经的第一天结束所经历的时间长度。正常的月经周期通常为 21 到 35 天，且持续 2 到 7 天。然而，每个人的周期长度都有所不同，受到遗传、荷尔蒙水平、健康状况、营养状况以及生活方式等因素的影响。"
+        label.text = "female_cycle_desc_general".localized()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor(hex: 0x666666)
         label.numberOfLines = 0
@@ -152,7 +152,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
 
     private let futureRecordTipLabel: UILabel = {
         let label = UILabel()
-        label.text = "⚠️ 未来日期不进行记录哦"
+        label.text = "female_cycle_future_tip".localized()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor(hex: 0x999999)
         label.textAlignment = .center
@@ -169,7 +169,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
 
     private let symptomTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "记录症状"
+        label.text = "female_cycle_record_symptoms".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = UIColor(hex: 0x333333)
         return label
@@ -215,7 +215,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         bStyle = 1
         super.viewDidLoad()
 
-        title = "生理周期"
+        title = "female_cycle_title".localized()
 
         // 默认选中今天
         selectedDate = today
@@ -413,7 +413,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         }
 
         let periodTitleLabel = UILabel()
-        periodTitleLabel.text = "经期"
+        periodTitleLabel.text = "female_cycle_period".localized()
         periodTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         periodTitleLabel.textColor = UIColor(hex: 0x666666)
         periodDayInfoView.addSubview(periodTitleLabel)
@@ -437,7 +437,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         }
 
         let cycleTitleLabel = UILabel()
-        cycleTitleLabel.text = "周期"
+        cycleTitleLabel.text = "female_cycle_cycle".localized()
         cycleTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         cycleTitleLabel.textColor = UIColor(hex: 0x666666)
         cycleLengthInfoView.addSubview(cycleTitleLabel)
@@ -489,7 +489,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         // 经期开始了吗
         let periodStartRow = createSymptomRow(
             icon: "💧",
-            title: "经期开始了吗?",
+            title: "female_cycle_period_started".localized(),
             hasSwitch: true
         )
         symptomContainerView.addSubview(periodStartRow)
@@ -521,7 +521,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         // 流量
         let flowRowView = createSymptomRow(
             icon: "💧",
-            title: "流量",
+            title: "female_symptom_flow".localized(),
             hasSwitch: false
         )
         flowRow = flowRowView
@@ -555,7 +555,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         // 痛经
         let painRowView = createSymptomRow(
             icon: "⚡️",
-            title: "痛经",
+            title: "female_symptom_pain".localized(),
             hasSwitch: false
         )
         painRow = painRowView
@@ -589,7 +589,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         // 性行为
         let sexualRowView = createSymptomRow(
             icon: "💗",
-            title: "性行为",
+            title: "female_symptom_sexual".localized(),
             hasSwitch: false,
             hasArrow: true
         )
@@ -605,7 +605,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         let sexualLabel = UILabel()
         sexualLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         sexualLabel.textColor = UIColor(hex: 0x999999)
-        sexualLabel.text = "无"
+        sexualLabel.text = "female_symptom_sexual_none".localized()
         sexualLabel.textAlignment = .right
         self.sexualValueLabel = sexualLabel
         sexualRowView.addSubview(sexualLabel)
@@ -630,7 +630,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         // 心情
         let moodRow = createSymptomRow(
             icon: "😊",
-            title: "心情",
+            title: "female_symptom_mood".localized(),
             hasSwitch: false,
             hasArrow: true
         )
@@ -645,7 +645,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         let moodLabel = UILabel()
         moodLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         moodLabel.textColor = UIColor(hex: 0x999999)
-        moodLabel.text = "无"
+        moodLabel.text = "female_symptom_mood_none".localized()
         moodLabel.textAlignment = .right
         self.moodValueLabel = moodLabel
         moodRow.addSubview(moodLabel)
@@ -670,7 +670,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         // 身体症状
         let bodyRow = createSymptomRow(
             icon: "💊",
-            title: "身体症状",
+            title: "female_cycle_body_symptoms".localized(),
             hasSwitch: false,
             hasArrow: true
         )
@@ -988,7 +988,15 @@ class FemaleCycleCalendarViewController: BaseViewController {
     }
 
     private func setupWeekdayHeaders() {
-        let weekdays = ["日", "一", "二", "三", "四", "五", "六"]
+        let weekdays = [
+            "female_cycle_weekday_0".localized(),
+            "female_cycle_weekday_1".localized(),
+            "female_cycle_weekday_2".localized(),
+            "female_cycle_weekday_3".localized(),
+            "female_cycle_weekday_4".localized(),
+            "female_cycle_weekday_5".localized(),
+            "female_cycle_weekday_6".localized()
+        ]
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -1017,14 +1025,14 @@ class FemaleCycleCalendarViewController: BaseViewController {
         stackView.spacing = 8
 
         let legends = [
-            ("经期", UIColor(hex: 0xFFB3D9)),
-            ("排卵期", UIColor(hex: 0xB8B3FF)),
-            ("预测经期", UIColor.clear),
-            ("有记录", UIColor(hex: 0xFF69B4))
+            ("female_cycle_period".localized(), UIColor(hex: 0xFFB3D9)),
+            ("female_cycle_ovulation".localized(), UIColor(hex: 0xB8B3FF)),
+            ("female_cycle_predicted_period".localized(), UIColor.clear),
+            ("female_cycle_has_record".localized(), UIColor(hex: 0xFF69B4))
         ]
 
         for (title, color) in legends {
-            let itemView = createLegendItem(title: title, color: color, isBordered: title == "预测经期")
+            let itemView = createLegendItem(title: title, color: color, isBordered: title == "female_cycle_predicted_period".localized())
             stackView.addArrangedSubview(itemView)
         }
 
@@ -1234,19 +1242,19 @@ class FemaleCycleCalendarViewController: BaseViewController {
 
         if periodDates.contains(todayString) {
             // 经期
-            phaseTitle = "经期"
+            phaseTitle = "female_cycle_period".localized()
             phaseTotalDays = periodDays
-            phaseDescription = "月经期间,注意个人卫生和休息。避免剧烈运动、冷水接触和辛辣食物。保持良好的心情,多吃富含铁质的食物,如红肉、菠菜等。"
+            phaseDescription = "female_cycle_desc_period".localized()
         } else if ovulationDates.contains(todayString) || todayString == ovulationDay {
             // 排卵期
-            phaseTitle = "排卵期"
+            phaseTitle = "female_cycle_ovulation".localized()
             phaseTotalDays = 10 // 排卵期固定10天（排卵日前5天到后4天）
-            phaseDescription = "排卵期,卵巢会释放一个成熟的卵子,准备受精。这通常是受孕的最佳时机。注意保持良好的生活习惯,包括合理饮食、充足睡眠和适当运动,以及避免过度紧张和压力。"
+            phaseDescription = "female_cycle_desc_ovulation".localized()
         } else {
             // 安全期
-            phaseTitle = "安全期"
+            phaseTitle = "female_cycle_desc_safe_period".localized()
             phaseTotalDays = cycleLength - periodDays - 10 // 周期总天数 - 经期天数 - 排卵期天数
-            phaseDescription = "月经周期通常是指自月经的第一天开始至下一次月经的第一天结束所经历的时间长度。正常的月经周期通常为 21 到 35 天,且持续 2 到 7 天。然而,每个人的周期长度都有所不同,受到遗传、荷尔蒙水平、健康状况、营养状况以及生活方式等因素的影响。"
+            phaseDescription = "female_cycle_desc_general".localized()
         }
 
         // 更新左侧显示
@@ -1255,36 +1263,10 @@ class FemaleCycleCalendarViewController: BaseViewController {
             periodTitleLabel.text = phaseTitle
         }
 
-        let periodValueAttrString = NSMutableAttributedString()
-        periodValueAttrString.append(NSAttributedString(string: "共 ", attributes: [
-            .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-            .foregroundColor: UIColor(hex: 0x333333)
-        ]))
-        periodValueAttrString.append(NSAttributedString(string: "\(phaseTotalDays)", attributes: [
-            .font: UIFont.systemFont(ofSize: 24, weight: .bold),
-            .foregroundColor: UIColor(hex: 0x333333)
-        ]))
-        periodValueAttrString.append(NSAttributedString(string: " 天", attributes: [
-            .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-            .foregroundColor: UIColor(hex: 0x333333)
-        ]))
-        periodValueLabel.attributedText = periodValueAttrString
+        periodValueLabel.text = String(format: "female_cycle_total_days".localized(), phaseTotalDays)
 
         // 更新周期长度显示
-        let cycleValueAttrString = NSMutableAttributedString()
-        cycleValueAttrString.append(NSAttributedString(string: "共 ", attributes: [
-            .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-            .foregroundColor: UIColor(hex: 0x333333)
-        ]))
-        cycleValueAttrString.append(NSAttributedString(string: "\(cycleLength)", attributes: [
-            .font: UIFont.systemFont(ofSize: 24, weight: .bold),
-            .foregroundColor: UIColor(hex: 0x333333)
-        ]))
-        cycleValueAttrString.append(NSAttributedString(string: " 天", attributes: [
-            .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-            .foregroundColor: UIColor(hex: 0x333333)
-        ]))
-        cycleValueLabel.attributedText = cycleValueAttrString
+        cycleValueLabel.text = String(format: "female_cycle_total_days".localized(), cycleLength)
 
         // 更新描述文字
         cycleDescriptionLabel.text = phaseDescription
@@ -1368,11 +1350,11 @@ class FemaleCycleCalendarViewController: BaseViewController {
         if let sexualLabel = sexualValueLabel {
             switch sexualActivity {
             case 1:
-                sexualLabel.text = "保护性行为"
+                sexualLabel.text = "female_symptom_sexual_protected".localized()
             case 2:
-                sexualLabel.text = "无保护性行为"
+                sexualLabel.text = "female_symptom_sexual_unprotected".localized()
             default:
-                sexualLabel.text = "无"
+                sexualLabel.text = "female_symptom_sexual_none".localized()
             }
         }
 
@@ -1380,23 +1362,23 @@ class FemaleCycleCalendarViewController: BaseViewController {
         if let moodLabel = moodValueLabel {
             switch mood {
             case 1:
-                moodLabel.text = "平静"
+                moodLabel.text = "female_symptom_mood_calm".localized()
             case 2:
-                moodLabel.text = "开心"
+                moodLabel.text = "female_symptom_mood_happy".localized()
             case 3:
-                moodLabel.text = "放松"
+                moodLabel.text = "female_symptom_mood_relaxed".localized()
             case 4:
-                moodLabel.text = "活力满满"
+                moodLabel.text = "female_symptom_mood_energetic".localized()
             case 5:
-                moodLabel.text = "敏感"
+                moodLabel.text = "female_symptom_mood_sensitive".localized()
             case 6:
-                moodLabel.text = "焦躁"
+                moodLabel.text = "female_symptom_mood_anxious".localized()
             case 7:
-                moodLabel.text = "易怒"
+                moodLabel.text = "female_symptom_mood_irritable".localized()
             case 8:
-                moodLabel.text = "悲伤"
+                moodLabel.text = "female_symptom_mood_sad".localized()
             default:
-                moodLabel.text = "无"
+                moodLabel.text = "female_symptom_mood_none".localized()
             }
         }
 
@@ -1576,37 +1558,37 @@ class FemaleCycleCalendarViewController: BaseViewController {
 
         XLogger.shared.log("点击性行为")
 
-        let alert = UIAlertController(title: "性行为", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "female_symptom_sexual".localized(), message: nil, preferredStyle: .actionSheet)
 
         // 无
-        let noneAction = UIAlertAction(title: "无", style: .default) { [weak self] _ in
+        let noneAction = UIAlertAction(title: "female_symptom_sexual_none".localized(), style: .default) { [weak self] _ in
             guard let self = self, let selectedDate = self.selectedDate else { return }
             self.sexualActivity = 0
             self.dataManager.updateSexualActivity(for: selectedDate, activity: 0)
-            self.sexualValueLabel?.text = "无"
+            self.sexualValueLabel?.text = "female_symptom_sexual_none".localized()
             XLogger.shared.log("选择性行为: 无")
         }
 
         // 保护性行为
-        let protectedAction = UIAlertAction(title: "保护性行为", style: .default) { [weak self] _ in
+        let protectedAction = UIAlertAction(title: "female_symptom_sexual_protected".localized(), style: .default) { [weak self] _ in
             guard let self = self, let selectedDate = self.selectedDate else { return }
             self.sexualActivity = 1
             self.dataManager.updateSexualActivity(for: selectedDate, activity: 1)
-            self.sexualValueLabel?.text = "保护性行为"
+            self.sexualValueLabel?.text = "female_symptom_sexual_protected".localized()
             XLogger.shared.log("选择性行为: 保护性行为")
         }
 
         // 无保护性行为
-        let unprotectedAction = UIAlertAction(title: "无保护性行为", style: .default) { [weak self] _ in
+        let unprotectedAction = UIAlertAction(title: "female_symptom_sexual_unprotected".localized(), style: .default) { [weak self] _ in
             guard let self = self, let selectedDate = self.selectedDate else { return }
             self.sexualActivity = 2
             self.dataManager.updateSexualActivity(for: selectedDate, activity: 2)
-            self.sexualValueLabel?.text = "无保护性行为"
+            self.sexualValueLabel?.text = "female_symptom_sexual_unprotected".localized()
             XLogger.shared.log("选择性行为: 无保护性行为")
         }
 
         // 取消
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "female_cycle_cancel".localized(), style: .cancel, handler: nil)
 
         alert.addAction(noneAction)
         alert.addAction(protectedAction)
@@ -1626,17 +1608,17 @@ class FemaleCycleCalendarViewController: BaseViewController {
     @objc private func moodTapped() {
         XLogger.shared.log("点击心情")
 
-        let alert = UIAlertController(title: "心情", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "female_symptom_mood".localized(), message: nil, preferredStyle: .actionSheet)
 
         let moods = [
-            (1, "平静"),
-            (2, "开心"),
-            (3, "放松"),
-            (4, "活力满满"),
-            (5, "敏感"),
-            (6, "焦躁"),
-            (7, "易怒"),
-            (8, "悲伤")
+            (1, "female_symptom_mood_calm".localized()),
+            (2, "female_symptom_mood_happy".localized()),
+            (3, "female_symptom_mood_relaxed".localized()),
+            (4, "female_symptom_mood_energetic".localized()),
+            (5, "female_symptom_mood_sensitive".localized()),
+            (6, "female_symptom_mood_anxious".localized()),
+            (7, "female_symptom_mood_irritable".localized()),
+            (8, "female_symptom_mood_sad".localized())
         ]
 
         for (index, moodName) in moods {
@@ -1651,7 +1633,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         }
 
         // 取消
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "female_cycle_cancel".localized(), style: .cancel, handler: nil)
         alert.addAction(cancelAction)
 
         // 为 iPad 设置 popover
@@ -1678,7 +1660,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
         // 所有数据
-        let allDataAction = UIAlertAction(title: "所有数据", style: .default) { [weak self] _ in
+        let allDataAction = UIAlertAction(title: "female_cycle_all_data".localized(), style: .default) { [weak self] _ in
             XLogger.shared.log("点击所有数据")
             let vc = AllDataViewController()
             vc.hidesBottomBarWhenPushed = true
@@ -1686,7 +1668,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         }
 
         // 周期设置
-        let cycleSettingsAction = UIAlertAction(title: "周期设置", style: .default) { [weak self] _ in
+        let cycleSettingsAction = UIAlertAction(title: "female_cycle_settings".localized(), style: .default) { [weak self] _ in
             XLogger.shared.log("点击周期设置")
             let vc = FemaleHealthViewController()
             vc.hideLastPeriodDateOption = true // 隐藏最后一个选项
@@ -1695,7 +1677,7 @@ class FemaleCycleCalendarViewController: BaseViewController {
         }
 
         // 取消
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "female_cycle_cancel".localized(), style: .cancel, handler: nil)
 
         alert.addAction(allDataAction)
         alert.addAction(cycleSettingsAction)
@@ -1970,7 +1952,7 @@ class CalendarDayCell: UICollectionViewCell {
         }
 
         // 如果是今天，显示"今"；否则显示日期数字
-        dayLabel.text = isToday ? "今" : "\(day)"
+        dayLabel.text = isToday ? "female_cycle_today".localized() : "\(day)"
 
         // 重置样式
         backgroundCircleView.backgroundColor = .clear

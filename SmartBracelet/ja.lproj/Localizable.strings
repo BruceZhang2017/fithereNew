@@ -409,3 +409,148 @@
 "please_choose_day" = "曜日を選択してください";
 "add_contact_fail1" = "連絡先の追加に失敗しました。デバイスに連絡先同期機能があるかご確認ください！";
 "add_contact_fail2" = "連絡先の追加に失敗しました。デバイス側のコマンドがまだ応答していません。";
+
+
+// Female Health Cycle - 女性健康サイクル
+"female_cycle_title" = "生理周期";
+"female_cycle_all_data" = "すべてのデータ";
+"female_cycle_data_detail" = "データ詳細";
+"female_cycle_body_symptoms" = "体の症状";
+"female_cycle_settings" = "周期設定";
+"female_cycle_overview" = "周期の概要";
+"female_cycle_period" = "生理期間";
+"female_cycle_cycle" = "周期";
+"female_cycle_ovulation" = "排卵期";
+"female_cycle_predicted_period" = "予測生理期間";
+"female_cycle_has_record" = "記録あり";
+"female_cycle_daily_record" = "日常記録";
+"female_cycle_day_number" = "%d日目";
+"female_cycle_period_day" = "%d日目\n生理期間";
+"female_cycle_record_symptoms" = "症状を記録";
+"female_cycle_period_started" = "生理が始まりましたか？";
+"female_cycle_start_prediction" = "予測を開始";
+"female_cycle_save" = "保存";
+"female_cycle_confirm" = "確認";
+"female_cycle_cancel" = "キャンセル";
+"female_cycle_today" = "今日";
+"female_cycle_future_tip" = "⚠️ 未来の日付は記録できません";
+"female_cycle_weekday_0" = "日";
+"female_cycle_weekday_1" = "月";
+"female_cycle_weekday_2" = "火";
+"female_cycle_weekday_3" = "水";
+"female_cycle_weekday_4" = "木";
+"female_cycle_weekday_5" = "金";
+"female_cycle_weekday_6" = "土";
+"female_cycle_total_days" = "合計%d日";
+
+"female_cycle_question_period_days" = "生理は通常何日間続きますか？";
+"female_cycle_question_cycle_length" = "生理の間隔は通常どのくらいですか？";
+"female_cycle_question_last_period" = "最後の生理はいつ始まりましたか？";
+"female_cycle_period_days" = "生理日数";
+"female_cycle_cycle_length" = "周期の長さ";
+"female_cycle_last_period_date" = "最後の生理開始日";
+"female_cycle_select_period_days" = "生理日数を選択";
+"female_cycle_select_cycle_length" = "周期の長さを選択";
+"female_cycle_select_date" = "日付を選択";
+"female_cycle_days_unit" = "%d日";
+
+"female_cycle_desc_general" = "生理周期とは、生理の初日から次の生理の初日までの期間を指します。正常な生理周期は通常21〜35日で、2〜7日間続きます。ただし、周期の長さは人によって異なり、遺伝、ホルモンレベル、健康状態、栄養状態、ライフスタイルなどの要因に影響されます。";
+"female_cycle_desc_period" = "生理期間中は、個人衛生と休息に注意してください。激しい運動、冷水との接触、辛い食べ物は避けてください。良い気分を保ち、赤身肉やほうれん草など鉄分が豊富な食品を多く摂取してください。";
+"female_cycle_desc_ovulation" = "排卵期には、卵巣が受精の準備ができた成熟した卵子を放出します。これは通常、妊娠に最適な時期です。適切な食事、十分な睡眠、適度な運動を含む良好なライフスタイル習慣を維持し、過度のストレスや緊張を避けてください。";
+"female_cycle_desc_safe_period" = "安全期間";
+"female_cycle_record_time" = "'Fit-here'に記録された時刻";
+
+"female_symptom_flow" = "経血量";
+"female_symptom_flow_light" = "少量";
+"female_symptom_flow_medium" = "中量";
+"female_symptom_flow_heavy" = "多量";
+"female_symptom_flow_none" = "なし";
+
+"female_symptom_pain" = "生理痛";
+"female_symptom_pain_mild" = "軽度";
+"female_symptom_pain_moderate" = "中程度";
+"female_symptom_pain_severe" = "重度";
+"female_symptom_pain_none" = "なし";
+
+"female_symptom_sexual" = "性行為";
+"female_symptom_sexual_protected" = "避妊あり";
+"female_symptom_sexual_unprotected" = "避妊なし";
+"female_symptom_sexual_none" = "なし";
+
+"female_symptom_mood" = "気分";
+"female_symptom_mood_calm" = "穏やか";
+"female_symptom_mood_happy" = "幸せ";
+"female_symptom_mood_relaxed" = "リラックス";
+"female_symptom_mood_energetic" = "元気いっぱい";
+"female_symptom_mood_sensitive" = "敏感";
+"female_symptom_mood_anxious" = "不安";
+"female_symptom_mood_irritable" = "イライラ";
+"female_symptom_mood_sad" = "悲しい";
+"female_symptom_mood_none" = "なし";
+
+"female_symptom_category_whole_body" = "全身";
+"female_symptom_normal" = "正常";
+"female_symptom_cramp" = "けいれん";
+"female_symptom_fatigue" = "疲労";
+"female_symptom_edema" = "むくみ";
+
+"female_symptom_category_head" = "頭部";
+"female_symptom_headache" = "頭痛";
+"female_symptom_dizziness" = "めまい";
+"female_symptom_vomiting" = "嘔吐";
+"female_symptom_insomnia" = "不眠";
+
+"female_symptom_category_abdomen" = "腹部";
+"female_symptom_diarrhea" = "下痢";
+"female_symptom_lower_abdominal_pain" = "下腹部痛";
+"female_symptom_abdominal_swelling" = "腹部の腫れ";
+"female_symptom_abdominal_pain" = "腹痛";
+
+"female_symptom_category_legs" = "脚部";
+"female_symptom_thigh_soreness" = "太ももの痛み";
+"female_symptom_thigh_spasm" = "太もものけいれん";
+"female_symptom_calf_soreness" = "ふくらはぎの痛み";
+"female_symptom_calf_spasm" = "ふくらはぎのけいれん";
+
+"female_symptom_category_other" = "その他";
+"female_symptom_breast_tenderness" = "乳房の痛み";
+"female_symptom_backache" = "腰痛";
+"female_symptom_hot_flash" = "ほてり";
+"female_symptom_cold" = "冷え";
+
+"female_symptom_category_discharge" = "おりもの";
+"female_symptom_dry" = "乾燥";
+"female_symptom_sticky" = "粘性";
+"female_symptom_egg_white" = "卵白状";
+"female_symptom_watery" = "水状";
+"female_symptom_milky" = "乳液状";
+
+"female_symptom_category_skin" = "肌";
+"female_symptom_oily" = "脂性";
+"female_symptom_acne" = "ニキビ";
+"female_symptom_pimple" = "吹き出物";
+"female_symptom_none" = "なし";
+
+// Sport
+"sport_grade" = "レベル";
+"sport_distance" = "距離";
+"sport_duration" = "時間";
+"sport_pace" = "ペース";
+"sport_desc_come_on" = "がんばって";
+"sport_desc_love_route" = "お気に入りのルート";
+"sport_desc_lifetime" = "一生";
+"sport_desc_beyond_half_marathon" = "ハーフマラソンを超えて";
+"sport_desc_beyond_full_marathon" = "フルマラソンを超えて";
+"sport_desc_beyond_yourself" = "自分を超えて";
+"sport_month_suffix" = "月";
+"sport_title" = "運動";
+"sport_type_running" = "ランニング";
+"sport_type_cycling" = "サイクリング";
+"sport_type_walking" = "ウォーキング";
+"sport_location_unauthorized" = "未承認";
+"sport_location_restricted" = "アクセス制限";
+"sport_system_alert" = "システム通知";
+"sport_enable_location_permission" = "設定 -> 位置情報の権限を有効にしてください";
+"sport_enable_location_service" = "設定 -> 位置情報サービスをオンにしてください";
+"sport_authorized_always" = "常に許可";
+"sport_authorized_when_in_use" = "使用中のみ許可";

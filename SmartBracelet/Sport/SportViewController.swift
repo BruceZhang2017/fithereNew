@@ -45,9 +45,9 @@ class SportViewController: BaseViewController {
         mapView.isShowsUserLocation = true
         mapView.userTrackingMode = .follow
         
-        let run = SegmentioItem(title: "跑步", image: nil)
-        let bike = SegmentioItem(title: "骑行", image: nil)
-        let foot = SegmentioItem(title: "步行", image: nil)
+        let run = SegmentioItem(title: "sport_type_running".localized(), image: nil)
+        let bike = SegmentioItem(title: "sport_type_cycling".localized(), image: nil)
+        let foot = SegmentioItem(title: "sport_type_walking".localized(), image: nil)
         let state = SegmentioStates(
                     defaultState: SegmentioState(
                         backgroundColor: .white,
@@ -241,19 +241,19 @@ extension SportViewController: CLLocationManagerDelegate {
 //            if locationManager.responds(to: #selector(CLLocationManager.requestAlwaysAuthorization)) {
 //                locationManager.requestAlwaysAuthorization()
 //            }
-            XLogger.shared.log("没有授权")
+            XLogger.shared.log("sport_location_unauthorized".localized())
         case .restricted:
-            XLogger.shared.log("访问受限")
+            XLogger.shared.log("sport_location_restricted".localized())
         case .denied:
             if CLLocationManager.locationServicesEnabled() {
-                showLocationAlertView(title: "系统提示", message: "请至设置 -> 开启定位权限")
+                showLocationAlertView(title: "sport_system_alert".localized(), message: "sport_enable_location_permission".localized())
             } else {
-                showLocationAlertView(title: "系统提示", message: "请至设置 -> 打开定位功能")
+                showLocationAlertView(title: "sport_system_alert".localized(), message: "sport_enable_location_service".localized())
             }
         case .authorizedAlways:
-            XLogger.shared.log("获取前后台授权")
+            XLogger.shared.log("sport_authorized_always".localized())
         case .authorizedWhenInUse:
-            XLogger.shared.log("获取前台授权")
+            XLogger.shared.log("sport_authorized_when_in_use".localized())
         default:
             break;
         }

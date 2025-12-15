@@ -406,9 +406,151 @@
 "send_success"="전송 성공";
 "send_fail"="전송 실패";
 "ota"="펌웨어 업데이트";
-<<<<<<< HEAD
-=======
 "please_choose_day" = "요일을 선택해 주세요";
 "add_contact_fail1" = "연락처 추가 실패, 장치에 연락처 동기화 기능이 있는지 확인해 주세요!";
 "add_contact_fail2" = "연락처 추가 실패, 장치가 아직 명령에 응답하지 않았습니다.";
->>>>>>> new3_fithere
+
+
+// Female Health Cycle - 여성 건강 주기
+"female_cycle_title" = "생리 주기";
+"female_cycle_all_data" = "모든 데이터";
+"female_cycle_data_detail" = "데이터 상세";
+"female_cycle_body_symptoms" = "신체 증상";
+"female_cycle_settings" = "주기 설정";
+"female_cycle_overview" = "주기 개요";
+"female_cycle_period" = "생리 기간";
+"female_cycle_cycle" = "주기";
+"female_cycle_ovulation" = "배란기";
+"female_cycle_predicted_period" = "예상 생리 기간";
+"female_cycle_has_record" = "기록 있음";
+"female_cycle_daily_record" = "일일 기록";
+"female_cycle_day_number" = "%d일차";
+"female_cycle_period_day" = "%d일차\n생리 기간";
+"female_cycle_record_symptoms" = "증상 기록";
+"female_cycle_period_started" = "생리가 시작되었나요?";
+"female_cycle_start_prediction" = "예측 시작";
+"female_cycle_save" = "저장";
+"female_cycle_confirm" = "확인";
+"female_cycle_cancel" = "취소";
+"female_cycle_today" = "오늘";
+"female_cycle_future_tip" = "⚠️ 미래 날짜는 기록할 수 없습니다";
+"female_cycle_weekday_0" = "일";
+"female_cycle_weekday_1" = "월";
+"female_cycle_weekday_2" = "화";
+"female_cycle_weekday_3" = "수";
+"female_cycle_weekday_4" = "목";
+"female_cycle_weekday_5" = "금";
+"female_cycle_weekday_6" = "토";
+"female_cycle_total_days" = "총 %d일";
+
+"female_cycle_question_period_days" = "생리는 보통 며칠 동안 지속됩니까?";
+"female_cycle_question_cycle_length" = "생리 간격은 보통 얼마나 됩니까?";
+"female_cycle_question_last_period" = "마지막 생리는 언제 시작되었습니까?";
+"female_cycle_period_days" = "생리 일수";
+"female_cycle_cycle_length" = "주기 길이";
+"female_cycle_last_period_date" = "마지막 생리 시작일";
+"female_cycle_select_period_days" = "생리 일수 선택";
+"female_cycle_select_cycle_length" = "주기 길이 선택";
+"female_cycle_select_date" = "날짜 선택";
+"female_cycle_days_unit" = "%d일";
+
+"female_cycle_desc_general" = "생리 주기는 일반적으로 한 생리의 첫날부터 다음 생리의 첫날까지의 기간을 말합니다. 정상적인 생리 주기는 보통 21~35일이며 2~7일 동안 지속됩니다. 그러나 주기 길이는 사람마다 다르며 유전, 호르몬 수치, 건강 상태, 영양 상태 및 생활 방식 등의 요인에 영향을 받습니다.";
+"female_cycle_desc_period" = "생리 기간 동안 개인 위생과 휴식에 주의하세요. 격렬한 운동, 찬물 접촉, 매운 음식을 피하세요. 좋은 기분을 유지하고 붉은 고기, 시금치 등 철분이 풍부한 음식을 많이 섭취하세요.";
+"female_cycle_desc_ovulation" = "배란기에 난소는 수정 준비가 된 성숙한 난자를 방출합니다. 이것은 보통 임신하기 가장 좋은 시기입니다. 적절한 식단, 충분한 수면, 적당한 운동을 포함한 좋은 생활 습관을 유지하고 과도한 스트레스와 긴장을 피하세요.";
+"female_cycle_desc_safe_period" = "안전 기간";
+"female_cycle_record_time" = "'Fit-here'에 기록된 시간";
+
+"female_symptom_flow" = "생리량";
+"female_symptom_flow_light" = "적음";
+"female_symptom_flow_medium" = "보통";
+"female_symptom_flow_heavy" = "많음";
+"female_symptom_flow_none" = "없음";
+
+"female_symptom_pain" = "생리통";
+"female_symptom_pain_mild" = "경미함";
+"female_symptom_pain_moderate" = "보통";
+"female_symptom_pain_severe" = "심함";
+"female_symptom_pain_none" = "없음";
+
+"female_symptom_sexual" = "성행위";
+"female_symptom_sexual_protected" = "피임함";
+"female_symptom_sexual_unprotected" = "피임 안 함";
+"female_symptom_sexual_none" = "없음";
+
+"female_symptom_mood" = "기분";
+"female_symptom_mood_calm" = "평온함";
+"female_symptom_mood_happy" = "행복함";
+"female_symptom_mood_relaxed" = "편안함";
+"female_symptom_mood_energetic" = "활기참";
+"female_symptom_mood_sensitive" = "민감함";
+"female_symptom_mood_anxious" = "불안함";
+"female_symptom_mood_irritable" = "짜증남";
+"female_symptom_mood_sad" = "슬픔";
+"female_symptom_mood_none" = "없음";
+
+"female_symptom_category_whole_body" = "전신";
+"female_symptom_normal" = "정상";
+"female_symptom_cramp" = "경련";
+"female_symptom_fatigue" = "피로";
+"female_symptom_edema" = "부종";
+
+"female_symptom_category_head" = "머리";
+"female_symptom_headache" = "두통";
+"female_symptom_dizziness" = "현기증";
+"female_symptom_vomiting" = "구토";
+"female_symptom_insomnia" = "불면증";
+
+"female_symptom_category_abdomen" = "복부";
+"female_symptom_diarrhea" = "설사";
+"female_symptom_lower_abdominal_pain" = "아랫배 통증";
+"female_symptom_abdominal_swelling" = "복부 부종";
+"female_symptom_abdominal_pain" = "복통";
+
+"female_symptom_category_legs" = "다리";
+"female_symptom_thigh_soreness" = "허벅지 통증";
+"female_symptom_thigh_spasm" = "허벅지 경련";
+"female_symptom_calf_soreness" = "종아리 통증";
+"female_symptom_calf_spasm" = "종아리 경련";
+
+"female_symptom_category_other" = "기타";
+"female_symptom_breast_tenderness" = "유방 통증";
+"female_symptom_backache" = "요통";
+"female_symptom_hot_flash" = "열감";
+"female_symptom_cold" = "냉증";
+
+"female_symptom_category_discharge" = "분비물";
+"female_symptom_dry" = "건조함";
+"female_symptom_sticky" = "끈적임";
+"female_symptom_egg_white" = "계란 흰자 같은";
+"female_symptom_watery" = "물 같은";
+"female_symptom_milky" = "우유 같은";
+
+"female_symptom_category_skin" = "피부";
+"female_symptom_oily" = "기름짐";
+"female_symptom_acne" = "여드름";
+"female_symptom_pimple" = "뾰루지";
+"female_symptom_none" = "없음";
+
+// Sport
+"sport_grade" = "등급";
+"sport_distance" = "거리";
+"sport_duration" = "시간";
+"sport_pace" = "페이스";
+"sport_desc_come_on" = "파이팅";
+"sport_desc_love_route" = "좋아하는 경로";
+"sport_desc_lifetime" = "평생";
+"sport_desc_beyond_half_marathon" = "하프 마라톤 넘어서기";
+"sport_desc_beyond_full_marathon" = "풀 마라톤 넘어서기";
+"sport_desc_beyond_yourself" = "자신을 넘어서기";
+"sport_month_suffix" = "월";
+"sport_title" = "운동";
+"sport_type_running" = "달리기";
+"sport_type_cycling" = "자전거";
+"sport_type_walking" = "걷기";
+"sport_location_unauthorized" = "승인되지 않음";
+"sport_location_restricted" = "액세스 제한됨";
+"sport_system_alert" = "시스템 알림";
+"sport_enable_location_permission" = "설정 -> 위치 권한 활성화";
+"sport_enable_location_service" = "설정 -> 위치 서비스 켜기";
+"sport_authorized_always" = "항상 허용";
+"sport_authorized_when_in_use" = "사용 중 허용";

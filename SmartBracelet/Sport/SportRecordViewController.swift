@@ -27,7 +27,7 @@ class SportRecordViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "运动"
+        title = "sport_title".localized()
         tableView.register(SportRecordMonthView.self, forHeaderFooterViewReuseIdentifier: "Header")
         topView.addVGradientLayer(at: CGRect(x: 0, y: 0, width: ScreenWidth, height: 270), colors: [UIColor.k64F2B4, UIColor.k08CCCC])
         tableView.estimatedRowHeight = 0

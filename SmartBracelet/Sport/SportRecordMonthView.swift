@@ -95,7 +95,7 @@ extension SportRecordMonthView: UICollectionViewDataSource {
         label?.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
-        label?.text = "\(indexPath.row + 1)月"
+        label?.text = "\(indexPath.row + 1)" + "sport_month_suffix".localized()
         return cell
     }
 }

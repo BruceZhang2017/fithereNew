@@ -35,7 +35,7 @@ class GradeViewController: BaseViewController {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 44)).then {
             $0.textColor = UIColor.white
             $0.font = UIFont.systemFont(ofSize: 18)
-            $0.text = "等级"
+            $0.text = "sport_grade".localized()
             $0.textAlignment = .center
         }
         navigationItem.titleView = label

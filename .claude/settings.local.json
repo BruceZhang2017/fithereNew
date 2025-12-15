@@ -3,7 +3,19 @@
     "allow": [
       "Bash(xcodebuild -scheme SmartBracelet -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15' clean build)",
       "Bash(xcodebuild -scheme SmartBracelet -sdk iphonesimulator clean build)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(LC_ALL=C grep:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(for file in GradeViewController.swift SetTargetBViewController.swift SetTargetViewController.swift SportRecordMonthView.swift SportRecordViewController.swift SportViewController.swift)",
+      "Bash(do)",
+      "Bash(full_path=\"/Users/anker/fithereNew/SmartBracelet/Sport/$file\")",
+      "Bash(if grep -q \".localized()\" \"$full_path\")",
+      "Bash(then)",
+      "Bash(echo:*)",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(done)"
     ]
   }
 }

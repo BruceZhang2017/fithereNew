@@ -58,7 +58,7 @@ class AllDataViewController: BaseViewController {
         bStyle = 1
         super.viewDidLoad()
 
-        title = "所有数据"
+        title = "female_cycle_all_data".localized()
 
         setupUI()
         loadData()
@@ -366,9 +366,9 @@ class DailyRecordCell: UITableViewCell {
         dateLabel.text = dateFormatter.string(from: record.date)
 
         if record.isPeriod {
-            statusLabel.text = "第\(record.cycleDay)天\n经期"
+            statusLabel.text = String(format: "female_cycle_period_day".localized(), record.cycleDay)
         } else {
-            statusLabel.text = "日常记录"
+            statusLabel.text = "female_cycle_daily_record".localized()
         }
 
         // 清空图标

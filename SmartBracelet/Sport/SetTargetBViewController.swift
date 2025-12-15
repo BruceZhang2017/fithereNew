@@ -26,10 +26,10 @@ class SetTargetBViewController: BaseViewController {
         super.viewDidLoad()
         title = String.kSetTarget
         
-        let distance = SegmentioItem(title: "距离", image: nil)
+        let distance = SegmentioItem(title: "sport_distance".localized(), image: nil)
         let cal = SegmentioItem(title: "health_heat".localized(), image: nil)
-        let duration = SegmentioItem(title: "时长", image: nil)
-        let rate = SegmentioItem(title: "配速", image: nil)
+        let duration = SegmentioItem(title: "sport_duration".localized(), image: nil)
+        let rate = SegmentioItem(title: "sport_pace".localized(), image: nil)
         let state = SegmentioStates(
                     defaultState: SegmentioState(
                         backgroundColor: .white,

@@ -77,9 +77,9 @@ extension SetTargetViewController: UICollectionViewDelegateFlowLayout {
 
 extension SetTargetViewController {
     public var descs: [String] {
-        return ["加油鸭", "爱你的路线", "一生一世", "超越半马", "超越全马", "超越自己"]
+        return ["sport_desc_come_on".localized(), "sport_desc_love_route".localized(), "sport_desc_lifetime".localized(), "sport_desc_beyond_half_marathon".localized(), "sport_desc_beyond_full_marathon".localized(), "sport_desc_beyond_yourself".localized()]
     }
-    
+
     public var distances: [String] {
         return ["0.80", "5.20", "13.14", "21.25", "42.25", "--"]
     }
