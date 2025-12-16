@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - Kadın sağlık döngüsü
+"female_health_cycle" = "Adet döngüsü";
+"female_health_cycle_description" = "Adet döngüsünü kaydet ve tahmin et";
 "female_cycle_title" = "Ay döngüsü";
 "female_cycle_all_data" = "Tüm veriler";
 "female_cycle_data_detail" = "Veri detayları";

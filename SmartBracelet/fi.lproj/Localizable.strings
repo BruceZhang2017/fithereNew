@@ -413,6 +413,8 @@
 
 
 // Female Health Cycle - Naisten terveyskierto
+"female_health_cycle" = "Kuukautiskierto";
+"female_health_cycle_description" = "Seuraa ja ennusta kuukautiskiertoa";
 "female_cycle_title" = "Kuukautiskierto";
 "female_cycle_all_data" = "Kaikki tiedot";
 "female_cycle_data_detail" = "Tietoyksityiskohdat";

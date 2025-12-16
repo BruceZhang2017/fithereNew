@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - Женский цикл здоровья
+"female_health_cycle" = "Менструальный цикл";
+"female_health_cycle_description" = "Отслеживать и прогнозировать менструальный цикл";
 "female_cycle_title" = "Менструальный цикл";
 "female_cycle_all_data" = "Все данные";
 "female_cycle_data_detail" = "Детали данных";

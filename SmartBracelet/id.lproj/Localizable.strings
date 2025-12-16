@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - Siklus kesehatan wanita
+"female_health_cycle" = "Siklus menstruasi";
+"female_health_cycle_description" = "Catat dan prediksi siklus menstruasi";
 "female_cycle_title" = "Siklus menstruasi";
 "female_cycle_all_data" = "Semua data";
 "female_cycle_data_detail" = "Detail data";

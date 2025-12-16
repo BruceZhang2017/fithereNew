@@ -264,6 +264,8 @@
 
 
 // Female Health Cycle - Kvinnlig hälsocykel
+"female_health_cycle" = "Menstruationscykel";
+"female_health_cycle_description" = "Spåra och förutsäga menstruationscykler";
 "female_cycle_title" = "Menstruationscykel";
 "female_cycle_all_data" = "All data";
 "female_cycle_data_detail" = "Datadetaljer";

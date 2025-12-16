@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - Cycle de santé féminin
+"female_health_cycle" = "Cycle menstruel";
+"female_health_cycle_description" = "Suivre et prédire les cycles menstruels";
 "female_cycle_title" = "Cycle menstruel";
 "female_cycle_all_data" = "Toutes les données";
 "female_cycle_data_detail" = "Détails des données";

@@ -432,6 +432,8 @@
 "add_contact_fail2" = "Failed to add contact, device has not responded to the command yet.";
 
 // MARK: - Female Cycle
+"female_health_cycle" = "Menstrual Cycle";
+"female_health_cycle_description" = "Track and predict menstrual cycles";
 "female_cycle_title" = "Menstrual Cycle";
 "female_cycle_all_data" = "All Data";
 "female_cycle_data_detail" = "Data Details";

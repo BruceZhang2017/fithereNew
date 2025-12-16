@@ -250,6 +250,8 @@
 
 
 // Female Health Cycle
+"female_health_cycle" = "Tíðahringur";
+"female_health_cycle_description" = "Fylgstu með og spáðu fyrir um tíðahringi";
 "female_cycle_title" = "Menstrual Cycle";
 "female_cycle_all_data" = "All Data";
 "female_cycle_data_detail" = "Data Detail";

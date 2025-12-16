@@ -271,6 +271,8 @@
 
 
 // Female Health Cycle
+"female_health_cycle" = "چرخه قاعدگی";
+"female_health_cycle_description" = "پیگیری و پیش‌بینی چرخه قاعدگی";
 "female_cycle_title" = "Menstrual Cycle";
 "female_cycle_all_data" = "All Data";
 "female_cycle_data_detail" = "Data Detail";

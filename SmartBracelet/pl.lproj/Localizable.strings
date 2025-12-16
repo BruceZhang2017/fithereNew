@@ -183,6 +183,8 @@
 
 
 // Female Health Cycle - Cykl zdrowia kobiet
+"female_health_cycle" = "Cykl menstruacyjny";
+"female_health_cycle_description" = "Śledź i przewiduj cykl menstruacyjny";
 "female_cycle_title" = "Cykl menstruacyjny";
 "female_cycle_all_data" = "Wszystkie dane";
 "female_cycle_data_detail" = "Szczegóły danych";

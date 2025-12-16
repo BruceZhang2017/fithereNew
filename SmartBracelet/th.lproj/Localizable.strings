@@ -413,6 +413,8 @@
 
 
 // Female Health Cycle - วงจรสุขภาพผู้หญิง
+"female_health_cycle" = "รอบเดือน";
+"female_health_cycle_description" = "บันทึกและคาดการณ์รอบเดือน";
 "female_cycle_title" = "วงจรประจำเดือน";
 "female_cycle_all_data" = "ข้อมูลทั้งหมด";
 "female_cycle_data_detail" = "รายละเอียดข้อมูล";

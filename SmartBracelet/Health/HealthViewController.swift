@@ -53,7 +53,7 @@ class HealthViewController: BaseViewController {
 
     private let femaleHealthTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "生理周期"
+        label.text = "female_health_cycle".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .black
         return label
@@ -61,7 +61,7 @@ class HealthViewController: BaseViewController {
 
     private let femaleHealthSubtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "记录和预测月经周期"
+        label.text = "female_health_cycle_description".localized()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor(red: 0.56, green: 0.59, blue: 0.63, alpha: 1.0)
         return label

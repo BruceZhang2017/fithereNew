@@ -259,6 +259,8 @@
 
 
 // Female Health Cycle - Kvinners helsesyklus
+"female_health_cycle" = "Menstruasjonssyklus";
+"female_health_cycle_description" = "Spor og forutsi menstruasjonssykluser";
 "female_cycle_title" = "Menstruasjonssyklus";
 "female_cycle_all_data" = "Alle data";
 "female_cycle_data_detail" = "Datadetaljer";

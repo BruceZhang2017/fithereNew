@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - 女性健康サイクル
+"female_health_cycle" = "生理周期";
+"female_health_cycle_description" = "生理周期を記録して予測する";
 "female_cycle_title" = "生理周期";
 "female_cycle_all_data" = "すべてのデータ";
 "female_cycle_data_detail" = "データ詳細";

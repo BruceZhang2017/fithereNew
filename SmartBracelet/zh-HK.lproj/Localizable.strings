@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - 女性健康週期
+"female_health_cycle" = "生理週期";
+"female_health_cycle_description" = "記錄和預測月經週期";
 "female_cycle_title" = "生理週期";
 "female_cycle_all_data" = "所有數據";
 "female_cycle_data_detail" = "數據詳情";

@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - 여성 건강 주기
+"female_health_cycle" = "생리 주기";
+"female_health_cycle_description" = "생리 주기 기록 및 예측";
 "female_cycle_title" = "생리 주기";
 "female_cycle_all_data" = "모든 데이터";
 "female_cycle_data_detail" = "데이터 상세";

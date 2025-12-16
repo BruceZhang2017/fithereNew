@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - Vrouwelijke gezondheid cyclus
+"female_health_cycle" = "Menstruatiecyclus";
+"female_health_cycle_description" = "Menstruatiecyclus bijhouden en voorspellen";
 "female_cycle_title" = "Menstruatiecyclus";
 "female_cycle_all_data" = "Alle gegevens";
 "female_cycle_data_detail" = "Gegevensdetails";

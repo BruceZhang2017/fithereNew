@@ -264,6 +264,8 @@
 
 
 // Female Health Cycle - Ženský zdravotní cyklus
+"female_health_cycle" = "Menstruační cyklus";
+"female_health_cycle_description" = "Sledujte a předvídejte menstruační cyklus";
 "female_cycle_title" = "Menstruační cyklus";
 "female_cycle_all_data" = "Všechna data";
 "female_cycle_data_detail" = "Detaily dat";

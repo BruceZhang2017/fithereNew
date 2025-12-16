@@ -412,6 +412,8 @@
 
 
 // Female Health Cycle - دورة الصحة النسائية
+"female_health_cycle" = "الدورة الشهرية";
+"female_health_cycle_description" = "تتبع وتوقع الدورة الشهرية";
 "female_cycle_title" = "الدورة الشهرية";
 "female_cycle_all_data" = "جميع البيانات";
 "female_cycle_data_detail" = "تفاصيل البيانات";
