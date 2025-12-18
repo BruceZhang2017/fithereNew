@@ -38,6 +38,7 @@
 		9A0C34952B341D6600E798F1 /* DFUnits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34932B341D6100E798F1 /* DFUnits.framework */; };
 		9A0C34962B341D6600E798F1 /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */; };
 		9A0EC47C2EEAD55D0012C7E5 /* HealthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EC47B2EEAD55D0012C7E5 /* HealthTableViewCell.swift */; };
+		9A11E0932EF2DF2D00B020A5 /* CircleCropUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A11E0922EF2DF2D00B020A5 /* CircleCropUtils.swift */; };
 		9A127EAE2BC2ACE300126836 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */; };
 		9A1F7CAC2E22932700EB3BBE /* TripleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F7CAB2E22932700EB3BBE /* TripleTableViewController.swift */; };
 		9A2181652557EDBE000330E5 /* apple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2181622557EDBE000330E5 /* apple.jpeg */; };
@@ -592,6 +593,7 @@
 		9A0C34932B341D6100E798F1 /* DFUnits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DFUnits.framework; sourceTree = "<group>"; };
 		9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
 		9A0EC47B2EEAD55D0012C7E5 /* HealthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCell.swift; sourceTree = "<group>"; };
+		9A11E0922EF2DF2D00B020A5 /* CircleCropUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCropUtils.swift; sourceTree = "<group>"; };
 		9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		9A1E2D2F2DB6631E00B50C5D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A1F7CAB2E22932700EB3BBE /* TripleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleTableViewController.swift; sourceTree = "<group>"; };
@@ -2007,6 +2009,7 @@
 				9A64F08125DD50D70073E679 /* ClockUseViewController.swift */,
 				9AEBEC3326D2A3BE008D13AA /* BLEDeviceNameHandler.swift */,
 				9A4CADED294032F100B0BDF8 /* CommonResponse.swift */,
+				9A11E0922EF2DF2D00B020A5 /* CircleCropUtils.swift */,
 			);
 			path = ClockManage;
 			sourceTree = "<group>";
@@ -3139,6 +3142,7 @@
 				9A56D2BD25216FC70082CC08 /* BarChartDataProvider.swift in Sources */,
 				9A21BFD62D0030F60048CF53 /* TimeRecord.swift in Sources */,
 				9A56D26E25216FC60082CC08 /* PieChartView.swift in Sources */,
+				9A11E0932EF2DF2D00B020A5 /* CircleCropUtils.swift in Sources */,
 				9AA2E05E2B343C9C0008CA56 /* Common.swift in Sources */,
 				9A820B8524D05B3A00A62C6F /* SportViewController.swift in Sources */,
 				9A350BE324EA32CB004CEE6A /* MineViewController.swift in Sources */,
@@ -3376,7 +3380,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
@@ -3425,7 +3429,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;
