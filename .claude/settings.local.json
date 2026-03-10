@@ -9,7 +9,7 @@
       "Bash(grep:*)",
       "Bash(for file in GradeViewController.swift SetTargetBViewController.swift SetTargetViewController.swift SportRecordMonthView.swift SportRecordViewController.swift SportViewController.swift)",
       "Bash(do)",
-      "Bash(full_path=\"/Users/anker/fithereNew/SmartBracelet/Sport/$file\")",
+      "Bash(full_path=\"/Users/ bruce/fithereNew/SmartBracelet/Sport/$file\")",
       "Bash(if grep -q \".localized()\" \"$full_path\")",
       "Bash(then)",
       "Bash(echo:*)",
@@ -17,7 +17,7 @@
       "Bash(fi)",
       "Bash(done)",
       "Bash(chmod:*)",
-      "Bash(/Users/anker/fithereNew/add_position_keys.sh)"
+      "Bash(/Users/ bruce/fithereNew/add_position_keys.sh)"
     ]
   }
 }
