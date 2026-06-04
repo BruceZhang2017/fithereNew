@@ -177,7 +177,7 @@ class MyClockViewController: UIViewController {
             if let parData = ParTool.par(fromRaw: rawImageData,
                                       width: Int32(targetSize.width),
                                       height: Int32(targetSize.height),
-                                      runAlpha: false,
+                                      runAlpha: false,	
                                       useFilter: false,
                                       supportRotate: false) {
                 if parData.count <= targetSizeBytes {

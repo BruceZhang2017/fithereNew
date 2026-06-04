@@ -1,11 +1,11 @@
 //
-// Copyright © 2015-2018  bruce Innovations Technology Limited All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 //
 //  BodySymptomsViewController.swift
 //  SmartBracelet
 //
-//  Created by  bruce on 2025/12/09.
+//  Created by bruce on 2025/12/09.
 //  Copyright © 2025 tjd. All rights reserved.
 //
 
@@ -32,13 +32,50 @@ class BodySymptomsViewController: BaseViewController {
     private var selectedSymptoms: Set<String> = []
 
     private let categories: [BodySymptomCategory] = [
-        BodySymptomCategory(title: "female_symptom_category_whole_body".localized(), symptoms: ["female_symptom_normal".localized(), "female_symptom_cramp".localized(), "female_symptom_fatigue".localized(), "female_symptom_edema".localized()]),
-        BodySymptomCategory(title: "female_symptom_category_head".localized(), symptoms: ["female_symptom_headache".localized(), "female_symptom_dizziness".localized(), "female_symptom_vomiting".localized(), "female_symptom_insomnia".localized()]),
-        BodySymptomCategory(title: "female_symptom_category_abdomen".localized(), symptoms: ["female_symptom_diarrhea".localized(), "female_symptom_lower_abdominal_pain".localized(), "female_symptom_abdominal_swelling".localized(), "female_symptom_abdominal_pain".localized()]),
-        BodySymptomCategory(title: "female_symptom_category_legs".localized(), symptoms: ["female_symptom_thigh_soreness".localized(), "female_symptom_thigh_spasm".localized(), "female_symptom_calf_soreness".localized(), "female_symptom_calf_spasm".localized()]),
-        BodySymptomCategory(title: "female_symptom_category_other".localized(), symptoms: ["female_symptom_breast_tenderness".localized(), "female_symptom_backache".localized(), "female_symptom_hot_flash".localized(), "female_symptom_cold".localized()]),
-        BodySymptomCategory(title: "female_symptom_category_discharge".localized(), symptoms: ["female_symptom_dry".localized(), "female_symptom_sticky".localized(), "female_symptom_egg_white".localized(), "female_symptom_watery".localized(), "female_symptom_milky".localized()]),
-        BodySymptomCategory(title: "female_symptom_category_skin".localized(), symptoms: ["female_symptom_normal".localized(), "female_symptom_oily".localized(), "female_symptom_dry".localized(), "female_symptom_acne".localized(), "female_symptom_pimple".localized()])
+        BodySymptomCategory(title: "female_cycle_symptom_category_whole_body".localized(), symptoms: [
+            "female_cycle_symptom_normal".localized(),
+            "female_cycle_symptom_cramps".localized(),
+            "female_cycle_symptom_fatigue".localized(),
+            "female_cycle_symptom_edema".localized()
+        ]),
+        BodySymptomCategory(title: "female_cycle_symptom_category_head".localized(), symptoms: [
+            "female_cycle_symptom_headache".localized(),
+            "female_cycle_symptom_dizziness".localized(),
+            "female_cycle_symptom_vomiting".localized(),
+            "female_cycle_symptom_insomnia".localized()
+        ]),
+        BodySymptomCategory(title: "female_cycle_symptom_category_abdomen".localized(), symptoms: [
+            "female_cycle_symptom_diarrhea".localized(),
+            "female_cycle_symptom_lower_abdominal_pain".localized(),
+            "female_cycle_symptom_abdominal_swelling".localized(),
+            "female_cycle_symptom_abdominal_pain".localized()
+        ]),
+        BodySymptomCategory(title: "female_cycle_symptom_category_legs".localized(), symptoms: [
+            "female_cycle_symptom_thigh_soreness".localized(),
+            "female_cycle_symptom_thigh_spasm".localized(),
+            "female_cycle_symptom_calf_soreness".localized(),
+            "female_cycle_symptom_calf_spasm".localized()
+        ]),
+        BodySymptomCategory(title: "female_cycle_symptom_category_other".localized(), symptoms: [
+            "female_cycle_symptom_breast_tenderness".localized(),
+            "female_cycle_symptom_backache".localized(),
+            "female_cycle_symptom_hot_flash".localized(),
+            "female_cycle_symptom_cold_deficiency".localized()
+        ]),
+        BodySymptomCategory(title: "female_cycle_symptom_category_discharge".localized(), symptoms: [
+            "female_cycle_symptom_dry".localized(),
+            "female_cycle_symptom_sticky".localized(),
+            "female_cycle_symptom_egg_white".localized(),
+            "female_cycle_symptom_watery".localized(),
+            "female_cycle_symptom_milky".localized()
+        ]),
+        BodySymptomCategory(title: "female_cycle_symptom_category_skin".localized(), symptoms: [
+            "female_cycle_symptom_normal".localized(),
+            "female_cycle_symptom_oily".localized(),
+            "female_cycle_symptom_dry".localized(),
+            "female_cycle_symptom_blackhead".localized(),
+            "female_cycle_symptom_acne".localized()
+        ])
     ]
 
     // MARK: - UI Components

@@ -229,9 +229,11 @@ extension AlarmViewController: UITableViewDelegate {
             let alarm = XGZTBlueToothManager.shared.device?.alarms[indexPath.row]
             vc.alarmData = alarm
         } else {
-            let model = BLEManager.shared.alarmArray[indexPath.row]
-            vc.weekday = model.weekday
-            vc.alarm = model
+            if indexPath.row < BLEManager.shared.alarmArray.count {
+                let model = BLEManager.shared.alarmArray[indexPath.row]
+                vc.weekday = model.weekday
+                vc.alarm = model
+            }
         }
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -53,7 +53,7 @@ class HealthViewController: BaseViewController {
 
     private let femaleHealthTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "female_health_cycle".localized()
+        label.text = "female_cycle_title".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .black
         return label
@@ -61,7 +61,7 @@ class HealthViewController: BaseViewController {
 
     private let femaleHealthSubtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "female_health_cycle_description".localized()
+        label.text = "female_cycle_subtitle".localized()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.textColor = UIColor(red: 0.56, green: 0.59, blue: 0.63, alpha: 1.0)
         return label
@@ -167,7 +167,7 @@ class HealthViewController: BaseViewController {
         
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(320)
+            make.top.equalTo(screenHeight > 844 ? 340 : 320)
             make.bottom.equalToSuperview()
         }
         

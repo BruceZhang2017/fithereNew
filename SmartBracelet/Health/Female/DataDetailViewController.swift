@@ -1,11 +1,11 @@
 //
-// Copyright © 2015-2018  bruce Innovations Technology Limited All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 //
 //  DataDetailViewController.swift
 //  SmartBracelet
 //
-//  Created by  bruce on 2025/12/09.
+//  Created by bruce on 2025/12/09.
 //  Copyright © 2025 tjd. All rights reserved.
 //
 
@@ -69,7 +69,7 @@ class DataDetailViewController: BaseViewController {
 
         // 周期天数
         if record.isPeriod {
-            detailItems.append((String(format: "female_cycle_day_number".localized(), record.cycleDay), "female_cycle_period".localized()))
+            detailItems.append(("female_cycle_day_n".localized(with: record.cycleDay), "female_cycle_period".localized()))
         } else {
             detailItems.append(("female_cycle_daily_record".localized(), "female_cycle_cycle".localized()))
         }
@@ -81,65 +81,65 @@ class DataDetailViewController: BaseViewController {
         let flowText: String
         switch symptomData.flowLevel {
         case 1:
-            flowText = "female_symptom_flow_light".localized()
+            flowText = "female_cycle_flow_light".localized()
         case 2:
-            flowText = "female_symptom_flow_medium".localized()
+            flowText = "female_cycle_flow_medium".localized()
         case 3:
-            flowText = "female_symptom_flow_heavy".localized()
+            flowText = "female_cycle_flow_heavy".localized()
         default:
-            flowText = "female_symptom_flow_none".localized()
+            flowText = "female_cycle_none".localized()
         }
-        detailItems.append((flowText, "female_symptom_flow".localized()))
+        detailItems.append((flowText, "female_cycle_flow".localized()))
 
         // 痛经
         let painText: String
         switch symptomData.painLevel {
         case 1:
-            painText = "female_symptom_pain_mild".localized()
+            painText = "female_cycle_pain_mild".localized()
         case 2:
-            painText = "female_symptom_pain_moderate".localized()
+            painText = "female_cycle_pain_moderate".localized()
         case 3:
-            painText = "female_symptom_pain_severe".localized()
+            painText = "female_cycle_pain_severe".localized()
         default:
-            painText = "female_symptom_pain_none".localized()
+            painText = "female_cycle_none".localized()
         }
-        detailItems.append((painText, "female_symptom_pain".localized()))
+        detailItems.append((painText, "female_cycle_pain".localized()))
 
         // 性行为
         let sexualText: String
         switch symptomData.sexualActivity {
         case 1:
-            sexualText = "female_symptom_sexual_protected".localized()
+            sexualText = "female_cycle_protected_sex".localized()
         case 2:
-            sexualText = "female_symptom_sexual_unprotected".localized()
+            sexualText = "female_cycle_unprotected_sex".localized()
         default:
-            sexualText = "female_symptom_sexual_none".localized()
+            sexualText = "female_cycle_none".localized()
         }
-        detailItems.append((sexualText, "female_symptom_sexual".localized()))
+        detailItems.append((sexualText, "female_cycle_sexual_activity".localized()))
 
         // 心情
         let moodText: String
         switch symptomData.mood {
         case 1:
-            moodText = "female_symptom_mood_calm".localized()
+            moodText = "female_cycle_mood_calm".localized()
         case 2:
-            moodText = "female_symptom_mood_happy".localized()
+            moodText = "female_cycle_mood_happy".localized()
         case 3:
-            moodText = "female_symptom_mood_relaxed".localized()
+            moodText = "female_cycle_mood_relaxed".localized()
         case 4:
-            moodText = "female_symptom_mood_energetic".localized()
+            moodText = "female_cycle_mood_energetic".localized()
         case 5:
-            moodText = "female_symptom_mood_sensitive".localized()
+            moodText = "female_cycle_mood_sensitive".localized()
         case 6:
-            moodText = "female_symptom_mood_anxious".localized()
+            moodText = "female_cycle_mood_anxious".localized()
         case 7:
-            moodText = "female_symptom_mood_irritable".localized()
+            moodText = "female_cycle_mood_irritable".localized()
         case 8:
-            moodText = "female_symptom_mood_sad".localized()
+            moodText = "female_cycle_mood_sad".localized()
         default:
-            moodText = "female_symptom_mood_none".localized()
+            moodText = "female_cycle_none".localized()
         }
-        detailItems.append((moodText, "female_symptom_mood".localized()))
+        detailItems.append((moodText, "female_cycle_mood".localized()))
 
         // 身体症状
         let bodySymptoms = symptomData.bodySymptoms
@@ -155,7 +155,7 @@ class DataDetailViewController: BaseViewController {
             }.joined(separator: "、")
             detailItems.append((symptomsText, "female_cycle_body_symptoms".localized()))
         } else {
-            detailItems.append(("female_symptom_none".localized(), "female_cycle_body_symptoms".localized()))
+            detailItems.append(("female_cycle_none".localized(), "female_cycle_body_symptoms".localized()))
         }
 
         // 记录时间

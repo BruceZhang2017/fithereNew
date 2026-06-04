@@ -1,19 +1,4 @@
 PODS:
-  - AFNetworking (4.0.1):
-    - AFNetworking/NSURLSession (= 4.0.1)
-    - AFNetworking/Reachability (= 4.0.1)
-    - AFNetworking/Security (= 4.0.1)
-    - AFNetworking/Serialization (= 4.0.1)
-    - AFNetworking/UIKit (= 4.0.1)
-  - AFNetworking/NSURLSession (4.0.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (4.0.1)
-  - AFNetworking/Security (4.0.1)
-  - AFNetworking/Serialization (4.0.1)
-  - AFNetworking/UIKit (4.0.1):
-    - AFNetworking/NSURLSession
   - Alamofire (5.10.2)
   - AMap2DMap (5.6.1):
     - AMapFoundation (~> 1.4)
@@ -59,7 +44,6 @@ PODS:
   - YYImage/Core (1.0.4)
 
 DEPENDENCIES:
-  - AFNetworking
   - Alamofire (~> 5.10.2)
   - AMap2DMap
   - AMapLocation
@@ -93,7 +77,6 @@ SPEC REPOS:
     - IMSLog
     - IotLinkKit
   https://github.com/CocoaPods/Specs.git:
-    - AFNetworking
     - Alamofire
     - AMap2DMap
     - AMapFoundation
@@ -123,7 +106,6 @@ SPEC REPOS:
     - YYImage
 
 SPEC CHECKSUMS:
-  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   AMap2DMap: cac76bc057de18a1641f34df6b50bf5bc6b23571
   AMapFoundation: 9885c48fc3a78fdfb84a0299a2293e56ea3c9fec
@@ -154,6 +136,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 4f6e91cf00d67827ec23bd3c2f849cbd054b4979
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 3dbfd7aa9879302152289bdaf96615560969ce3b
+PODFILE CHECKSUM: dec066666154ded1cdc346bedfc9e8ef7c76825d
 
 COCOAPODS: 1.16.2

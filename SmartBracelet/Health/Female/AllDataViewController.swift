@@ -1,11 +1,11 @@
 //
-// Copyright © 2015-2018  bruce Innovations Technology Limited All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 //
 //  AllDataViewController.swift
 //  SmartBracelet
 //
-//  Created by  bruce on 2025/12/09.
+//  Created by bruce on 2025/12/09.
 //  Copyright © 2025 tjd. All rights reserved.
 //
 
@@ -99,7 +99,7 @@ class AllDataViewController: BaseViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
         let monthFormatter = DateFormatter()
-        monthFormatter.dateFormat = "yyyy年MM月"
+        monthFormatter.dateFormat = "female_cycle_month_year_format".localized()
 
         for (monthString, dateStrings) in recordsByMonth {
             var records: [DailyRecord] = []
@@ -366,7 +366,7 @@ class DailyRecordCell: UITableViewCell {
         dateLabel.text = dateFormatter.string(from: record.date)
 
         if record.isPeriod {
-            statusLabel.text = String(format: "female_cycle_period_day".localized(), record.cycleDay)
+            statusLabel.text = "female_cycle_day_n".localized(with: record.cycleDay) + "\n" + "female_cycle_period".localized()
         } else {
             statusLabel.text = "female_cycle_daily_record".localized()
         }

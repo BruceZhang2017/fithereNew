@@ -384,7 +384,8 @@ extension DeviceSettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .kCellIdentifier, for: indexPath) as! DeviceSettingsTableViewCell
-        cell.textLabel?.text = displayTitles[indexPath.row]
+        let title = indexPath.row < displayTitles.count ? displayTitles[indexPath.row] : ""
+        cell.textLabel?.text = title
         cell.textLabel?.textColor = UIColor.text_secondary
         cell.textLabel?.font = UIFont.body1()
         if (indexPath.row >= 1 && indexPath.row <= 3) || indexPath.row == 5 {

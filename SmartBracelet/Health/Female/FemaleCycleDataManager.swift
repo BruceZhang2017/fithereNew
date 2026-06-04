@@ -1,11 +1,11 @@
 //
-// Copyright © 2015-2018  bruce Innovations Technology Limited All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 //
 //  FemaleCycleDataManager.swift
 //  SmartBracelet
 //
-//  Created by  bruce on 2025/12/11.
+//  Created by bruce on 2025/12/11.
 //  Copyright © 2025 tjd. All rights reserved.
 //
 
@@ -39,11 +39,13 @@ struct CycleConfiguration: Codable {
     var periodDays: Int // 经期天数
     var cycleLength: Int // 周期长度
     var lastPeriodDate: Date // 最后一次经期开始日期
+    var isConfigured: Bool // 是否已由用户配置过
 
-    init(periodDays: Int = 7, cycleLength: Int = 28, lastPeriodDate: Date = Date()) {
+    init(periodDays: Int = 7, cycleLength: Int = 28, lastPeriodDate: Date = Date(), isConfigured: Bool = false) {
         self.periodDays = periodDays
         self.cycleLength = cycleLength
         self.lastPeriodDate = lastPeriodDate
+        self.isConfigured = isConfigured
     }
 }
 
@@ -157,12 +159,15 @@ class FemaleCycleDataManager {
         }
 
         if hasChanges {
+            // 标记为已配置
+            cycleConfig.isConfigured = true
+
             saveAllData()
 
             // 发送配置变更通知
             NotificationCenter.default.post(name: .cycleConfigurationDidChange, object: nil)
 
-            XLogger.shared.log("周期配置已更新: periodDays=\(cycleConfig.periodDays), cycleLength=\(cycleConfig.cycleLength), lastPeriodDate=\(cycleConfig.lastPeriodDate)")
+            XLogger.shared.log("周期配置已更新: periodDays=\(cycleConfig.periodDays), cycleLength=\(cycleConfig.cycleLength), lastPeriodDate=\(cycleConfig.lastPeriodDate), isConfigured=\(cycleConfig.isConfigured)")
         }
     }
 

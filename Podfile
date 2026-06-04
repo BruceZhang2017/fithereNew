@@ -5,7 +5,7 @@ use_frameworks!
 target 'SmartBracelet' do
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/aliyun/aliyun-specs.git'
-pod 'AFNetworking'
+#pod 'AFNetworking'
 pod 'AMap2DMap'
 pod 'AMapLocation'
 pod 'SnapKit','5.0.1'
@@ -47,6 +47,10 @@ pod 'DropDown'
         config.build_settings['ENABLE_STRICT_OBJC_MSGSEND'] = 'NO'
         config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'NO'
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        # 关闭模块私有头文件验证
+        config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'NO'
+        config.build_settings['ENABLE_STRICT_OBJC_IMPORTS'] = 'NO'
+        config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
       end
     end
   end

@@ -1,11 +1,11 @@
 //
-// Copyright © 2015-2018  bruce Innovations Technology Limited All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 //
 //  FemaleHealthViewController.swift
 //  SmartBracelet
 //
-//  Created by  bruce on 2025/12/04.
+//  Created by bruce on 2025/12/04.
 //  Copyright © 2025 tjd. All rights reserved.
 //
 
@@ -55,7 +55,7 @@ class FemaleHealthViewController: BaseViewController {
 
     private let periodDaysValueLabel: UILabel = {
         let label = UILabel()
-        label.text = String(format: "female_cycle_days_unit".localized(), 7)
+        label.text = "7" + "female_cycle_days_unit".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textColor = UIColor(hex: 0x9097A0, alpha: 1)
         label.textAlignment = .right
@@ -96,7 +96,7 @@ class FemaleHealthViewController: BaseViewController {
 
     private let cycleLengthValueLabel: UILabel = {
         let label = UILabel()
-        label.text = String(format: "female_cycle_days_unit".localized(), 28)
+        label.text = "28" + "female_cycle_days_unit".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textColor = UIColor(hex: 0x9097A0, alpha: 1)
         label.textAlignment = .right
@@ -129,7 +129,7 @@ class FemaleHealthViewController: BaseViewController {
 
     private let lastPeriodTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "female_cycle_last_period_date".localized()
+        label.text = "female_cycle_last_period_start_date".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textColor = UIColor.black
         return label
@@ -166,14 +166,14 @@ class FemaleHealthViewController: BaseViewController {
 
     private var periodDays: Int = 7 {
         didSet {
-            periodDaysValueLabel.text = String(format: "female_cycle_days_unit".localized(), periodDays)
+            periodDaysValueLabel.text = "\(periodDays)" + "female_cycle_days_unit".localized()
             saveFemaleHealthData()
         }
     }
 
     private var cycleLength: Int = 28 {
         didSet {
-            cycleLengthValueLabel.text = String(format: "female_cycle_days_unit".localized(), cycleLength)
+            cycleLengthValueLabel.text = "\(cycleLength)" + "female_cycle_days_unit".localized()
             saveFemaleHealthData()
         }
     }
@@ -347,7 +347,7 @@ class FemaleHealthViewController: BaseViewController {
         let alert = UIAlertController(title: "female_cycle_select_period_days".localized(), message: nil, preferredStyle: .actionSheet)
 
         for days in 3...10 {
-            let action = UIAlertAction(title: String(format: "female_cycle_days_unit".localized(), days), style: .default) { [weak self] _ in
+            let action = UIAlertAction(title: "\(days)" + "female_cycle_days_unit".localized(), style: .default) { [weak self] _ in
                 self?.periodDays = days
             }
             alert.addAction(action)
@@ -367,7 +367,7 @@ class FemaleHealthViewController: BaseViewController {
         let alert = UIAlertController(title: "female_cycle_select_cycle_length".localized(), message: nil, preferredStyle: .actionSheet)
 
         for days in 21...35 {
-            let action = UIAlertAction(title: String(format: "female_cycle_days_unit".localized(), days), style: .default) { [weak self] _ in
+            let action = UIAlertAction(title: "\(days)" + "female_cycle_days_unit".localized(), style: .default) { [weak self] _ in
                 self?.cycleLength = days
             }
             alert.addAction(action)
@@ -398,10 +398,17 @@ class FemaleHealthViewController: BaseViewController {
             saveFemaleHealthData()
             navigationController?.popViewController(animated: true)
         } else {
-            // 正常流程，跳转到日历页面
+            // 正常流程，跳转到日历页面，并从导航栈中移除当前设置页面
             let vc = FemaleCycleCalendarViewController()
             vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
+
+            if var viewControllers = navigationController?.viewControllers {
+                // 移除当前的 FemaleHealthViewController
+                viewControllers.removeLast()
+                // 添加新的 FemaleCycleCalendarViewController
+                viewControllers.append(vc)
+                navigationController?.setViewControllers(viewControllers, animated: true)
+            }
         }
     }
 

@@ -140,16 +140,16 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         documentController?.delegate = self
         
         // 创建按钮
-            let button = UIBarButtonItem(
-                title: "日志",
-                style: .plain,
-                target: self,
-                action: #selector(didTapRightButton)
-            )
-            button.tintColor = .red  // 设置按钮颜色
-
-            // 添加到右上角
-            navigationItem.rightBarButtonItem = button
+//            let button = UIBarButtonItem(
+//                title: "日志",
+//                style: .plain,
+//                target: self,
+//                action: #selector(didTapRightButton)
+//            )
+//            button.tintColor = .red  // 设置按钮颜色
+//
+//            // 添加到右上角
+//            navigationItem.rightBarButtonItem = button
     }
     
     // 处理点击事件（注意使用 @objc 标记）
@@ -338,10 +338,14 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     
     public func refreshHeight() {
         // 将 deviceSettingsViewHeightMultiplier 修改为 14
-        if ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15 & 0x0f) > 0 {
-            deviceSettingsViewHeightMultiplier = 15
-        } else {
+        let f15 = (((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15) & 0x0f) > 0
+        let f16 = (((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 16) & 0x01) > 0
+        if f15 && f16 {
+            deviceSettingsViewHeightMultiplier = 16
+        } else if !f15 && !f16 {
             deviceSettingsViewHeightMultiplier = 14
+        } else {
+            deviceSettingsViewHeightMultiplier = 15
         }
         
             

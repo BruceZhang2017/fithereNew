@@ -795,11 +795,21 @@ public class XGZTCommand {
     static func setQRCode(type: UInt8, qrString: String) {
         if let commandData = QRCodeSetCommand.buildCommand(type: type, qrString: qrString) {
             print("构建的指令数据：\(commandData)")
-            XGZTBlueToothManager.shared.writeCharacteristic(command: commandData.bytes)
+            
+            // 关键修改：将 RawSpan 转换为 [UInt8] 数组
+            // 方式1：如果 RawSpan 是 ContiguousBytes 类型（推荐）
+            let bytesArray = commandData.bytes.withUnsafeBytes {
+                Array($0.bindMemory(to: UInt8.self))
+            }
+            
+            // 方式2：如果 RawSpan 支持直接遍历（备选）
+            // let bytesArray = Array(commandData.bytes) as [UInt8]
+            
+            // 调用方法时传入转换后的数组
+            XGZTBlueToothManager.shared.writeCharacteristic(command: bytesArray)
         } else {
             print("构建指令失败")
         }
-        
     }
     
     // 获取多运动模式数据
