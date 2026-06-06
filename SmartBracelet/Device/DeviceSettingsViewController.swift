@@ -385,51 +385,54 @@ extension DeviceSettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .kCellIdentifier, for: indexPath) as! DeviceSettingsTableViewCell
         let title = indexPath.row < displayTitles.count ? displayTitles[indexPath.row] : ""
+        let originalRow = titles.firstIndex(of: title) ?? indexPath.row
         cell.textLabel?.text = title
         cell.textLabel?.textColor = UIColor.text_secondary
         cell.textLabel?.font = UIFont.body1()
-        if (indexPath.row >= 1 && indexPath.row <= 3) || indexPath.row == 5 {
+        if [1, 2, 3, 5].contains(originalRow) {
             let mSwitch = UISwitch()
-            mSwitch.tag = 999 + indexPath.row
+            mSwitch.tag = 999 + originalRow
             mSwitch.addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)
             cell.accessoryView = mSwitch
-            if indexPath.row == 3 {
+            switch originalRow {
+            case 3:
                 if isXGZT {
                     mSwitch.isOn = (((XGZTBlueToothManager.shared.device?.longsit?.cycle ?? 0) >> 7) & 1) > 0
                 } else {
                     mSwitch.isOn = bleSelf.functionSwitchModel.isLongSit
                 }
-            } else if indexPath.row == 2 {
+            case 2:
                 if isXGZT {
-                    mSwitch.isOn = XGZTBlueToothManager.shared.device?.isRaisehandtobrightenscreen ?? false 
+                    mSwitch.isOn = XGZTBlueToothManager.shared.device?.isRaisehandtobrightenscreen ?? false
                 } else {
                     mSwitch.isOn = bleSelf.functionSwitchModel.isLightScreen
                 }
-            } else if indexPath.row == 1 {
+            case 1:
                 if isXGZT {
                     mSwitch.isOn = XGZTBlueToothManager.shared.device?.isIncomingCall ?? false
                 } else {
                     mSwitch.isOn = bleSelf.notifyModel.isCall
                 }
-            } else if indexPath.row == 5 {
+            case 5:
                 if isXGZT {
                     mSwitch.isOn = (((XGZTBlueToothManager.shared.device?.drinkWater?.cycle ?? 0) >> 7) & 1) > 0
                 } else {
                     mSwitch.isOn = bleSelf.functionSwitchModel.isDrink
                 }
+            default:
+                break
             }
-
         } else {
             let imageView = UIImageView(image: UIImage(named: "content_next"))
             cell.accessoryView = imageView
         }
-        if indexPath.row == 4 {
+        if originalRow == 4 {
             if isXGZT {
                 cell.detailTextLabel?.text = "\(XGZTBlueToothManager.shared.device?.longsit?.period ?? 0)\("minute".localized())"
             } else {
                 cell.detailTextLabel?.text = "\(bleSelf.longSitModel.interval)\("minute".localized())"
             }
-        } else if indexPath.row == 6 {
+        } else if originalRow == 6 {
             if isXGZT {
                 cell.detailTextLabel?.text = "\(XGZTBlueToothManager.shared.device?.drinkWater?.period ?? 0)\("minute".localized())"
             } else {
@@ -454,13 +457,15 @@ extension DeviceSettingsViewController: UITableViewDelegate {
             Toast(text: "mine_unconnect".localized()).show()
             return
         }
+        let title = indexPath.row < displayTitles.count ? displayTitles[indexPath.row] : ""
+        let originalRow = titles.firstIndex(of: title) ?? indexPath.row
         if indexPath.section == 0 {
-            if indexPath.row == 0 { // 推送设置
+            if originalRow == 0 { // 推送设置
                 let storyboard = UIStoryboard(name: .kDevice, bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "APNSViewController")
                 vc.hidesBottomBarWhenPushed = true
                 parent?.navigationController?.pushViewController(vc, animated: true)
-            } else if indexPath.row == 4 {
+            } else if originalRow == 4 {
                 let delayTime = DispatchTime.now() + .milliseconds(500)
                 DispatchQueue.main.asyncAfter(deadline: delayTime) {
                     [weak self] in
@@ -468,11 +473,11 @@ extension DeviceSettingsViewController: UITableViewDelegate {
                     vc?.hidesBottomBarWhenPushed = true
                     self?.parent?.navigationController?.pushViewController(vc!, animated: true)
                 }
-            } else if indexPath.row == 7 {
+            } else if originalRow == 7 {
                 let vc = OpenWeatherViewController()
                 vc.hidesBottomBarWhenPushed = true
                 parent?.navigationController?.pushViewController(vc, animated: true)
-            }  else if indexPath.row == 6 {
+            } else if originalRow == 6 {
                 let delayTime = DispatchTime.now() + .milliseconds(200)
                 DispatchQueue.main.asyncAfter(deadline: delayTime) {
                     [weak self] in
@@ -481,34 +486,33 @@ extension DeviceSettingsViewController: UITableViewDelegate {
                     vc?.hidesBottomBarWhenPushed = true
                     self?.parent?.navigationController?.pushViewController(vc!, animated: true)
                 }
-                
             }
         }
-        if indexPath.row == 11 {
+        if originalRow == 11 {
             if isXGZT {
                 XGZTCommand.remotePhoto(action: 1)
             } else {
                 bleSelf.setCameraForWristband(true)
             }
             takePhoto()
-        } else if indexPath.row == 10 { // 设置信息
+        } else if originalRow == 10 { // 设置信息
             let storyboard = UIStoryboard(name: .kDevice, bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "DeviceInfoViewController")
             vc.hidesBottomBarWhenPushed = true
             parent?.navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 9 { // 查找设备
+        } else if originalRow == 9 { // 查找设备
             let storyboard = UIStoryboard(name: .kDevice, bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "DeviceFoundViewController")
             vc.hidesBottomBarWhenPushed = true
             parent?.navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 8 { // 闹钟设置
+        } else if originalRow == 8 { // 闹钟设置
             if isXGZT {
                 XGZTCommand.getAlarmInfo(type: 1)
             } else {
                 bleSelf.getAlarmForWristband() // 获取闹钟信息
             }
             perform(#selector(readAlarm), with: nil, afterDelay: 0.3)
-        } else if indexPath.row == 12 { // 同步数据
+        } else if originalRow == 12 { // 同步数据
             if isXGZT {
                 NotificationCenter.default.post(name: Notification.Name("HealthVCLoading"), object: 1000)
                 XGZTBlueToothManager.shared.handler.syncDevcieInfo()
@@ -519,12 +523,12 @@ extension DeviceSettingsViewController: UITableViewDelegate {
                     bleSelf.getStep()
                 }
             }
-        } else if indexPath.row == 13 { // OTA
+        } else if originalRow == 13 { // OTA
             let storyboard = UIStoryboard(name: "OTA", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ABOtaViewController") as! ABOtaViewController
             vc.hidesBottomBarWhenPushed = true
             parent?.navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.row == 14 { // 卡包
+        } else if originalRow == 14 { // 卡包
             let f15 = ((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15) & 0x01
             if f15 > 0 {
                 let cardVC = CardBagTableViewController()
@@ -535,7 +539,7 @@ extension DeviceSettingsViewController: UITableViewDelegate {
                 vc.hidesBottomBarWhenPushed = true
                 parent?.navigationController?.pushViewController(vc, animated: true)
             }
-        } else if indexPath.row == 15 { // 同步联系人
+        } else if originalRow == 15 { // 同步联系人
             let vc = SyncContactsViewController()
             vc.hidesBottomBarWhenPushed = true
             parent?.navigationController?.pushViewController(vc, animated: true)

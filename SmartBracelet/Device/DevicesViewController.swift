@@ -199,6 +199,9 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         }
         
         // 创建一个定时器，每 2 秒触发一次，并绑定到主线程队列
+        if refreshTimer != nil {
+            return
+        }
         refreshTimer = DispatchSource.makeTimerSource(queue: .main)
         refreshTimer?.schedule(deadline: .now(), repeating: 4.0)
         refreshTimer?.setEventHandler { [weak self] in
@@ -218,6 +221,11 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     }
     
     private func refreshDevices() {
+        if deviceView.isHidden {
+            collectionView?.isHidden = true
+            dialButton.isHidden = true
+            return
+        }
         let lastestDeviceMac = UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? "00:00:00:00:00:00"
         let clockDir = UserDefaults.standard.dictionary(forKey: "MyClock") ?? [:]
         let clockStr = clockDir[lastestDeviceMac] as? [String] ?? ["_&&_&&_", "_&&_&&_", "_&&_&&_"]
@@ -401,6 +409,10 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     
     private func changeButtonAttr() {
         if deviceView.isHidden == true {
+            deviceSettingView?.isHidden = true
+            btView.isHidden = true
+            collectionView.isHidden = true
+            dialView.isHidden = true
             changeButton.tintColor = UIColor.white
             changeButton.backgroundColor = .brand
             changeButton.setTitle("device_add".localized(), for: .normal)
@@ -409,6 +421,10 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
             }
             changeButton.tag = 1
         } else {
+            deviceSettingView?.isHidden = false
+            btView.isHidden = false
+            collectionView.isHidden = false
+            dialView.isHidden = false
             changeButton.tintColor = UIColor.brand
             changeButton.backgroundColor = .white
             changeButton.setTitle("deivce_unbind".localized(), for: .normal)

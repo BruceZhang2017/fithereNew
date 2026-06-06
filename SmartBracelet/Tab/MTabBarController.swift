@@ -35,6 +35,21 @@ class MTabBarController: UITabBarController {
 
         setupViewControllersTitles()
         
+        // 直接使用 UITabBarAppearance 统一设置颜色，避免 iOS 15+ appearance proxy 不生效
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = .white
+        tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gray]
+        tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.brand]
+        tabBarAppearance.stackedLayoutAppearance.normal.iconColor = UIColor.gray
+        tabBarAppearance.stackedLayoutAppearance.selected.iconColor = UIColor.brand
+        tabBar.standardAppearance = tabBarAppearance
+        if #available(iOS 15.0, *) {
+            tabBar.scrollEdgeAppearance = tabBarAppearance
+        }
+        tabBar.tintColor = UIColor.brand
+        tabBar.unselectedItemTintColor = UIColor.gray
+
         // 设置未选中状态下的字体颜色
         let unselectedAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.gray // 你可以替换为你想要的颜色

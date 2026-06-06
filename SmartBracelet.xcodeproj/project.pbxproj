@@ -52,6 +52,7 @@
 		32571D272FD3AF6500FFDAF3 /* UsefulPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1F2FD3AF6500FFDAF3 /* UsefulPickerView.swift */; };
 		32571D282FD3AF6500FFDAF3 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1B2FD3AF6500FFDAF3 /* PickerView.swift */; };
 		32571D2E2FD3BC9B00FFDAF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32571D2D2FD3BC9B00FFDAF3 /* Main.storyboard */; };
+		32571D302FD3D5EB00FFDAF3 /* Device.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32571D2F2FD3D5EB00FFDAF3 /* Device.storyboard */; };
 		6358A1BC7537C0FAECF400E2 /* Pods_SmartBracelet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */; };
 		9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4425BDB1CD0006FB94 /* OTACMD.m */; };
 		9A037E4825BDB1EC0006FB94 /* OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4725BDB1EC0006FB94 /* OTA.m */; };
@@ -176,7 +177,6 @@
 		9A4CADF029406E6E00B0BDF8 /* QuestionItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CADEF29406E6E00B0BDF8 /* QuestionItemResponse.swift */; };
 		9A4CADF22940941F00B0BDF8 /* JXWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CADF12940941F00B0BDF8 /* JXWebViewController.swift */; };
 		9A4CADF42940944300B0BDF8 /* JXLocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4CADF32940944300B0BDF8 /* JXLocalizedString.swift */; };
-		9A4E624424F7E94E00A0E878 /* Device.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A4E624324F7E94E00A0E878 /* Device.storyboard */; };
 		9A4E624624F8926300A0E878 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E624524F8926300A0E878 /* DevicesViewController.swift */; };
 		9A4E624824F8DF3800A0E878 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E624724F8DF3800A0E878 /* DevicesView.swift */; };
 		9A4E624D24F8DF6B00A0E878 /* CyclicCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4E624B24F8DF6B00A0E878 /* CyclicCardCell.swift */; };
@@ -613,6 +613,7 @@
 		32571D1E2FD3AF6500FFDAF3 /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		32571D1F2FD3AF6500FFDAF3 /* UsefulPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulPickerView.swift; sourceTree = "<group>"; };
 		32571D2D2FD3BC9B00FFDAF3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		32571D2F2FD3D5EB00FFDAF3 /* Device.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Device.storyboard; sourceTree = "<group>"; };
 		6D913391FB0E57C59E39E74B /* Pods-SmartBracelet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBracelet.debug.xcconfig"; path = "Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet.debug.xcconfig"; sourceTree = "<group>"; };
 		7908B378C1A13473537586D0 /* Pods-SmartBracelet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBracelet.release.xcconfig"; path = "Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet.release.xcconfig"; sourceTree = "<group>"; };
 		7A71386927639819C83B8B2B /* Pods-TJDWristbandSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJDWristbandSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TJDWristbandSDKDemo/Pods-TJDWristbandSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -748,7 +749,6 @@
 		9A4CADEF29406E6E00B0BDF8 /* QuestionItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItemResponse.swift; sourceTree = "<group>"; };
 		9A4CADF12940941F00B0BDF8 /* JXWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXWebViewController.swift; sourceTree = "<group>"; };
 		9A4CADF32940944300B0BDF8 /* JXLocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXLocalizedString.swift; sourceTree = "<group>"; };
-		9A4E624324F7E94E00A0E878 /* Device.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Device.storyboard; sourceTree = "<group>"; };
 		9A4E624524F8926300A0E878 /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		9A4E624724F8DF3800A0E878 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
 		9A4E624B24F8DF6B00A0E878 /* CyclicCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyclicCardCell.swift; sourceTree = "<group>"; };
@@ -1295,8 +1295,8 @@
 				18385F042451819E00EA380A /* DetailViewController.swift */,
 				9A820B7324CEA1CC00A62C6F /* BaseViewController.swift */,
 				9A21BFD32D0030330048CF53 /* OTA.storyboard */,
-				9A4E624324F7E94E00A0E878 /* Device.storyboard */,
 				32571D2D2FD3BC9B00FFDAF3 /* Main.storyboard */,
+				32571D2F2FD3D5EB00FFDAF3 /* Device.storyboard */,
 				9A350BE424EA6476004CEE6A /* Mine.storyboard */,
 				9A820B8124D0522300A62C6F /* Sport.storyboard */,
 				18385EA624517F1A00EA380A /* Assets.xcassets */,
@@ -2656,10 +2656,10 @@
 				9A46063D2DD5FF580011017F /* delete_device20.png in Resources */,
 				9A46063E2DD5FF580011017F /* delete_device10.png in Resources */,
 				9A2185B0255BC6AA000330E5 /* new5.jpg in Resources */,
-				9A4E624424F7E94E00A0E878 /* Device.storyboard in Resources */,
 				9AA2E0582B343C9C0008CA56 /* Media.xcassets in Resources */,
 				9A9E4E13278136E70084CCFF /* 1_80_160.png in Resources */,
 				9A9E4E12278136E70084CCFF /* 3_80_160.png in Resources */,
+				32571D302FD3D5EB00FFDAF3 /* Device.storyboard in Resources */,
 				9AAF861C25C83E5000960BDD /* IdleResources.bundle in Resources */,
 				18385EAA24517F1A00EA380A /* LaunchScreen.storyboard in Resources */,
 				9A350BE524EA6476004CEE6A /* Mine.storyboard in Resources */,
