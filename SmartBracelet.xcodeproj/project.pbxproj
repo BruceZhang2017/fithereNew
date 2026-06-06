@@ -51,7 +51,7 @@
 		32571D262FD3AF6500FFDAF3 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1E2FD3AF6500FFDAF3 /* ToolBarView.swift */; };
 		32571D272FD3AF6500FFDAF3 /* UsefulPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1F2FD3AF6500FFDAF3 /* UsefulPickerView.swift */; };
 		32571D282FD3AF6500FFDAF3 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1B2FD3AF6500FFDAF3 /* PickerView.swift */; };
-		32571D2A2FD3B32300FFDAF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32571D292FD3B32300FFDAF3 /* Main.storyboard */; };
+		32571D2E2FD3BC9B00FFDAF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32571D2D2FD3BC9B00FFDAF3 /* Main.storyboard */; };
 		6358A1BC7537C0FAECF400E2 /* Pods_SmartBracelet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */; };
 		9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4425BDB1CD0006FB94 /* OTACMD.m */; };
 		9A037E4825BDB1EC0006FB94 /* OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4725BDB1EC0006FB94 /* OTA.m */; };
@@ -612,7 +612,7 @@
 		32571D1D2FD3AF6500FFDAF3 /* SelectionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTextField.swift; sourceTree = "<group>"; };
 		32571D1E2FD3AF6500FFDAF3 /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		32571D1F2FD3AF6500FFDAF3 /* UsefulPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulPickerView.swift; sourceTree = "<group>"; };
-		32571D292FD3B32300FFDAF3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		32571D2D2FD3BC9B00FFDAF3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6D913391FB0E57C59E39E74B /* Pods-SmartBracelet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBracelet.debug.xcconfig"; path = "Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet.debug.xcconfig"; sourceTree = "<group>"; };
 		7908B378C1A13473537586D0 /* Pods-SmartBracelet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBracelet.release.xcconfig"; path = "Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet.release.xcconfig"; sourceTree = "<group>"; };
 		7A71386927639819C83B8B2B /* Pods-TJDWristbandSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJDWristbandSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TJDWristbandSDKDemo/Pods-TJDWristbandSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1296,7 +1296,7 @@
 				9A820B7324CEA1CC00A62C6F /* BaseViewController.swift */,
 				9A21BFD32D0030330048CF53 /* OTA.storyboard */,
 				9A4E624324F7E94E00A0E878 /* Device.storyboard */,
-				32571D292FD3B32300FFDAF3 /* Main.storyboard */,
+				32571D2D2FD3BC9B00FFDAF3 /* Main.storyboard */,
 				9A350BE424EA6476004CEE6A /* Mine.storyboard */,
 				9A820B8124D0522300A62C6F /* Sport.storyboard */,
 				18385EA624517F1A00EA380A /* Assets.xcassets */,
@@ -2644,7 +2644,7 @@
 			files = (
 				9A60DEE2252F003800E0D849 /* cities.plist in Resources */,
 				9A2185AC255BC6A9000330E5 /* new2.jpg in Resources */,
-				32571D2A2FD3B32300FFDAF3 /* Main.storyboard in Resources */,
+				32571D2E2FD3BC9B00FFDAF3 /* Main.storyboard in Resources */,
 				9A820B8224D0522300A62C6F /* Sport.storyboard in Resources */,
 				9A2185AD255BC6AA000330E5 /* new3.jpg in Resources */,
 				9A33D31426AD9A4F00DF9618 /* CameraView.strings in Resources */,
