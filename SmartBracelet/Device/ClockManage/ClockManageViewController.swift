@@ -40,7 +40,7 @@ class ClockManageViewController: BaseViewController {
             backgroundColor: .clear,
             segmentPosition: SegmentioPosition.fixed(maxVisibleItems: 4),
             scrollEnabled: true,
-            indicatorOptions: SegmentioIndicatorOptions(type: .bottom, ratio: 0.1, height: 2, color: .brand),
+            indicatorOptions: SegmentioIndicatorOptions(type: .bottom, ratio: 0.1, height: 3, color: .brand),
             horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(type: .none, height: 0, color: .clear),
             verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(ratio: 0, color: .clear),
             imageContentMode: .center,

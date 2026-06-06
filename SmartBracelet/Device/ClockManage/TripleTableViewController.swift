@@ -36,6 +36,12 @@ class TripleTableViewController: UIViewController {
         downloadStyle()
     }
     
+    // 重写布局方法，确保 collectionView 的高度变化时更新 item 高度
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateCollectionViewLayout()
+    }
+    
     // MARK: - UI 设置
     private func setupUI() {
         view.backgroundColor = .systemBackground
@@ -98,16 +104,17 @@ class TripleTableViewController: UIViewController {
         // 先获取右侧区域总宽度 = 屏幕宽度 - 中间表宽度 - 左右间距
         let totalRightWidth = UIScreen.main.bounds.width - 150 - 4 // 150是中间表宽度，4是两边间距(2+2)
         
-        // 计算每个item宽度：减去列间距(8)后平分给2个item
-        let itemWidth = (totalRightWidth - 8) / 2
-        
-        // 确保item宽度为整数，避免布局异常
+        // 计算每个item宽度：2列填满容器宽度，无列间距
+        let itemWidth = totalRightWidth / 2
         let fixedItemWidth = floor(itemWidth)
         
-        layout.itemSize = CGSize(width: fixedItemWidth, height: 140)
-        layout.minimumInteritemSpacing = 8 // 列之间的间距
+        // 使用设备分辨率比例计算 cell 高度
+        let itemHeight = calculateItemHeight(for: nil)
+        
+        layout.itemSize = CGSize(width: fixedItemWidth, height: itemHeight)
+        layout.minimumInteritemSpacing = 0 // 列之间无间距，让cell紧挨
         layout.minimumLineSpacing = 12 // 行之间的间距
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0) // 移除额外内边距
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0) // 减少上下内边距
         
         rightCollectionView.collectionViewLayout = layout
         
@@ -120,15 +127,49 @@ class TripleTableViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionViewLayout), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
+    private func currentDeviceSize() -> CGSize {
+        let screenWidth = CGFloat(isXGZT ? (XGZTBlueToothManager.shared.device?.screenWidth ?? 0) : bleSelf.bleModel.screenWidth)
+        let screenHeight = CGFloat(isXGZT ? (XGZTBlueToothManager.shared.device?.screenHeight ?? 0) : bleSelf.bleModel.screenHeight)
+        if screenWidth > 0 && screenHeight > 0 {
+            return CGSize(width: screenWidth, height: screenHeight)
+        }
+        return CGSize(width: 240, height: 284)
+    }
+    
+    private func currentDeviceAspectRatio() -> CGFloat {
+        let size = currentDeviceSize()
+        return size.width > 0 ? size.height / size.width : 1.0
+    }
+    
+    private func calculateItemHeight(for item: ClockItem?) -> CGFloat {
+        let totalWidth = rightCollectionView.bounds.width
+        let itemWidth = totalWidth / 2
+        
+        let aspectRatio: CGFloat
+        if let item = item,
+           let w = item.width, let h = item.height,
+           w > 0 && h > 0 {
+            aspectRatio = CGFloat(h) / CGFloat(w)
+        } else {
+            aspectRatio = currentDeviceAspectRatio()
+        }
+        
+        let calculatedHeight = itemWidth * aspectRatio
+        return max(120, floor(calculatedHeight))
+    }
+    
     // 屏幕旋转时更新布局
     @objc private func updateCollectionViewLayout() {
         guard let layout = rightCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
         let totalRightWidth = rightCollectionView.bounds.width
-        let itemWidth = (totalRightWidth - 8) / 2
+        let itemWidth = totalRightWidth / 2 // 2列填满容器
         let fixedItemWidth = floor(itemWidth)
         
-        layout.itemSize = CGSize(width: fixedItemWidth, height: 140)
+        // 动态计算高度
+        let itemHeight = calculateItemHeight(for: nil)
+        
+        layout.itemSize = CGSize(width: fixedItemWidth, height: itemHeight)
         rightCollectionView.collectionViewLayout.invalidateLayout()
     }
     
@@ -470,8 +511,10 @@ extension TripleTableViewController: UICollectionViewDelegate, UICollectionViewD
     // 实现代理方法，确保布局正确
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let totalWidth = collectionView.bounds.width
-        let itemWidth = (totalWidth - 8) / 2 // 减去列间距
-        return CGSize(width: floor(itemWidth), height: 140)
+        let itemWidth = totalWidth / 2 // 2列填满容器
+        let item = rightViewModel.items[indexPath.row]
+        let itemHeight = calculateItemHeight(for: item)
+        return CGSize(width: floor(itemWidth), height: itemHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -515,19 +558,19 @@ class RightCollectionCell: UICollectionViewCell {
     
     private func setupUI() {
         contentView.backgroundColor = .systemBackground
-        contentView.layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 4
         contentView.layer.masksToBounds = true
         
-        // 图片视图
-        itemImageView.contentMode = .scaleAspectFit
+        // 图片视图 - 最大化填充 cell
+        itemImageView.contentMode = .scaleAspectFill
         itemImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(itemImageView)
         
         NSLayoutConstraint.activate([
-            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            itemImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            itemImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2),
+            itemImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2),
+            itemImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2),
+            itemImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2)
         ])
     }
     

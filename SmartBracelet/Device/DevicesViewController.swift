@@ -71,6 +71,12 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)), name: Notification.Name("DevicesViewController"), object: nil)
         dialManagmentLabel.text = "dial_management".localized()
         initializeDeviceSettings()
+        collectionView.isScrollEnabled = false
+        collectionView.alwaysBounceVertical = false
+        collectionView.alwaysBounceHorizontal = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.collectionViewLayout.invalidateLayout()
         
         let randomBool = Bool.random()
         deviceBGImageView.image = UIImage(named: randomBool ? "device_bg1" : "device_bg2")
@@ -117,6 +123,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         } else { // 圆形
             height =  width
         }
+        dialViewHeightLC.constant = height + 44
         
         XLogger.shared.log("width: \(width) height: \(height)")
         
@@ -219,6 +226,11 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         refreshTimer = nil
         
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
     
     private func refreshDevices() {
         if deviceView.isHidden {
@@ -303,6 +315,18 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                }
            }
        }
+
+    private func dialItemWidth(for collectionView: UICollectionView) -> CGFloat {
+        let columns: CGFloat = 3
+        let inset = self.collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAt: 0)
+        let spacing = self.collectionView(collectionView, layout: collectionView.collectionViewLayout, minimumInteritemSpacingForSectionAt: 0)
+        let totalSpacing = spacing * (columns - 1)
+        let availableWidth = collectionView.bounds.width - inset.left - inset.right - totalSpacing
+        if availableWidth > 0 {
+            return max(floor(availableWidth / columns) - 2, 1)
+        }
+        return max(floor((UIScreen.main.bounds.width - inset.left - inset.right - totalSpacing) / columns) - 2, 1)
+    }
     
     // 设备设置
     private func initializeDeviceSettings() {
@@ -446,10 +470,10 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         dialButton.layer.cornerRadius = 16
         dialView.addSubview(dialButton)
         dialButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(screenWidth - 64)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.centerY.equalToSuperview()
             make.height.equalTo(130)
-            make.top.equalTo(44)
         }
         dialButton.addTarget(self, action: #selector(pushToDial), for: .touchUpInside)
     }
@@ -871,7 +895,8 @@ extension DevicesViewController: UICollectionViewDataSource {
             cell.addImageView.isHidden = false
             cell.clockBGView.backgroundColor = UIColor.fill
         }
-        cell.width.constant = width
+        let itemWidth = dialItemWidth(for: collectionView)
+        cell.width.constant = itemWidth
         cell.height.constant = height
         return cell
     }
@@ -888,19 +913,20 @@ extension DevicesViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: width, height: height)
+        let itemWidth = dialItemWidth(for: collectionView)
+        return CGSize(width: itemWidth, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        return UIEdgeInsets(top: 0, left: 8, bottom: 10, right: 8)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 8
     }
 }
 

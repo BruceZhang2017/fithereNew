@@ -42,7 +42,10 @@ class MarketClockViewController: UIViewController {
         collectionView.delegate = self
         downloadClock() // 下载资源
         
-        width = (ScreenWidth - 60) / 2
+        // 2列布局，统一间距体系：16pt 左右边距，12pt 列间距
+        let sectionInset: CGFloat = 16
+        let spacing: CGFloat = 12
+        width = (ScreenWidth - sectionInset * 2 - spacing) / 2
         if AppDelegate.IsDeviceNotRound() { // 方形
             let w = bleSelf.bleModel.screenWidth
             let h = bleSelf.bleModel.screenHeight
@@ -102,6 +105,16 @@ extension MarketClockViewController: UICollectionViewDataSource {
         cell.opaqueView.clipsToBounds = true
         cell.width.constant = width
         cell.height.constant = height
+        
+        // 卡片样式：背景色、圆角、阴影
+        cell.backgroundColor = .white
+        cell.layer.cornerRadius = 12
+        cell.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOpacity = 0.1
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cell.layer.shadowRadius = 4
+        
         return cell
     }
     
@@ -125,15 +138,18 @@ extension MarketClockViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
+        // 统一间距体系：12pt 上下内边距，16pt 左右内边距
+        return UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        // 行间距：12pt
+        return 12
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        // 列间距：12pt
+        return 12
     }
 }
 
