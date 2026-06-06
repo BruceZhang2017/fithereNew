@@ -1010,6 +1010,66 @@
             </objects>
             <point key="canvasLocation" x="1742.0289855072465" y="837.72321428571422"/>
         </scene>
+        <!--Device Settings View Controller-->
+        <scene sceneID="KTd-b3-Va9">
+            <objects>
+                <viewController storyboardIdentifier="DeviceSettingsViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jL4-wc-4Fz" customClass="DeviceSettingsViewController" customModule="FitDAY" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hpK-zZ-QVI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bR0-EA-f1U">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="9vh-Uv-NNd" detailTextLabel="vNq-Ow-paC" rowHeight="49" style="IBUITableViewCellStyleValue1" id="YLJ-u1-Gn1" customClass="DeviceSettingsTableViewCell" customModule="FitDAY" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50.5" width="414" height="49"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YLJ-u1-Gn1" id="sYy-eF-IGe">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9vh-Uv-NNd">
+                                                    <rect key="frame" x="20" y="15" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vNq-Ow-paC">
+                                                    <rect key="frame" x="361" y="19" width="33" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jL4-wc-4Fz" id="fgW-Sa-L0Z"/>
+                                    <outlet property="delegate" destination="jL4-wc-4Fz" id="HBv-mO-hp4"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KCB-7n-cOB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="bR0-EA-f1U" secondAttribute="bottom" id="6ht-gU-XFx"/>
+                            <constraint firstItem="bR0-EA-f1U" firstAttribute="leading" secondItem="KCB-7n-cOB" secondAttribute="leading" id="Peq-gg-gYT"/>
+                            <constraint firstItem="bR0-EA-f1U" firstAttribute="top" secondItem="KCB-7n-cOB" secondAttribute="top" id="bN6-L7-0RU"/>
+                            <constraint firstItem="bR0-EA-f1U" firstAttribute="trailing" secondItem="KCB-7n-cOB" secondAttribute="trailing" id="o1a-rY-NeN"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="bR0-EA-f1U" id="Kca-TA-fho"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RiF-lU-SkK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2511.594202898551" y="93.75"/>
+        </scene>
     </scenes>
     <resources>
         <image name="content_icon_select" width="24" height="24"/>

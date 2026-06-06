@@ -88,7 +88,7 @@
 "mine_device_ota_fail" = "OTA nadogradnja nije uspjela";
 "mine_about" = "oko";
 "mine_version" = "Verzija";
-"mine_about_desc" = "Sva prava na tumačenje pripadaju tumačenju u-watch";
+"mine_about_desc" = "Sva prava na tumačenje pripadaju tumačenju Fit-here";
 "mine_account_info" = "Informacije o računu";
 "mine_userinfo" = "osobne informacije";
 "mine_head_image" = "Avatar";
@@ -250,7 +250,7 @@
 "female_cycle_pain_mild" = "Mild";
 "female_cycle_pain_moderate" = "Moderate";
 "female_cycle_pain_severe" = "Severe";
-"female_cycle_record_time" = "Recorded to 'U-Watch' at";
+"female_cycle_record_time" = "Recorded to 'Fit-here' at";
 "female_cycle_symptom_category_whole_body" = "Whole Body";
 "female_cycle_symptom_category_head" = "Head";
 "female_cycle_symptom_category_abdomen" = "Abdomen";

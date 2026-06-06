@@ -88,7 +88,7 @@
 "mine_device_ota_fail" = "Aktualizacja OTA nie powiodła się";
 "mine_about" = "o";
 "mine_version" = "Wersja";
-"mine_about_desc" = "Wszelkie prawa do interpretacji należą do interpretacji u-watch";
+"mine_about_desc" = "Wszelkie prawa do interpretacji należą do interpretacji Fit-here";
 "mine_account_info" = "informacje o koncie";
 "mine_userinfo" = "informacje osobiste";
 "mine_head_image" = "Awatara";
@@ -250,7 +250,7 @@
 "female_cycle_pain_mild" = "Mild";
 "female_cycle_pain_moderate" = "Moderate";
 "female_cycle_pain_severe" = "Severe";
-"female_cycle_record_time" = "Recorded to 'U-Watch' at";
+"female_cycle_record_time" = "Recorded to 'Fit-here' at";
 "female_cycle_symptom_category_whole_body" = "Whole Body";
 "female_cycle_symptom_category_head" = "Head";
 "female_cycle_symptom_category_abdomen" = "Abdomen";
