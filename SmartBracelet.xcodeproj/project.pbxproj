@@ -38,6 +38,20 @@
 		32571D062FD3AB0200FFDAF3 /* AlarmAdd2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D052FD3AB0200FFDAF3 /* AlarmAdd2ViewController.swift */; };
 		32571D082FD3AC9C00FFDAF3 /* CircleCropUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D072FD3AC9C00FFDAF3 /* CircleCropUtils.swift */; };
 		32571D0A2FD3AD0E00FFDAF3 /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D092FD3AD0E00FFDAF3 /* UIImageExt.swift */; };
+		32571D122FD3AF0F00FFDAF3 /* DataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D0D2FD3AF0F00FFDAF3 /* DataDetailViewController.swift */; };
+		32571D132FD3AF0F00FFDAF3 /* AllDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D0B2FD3AF0F00FFDAF3 /* AllDataViewController.swift */; };
+		32571D142FD3AF0F00FFDAF3 /* FemaleCycleCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D0E2FD3AF0F00FFDAF3 /* FemaleCycleCalendarViewController.swift */; };
+		32571D152FD3AF0F00FFDAF3 /* FemaleCycleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D0F2FD3AF0F00FFDAF3 /* FemaleCycleDataManager.swift */; };
+		32571D162FD3AF0F00FFDAF3 /* BodySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D0C2FD3AF0F00FFDAF3 /* BodySymptomsViewController.swift */; };
+		32571D172FD3AF0F00FFDAF3 /* FemaleHealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D102FD3AF0F00FFDAF3 /* FemaleHealthViewController.swift */; };
+		32571D212FD3AF6500FFDAF3 /* Area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32571D182FD3AF6500FFDAF3 /* Area.plist */; };
+		32571D222FD3AF6500FFDAF3 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32571D192FD3AF6500FFDAF3 /* City.plist */; };
+		32571D232FD3AF6500FFDAF3 /* Province.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32571D1C2FD3AF6500FFDAF3 /* Province.plist */; };
+		32571D242FD3AF6500FFDAF3 /* SelectionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1D2FD3AF6500FFDAF3 /* SelectionTextField.swift */; };
+		32571D252FD3AF6500FFDAF3 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1A2FD3AF6500FFDAF3 /* Picker.swift */; };
+		32571D262FD3AF6500FFDAF3 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1E2FD3AF6500FFDAF3 /* ToolBarView.swift */; };
+		32571D272FD3AF6500FFDAF3 /* UsefulPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1F2FD3AF6500FFDAF3 /* UsefulPickerView.swift */; };
+		32571D282FD3AF6500FFDAF3 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D1B2FD3AF6500FFDAF3 /* PickerView.swift */; };
 		6358A1BC7537C0FAECF400E2 /* Pods_SmartBracelet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */; };
 		9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4425BDB1CD0006FB94 /* OTACMD.m */; };
 		9A037E4825BDB1EC0006FB94 /* OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4725BDB1EC0006FB94 /* OTA.m */; };
@@ -585,6 +599,20 @@
 		32571D052FD3AB0200FFDAF3 /* AlarmAdd2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAdd2ViewController.swift; sourceTree = "<group>"; };
 		32571D072FD3AC9C00FFDAF3 /* CircleCropUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCropUtils.swift; sourceTree = "<group>"; };
 		32571D092FD3AD0E00FFDAF3 /* UIImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
+		32571D0B2FD3AF0F00FFDAF3 /* AllDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDataViewController.swift; sourceTree = "<group>"; };
+		32571D0C2FD3AF0F00FFDAF3 /* BodySymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodySymptomsViewController.swift; sourceTree = "<group>"; };
+		32571D0D2FD3AF0F00FFDAF3 /* DataDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetailViewController.swift; sourceTree = "<group>"; };
+		32571D0E2FD3AF0F00FFDAF3 /* FemaleCycleCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleCycleCalendarViewController.swift; sourceTree = "<group>"; };
+		32571D0F2FD3AF0F00FFDAF3 /* FemaleCycleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleCycleDataManager.swift; sourceTree = "<group>"; };
+		32571D102FD3AF0F00FFDAF3 /* FemaleHealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleHealthViewController.swift; sourceTree = "<group>"; };
+		32571D182FD3AF6500FFDAF3 /* Area.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Area.plist; sourceTree = "<group>"; };
+		32571D192FD3AF6500FFDAF3 /* City.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
+		32571D1A2FD3AF6500FFDAF3 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
+		32571D1B2FD3AF6500FFDAF3 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		32571D1C2FD3AF6500FFDAF3 /* Province.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Province.plist; sourceTree = "<group>"; };
+		32571D1D2FD3AF6500FFDAF3 /* SelectionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTextField.swift; sourceTree = "<group>"; };
+		32571D1E2FD3AF6500FFDAF3 /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		32571D1F2FD3AF6500FFDAF3 /* UsefulPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulPickerView.swift; sourceTree = "<group>"; };
 		6D913391FB0E57C59E39E74B /* Pods-SmartBracelet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBracelet.debug.xcconfig"; path = "Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet.debug.xcconfig"; sourceTree = "<group>"; };
 		7908B378C1A13473537586D0 /* Pods-SmartBracelet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBracelet.release.xcconfig"; path = "Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet.release.xcconfig"; sourceTree = "<group>"; };
 		7A71386927639819C83B8B2B /* Pods-TJDWristbandSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJDWristbandSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TJDWristbandSDKDemo/Pods-TJDWristbandSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1326,6 +1354,34 @@
 			path = Sport;
 			sourceTree = "<group>";
 		};
+		32571D112FD3AF0F00FFDAF3 /* Female */ = {
+			isa = PBXGroup;
+			children = (
+				32571D0B2FD3AF0F00FFDAF3 /* AllDataViewController.swift */,
+				32571D0C2FD3AF0F00FFDAF3 /* BodySymptomsViewController.swift */,
+				32571D0D2FD3AF0F00FFDAF3 /* DataDetailViewController.swift */,
+				32571D0E2FD3AF0F00FFDAF3 /* FemaleCycleCalendarViewController.swift */,
+				32571D0F2FD3AF0F00FFDAF3 /* FemaleCycleDataManager.swift */,
+				32571D102FD3AF0F00FFDAF3 /* FemaleHealthViewController.swift */,
+			);
+			path = Female;
+			sourceTree = "<group>";
+		};
+		32571D202FD3AF6500FFDAF3 /* UsefulPickerVIew */ = {
+			isa = PBXGroup;
+			children = (
+				32571D182FD3AF6500FFDAF3 /* Area.plist */,
+				32571D192FD3AF6500FFDAF3 /* City.plist */,
+				32571D1A2FD3AF6500FFDAF3 /* Picker.swift */,
+				32571D1B2FD3AF6500FFDAF3 /* PickerView.swift */,
+				32571D1C2FD3AF6500FFDAF3 /* Province.plist */,
+				32571D1D2FD3AF6500FFDAF3 /* SelectionTextField.swift */,
+				32571D1E2FD3AF6500FFDAF3 /* ToolBarView.swift */,
+				32571D1F2FD3AF6500FFDAF3 /* UsefulPickerView.swift */,
+			);
+			path = UsefulPickerVIew;
+			sourceTree = "<group>";
+		};
 		9A037E4025BDACDB0006FB94 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -2053,6 +2109,7 @@
 				9A7D5E4125490EA20016E4BC /* MRGCDTimer.swift */,
 				9A2185B5255BD153000330E5 /* CacheHelper.swift */,
 				9A839BF0255FF3B700714CBE /* FileCache.swift */,
+				32571D202FD3AF6500FFDAF3 /* UsefulPickerVIew */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2078,6 +2135,7 @@
 				9A5613F425248BFC00C43C6A /* AudioButtonView.swift */,
 				9AE1A180262AB9F900B8B10D /* HeartRateView.swift */,
 				9AE1A182262AF69400B8B10D /* HeartRateCollectionViewCell.swift */,
+				32571D112FD3AF0F00FFDAF3 /* Female */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -2609,6 +2667,9 @@
 				9A2181662557EDBE000330E5 /* walk.jpeg in Resources */,
 				9AB563FD26F6186000D16869 /* Localizable.strings in Resources */,
 				9A2676AC26B1969B0096BC61 /* Alarm.mp3 in Resources */,
+				32571D212FD3AF6500FFDAF3 /* Area.plist in Resources */,
+				32571D222FD3AF6500FFDAF3 /* City.plist in Resources */,
+				32571D232FD3AF6500FFDAF3 /* Province.plist in Resources */,
 				9A9E4E15278136E70084CCFF /* 2_80_160.png in Resources */,
 				9A9E4E14278136E70084CCFF /* 4_80_160.png in Resources */,
 				9A2185AE255BC6AA000330E5 /* new1.jpg in Resources */,
@@ -2883,6 +2944,12 @@
 				9A8CA51F25272C5200EC01A7 /* CVCalendarViewAnimator.swift in Sources */,
 				9A367B5325BD081D00BFB4C3 /* DeviceTableViewCell.swift in Sources */,
 				9A56D24425216FC60082CC08 /* CombinedChartRenderer.swift in Sources */,
+				32571D122FD3AF0F00FFDAF3 /* DataDetailViewController.swift in Sources */,
+				32571D132FD3AF0F00FFDAF3 /* AllDataViewController.swift in Sources */,
+				32571D142FD3AF0F00FFDAF3 /* FemaleCycleCalendarViewController.swift in Sources */,
+				32571D152FD3AF0F00FFDAF3 /* FemaleCycleDataManager.swift in Sources */,
+				32571D162FD3AF0F00FFDAF3 /* BodySymptomsViewController.swift in Sources */,
+				32571D172FD3AF0F00FFDAF3 /* FemaleHealthViewController.swift in Sources */,
 				9A56D24525216FC60082CC08 /* CandleStickChartRenderer.swift in Sources */,
 				9A56D29A25216FC70082CC08 /* PieChartDataEntry.swift in Sources */,
 				9A367B7725BD208100BFB4C3 /* Error.swift in Sources */,
@@ -3013,6 +3080,11 @@
 				9A8CA52125272C5200EC01A7 /* CVCalendarWeekday.swift in Sources */,
 				9AE1A16E2629465F00B8B10D /* JCBluetoothManager.m in Sources */,
 				1898B72C2451969B00B9E5A5 /* Date+String.swift in Sources */,
+				32571D242FD3AF6500FFDAF3 /* SelectionTextField.swift in Sources */,
+				32571D252FD3AF6500FFDAF3 /* Picker.swift in Sources */,
+				32571D262FD3AF6500FFDAF3 /* ToolBarView.swift in Sources */,
+				32571D272FD3AF6500FFDAF3 /* UsefulPickerView.swift in Sources */,
+				32571D282FD3AF6500FFDAF3 /* PickerView.swift in Sources */,
 				9A4E624824F8DF3800A0E878 /* DevicesView.swift in Sources */,
 				9A60DEE7252F175600E0D849 /* APNSViewController.swift in Sources */,
 				9A5E93302515CC700060AB13 /* MTabBarController.swift in Sources */,
