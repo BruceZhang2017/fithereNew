@@ -14,6 +14,30 @@
 		18385F102451819E00EA380A /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18385F092451819E00EA380A /* Async.swift */; };
 		18385F13245181D900EA380A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18385F12245181D900EA380A /* Main.storyboard */; };
 		1898B72C2451969B00B9E5A5 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898B72B2451969B00B9E5A5 /* Date+String.swift */; };
+		32571CEE2FD3A9A000FFDAF3 /* SportBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE42FD3A9A000FFDAF3 /* SportBViewController.swift */; };
+		32571CEF2FD3A9A000FFDAF3 /* SportSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE62FD3A9A000FFDAF3 /* SportSetViewController.swift */; };
+		32571CF02FD3A9A000FFDAF3 /* UIView+ViewChainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE82FD3A9A000FFDAF3 /* UIView+ViewChainable.swift */; };
+		32571CF12FD3A9A000FFDAF3 /* LocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE02FD3A9A000FFDAF3 /* LocationConverter.m */; };
+		32571CF22FD3A9A000FFDAF3 /* JRDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CDD2FD3A9A000FFDAF3 /* JRDB.swift */; };
+		32571CF32FD3A9A000FFDAF3 /* HistoryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CDB2FD3A9A000FFDAF3 /* HistoryMapViewController.swift */; };
+		32571CF42FD3A9A000FFDAF3 /* GpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CDA2FD3A9A000FFDAF3 /* GpsView.swift */; };
+		32571CF52FD3A9A000FFDAF3 /* SportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE52FD3A9A000FFDAF3 /* SportDetailView.swift */; };
+		32571CF62FD3A9A000FFDAF3 /* WUCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CEB2FD3A9A000FFDAF3 /* WUCalendarManager.swift */; };
+		32571CF72FD3A9A000FFDAF3 /* CutDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CD92FD3A9A000FFDAF3 /* CutDownView.swift */; };
+		32571CF82FD3A9A000FFDAF3 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE32FD3A9A000FFDAF3 /* RunViewController.swift */; };
+		32571CF92FD3A9A000FFDAF3 /* KRLShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CDE2FD3A9A000FFDAF3 /* KRLShimmerView.swift */; };
+		32571CFA2FD3A9A000FFDAF3 /* WULocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CEC2FD3A9A000FFDAF3 /* WULocationManager.swift */; };
+		32571CFB2FD3A9A000FFDAF3 /* RunHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE12FD3A9A000FFDAF3 /* RunHistoryViewController.swift */; };
+		32571CFC2FD3A9A000FFDAF3 /* ImageLabelsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CDC2FD3A9A000FFDAF3 /* ImageLabelsCollectionCell.swift */; };
+		32571CFD2FD3A9A000FFDAF3 /* RunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE22FD3A9A000FFDAF3 /* RunModel.swift */; };
+		32571CFE2FD3A9A000FFDAF3 /* SportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE72FD3A9A000FFDAF3 /* SportViewController.swift */; };
+		32571CFF2FD3A9A000FFDAF3 /* VerticalLabelsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CEA2FD3A9A000FFDAF3 /* VerticalLabelsCollectionCell.swift */; };
+		32571D002FD3A9A000FFDAF3 /* VerticalLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571CE92FD3A9A000FFDAF3 /* VerticalLabels.swift */; };
+		32571D022FD3AA2500FFDAF3 /* SyncContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D012FD3AA2500FFDAF3 /* SyncContactsViewController.swift */; };
+		32571D042FD3AAB100FFDAF3 /* UserInfoSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D032FD3AAB100FFDAF3 /* UserInfoSetupViewController.swift */; };
+		32571D062FD3AB0200FFDAF3 /* AlarmAdd2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D052FD3AB0200FFDAF3 /* AlarmAdd2ViewController.swift */; };
+		32571D082FD3AC9C00FFDAF3 /* CircleCropUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D072FD3AC9C00FFDAF3 /* CircleCropUtils.swift */; };
+		32571D0A2FD3AD0E00FFDAF3 /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32571D092FD3AD0E00FFDAF3 /* UIImageExt.swift */; };
 		6358A1BC7537C0FAECF400E2 /* Pods_SmartBracelet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */; };
 		9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4425BDB1CD0006FB94 /* OTACMD.m */; };
 		9A037E4825BDB1EC0006FB94 /* OTA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A037E4725BDB1EC0006FB94 /* OTA.m */; };
@@ -39,15 +63,8 @@
 		9A0C34952B341D6600E798F1 /* DFUnits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34932B341D6100E798F1 /* DFUnits.framework */; };
 		9A0C34962B341D6600E798F1 /* JL_BLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */; };
 		9A127EAE2BC2ACE300126836 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */; };
-		9A20FA322D2A2C3C0027A26F /* WUCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA2F2D2A2C3C0027A26F /* WUCalendarManager.swift */; };
 		9A20FA342D2A2CA10027A26F /* Int+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA332D2A2CA10027A26F /* Int+String.swift */; };
 		9A20FA362D2A2CB70027A26F /* Double+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA352D2A2CB70027A26F /* Double+String.swift */; };
-		9A20FA3A2D2A36120027A26F /* VerticalLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA392D2A36120027A26F /* VerticalLabels.swift */; };
-		9A20FA3C2D2A37A20027A26F /* UIView+ViewChainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA3B2D2A37A20027A26F /* UIView+ViewChainable.swift */; };
-		9A20FA402D2A39840027A26F /* KRLShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA3F2D2A39840027A26F /* KRLShimmerView.swift */; };
-		9A20FA422D2A41BE0027A26F /* VerticalLabelsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA412D2A41BE0027A26F /* VerticalLabelsCollectionCell.swift */; };
-		9A20FA442D2A4B920027A26F /* ImageLabelsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA432D2A4B920027A26F /* ImageLabelsCollectionCell.swift */; };
-		9A20FA472D2A4D860027A26F /* LocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A20FA462D2A4D860027A26F /* LocationConverter.m */; };
 		9A2181652557EDBE000330E5 /* apple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2181622557EDBE000330E5 /* apple.jpeg */; };
 		9A2181662557EDBE000330E5 /* walk.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2181632557EDBE000330E5 /* walk.jpeg */; };
 		9A2181672557EDBE000330E5 /* water.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2181642557EDBE000330E5 /* water.jpg */; };
@@ -466,16 +483,6 @@
 		9AB910272501322C006E0FC4 /* EMAlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB910232501322B006E0FC4 /* EMAlertTextField.swift */; };
 		9AB910282501322C006E0FC4 /* EMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB910242501322B006E0FC4 /* EMAlertAction.swift */; };
 		9AB910292501322C006E0FC4 /* EMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB910252501322B006E0FC4 /* EMAlertController.swift */; };
-		9AC2B9132D2783A80064903C /* SportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B90C2D2783A80064903C /* SportViewController.swift */; };
-		9AC2B9142D2783A80064903C /* GpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B90E2D2783A80064903C /* GpsView.swift */; };
-		9AC2B9152D2783A80064903C /* HistoryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B9112D2783A80064903C /* HistoryMapViewController.swift */; };
-		9AC2B9162D2783A80064903C /* SportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B9102D2783A80064903C /* SportDetailView.swift */; };
-		9AC2B9172D2783A80064903C /* RunHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B90F2D2783A80064903C /* RunHistoryViewController.swift */; };
-		9AC2B9182D2783A80064903C /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B90D2D2783A80064903C /* RunViewController.swift */; };
-		9AC2B91B2D2788700064903C /* RunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B91A2D2788700064903C /* RunModel.swift */; };
-		9AC2B91F2D27BB890064903C /* WULocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B91E2D27BB890064903C /* WULocationManager.swift */; };
-		9AC2B9212D27BBE10064903C /* CutDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B9202D27BBE10064903C /* CutDownView.swift */; };
-		9AC2B9232D27C35F0064903C /* JRDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2B9222D27C35F0064903C /* JRDB.swift */; };
 		9AC58A1528C37A3800992836 /* ClockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC58A1428C37A3800992836 /* ClockResponse.swift */; };
 		9AC961822DA5531D00699C7F /* AliIotConnectKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC961802DA5527900699C7F /* AliIotConnectKit.framework */; };
 		9AC961832DA5531D00699C7F /* AliIotConnectKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC961802DA5527900699C7F /* AliIotConnectKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -553,6 +560,31 @@
 		18385F12245181D900EA380A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1898B72B2451969B00B9E5A5 /* Date+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		18C2820C246A8D13009A60C0 /* TJDWristbandSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TJDWristbandSDK.framework; sourceTree = "<group>"; };
+		32571CD92FD3A9A000FFDAF3 /* CutDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutDownView.swift; sourceTree = "<group>"; };
+		32571CDA2FD3A9A000FFDAF3 /* GpsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsView.swift; sourceTree = "<group>"; };
+		32571CDB2FD3A9A000FFDAF3 /* HistoryMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMapViewController.swift; sourceTree = "<group>"; };
+		32571CDC2FD3A9A000FFDAF3 /* ImageLabelsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelsCollectionCell.swift; sourceTree = "<group>"; };
+		32571CDD2FD3A9A000FFDAF3 /* JRDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JRDB.swift; sourceTree = "<group>"; };
+		32571CDE2FD3A9A000FFDAF3 /* KRLShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRLShimmerView.swift; sourceTree = "<group>"; };
+		32571CDF2FD3A9A000FFDAF3 /* LocationConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationConverter.h; sourceTree = "<group>"; };
+		32571CE02FD3A9A000FFDAF3 /* LocationConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationConverter.m; sourceTree = "<group>"; };
+		32571CE12FD3A9A000FFDAF3 /* RunHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHistoryViewController.swift; sourceTree = "<group>"; };
+		32571CE22FD3A9A000FFDAF3 /* RunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunModel.swift; sourceTree = "<group>"; };
+		32571CE32FD3A9A000FFDAF3 /* RunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
+		32571CE42FD3A9A000FFDAF3 /* SportBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportBViewController.swift; sourceTree = "<group>"; };
+		32571CE52FD3A9A000FFDAF3 /* SportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportDetailView.swift; sourceTree = "<group>"; };
+		32571CE62FD3A9A000FFDAF3 /* SportSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportSetViewController.swift; sourceTree = "<group>"; };
+		32571CE72FD3A9A000FFDAF3 /* SportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportViewController.swift; sourceTree = "<group>"; };
+		32571CE82FD3A9A000FFDAF3 /* UIView+ViewChainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ViewChainable.swift"; sourceTree = "<group>"; };
+		32571CE92FD3A9A000FFDAF3 /* VerticalLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabels.swift; sourceTree = "<group>"; };
+		32571CEA2FD3A9A000FFDAF3 /* VerticalLabelsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabelsCollectionCell.swift; sourceTree = "<group>"; };
+		32571CEB2FD3A9A000FFDAF3 /* WUCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WUCalendarManager.swift; sourceTree = "<group>"; };
+		32571CEC2FD3A9A000FFDAF3 /* WULocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WULocationManager.swift; sourceTree = "<group>"; };
+		32571D012FD3AA2500FFDAF3 /* SyncContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncContactsViewController.swift; sourceTree = "<group>"; };
+		32571D032FD3AAB100FFDAF3 /* UserInfoSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupViewController.swift; sourceTree = "<group>"; };
+		32571D052FD3AB0200FFDAF3 /* AlarmAdd2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAdd2ViewController.swift; sourceTree = "<group>"; };
+		32571D072FD3AC9C00FFDAF3 /* CircleCropUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCropUtils.swift; sourceTree = "<group>"; };
+		32571D092FD3AD0E00FFDAF3 /* UIImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		6D913391FB0E57C59E39E74B /* Pods-SmartBracelet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBracelet.debug.xcconfig"; path = "Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet.debug.xcconfig"; sourceTree = "<group>"; };
 		7908B378C1A13473537586D0 /* Pods-SmartBracelet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartBracelet.release.xcconfig"; path = "Target Support Files/Pods-SmartBracelet/Pods-SmartBracelet.release.xcconfig"; sourceTree = "<group>"; };
 		7A71386927639819C83B8B2B /* Pods-TJDWristbandSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJDWristbandSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TJDWristbandSDKDemo/Pods-TJDWristbandSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -589,16 +621,8 @@
 		9A0C34942B341D6600E798F1 /* JL_BLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JL_BLEKit.framework; sourceTree = "<group>"; };
 		9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		9A1E2D2F2DB6631E00B50C5D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9A20FA2F2D2A2C3C0027A26F /* WUCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WUCalendarManager.swift; sourceTree = "<group>"; };
 		9A20FA332D2A2CA10027A26F /* Int+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+String.swift"; sourceTree = "<group>"; };
 		9A20FA352D2A2CB70027A26F /* Double+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+String.swift"; sourceTree = "<group>"; };
-		9A20FA392D2A36120027A26F /* VerticalLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabels.swift; sourceTree = "<group>"; };
-		9A20FA3B2D2A37A20027A26F /* UIView+ViewChainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ViewChainable.swift"; sourceTree = "<group>"; };
-		9A20FA3F2D2A39840027A26F /* KRLShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRLShimmerView.swift; sourceTree = "<group>"; };
-		9A20FA412D2A41BE0027A26F /* VerticalLabelsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabelsCollectionCell.swift; sourceTree = "<group>"; };
-		9A20FA432D2A4B920027A26F /* ImageLabelsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelsCollectionCell.swift; sourceTree = "<group>"; };
-		9A20FA452D2A4D860027A26F /* LocationConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationConverter.h; sourceTree = "<group>"; };
-		9A20FA462D2A4D860027A26F /* LocationConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationConverter.m; sourceTree = "<group>"; };
 		9A2181622557EDBE000330E5 /* apple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpeg; sourceTree = "<group>"; };
 		9A2181632557EDBE000330E5 /* walk.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk.jpeg; sourceTree = "<group>"; };
 		9A2181642557EDBE000330E5 /* water.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = water.jpg; sourceTree = "<group>"; };
@@ -1068,16 +1092,6 @@
 		9AB9102A25013281006E0FC4 /* AlertController.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AlertController.md; sourceTree = "<group>"; };
 		9ABE55F8271AD429006E0452 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9ABE55F9271AD429006E0452 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9AC2B90C2D2783A80064903C /* SportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportViewController.swift; sourceTree = "<group>"; };
-		9AC2B90D2D2783A80064903C /* RunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
-		9AC2B90E2D2783A80064903C /* GpsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsView.swift; sourceTree = "<group>"; };
-		9AC2B90F2D2783A80064903C /* RunHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHistoryViewController.swift; sourceTree = "<group>"; };
-		9AC2B9102D2783A80064903C /* SportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportDetailView.swift; sourceTree = "<group>"; };
-		9AC2B9112D2783A80064903C /* HistoryMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryMapViewController.swift; sourceTree = "<group>"; };
-		9AC2B91A2D2788700064903C /* RunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunModel.swift; sourceTree = "<group>"; };
-		9AC2B91E2D27BB890064903C /* WULocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WULocationManager.swift; sourceTree = "<group>"; };
-		9AC2B9202D27BBE10064903C /* CutDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutDownView.swift; sourceTree = "<group>"; };
-		9AC2B9222D27C35F0064903C /* JRDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JRDB.swift; sourceTree = "<group>"; };
 		9AC58A1428C37A3800992836 /* ClockResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockResponse.swift; sourceTree = "<group>"; };
 		9AC961802DA5527900699C7F /* AliIotConnectKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliIotConnectKit.framework; sourceTree = "<group>"; };
 		9ACA8AFB2DA4F349000E4F8E /* SmartBracelet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartBracelet-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1242,7 +1256,7 @@
 				9A5E932E2515CC500060AB13 /* Tab */,
 				9A4E624224F7E91F00A0E878 /* Device */,
 				9A350BE124EA3266004CEE6A /* Mine */,
-				9A820B8324D05B1F00A62C6F /* Sport */,
+				32571CED2FD3A9A000FFDAF3 /* Sport */,
 				9A820B6C24CD066E00A62C6F /* Health */,
 				9AB5BDFC2A06644500680757 /* JL */,
 				9AB5BE352A16466300680757 /* SCReview */,
@@ -1283,6 +1297,33 @@
 				B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		32571CED2FD3A9A000FFDAF3 /* Sport */ = {
+			isa = PBXGroup;
+			children = (
+				32571CD92FD3A9A000FFDAF3 /* CutDownView.swift */,
+				32571CDA2FD3A9A000FFDAF3 /* GpsView.swift */,
+				32571CDB2FD3A9A000FFDAF3 /* HistoryMapViewController.swift */,
+				32571CDC2FD3A9A000FFDAF3 /* ImageLabelsCollectionCell.swift */,
+				32571CDD2FD3A9A000FFDAF3 /* JRDB.swift */,
+				32571CDE2FD3A9A000FFDAF3 /* KRLShimmerView.swift */,
+				32571CDF2FD3A9A000FFDAF3 /* LocationConverter.h */,
+				32571CE02FD3A9A000FFDAF3 /* LocationConverter.m */,
+				32571CE12FD3A9A000FFDAF3 /* RunHistoryViewController.swift */,
+				32571CE22FD3A9A000FFDAF3 /* RunModel.swift */,
+				32571CE32FD3A9A000FFDAF3 /* RunViewController.swift */,
+				32571CE42FD3A9A000FFDAF3 /* SportBViewController.swift */,
+				32571CE52FD3A9A000FFDAF3 /* SportDetailView.swift */,
+				32571CE62FD3A9A000FFDAF3 /* SportSetViewController.swift */,
+				32571CE72FD3A9A000FFDAF3 /* SportViewController.swift */,
+				32571CE82FD3A9A000FFDAF3 /* UIView+ViewChainable.swift */,
+				32571CE92FD3A9A000FFDAF3 /* VerticalLabels.swift */,
+				32571CEA2FD3A9A000FFDAF3 /* VerticalLabelsCollectionCell.swift */,
+				32571CEB2FD3A9A000FFDAF3 /* WUCalendarManager.swift */,
+				32571CEC2FD3A9A000FFDAF3 /* WULocationManager.swift */,
+			);
+			path = Sport;
 			sourceTree = "<group>";
 		};
 		9A037E4025BDACDB0006FB94 /* Resource */ = {
@@ -1564,6 +1605,7 @@
 				9A60DECD252EB0F400E0D849 /* SelectSexViewController.swift */,
 				9AB7AC4B2767004C00D51DBC /* SelectItemViewController.swift */,
 				9A60DED1252EBDC700E0D849 /* InputHeightViewController.swift */,
+				32571D032FD3AAB100FFDAF3 /* UserInfoSetupViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1610,6 +1652,8 @@
 				9A869E0C2D12CCC200B78FDF /* OTAInfoManager.swift */,
 				9A0698142E477D3300A74A7A /* CardBagTableViewController.swift */,
 				9A0698162E477D4F00A74A7A /* QRBindViewController.swift */,
+				32571D012FD3AA2500FFDAF3 /* SyncContactsViewController.swift */,
+				32571D052FD3AB0200FFDAF3 /* AlarmAdd2ViewController.swift */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -1982,6 +2026,7 @@
 				9A64F08125DD50D70073E679 /* ClockUseViewController.swift */,
 				9AEBEC3326D2A3BE008D13AA /* BLEDeviceNameHandler.swift */,
 				9A4CADED294032F100B0BDF8 /* CommonResponse.swift */,
+				32571D072FD3AC9C00FFDAF3 /* CircleCropUtils.swift */,
 			);
 			path = ClockManage;
 			sourceTree = "<group>";
@@ -2076,33 +2121,9 @@
 				9A820B8E24D1B15B00A62C6F /* UIButton+Extension.swift */,
 				9AEC22FF25B7114500DE899A /* Data+Extension.swift */,
 				9A127EAD2BC2ACE200126836 /* UIFont+Extension.swift */,
+				32571D092FD3AD0E00FFDAF3 /* UIImageExt.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		9A820B8324D05B1F00A62C6F /* Sport */ = {
-			isa = PBXGroup;
-			children = (
-				9AC2B90C2D2783A80064903C /* SportViewController.swift */,
-				9AC2B90D2D2783A80064903C /* RunViewController.swift */,
-				9AC2B90E2D2783A80064903C /* GpsView.swift */,
-				9AC2B90F2D2783A80064903C /* RunHistoryViewController.swift */,
-				9AC2B9102D2783A80064903C /* SportDetailView.swift */,
-				9AC2B9112D2783A80064903C /* HistoryMapViewController.swift */,
-				9AC2B91A2D2788700064903C /* RunModel.swift */,
-				9AC2B91E2D27BB890064903C /* WULocationManager.swift */,
-				9AC2B9202D27BBE10064903C /* CutDownView.swift */,
-				9AC2B9222D27C35F0064903C /* JRDB.swift */,
-				9A20FA2F2D2A2C3C0027A26F /* WUCalendarManager.swift */,
-				9A20FA392D2A36120027A26F /* VerticalLabels.swift */,
-				9A20FA3B2D2A37A20027A26F /* UIView+ViewChainable.swift */,
-				9A20FA3F2D2A39840027A26F /* KRLShimmerView.swift */,
-				9A20FA412D2A41BE0027A26F /* VerticalLabelsCollectionCell.swift */,
-				9A20FA432D2A4B920027A26F /* ImageLabelsCollectionCell.swift */,
-				9A20FA452D2A4D860027A26F /* LocationConverter.h */,
-				9A20FA462D2A4D860027A26F /* LocationConverter.m */,
-			);
-			path = Sport;
 			sourceTree = "<group>";
 		};
 		9A839C512560F3EB00714CBE /* Map */ = {
@@ -2733,6 +2754,25 @@
 				9A52106D2503A5D400F64A7A /* MyClockViewController.swift in Sources */,
 				9A56D27325216FC60082CC08 /* DefaultValueFormatter.swift in Sources */,
 				9A3C55C52BD35EE6007737A2 /* HealthValueView.swift in Sources */,
+				32571CEE2FD3A9A000FFDAF3 /* SportBViewController.swift in Sources */,
+				32571CEF2FD3A9A000FFDAF3 /* SportSetViewController.swift in Sources */,
+				32571CF02FD3A9A000FFDAF3 /* UIView+ViewChainable.swift in Sources */,
+				32571CF12FD3A9A000FFDAF3 /* LocationConverter.m in Sources */,
+				32571CF22FD3A9A000FFDAF3 /* JRDB.swift in Sources */,
+				32571CF32FD3A9A000FFDAF3 /* HistoryMapViewController.swift in Sources */,
+				32571CF42FD3A9A000FFDAF3 /* GpsView.swift in Sources */,
+				32571CF52FD3A9A000FFDAF3 /* SportDetailView.swift in Sources */,
+				32571CF62FD3A9A000FFDAF3 /* WUCalendarManager.swift in Sources */,
+				32571CF72FD3A9A000FFDAF3 /* CutDownView.swift in Sources */,
+				32571CF82FD3A9A000FFDAF3 /* RunViewController.swift in Sources */,
+				32571CF92FD3A9A000FFDAF3 /* KRLShimmerView.swift in Sources */,
+				32571CFA2FD3A9A000FFDAF3 /* WULocationManager.swift in Sources */,
+				32571CFB2FD3A9A000FFDAF3 /* RunHistoryViewController.swift in Sources */,
+				32571CFC2FD3A9A000FFDAF3 /* ImageLabelsCollectionCell.swift in Sources */,
+				32571CFD2FD3A9A000FFDAF3 /* RunModel.swift in Sources */,
+				32571CFE2FD3A9A000FFDAF3 /* SportViewController.swift in Sources */,
+				32571CFF2FD3A9A000FFDAF3 /* VerticalLabelsCollectionCell.swift in Sources */,
+				32571D002FD3A9A000FFDAF3 /* VerticalLabels.swift in Sources */,
 				9A56D25825216FC60082CC08 /* LineScatterCandleRadarRenderer.swift in Sources */,
 				9A367B7C25BD208100BFB4C3 /* Delete.swift in Sources */,
 				9A60DEC8252D8E8300E0D849 /* ModifyPWDViewController.swift in Sources */,
@@ -2746,12 +2786,10 @@
 				9A56D23C25216FC60082CC08 /* LegendRenderer.swift in Sources */,
 				9A60DEF9252F5B7100E0D849 /* DeviceModel.swift in Sources */,
 				9A037E4525BDB1CD0006FB94 /* OTACMD.m in Sources */,
-				9A20FA422D2A41BE0027A26F /* VerticalLabelsCollectionCell.swift in Sources */,
 				9AB5BE142A06644500680757 /* JLBlueManager.swift in Sources */,
 				9A839BEF255FE5A300714CBE /* HImagePickerUtils.swift in Sources */,
 				9A56D2B825216FC70082CC08 /* IChartDataSet.swift in Sources */,
 				9A8CA50825272C5200EC01A7 /* CVWeekdaySymbolType.swift in Sources */,
-				9AC2B91B2D2788700064903C /* RunModel.swift in Sources */,
 				9A56D25525216FC60082CC08 /* YAxisRendererRadarChart.swift in Sources */,
 				9A56D28725216FC60082CC08 /* Legend.swift in Sources */,
 				9A56D26725216FC60082CC08 /* CombinedChartView.swift in Sources */,
@@ -2783,7 +2821,6 @@
 				9A56D2A325216FC70082CC08 /* ChartDataEntryBase.swift in Sources */,
 				9A5E932A2515BB630060AB13 /* UserModel.swift in Sources */,
 				9AB910292501322C006E0FC4 /* EMAlertController.swift in Sources */,
-				9A20FA402D2A39840027A26F /* KRLShimmerView.swift in Sources */,
 				9A33D30D26AD9A4F00DF9618 /* CameraShot.swift in Sources */,
 				9AB7AC482766426A00D51DBC /* EditClockMiddleTableViewCell.swift in Sources */,
 				9AE1A181262AB9F900B8B10D /* HeartRateView.swift in Sources */,
@@ -2805,7 +2842,6 @@
 				9AEC22CD25B707C000DE899A /* BLEModel.swift in Sources */,
 				9A8CA50925272C5200EC01A7 /* CVRange.swift in Sources */,
 				9A4CADF42940944300B0BDF8 /* JXLocalizedString.swift in Sources */,
-				9AC2B9212D27BBE10064903C /* CutDownView.swift in Sources */,
 				9A28DA5E2518D4EA00F7B260 /* UIColor+hex.swift in Sources */,
 				9A60DEF3252F418900E0D849 /* AlarmHeaderView.swift in Sources */,
 				9A4CADF029406E6E00B0BDF8 /* QuestionItemResponse.swift in Sources */,
@@ -2835,6 +2871,7 @@
 				9A56D28025216FC60082CC08 /* ChartColorTemplates.swift in Sources */,
 				9AA2E05A2B343C9C0008CA56 /* UIImage+Extensions.swift in Sources */,
 				9A5210792504E02000F64A7A /* NickNameViewController.swift in Sources */,
+				32571D062FD3AB0200FFDAF3 /* AlarmAdd2ViewController.swift in Sources */,
 				9A820B7224CE5BC700A62C6F /* UILabel+Extension.swift in Sources */,
 				9A56D2B925216FC70082CC08 /* ICandleChartDataSet.swift in Sources */,
 				9AE66876267E491A00A8584A /* DOxygenModel.swift in Sources */,
@@ -2964,7 +3001,7 @@
 				9A8CA51325272C5200EC01A7 /* CVCalendarWeekContentViewController.swift in Sources */,
 				9AB910262501322C006E0FC4 /* UIColor+EMAlertController.swift in Sources */,
 				9A56D24025216FC60082CC08 /* AxisRendererBase.swift in Sources */,
-				9A20FA442D2A4B920027A26F /* ImageLabelsCollectionCell.swift in Sources */,
+				32571D0A2FD3AD0E00FFDAF3 /* UIImageExt.swift in Sources */,
 				9A33D30A26AD9A4F00DF9618 /* Utilities.swift in Sources */,
 				9A56D2AA25216FC70082CC08 /* PieChartData.swift in Sources */,
 				9A127EAE2BC2ACE300126836 /* UIFont+Extension.swift in Sources */,
@@ -2983,13 +3020,6 @@
 				9A56D28E25216FC60082CC08 /* ComponentBase.swift in Sources */,
 				9A56D24A25216FC60082CC08 /* XShapeRenderer.swift in Sources */,
 				9A56D2A725216FC70082CC08 /* ChartDataSet.swift in Sources */,
-				9AC2B9132D2783A80064903C /* SportViewController.swift in Sources */,
-				9AC2B9142D2783A80064903C /* GpsView.swift in Sources */,
-				9AC2B91F2D27BB890064903C /* WULocationManager.swift in Sources */,
-				9AC2B9152D2783A80064903C /* HistoryMapViewController.swift in Sources */,
-				9AC2B9162D2783A80064903C /* SportDetailView.swift in Sources */,
-				9AC2B9172D2783A80064903C /* RunHistoryViewController.swift in Sources */,
-				9AC2B9182D2783A80064903C /* RunViewController.swift in Sources */,
 				9A56D28A25216FC60082CC08 /* AxisBase.swift in Sources */,
 				9AFAE8722A8F21F7005EF8F8 /* JGProgressHUDErrorIndicatorView.m in Sources */,
 				9A56D26625216FC60082CC08 /* LineChartView.swift in Sources */,
@@ -2997,7 +3027,6 @@
 				9AE6688A267F8AD700A8584A /* NSArray+PureLayout.m in Sources */,
 				9AB5BE192A06644500680757 /* ImageHelper.m in Sources */,
 				9A56D27B25216FC60082CC08 /* ViewPortHandler.swift in Sources */,
-				9AC2B9232D27C35F0064903C /* JRDB.swift in Sources */,
 				9A56D2C325216FC70082CC08 /* ScatterChartDataProvider.swift in Sources */,
 				9A08C6FC262F182000E178DA /* ProgressView.m in Sources */,
 				9AF0AA2025AAF1CE000BDAED /* CMDData.swift in Sources */,
@@ -3031,7 +3060,6 @@
 				9A5210712503DB2E00F64A7A /* ClockCCollectionViewCell.swift in Sources */,
 				9A56D25025216FC60082CC08 /* TriangleShapeRenderer.swift in Sources */,
 				9A33D31A26AD9A4F00DF9618 /* CameraView.swift in Sources */,
-				9A20FA3A2D2A36120027A26F /* VerticalLabels.swift in Sources */,
 				9AE1A16D2629465F00B8B10D /* OTAManager.m in Sources */,
 				9AE6688D267F8B2A00A8584A /* MAWeatherForecastView.m in Sources */,
 				9A56D2AE25216FC70082CC08 /* RadarChartDataSet.swift in Sources */,
@@ -3059,7 +3087,6 @@
 				9A21BFFE2D0082E00048CF53 /* ABOtaManager.swift in Sources */,
 				9A21BFFF2D0082E00048CF53 /* OtaDataReader.swift in Sources */,
 				9A21C0002D0082E00048CF53 /* OtaManager.swift in Sources */,
-				9A20FA322D2A2C3C0027A26F /* WUCalendarManager.swift in Sources */,
 				9A56D28625216FC60082CC08 /* MarkerImage.swift in Sources */,
 				9A56D24325216FC60082CC08 /* ScatterChartRenderer.swift in Sources */,
 				9A56D2A525216FC70082CC08 /* PieChartDataSet.swift in Sources */,
@@ -3078,10 +3105,10 @@
 				9A60DEE9252F1E8200E0D849 /* DeviceInfoViewController.swift in Sources */,
 				9AB5BE162A06644500680757 /* ContactsTool.m in Sources */,
 				9A9E4E192782F7BD0084CCFF /* CustomImageFooterView.swift in Sources */,
-				9A20FA3C2D2A37A20027A26F /* UIView+ViewChainable.swift in Sources */,
 				9AB5BE1D2A06644500680757 /* ChangeImageData.m in Sources */,
 				9AE1A16C2629465F00B8B10D /* JCBlutoothInfoModel.m in Sources */,
 				9A56D25625216FC60082CC08 /* PieChartRenderer.swift in Sources */,
+				32571D042FD3AAB100FFDAF3 /* UserInfoSetupViewController.swift in Sources */,
 				9A56D25F25216FC60082CC08 /* Range.swift in Sources */,
 				9A56D24625216FC60082CC08 /* BarChartRenderer.swift in Sources */,
 				9AE1A183262AF69400B8B10D /* HeartRateCollectionViewCell.swift in Sources */,
@@ -3099,7 +3126,6 @@
 				9A4B80A72DE1F5BB0001817F /* SelectAddActionViewController.swift in Sources */,
 				9A56D25225216FC60082CC08 /* XAxisRendererHorizontalBarChart.swift in Sources */,
 				9A21BFD82D00339F0048CF53 /* Utils.swift in Sources */,
-				9A20FA472D2A4D860027A26F /* LocationConverter.m in Sources */,
 				9AF3F2DD2BCC229B00AFBC55 /* HNavigationController.swift in Sources */,
 				9A60DEC6252D896400E0D849 /* BindEmailViewController.swift in Sources */,
 				9A56D28225216FC60082CC08 /* Platform+Color.swift in Sources */,
@@ -3121,6 +3147,7 @@
 				9A56D2C025216FC70082CC08 /* CombinedChartDataProvider.swift in Sources */,
 				9AFAE8732A8F21F7005EF8F8 /* JGProgressHUDAnimation.m in Sources */,
 				9A367B7A25BD208100BFB4C3 /* Edit.swift in Sources */,
+				32571D022FD3AA2500FFDAF3 /* SyncContactsViewController.swift in Sources */,
 				9A820B8724D061E000A62C6F /* UIDevice+Extension.swift in Sources */,
 				9A8CA51925272C5200EC01A7 /* CVScrollDirection.swift in Sources */,
 				9A60DEDE252F002D00E0D849 /* UIColor+Hex.swift in Sources */,
@@ -3131,6 +3158,7 @@
 				9A367B7825BD208100BFB4C3 /* Query.swift in Sources */,
 				9A56D29625216FC70082CC08 /* BarChartDataEntry.swift in Sources */,
 				9A56D2BD25216FC70082CC08 /* BarChartDataProvider.swift in Sources */,
+				32571D082FD3AC9C00FFDAF3 /* CircleCropUtils.swift in Sources */,
 				9A21BFD62D0030F60048CF53 /* TimeRecord.swift in Sources */,
 				9A56D26E25216FC60082CC08 /* PieChartView.swift in Sources */,
 				9AA2E05E2B343C9C0008CA56 /* Common.swift in Sources */,
