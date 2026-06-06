@@ -15,15 +15,13 @@ class SportViewController: BaseViewController, UITableViewDelegate, UITableViewD
     var footView = SportFootView()
     var dataArray = [RunModel]()
     var valueArray = [String]()
-    
-    var bgImageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         footView.leftBlock = { [unowned self] in
             let vc = RunHistoryViewController()
-            vc.title = NSLocalizedString("运动历史", comment: "")
+            vc.title = "sport_history".localized()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -41,16 +39,16 @@ class SportViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 }
                 
             }, denied: {
-                let alert = UIAlertController.init(title: NSLocalizedString("定位权限设置", comment: ""), message: nil, preferredStyle: .alert)
-                let action = UIAlertAction.init(title: NSLocalizedString("取消", comment: ""), style: .default, handler: { (_) in
+                let alert = UIAlertController.init(title: "location_permission_settings".localized(), message: nil, preferredStyle: .alert)
+                let action = UIAlertAction.init(title: "Cancel".localized(), style: .default, handler: { (_) in
                     self.dismiss(animated: true, completion: nil)
                 })
                 alert.addAction(action)
-                let action1 = UIAlertAction.init(title: NSLocalizedString("确定", comment: ""), style: .default, handler: { (_) in
+                let action1 = UIAlertAction.init(title: "mine_confirm".localized(), style: .default, handler: { (_) in
                     self.dismiss(animated: true, completion: nil)
                     let settings = URL.init(string: UIApplication.openSettingsURLString)!
                     UIApplication.shared.openURL(settings)
-                    
+
                 })
                 alert.addAction(action1)
                 DispatchQueue.main.async {
@@ -58,23 +56,15 @@ class SportViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 }
             })
         }
+        
+        setupViews()
     }
     
     func setupViews() {
-        view.addSubview(bgImageView)
-        bgImageView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.width.equalTo(bgImageView.snp.height).multipliedBy(1224.0/1173)
-        }
-        bgImageView.image = UIImage.init(named: "底部背景")
         
         view.addSubview(headView)
         headView.snp.makeConstraints { (make) in
-            if let navigationController = self.navigationController {
-                make.top.equalTo(navigationController.navigationBar.snp.bottom)
-            } else {
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            }
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.height.equalTo(180)
@@ -82,10 +72,10 @@ class SportViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         view.addSubview(footView)
         footView.snp.makeConstraints { (make) in
-            make.top.equalTo(headView.snp.bottom)
+            make.top.equalTo(headView.snp.bottom).offset(10)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.equalTo(120)
+            make.height.equalTo(100)
         }
         
         view.addSubview(table)
@@ -115,30 +105,16 @@ class SportViewController: BaseViewController, UITableViewDelegate, UITableViewD
             return temp
         }()
         title = model.timeStamp.dateFromSecond().stringFromYmd()
-        headView.labels.nameLabel1.text = (model.distance/1000).stringFloor(2) + "km"
+        headView.labels.nameLabel1.text = (model.distance/1000).stringFloor(2)
+        headView.labels.nameLabel.text = "health_walk_unit".localized()
         var speed = (model.distance > 0) ? Double(model.duration)/model.distance*1000 : 0
         if bleSelf.userInfo.unit == 1 {
-            headView.labels.nameLabel1.text = (model.distance/1000).kmToMi().stringFloor(2) + "miles"
+            headView.labels.nameLabel1.text = (model.distance/1000).kmToMi().stringFloor(2)
+            headView.labels.nameLabel.text = "mile".localized()
             speed = (model.distance > 0) ? (Double(model.duration)/model.distance*1000).miToKm() : 0
         }
         
-        var altitude = 0.0
-        if model.pointArray.count >= 2 {
-            let first = model.pointArray.first!
-            let last = model.pointArray.last!
-            altitude = last.altitude - first.altitude
-            if bleSelf.userInfo.unit == 1 {
-                altitude = (altitude * 100).cmToFt()
-            }
-        }
-        var altitudeStr = "+0"
-        if altitude >= 0 {
-            altitudeStr = "+" + altitude.stringFloor(2)
-        }
-        else {
-            altitudeStr = altitude.stringFloor(2)
-        }
-        self.valueArray = [Int(speed).stringSpeedFromSecond(), model.duration.stringHmsFromSecond(), model.cal.stringFloor(2), altitudeStr]
+        self.valueArray = [Int(speed).stringSpeedFromSecond(), model.duration.stringHmsFromSecond(), model.cal.stringFloor(2)]
         self.table.reloadData()
         
     }
@@ -150,7 +126,7 @@ class SportViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SportTableViewCell.wuClassName(), for: indexPath) as! SportTableViewCell
-        if self.valueArray.count >= 4 {
+        if self.valueArray.count >= 3 {
             cell.valueArray = self.valueArray
         }
         return cell
@@ -168,42 +144,27 @@ class SportViewController: BaseViewController, UITableViewDelegate, UITableViewD
 
 class SportHeadView: UIView {
     var bgView = UIView()
-    var iconImageView = UIImageView()
-    var nameLabel = UILabel()
     var labels = VerticalLabels()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.red
         
         addSubview(bgView)
         bgView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview().inset(20)
             make.left.right.equalToSuperview().inset(50)
         }
-        bgView.layer.cornerRadius = 20
-        bgView.layer.borderColor = UIColor.red.cgColor
-        bgView.layer.borderWidth = 2
-        
-        bgView.addSubview(iconImageView)
-        iconImageView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.centerX.equalToSuperview().dividedBy(2)
-        }
-        iconImageView.image = UIImage.init(named: "小")
-        iconImageView.setContentHuggingPriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)
-        iconImageView.setContentCompressionResistancePriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)
-        
+
         bgView.addSubview(labels)
         labels.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right)
+            make.left.equalToSuperview()
             make.centerY.equalToSuperview()
             make.height.equalToSuperview()
             make.right.equalToSuperview()
         }
-        labels.nameLabel.text = NSLocalizedString("最佳记录", comment: "")
-        labels.nameLabel1.text = "0.00km"
+        labels.nameLabel.text = "0.00"
+        labels.nameLabel1.text = "health_walk_unit".localized()
         
     }
 
@@ -219,8 +180,6 @@ class SportFootView: UIView {
     var pauseBtn = UIButton()
     var startBtn = UIButton()
     var stopBtn = UIButton()
-    var leftView = UIView()
-    var rightView = UIView()
     var leftBtn = UIButton()
     var rightBtn = UIButton()
     var startConstraint: Constraint!
@@ -238,76 +197,72 @@ class SportFootView: UIView {
         pauseBtn.adhere(toSuperView: self).layout { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(67)
+            make.width.height.equalTo(100)
             }
             .config { (make) in
-                make.setBackgroundImage(UIImage.init(named: "暂停"), for: .normal)
+                make.backgroundColor = UIColor.systemOrange
+                make.layer.cornerRadius = 50
+                make.clipsToBounds = true
+                make.tintColor = .white
+                make.setImage(UIImage(systemName: "pause.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
                 make.addTarget(self, action: #selector(pressBtn(_:)), for: .touchUpInside)
         }
-        
+
         startBtn.adhere(toSuperView: self).layout { (make) in
             startConstraint = make.centerX.equalToSuperview().constraint
             make.centerY.equalTo(pauseBtn)
-            make.width.height.equalTo(67)
+            make.width.height.equalTo(100)
             }
             .config { (make) in
-                make.setBackgroundImage(UIImage.init(named: "暂停"), for: .normal)
+                make.backgroundColor = UIColor.systemGreen
+                make.layer.cornerRadius = 50
+                make.clipsToBounds = true
+                make.tintColor = .white
+                make.setImage(UIImage(systemName: "play.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
                 make.addTarget(self, action: #selector(pressBtn(_:)), for: .touchUpInside)
                 make.isHidden = true
         }
-        
+
         stopBtn.adhere(toSuperView: self).layout { (make) in
             endConstraint = make.centerX.equalToSuperview().constraint
             make.centerY.equalTo(pauseBtn)
-            make.width.height.equalTo(67)
+            make.width.height.equalTo(100)
             }
             .config { (make) in
-                make.setBackgroundImage(UIImage.init(named: "move_icon_stop"), for: .normal)
+                make.backgroundColor = UIColor.systemRed
+                make.layer.cornerRadius = 50
+                make.clipsToBounds = true
+                make.tintColor = .white
+                make.setImage(UIImage(systemName: "stop.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
                 make.addTarget(self, action: #selector(pressBtn(_:)), for: .touchUpInside)
                 make.isHidden = true
         }
         
-        leftView.adhere(toSuperView: self).layout { (make) in
-            make.centerX.equalTo(self.snp.left)
+        leftBtn.adhere(toSuperView: self).layout { (make) in
+            make.left.equalToSuperview().offset(20)
             make.centerY.equalToSuperview()
-            make.height.equalTo(35)
-            make.width.equalTo(150)
+            make.width.height.equalTo(70)
             }
             .config { (make) in
-                make.backgroundColor = UIColor.red
-                make.layer.cornerRadius = 15
+                make.backgroundColor = UIColor.systemBlue
+                make.layer.cornerRadius = 35
                 make.clipsToBounds = true
-        }
-        
-        leftBtn.adhere(toSuperView: leftView).layout { (make) in
-            make.right.equalToSuperview().offset(-10)
-            make.width.height.equalTo(25)
-            make.centerY.equalToSuperview()
-            }
-            .config { (make) in
-                make.setBackgroundImage(UIImage.init(named: "move_icon_clock"), for: .normal)
+                make.tintColor = .white
+                make.setImage(UIImage(named: "unlock")?.withRenderingMode(.alwaysTemplate), for: .normal)
                 make.addTarget(self, action: #selector(pressBtn(_:)), for: .touchUpInside)
         }
-        
-        rightView.adhere(toSuperView: self).layout { (make) in
-            make.centerX.equalTo(self.snp.right)
+
+        rightBtn.adhere(toSuperView: self).layout { (make) in
+            make.right.equalToSuperview().offset(-20)
             make.centerY.equalToSuperview()
-            make.height.equalTo(35)
-            make.width.equalTo(150)
+            make.width.height.equalTo(70)
             }
             .config { (make) in
-                make.backgroundColor = UIColor.red
-                make.layer.cornerRadius = 15
+                make.backgroundColor = UIColor.systemBlue
+                make.layer.cornerRadius = 35
                 make.clipsToBounds = true
-        }
-        
-        rightBtn.adhere(toSuperView: rightView).layout { (make) in
-            make.left.equalToSuperview().offset(10)
-            make.width.height.equalTo(25)
-            make.centerY.equalToSuperview()
-            }
-            .config { (make) in
-                make.setBackgroundImage(UIImage.init(named: "move_icon_setup"), for: .normal)
+                make.tintColor = .white
+                make.setImage(UIImage(systemName: "gearshape.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
                 make.addTarget(self, action: #selector(pressBtn(_:)), for: .touchUpInside)
         }
         
@@ -343,7 +298,7 @@ class SportFootView: UIView {
 
 class SportTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var collection: UICollectionView!
-    var valueArray = [0.stringSpeedFromSecond(), 0.stringHmsFromSecond(), 0.stringFloor(2), "+0"] {
+    var valueArray = [0.stringSpeedFromSecond(), 0.stringHmsFromSecond(), 0.stringFloor(2)] {
         didSet {
             collection.reloadData()
         }
@@ -357,10 +312,10 @@ class SportTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         selectionStyle = .none
         
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
-        layout.itemSize = CGSize.init(width: kWuScreenWidth/3, height: 100)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         collection = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         collection.adhere(toSuperView: self).layout { (make) in
@@ -371,6 +326,7 @@ class SportTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
                 make.backgroundColor = UIColor.clear
                 make.delegate = self
                 make.dataSource = self
+                make.isScrollEnabled = false
                 make.register(SportCollectionViewCell.self, forCellWithReuseIdentifier: SportCollectionViewCell.wuClassName())
                 if #available(iOS 11.0, *) {
                     make.contentInsetAdjustmentBehavior = .never
@@ -379,32 +335,24 @@ class SportTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     }
     
     // MARK: - collectionView
-    private let titleArray = [NSLocalizedString("配速", comment: ""), NSLocalizedString("时长", comment: ""), NSLocalizedString("消耗", comment: ""), NSLocalizedString("海拔变化", comment: "")]
-    private let imageArray = ["move_icon_km", "move_icon_time", "move_icon_calories", "move_icon_m"]
-    private let unitArray = ["(min/km)", "(hr:min:sec)", "(cal)", "(m)"]
-    private let unitArray1 = ["(min/miles)", "(hr:min:sec)", "(hr:min:sec)", "(feet)"]
+    private let titleArray = ["sport_pace".localized(), "sport_duration".localized(), "consumption".localized()]
+    private let imageArray = ["move_icon_km", "move_icon_time", "move_icon_calories"]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titleArray.count
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SportCollectionViewCell.wuClassName(), for: indexPath) as! SportCollectionViewCell
-        
+
         cell.labels.nameLabel.text = valueArray[indexPath.row]
-        
+
 //        let unitArray = ["min/km", "h:m:s", "cal", "m"]
 //         + " " + unitArray[indexPath.row]
         cell.labels.nameLabel1.text = titleArray[indexPath.row]
-//        cell.iconImageView.image = UIImage.init(named: imageArray[indexPath.row])
-        
-        cell.labels.nameLabel2.text = unitArray[indexPath.row]
-        if bleSelf.userInfo.unit == 1 {
-            cell.labels.nameLabel2.text = unitArray1[indexPath.row]
-        }
+
         cell.labels.nameLabel.textAlignment = .center
         cell.labels.nameLabel1.textAlignment = .center
-        cell.labels.nameLabel2.textAlignment = .center
-        
+
         return cell
     }
     
@@ -413,7 +361,13 @@ class SportTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: floor(collectionView.frame.size.width/2) - 5, height: floor(collectionView.frame.size.height/2) - 5)
+        // 计算宽度：(总宽度 - 左右边距 - 间隔) / 3
+        let totalWidth = collectionView.frame.size.width
+        let horizontalInsets: CGFloat = 20 // 左右各10
+        let spacing: CGFloat = 20 // 两个间隔，每个10
+        let itemWidth = floor((totalWidth - horizontalInsets - spacing) / 3)
+        let itemHeight = collectionView.frame.size.height - 20 // 上下各10
+        return CGSize(width: itemWidth, height: itemHeight)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -424,7 +378,6 @@ class SportTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectio
 
 class SportCollectionViewCell: UICollectionViewCell {
     var bgView = UIView()
-    var iconImageView = UIImageView()
     var lineView = UIView()
     var labels = VerticalLabels1()
     
@@ -432,23 +385,10 @@ class SportCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         backgroundColor = UIColor.clear
-        contentView.backgroundColor = UIColor.red
         bgView.adhere(toSuperView: contentView).layout { (make) in
             make.edges.equalToSuperview()
             }
             .config { (make) in
-                make.backgroundColor = UIColor.red
-                make.layer.cornerRadius = 10
-                make.clipsToBounds = true
-        }
-        
-        iconImageView.adhere(toSuperView: bgView).layout { (make) in
-            make.left.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-20)
-            }
-            .config { (make) in
-                make.image = UIImage.init(named: "home_icon_heart")
-                make.isHidden = true
         }
         
         labels.adhere(toSuperView: bgView).layout { (make) in

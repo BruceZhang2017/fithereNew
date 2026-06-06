@@ -1,5 +1,5 @@
 //
-// Copyright © 2015-2018 bruce   All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 // 
 //  UIColor+Extension.swift
@@ -48,7 +48,7 @@ extension UIColor {
     static let k7A61FF = UIColor(hex: 0x7A61FF)
     static let kDC98FF = UIColor(hex: 0xDC98FF)
     
-    static let brand = UIColor(hex: 0xFF530A)
+    static let brand = UIColor(hex: 0x0C77F8)
     static let text_primary = UIColor(hex: 0x050A10)
     static let text_secondary = UIColor(hex: 0x49525E)
     static let text_third = UIColor(hex: 0x050A10, alpha: 0.48)

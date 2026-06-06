@@ -1,5 +1,5 @@
 //
-// Copyright © 2015-2018 bruce   All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 // 
 //  MyClockViewController.swift
@@ -30,7 +30,7 @@ class MyClockViewController: UIViewController {
     var colorIndex = 0 ///白色0 黑色1 黄色2 橙色3 粉色4 紫色5 蓝色6 青色7
     var diallocation = 5
     final let locations = ["above".localized(), "below".localized()]
-    final let xgztlocations = ["无".localized(), "左上".localized(), "左下".localized(), "右上".localized(), "右下".localized(), "居中".localized()]
+    final let xgztlocations = ["mine_null".localized(), "position_top_left".localized(), "position_bottom_left".localized(), "position_top_right".localized(), "position_bottom_right".localized(), "position_center".localized()]
     final let tops = ["closure".localized(), "date".localized(), "sleep".localized(), "heart_rate".localized(), "step".localized()]
     var topTap = false
     final var colors: [UIColor] = [UIColor.white, UIColor.black, UIColor.yellow,
@@ -85,6 +85,9 @@ class MyClockViewController: UIViewController {
         
         
         footView?.isHidden = !(w == 80 && h == 160)
+        if isXGZT {
+            footView?.isHidden = true 
+        }
         footView?.delegate = self
         bleSelf.getFuncCategory()
         
@@ -143,8 +146,10 @@ class MyClockViewController: UIViewController {
     private func startupdateCustomImage() {
         guard let originalImage = currentImage else { return }
         
+        let w: CGFloat = isXGZT ? CGFloat(XGZTBlueToothManager.shared.device?.screenWidth ?? 0) : CGFloat(bleSelf.bleModel.screenWidth)
+        let h: CGFloat = isXGZT ? CGFloat(XGZTBlueToothManager.shared.device?.screenHeight ?? 0) : CGFloat(bleSelf.bleModel.screenHeight)
         // 固定目标尺寸
-        let targetSize = CGSize(width: width, height: height)
+        let targetSize = CGSize(width: w, height: h)
         
         // 第一步：调整图片尺寸为 240×240
         guard let resizedImage = resizeImage(originalImage, to: targetSize) else {
@@ -166,35 +171,66 @@ class MyClockViewController: UIViewController {
             
             XLogger.shared.log("Attempt \(attemptCount+1): rawImageData count: \(rawImageData.count)")
             
-            // 使用固定的 240×240 尺寸
-            if let parData = ParTool.par(fromRaw: rawImageData,
-                                      width: Int32(targetSize.width),
-                                      height: Int32(targetSize.height),
-                                      runAlpha: false,
-                                      useFilter: false,
-                                      supportRotate: false) {
-                if parData.count <= targetSizeBytes {
-                    XLogger.shared.log("Success: PAR size=\(parData.count) width=240 height=240")
-                    binData = parData
-                    XGZTCommand.dialMarketQuery(dataType: 0)
-                    break
-                } else {
-                    XLogger.shared.log("PAR size \(parData.count) exceeds 120KB, compressing further...")
-                    
-                    // 降低质量继续尝试
-                    let quality = max(0.1, 0.9 - Double(attemptCount) * 0.1)
-                    if let compressedData = image.jpegData(compressionQuality: quality),
-                       let compressedImage = UIImage(data: compressedData) {
-                        image = compressedImage
+            if XGZTBlueToothManager.shared.device?.screenType == 2 || XGZTBlueToothManager.shared.device?.screenType == 3 {
+                // 使用固定的 240×240 尺寸 手环
+                if let parData = ParTool.rle(fromRaw: rawImageData,
+                                          width: Int32(targetSize.width),
+                                          height: Int32(targetSize.height),
+                                          transparentColor: 1) {
+                    if parData.count <= targetSizeBytes {
+                        XLogger.shared.log("Success: PAR size=\(parData.count) width=240 height=240")
+                        binData = parData
+                        XGZTCommand.dialMarketQuery(dataType: 0)
+                        break
                     } else {
-                        XLogger.shared.log("Failed to compress image further")
-                        return
+                        XLogger.shared.log("PAR size \(parData.count) exceeds 120KB, compressing further...")
+                        
+                        // 降低质量继续尝试
+                        let quality = max(0.1, 0.9 - Double(attemptCount) * 0.1)
+                        if let compressedData = image.jpegData(compressionQuality: quality),
+                           let compressedImage = UIImage(data: compressedData) {
+                            image = compressedImage
+                        } else {
+                            XLogger.shared.log("Failed to compress image further")
+                            return
+                        }
                     }
+                } else {
+                    XLogger.shared.log("Failed to convert to PAR format at 240x240")
+                    return
                 }
             } else {
-                XLogger.shared.log("Failed to convert to PAR format at 240x240")
-                return
+                // 使用固定的 240×240 尺寸
+                if let parData = ParTool.par(fromRaw: rawImageData,
+                                          width: Int32(targetSize.width),
+                                          height: Int32(targetSize.height),
+                                          runAlpha: false,
+                                          useFilter: false,
+                                          supportRotate: false) {
+                    if parData.count <= targetSizeBytes {
+                        XLogger.shared.log("Success: PAR size=\(parData.count) width=240 height=240")
+                        binData = parData
+                        XGZTCommand.dialMarketQuery(dataType: 0)
+                        break
+                    } else {
+                        XLogger.shared.log("PAR size \(parData.count) exceeds 120KB, compressing further...")
+                        
+                        // 降低质量继续尝试
+                        let quality = max(0.1, 0.9 - Double(attemptCount) * 0.1)
+                        if let compressedData = image.jpegData(compressionQuality: quality),
+                           let compressedImage = UIImage(data: compressedData) {
+                            image = compressedImage
+                        } else {
+                            XLogger.shared.log("Failed to compress image further")
+                            return
+                        }
+                    }
+                } else {
+                    XLogger.shared.log("Failed to convert to PAR format at 240x240")
+                    return
+                }
             }
+            
             
             attemptCount += 1
         }
@@ -211,55 +247,6 @@ class MyClockViewController: UIViewController {
         
         return UIGraphicsImageRenderer(size: targetSize, format: format).image { _ in
             image.draw(in: CGRect(origin: .zero, size: targetSize))
-        }
-    }
-
-    // 保存图片到沙盒
-    private func saveImageToSandbox(_ image: UIImage, name: String) {
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let fileName = "\(name)_\(Date().timeIntervalSince1970).jpg"
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        
-        guard let data = image.jpegData(compressionQuality: 1.0) else { return }
-        
-        do {
-            try data.write(to: fileURL)
-            XLogger.shared.log("Saved image to: \(fileURL.path)")
-            // 验证文件存在
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: fileURL.path) {
-                let fileSize = try fileManager.attributesOfItem(atPath: fileURL.path)[.size] as? Int ?? 0
-                XLogger.shared.log("图片大小: \(fileSize) 字节")
-            }
-        } catch {
-            XLogger.shared.log("Error saving image: \(error.localizedDescription)")
-        }
-    }
-
-    // 保存数据到沙盒
-    private func saveDataToSandbox(_ data: Data, name: String) {
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            XLogger.shared.log("无法获取Documents目录")
-            return
-        }
-        
-        let fileName = "\(name)_\(Date().timeIntervalSince1970).bin"
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        
-        XLogger.shared.log("尝试保存文件到: \(fileURL.path)")
-        
-        do {
-            try data.write(to: fileURL, options: .atomic)
-            XLogger.shared.log("保存成功: \(fileURL.path)")
-            
-            // 验证文件存在
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: fileURL.path) {
-                let fileSize = try fileManager.attributesOfItem(atPath: fileURL.path)[.size] as? Int ?? 0
-                XLogger.shared.log("文件大小: \(fileSize) 字节")
-            }
-        } catch {
-            XLogger.shared.log("保存失败: \(error.localizedDescription)")
         }
     }
     
@@ -691,6 +678,9 @@ extension MyClockViewController: UITableViewDataSource {
             cell.selectButton.setTitle("select_image".localized(), for: .normal)
             cell.selectButton.setTitleColor(UIColor.brand, for: .normal)
             cell.selectButton.titleLabel?.font = UIFont.subtitle1()
+            cell.selectButton.titleLabel?.textAlignment = .center // 文字水平居中
+            cell.selectButton.contentHorizontalAlignment = .center // 按钮内容水平居中
+            cell.selectButton.contentVerticalAlignment = .center // 按钮内容垂直居中
             let w  = isXGZT ? (XGZTBlueToothManager.shared.device?.screenWidth ?? 0) : bleSelf.bleModel.screenWidth
             let h = isXGZT ? (XGZTBlueToothManager.shared.device?.screenHeight ?? 0) : bleSelf.bleModel.screenHeight
             let lastestDeviceMac = UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? "00:00:00:00:00:00"
@@ -803,7 +793,12 @@ extension MyClockViewController: TZImagePickerControllerDelegate {
         imageUploadVc?.modalTransitionStyle = .crossDissolve
         imageUploadVc?.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         imageUploadVc?.delegate = self
-        imageUploadVc?.image = photos.first
+        if isXGZT && !AppDelegate.IsDeviceNotRound() {
+            imageUploadVc?.image = photos.first?.croppedToCircleSmooth()
+        } else {
+            imageUploadVc?.image = photos.first
+        }
+
         imageUploadVc?.imgView.contentMode = .scaleAspectFit
         self.present(imageUploadVc!, animated: false) {
             

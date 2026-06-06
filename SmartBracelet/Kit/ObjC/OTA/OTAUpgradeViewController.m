@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"ota", @"");
+    self.title = NSLocalizedString(@"OTA", @"");
     
     self.isFirstConnectionOTA = false;
     [self setUpBluetooth];

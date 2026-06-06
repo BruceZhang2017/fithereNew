@@ -12,6 +12,7 @@ var flag_81 = false
 var flag_82 = false
 var flag_5d = false // 5d指令是否成功
 var flag_device_reading = false
+var sync_time_single = false 
 
 class XGZTBusinessHandler: NSObject {
     
@@ -74,6 +75,24 @@ class XGZTBusinessHandler: NSObject {
                 NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "1")
             }
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                if let userInfo = UserDefaults.standard.dictionary(forKey: "UserInfo") {
+                    if let height = userInfo["height"] as? Int, height > 0 {
+                        XGZTBlueToothManager.shared.device?.height = height
+                    }
+                    if let weight = userInfo["weight"] as? Int, weight > 0  {
+                        XGZTBlueToothManager.shared.device?.weight = weight
+                    }
+                    if let age = userInfo["age"] as? Int, age > 0 {
+                        XGZTBlueToothManager.shared.device?.age = age
+                    }
+                    if let gender = userInfo["gender"] as? Int {
+                        XGZTBlueToothManager.shared.device?.sex = gender
+                    }
+                    XGZTCommand.setPersonalInfo(sex: XGZTBlueToothManager.shared.device?.sex ?? 0, age: XGZTBlueToothManager.shared.device?.age ?? 0, height: XGZTBlueToothManager.shared.device?.height ?? 0, weight: XGZTBlueToothManager.shared.device?.weight ?? 0)
+                }
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.syncDevcieInfo()
             }
@@ -105,6 +124,7 @@ class XGZTBusinessHandler: NSObject {
                 return
             }
             XGZTCommand.bindDevice(value: 0)
+            connectFailMessage += "[\(lastestDeviceMac)]指令故障:嵌入式未回复指令81"
         }
     }
     
@@ -116,6 +136,7 @@ class XGZTBusinessHandler: NSObject {
                 return
             }
             XGZTCommand.bindDevice(value: 1)
+            connectFailMessage += "[\(lastestDeviceMac)]指令故障:嵌入式未回复指令82"
         }
     }
     
@@ -128,6 +149,7 @@ class XGZTBusinessHandler: NSObject {
                 return
             }
             XGZTCommand.setAppInfo(phoneType: 1)
+            connectFailMessage += "[\(lastestDeviceMac)]指令故障:嵌入式未回复指令5d"
         }
     }
     
@@ -255,28 +277,18 @@ class XGZTBusinessHandler: NSObject {
         }
     }
     
-    private func readDeviceInfo() {
+    public func readDeviceInfo() {
         flag_device_reading = true
         // 2.设置时间
-        // 获取当前的时区信息
-        let currentTimeZone = TimeZone.current
-        let timeZoneOffsetInSeconds = currentTimeZone.secondsFromGMT()
-        var timeZoneOffsetInHours = timeZoneOffsetInSeconds / 3600
-        if timeZoneOffsetInSeconds >= 0 {
-            timeZoneOffsetInHours = 12 + timeZoneOffsetInHours
-        } else {
-            timeZoneOffsetInHours = 12 - timeZoneOffsetInHours
-        }
-
         // 获取当前的 UTC 时间
         let now = Date()
         let utcTimeInterval = now.timeIntervalSince1970
         let utc = UInt32(utcTimeInterval)
-        XLogger.shared.log("同步时间：\(utc) -- \(timeZoneOffsetInHours)")
-        XGZTCommand.syncTime(timeZone: timeZoneOffsetInHours, utc: utc)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-//            XGZTCommand.syncTime(timeZone: timeZoneOffsetInHours, utc: utc)
-//        }
+        let offset = TimeZone.current.secondsFromGMT(for: now)
+        let correctedUtc = Int64(utc) + Int64(offset)
+        XLogger.shared.log("同步时间：\(correctedUtc) -- \(12)")
+        XGZTCommand.syncTime(timeZone: 12, utc: UInt32(correctedUtc))
+
     }
     
     private func setANCS() {

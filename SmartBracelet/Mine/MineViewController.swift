@@ -1,5 +1,5 @@
 //
-// Copyright © 2015-2018 bruce   All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 // 
 //  MineViewController.swift
@@ -56,7 +56,7 @@ class MineViewController: BaseViewController {
 
         // 计算nicknameButton的位置和大小
         let nicknameButtonHeight: CGFloat = 30
-        let nicknameButtonWidth: CGFloat = 200 // 或者可以使用sizeToFit()来根据内容调整宽度
+        let nicknameButtonWidth: CGFloat = 300 // 或者可以使用sizeToFit()来根据内容调整宽度
         let nicknameButtonX = (headerView.bounds.width - nicknameButtonWidth) / 2 // 水平居中
         let nicknameButtonY = profileImageView.frame.maxY + 10 // 在profileImageView下方间隔10
         nicknameButton.frame = CGRect(x: nicknameButtonX, y: nicknameButtonY, width: nicknameButtonWidth, height: nicknameButtonHeight)
@@ -162,7 +162,6 @@ class MineViewController: BaseViewController {
                     } else if code.count > 0 && code.contains("k=") {
                         XLogger.shared.log("扫描的结果是新设备")
                         self?.bHavenScanResult = true
-                        
                         // 手动解析k参数值（避免URLComponents旧系统兼容问题）
                         if let kParamStart = code.range(of: "k=")?.upperBound {
                             // 找到k参数的结束位置（&符号或字符串结尾）
@@ -198,6 +197,7 @@ class MineViewController: BaseViewController {
                             XLogger.shared.log("扫描的结果有错误2：未找到k参数")
                             self?.dismiss(animated: true, completion: nil)
                         }
+
                     } else {
                         XLogger.shared.log("扫描的结果是无设备")
                     }

@@ -49,7 +49,7 @@ class OTAInfoManager {
         let parameters: [String: String] = [
             "pageSize": "100",
             "pageNum": "1",
-            "otaModel": "fithere",
+            "otaModel": "u-watch",
             "moreEqOtaVersion": "\(XGZTBlueToothManager.shared.device?.firmwareVersion ?? "0.1")",
             "isPublish": "Y"
         ]

@@ -1,5 +1,5 @@
 //
-// Copyright © 2015-2018 bruce   All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 // 
 //  AboutUSViewController.swift
@@ -108,7 +108,7 @@ class AboutUSViewController: BaseViewController {
                     preferredStyle: .alert
                 )
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Update", comment: "Update button title"), style: .default, handler: { _ in
-                    if let url = URL(string: "https://apps.apple.com/app/1509404233") {
+                    if let url = URL(string: "https://apps.apple.com/app/6444815466") {
                         UIApplication.shared.open(url)
                     }
                 }))

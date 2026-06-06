@@ -1,5 +1,5 @@
 //
-// Copyright © 2015-2018 bruce   All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 // 
 //  NickNameViewController.swift
@@ -28,6 +28,9 @@ class NickNameViewController: BaseViewController {
             $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             $0.setTitle("mine_save".localized(), for: .normal)
             $0.addTarget(self, action: #selector(save), for: .touchUpInside)
+            $0.sizeToFit()
+            let width = max($0.frame.width, 44)
+            $0.frame = CGRect(x: 0, y: 0, width: width, height: 30)
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
         setupValue()

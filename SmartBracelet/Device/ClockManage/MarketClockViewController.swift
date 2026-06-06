@@ -1,5 +1,5 @@
 //
-// Copyright © 2015-2018 bruce   All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 // 
 //  MarketClockViewController.swift
@@ -33,6 +33,7 @@ class MarketClockViewController: UIViewController {
                 $0.setTitle("mine_manage".localized(), for: .normal)
                 $0.setTitle("mine_delete".localized(), for: .selected)
                 $0.setTitle("mine_finish".localized(), for: .disabled)
+                $0.frame = CGRect(x: 0, y: 0, width: 60, height: 24)
             }
             navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
         }

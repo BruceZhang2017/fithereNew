@@ -1,5 +1,5 @@
 //
-// Copyright © 2015-2018 bruce   All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
 // 
 //  HelpCenterViewController.swift
@@ -50,9 +50,12 @@ class HelpCenterViewController: BaseViewController {
             Toast(text: "help_center_text_tip".localized()).show()
             return
         }
-        
+        var localVersion = ""
+        if let v:String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            localVersion = v
+        }
         ProgressHUD.animate(nil, .activityIndicator, interaction: false)
-        let parameters = ["title": content, "content": content, "byCountry": getLocaleCountryCode()]
+        let parameters = ["title": "iOS-\(localVersion)", "content": "\(content)---\(connectFailMessage)" , "byCountry": getLocaleCountryCode()]
         AF.request("https://u-watch.com.cn/api/app/question", method: .post, parameters: parameters, encoder: JSONParameterEncoder.default).response { [weak self] (response) in
             debugPrint("Response: \(response.debugDescription)")
             ProgressHUD.dismiss()
@@ -70,6 +73,7 @@ class HelpCenterViewController: BaseViewController {
             } else {
                 Toast(text: "help_center_submit_fail".localized()).show()
             }
+            connectFailMessage = ""
         }
     }
     
