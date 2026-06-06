@@ -408,6 +408,13 @@ class HealthViewController: BaseViewController {
                     self?.alertController = nil
                 }
             }
+            if cacheDevices.count >= 1 && !XGZTBlueToothManager.shared.isconnected() {
+                for device in cacheDevices {
+                    if device.max == lastestDeviceMac {
+                        XGZTBlueToothManager.shared.connectAndScan(to: lastestDeviceMac, deviceName: device.deviceName ?? "e watch")
+                    }
+                }
+            }
             return
         }
         if XGZTBlueToothManager.shared.centralManager?.state == .poweredOff {
@@ -444,15 +451,14 @@ class HealthViewController: BaseViewController {
         // 确保 TabBar 显示
         tabBarController?.tabBar.isHidden = false
         sexImageView.image = UIImage(named: bleSelf.userInfo.sex == 1 ? "health_boy" : "health_girl")
-        if isXGZT {
-            sexImageView.image = UIImage(named: XGZTBlueToothManager.shared.device?.sex == 0 ? "health_boy" : "health_girl")
-            return
-        }
-        
         if !isFirst {
             readDBStep() // 从本地数据库中读取步数数据
         }
         isFirst = true
+        if isXGZT {
+            sexImageView.image = UIImage(named: XGZTBlueToothManager.shared.device?.sex == 0 ? "health_boy" : "health_girl")
+            return
+        }
         readDBHeart() // 从本地数据库中读取心跳数据
         readDBBlood() // 从本地数据库中读取血压数据
         readDBOxygen() // 从本地数据库中读取血氧数据
