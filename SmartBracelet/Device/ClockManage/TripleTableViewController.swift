@@ -188,14 +188,11 @@ class TripleTableViewController: UIViewController {
         print("📡 请求URL: \(urlString)")
         
         // 准备表单参数
-        var parameters: [String: Any] = [
+        let parameters: [String: Any] = [
             "width": width,
-            "height": height
+            "height": height,
+            "deviceType": XGZTBlueToothManager.shared.device?.screenType ?? 0,
         ]
-//        let lang = LanguageManager.getInterfaceLang()
-//        if lang != "English" && !isUsrEnglish {
-//            parameters["lang"] = lang
-//        }
         
         // 使用x-www-form-urlencoded格式发送POST请求
         AF.request(
@@ -617,22 +614,15 @@ class RightViewModel {
         let urlString = "https://u-watch.com.cn/api/app/ota/v3/list"
         
         // 构建请求参数字典
-        var parameters: [String: Any] = [
+        let parameters: [String: Any] = [
             "pageSize": 20,
             "pageNum": 0,
             "width": screenWidth,
             "height": screenHeight,
-            "shape": XGZTBlueToothManager.shared.device?.screenType == 1 ? "round" : "square",
             "type": type,
-            "style": style
+            "style": style,
+            "deviceType": XGZTBlueToothManager.shared.device?.screenType ?? 0,
         ]
-//        let lang = LanguageManager.getInterfaceLang()
-//        if lang != "English" && !isUsrEnglish {
-//            parameters["lang"] = lang
-//        }
-        if XGZTBlueToothManager.shared.device?.screenType == 2 || XGZTBlueToothManager.shared.device?.screenType == 3 {
-            parameters["platform"] = "202x"
-        }
         
         // 打印请求参数
         print("请求参数:")
@@ -692,22 +682,15 @@ class RightViewModel {
         let urlString = "https://u-watch.com.cn/api/app/ota/v3/list"
         
         // 构建请求参数字典
-        var parameters: [String: Any] = [
+        let parameters: [String: Any] = [
             "pageSize": 20,
             "pageNum": nextPage,
             "width": screenWidth,
             "height": screenHeight,
-            "shape": XGZTBlueToothManager.shared.device?.screenType == 1 ? "round" : "square",
             "type": type,
-            "style": style
+            "style": style,
+            "deviceType": XGZTBlueToothManager.shared.device?.screenType ?? 0,
         ]
-//        let lang = LanguageManager.getInterfaceLang()
-//        if lang != "English" && !isUsrEnglish {
-//            parameters["lang"] = lang
-//        }
-        if XGZTBlueToothManager.shared.device?.screenType == 2 || XGZTBlueToothManager.shared.device?.screenType == 3 {
-            parameters["platform"] = "202x"
-        }
         // 打印请求参数
         print("开始加载第\(nextPage)页数据，请求参数：")
         parameters.forEach { print("\($0.key): \($0.value)") }
