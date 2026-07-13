@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var audioInterruptionObserver: NSObjectProtocol?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // #region debug-point A:launch-entry
+        if let url = URL(string: "http://192.168.2.154:7777/event"), let data = try? JSONSerialization.data(withJSONObject: ["sessionId": "app-launch-crash", "runId": "pre-fix", "hypothesisId": "A", "location": "AppDelegate.swift:18", "msg": "[DEBUG] didFinishLaunching entered", "data": ["hasLaunchOptions": launchOptions != nil], "ts": Int(Date().timeIntervalSince1970 * 1000)]) { var request = URLRequest(url: url); request.httpMethod = "POST"; request.setValue("application/json", forHTTPHeaderField: "Content-Type"); request.httpBody = data; URLSession.shared.dataTask(with: request).resume() }
+        // #endregion
         configRealm()
         AMapServices.shared().apiKey = "0ed08fc41dc5bd1adc43b9189af816f7"
         window?.backgroundColor = UIColor.white
@@ -22,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enableAutoToolbar = false
         setupConfig()
         pushToTab()
+        // #region debug-point B:post-root-setup
+        if let url = URL(string: "http://192.168.2.154:7777/event"), let data = try? JSONSerialization.data(withJSONObject: ["sessionId": "app-launch-crash", "runId": "pre-fix", "hypothesisId": "B", "location": "AppDelegate.swift:29", "msg": "[DEBUG] didFinishLaunching after pushToTab", "data": ["windowExists": window != nil, "rootType": String(describing: type(of: window?.rootViewController))], "ts": Int(Date().timeIntervalSince1970 * 1000)]) { var request = URLRequest(url: url); request.httpMethod = "POST"; request.setValue("application/json", forHTTPHeaderField: "Content-Type"); request.httpBody = data; URLSession.shared.dataTask(with: request).resume() }
+        // #endregion
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (status, err) in
             if !status {
                 XLogger.shared.log("当用户不同意授权通知权限，则做其他的判读")
@@ -41,11 +47,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         J_UpdateTable(RunPoint.self)
         J_CreateTable(RunModel.self)
         J_UpdateTable(RunModel.self)
-        
+        // #region debug-point D:launch-return
+        if let url = URL(string: "http://192.168.2.154:7777/event"), let data = try? JSONSerialization.data(withJSONObject: ["sessionId": "app-launch-crash", "runId": "pre-fix", "hypothesisId": "D", "location": "AppDelegate.swift:50", "msg": "[DEBUG] didFinishLaunching returning true", "data": ["openCount": openCount], "ts": Int(Date().timeIntervalSince1970 * 1000)]) { var request = URLRequest(url: url); request.httpMethod = "POST"; request.setValue("application/json", forHTTPHeaderField: "Content-Type"); request.httpBody = data; URLSession.shared.dataTask(with: request).resume() }
+        // #endregion
         return true
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        // #region debug-point C:did-become-active
+        if let url = URL(string: "http://192.168.2.154:7777/event"), let data = try? JSONSerialization.data(withJSONObject: ["sessionId": "app-launch-crash", "runId": "pre-fix", "hypothesisId": "C", "location": "AppDelegate.swift:55", "msg": "[DEBUG] applicationDidBecomeActive reached", "data": ["badge": application.applicationIconBadgeNumber], "ts": Int(Date().timeIntervalSince1970 * 1000)]) { var request = URLRequest(url: url); request.httpMethod = "POST"; request.setValue("application/json", forHTTPHeaderField: "Content-Type"); request.httpBody = data; URLSession.shared.dataTask(with: request).resume() }
+        // #endregion
         application.applicationIconBadgeNumber = 0
         foregroundObserver?(true)
         NotificationCenter.default.addObserver(
@@ -96,6 +107,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = mainTabBarController
         }
 
+        // #region debug-point B:root-assigned
+        if let url = URL(string: "http://192.168.2.154:7777/event"), let data = try? JSONSerialization.data(withJSONObject: ["sessionId": "app-launch-crash", "runId": "pre-fix", "hypothesisId": "B", "location": "AppDelegate.swift:103", "msg": "[DEBUG] pushToTab assigned root view controller", "data": ["userInfoSet": isUserInfoSet, "hasBoundDevice": hasBoundDevice, "rootType": String(describing: type(of: window?.rootViewController))], "ts": Int(Date().timeIntervalSince1970 * 1000)]) { var request = URLRequest(url: url); request.httpMethod = "POST"; request.setValue("application/json", forHTTPHeaderField: "Content-Type"); request.httpBody = data; URLSession.shared.dataTask(with: request).resume() }
+        // #endregion
         window?.makeKeyAndVisible()
     }
 
@@ -291,17 +305,43 @@ extension String {
 }
 
 extension AppDelegate {
-    public static func IsDeviceNotRound() -> Bool {
+    public static func resolvedDeviceScreenMetrics() -> (width: Int, height: Int, isRect: Bool)? {
         if isXGZT {
-            return XGZTBlueToothManager.shared.device?.screenType != 1
+            let width = XGZTBlueToothManager.shared.device?.screenWidth ?? 0
+            let height = XGZTBlueToothManager.shared.device?.screenHeight ?? 0
+            guard width > 0, height > 0 else {
+                return nil
+            }
+            let screenType = XGZTBlueToothManager.shared.device?.screenType ?? 0
+            let isRect = screenType > 0 ? screenType != 1 : width != height
+            return (width, height, isRect)
+        }
+
+        guard bleSelf.isConnected || bleSelf.bleModel.mac.count > 0 else {
+            return nil
+        }
+
+        let width = bleSelf.bleModel.screenWidth
+        let height = bleSelf.bleModel.screenHeight
+        guard width > 0, height > 0 else {
+            return nil
         }
 
         var type = BLEDeviceNameHandler().handleName()
-        if type == 0 {
+        if type == 0, bleSelf.bleModel.screenType > 0 {
             type = bleSelf.bleModel.screenType
         }
-        XLogger.shared.log("当前连接设备为：\(type == 1 ? "方形" : "圆形")")
-        return type == 1
+        let isRect = type == 1 ? true : (type == 2 ? false : width != height)
+        return (width, height, isRect)
+    }
+
+    public static func IsDeviceNotRound() -> Bool {
+        if let metrics = resolvedDeviceScreenMetrics() {
+            XLogger.shared.log("当前连接设备为：\(metrics.isRect ? "方形" : "圆形")")
+            return metrics.isRect
+        }
+        XLogger.shared.log("当前设备形态未知，按圆形预览兜底")
+        return false
     }
 }
 

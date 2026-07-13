@@ -70,17 +70,30 @@ class OpenWeatherViewController: UIViewController {
                     let b = safeConvertTemp(from: weather.list.first?.temp.min ?? 0)
                     let c = safeConvertTemp(from: weather.list.first?.temp.max ?? 0)
                     self.temperatureLabel.text = "\(Int((a * 9 / 5) + 32))°F"
-                    self.feelsLikeLabel.text = "\("min_temp".localized()):\(Int((b * 9 / 5) + 32))°F - \("max_temp".localized()):\(Int((c * 9 / 5) + 32))°F"
+                    self.feelsLikeLabel.text = self.makeTemperatureRangeText(
+                        minValue: "\(Int((b * 9 / 5) + 32))°F",
+                        maxValue: "\(Int((c * 9 / 5) + 32))°F"
+                    )
                 } else {
                     self.temperatureLabel.text = "\(safeConvertTemp(from: weather.list.first?.temp.day ?? 0))°C"
-                    self.feelsLikeLabel.text = "\("min_temp".localized()):\(safeConvertTemp(from: weather.list.first?.temp.min ?? 0))°C - \("max_temp".localized()):\(safeConvertTemp(from: weather.list.first?.temp.max ?? 0))°C"
+                    self.feelsLikeLabel.text = self.makeTemperatureRangeText(
+                        minValue: "\(safeConvertTemp(from: weather.list.first?.temp.min ?? 0))°C",
+                        maxValue: "\(safeConvertTemp(from: weather.list.first?.temp.max ?? 0))°C"
+                    )
                 }
             } else {
                 self.temperatureLabel.text = "\(safeConvertTemp(from: weather.list.first?.temp.day ?? 0))°C"
-                self.feelsLikeLabel.text = "\("min_temp".localized()):\(safeConvertTemp(from: weather.list.first?.temp.min ?? 0))°C - \("max_temp".localized()):\(safeConvertTemp(from: weather.list.first?.temp.max ?? 0))°C"
+                self.feelsLikeLabel.text = self.makeTemperatureRangeText(
+                    minValue: "\(safeConvertTemp(from: weather.list.first?.temp.min ?? 0))°C",
+                    maxValue: "\(safeConvertTemp(from: weather.list.first?.temp.max ?? 0))°C"
+                )
             }
             
         }
+    }
+
+    private func makeTemperatureRangeText(minValue: String, maxValue: String) -> String {
+        return "\("min_temp".localized()):\(minValue)\n\("max_temp".localized()):\(maxValue)"
     }
     
     
@@ -159,6 +172,7 @@ extension OpenWeatherViewController {
 
         feelsLikeLabel.font = .systemFont(ofSize: 16, weight: .medium)
         feelsLikeLabel.textColor = UIColor.white
+        feelsLikeLabel.numberOfLines = 2
+        feelsLikeLabel.textAlignment = .center
     }
 }
-

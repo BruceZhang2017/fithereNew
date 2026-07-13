@@ -3468,7 +3468,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
@@ -3492,7 +3492,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 1.6.5;
+				MARKETING_VERSION = 1.6.6;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;
@@ -3517,7 +3517,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;
@@ -3540,7 +3540,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 1.6.5;
+				MARKETING_VERSION = 1.6.6;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;

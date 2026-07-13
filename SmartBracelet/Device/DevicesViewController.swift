@@ -116,16 +116,14 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         changeButtonAttr() // 切换设备入口
         
         width = (ScreenWidth - 60) / 3
-        if AppDelegate.IsDeviceNotRound() { // 方形
-            let w = isXGZT ? (XGZTBlueToothManager.shared.device?.screenWidth ?? 0) : bleSelf.bleModel.screenWidth
-            let h = isXGZT ? (XGZTBlueToothManager.shared.device?.screenHeight ?? 0) : bleSelf.bleModel.screenHeight
-            height = CGFloat(width) * CGFloat(h) / CGFloat(w)
+        if let metrics = AppDelegate.resolvedDeviceScreenMetrics(), metrics.isRect {
+            height = CGFloat(width) * CGFloat(metrics.height) / CGFloat(metrics.width)
         } else { // 圆形
             height =  width
         }
         dialViewHeightLC.constant = height + 44
         
-        XLogger.shared.log("width: \(width) height: \(height)")
+        XLogger.shared.log("dialPreviewWidth: \(width) dialPreviewHeight: \(height)")
         
         // 获取 AppDelegate 实例
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -147,16 +145,16 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         documentController?.delegate = self
         
         // 创建按钮
-//            let button = UIBarButtonItem(
-//                title: "日志",
-//                style: .plain,
-//                target: self,
-//                action: #selector(didTapRightButton)
-//            )
-//            button.tintColor = .red  // 设置按钮颜色
-//
-//            // 添加到右上角
-//            navigationItem.rightBarButtonItem = button
+            let button = UIBarButtonItem(
+                title: "日志",
+                style: .plain,
+                target: self,
+                action: #selector(didTapRightButton)
+            )
+            button.tintColor = .red  // 设置按钮颜色
+
+            // 添加到右上角
+            navigationItem.rightBarButtonItem = button
     }
     
     // 处理点击事件（注意使用 @objc 标记）
@@ -762,7 +760,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
 
     /// 表盘管理
     func pushToClockManage(index: Int) {
-        if bleSelf.bleModel.screenWidth == 80 && !isXGZT {
+        if let metrics = AppDelegate.resolvedDeviceScreenMetrics(), metrics.width == 80, !isXGZT {
             let storyboard = UIStoryboard(name: "Device", bundle: nil)
             let myClockVC = storyboard.instantiateViewController(withIdentifier: "MyClockViewController") as! MyClockViewController
             myClockVC.index = index
@@ -974,5 +972,4 @@ class VerticalButton: UIButton {
         return CGSize(width: width, height: height)
     }
 }
-
 

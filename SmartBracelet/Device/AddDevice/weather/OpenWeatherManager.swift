@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 var flag_time: TimeInterval = 0
 
@@ -14,6 +15,7 @@ public class OpenWeatherManager: NSObject {
     
     var callback: ((CurrentWeatherData) -> Void)?
     var flag = 0
+    private var isShowingLocationAlert = false
     
     private let viewModel = ViewModel()
     lazy var locationManager: CLLocationManager = {
@@ -34,14 +36,8 @@ public class OpenWeatherManager: NSObject {
     }
     
     func checkLocationAuthorization() {
-        var isEnabled = false
-            
-        DispatchQueue.global().async {
-            if CLLocationManager.locationServicesEnabled() {
-                isEnabled = true
-            }
-        }
-        
+        let isEnabled = CLLocationManager.locationServicesEnabled()
+
         let delayTime = DispatchTime.now() + .milliseconds(300)
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
             [weak self] in
@@ -59,10 +55,17 @@ public class OpenWeatherManager: NSObject {
                     case .authorizedWhenInUse, .authorizedAlways:
                         sself.requestLocation()
                     @unknown default:
-                        fatalError("Unknown authorization status")
+                        XLogger.shared.log("Unknown location authorization status: \(sself.locationManager.authorizationStatus.rawValue)")
+                        sself.locationManager.requestWhenInUseAuthorization()
                     }
                 } else {
                     // Fallback on earlier versions
+                    if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+                        CLLocationManager.authorizationStatus() == .authorizedAlways {
+                        sself.requestLocation()
+                    } else {
+                        sself.locationManager.requestWhenInUseAuthorization()
+                    }
                 }
             } else {
                 sself.showLocationServicesDisabledAlert()
@@ -71,17 +74,47 @@ public class OpenWeatherManager: NSObject {
     }
     
     func requestLocation() {
-        DispatchQueue.global().async {
+        DispatchQueue.main.async {
             self.locationManager.requestLocation()
         }
     }
     
     func showLocationServicesDeniedAlert() {
-        // Show an alert to the user indicating that location services are denied
+        presentLocationAlert(
+            title: "location_permission_settings".localized(),
+            message: "\("dialog_location_permission_explain".localized())\n\n\("go_to_setting_open_permissions".localized())"
+        )
     }
     
     func showLocationServicesDisabledAlert() {
-        // Show an alert to the user indicating that location services are disabled
+        presentLocationAlert(
+            title: "permission_description".localized(),
+            message: "\("dialog_location_permission_explain".localized())\n\n\("go_to_setting_open_permissions".localized())"
+        )
+    }
+
+    private func presentLocationAlert(title: String, message: String) {
+        DispatchQueue.main.async {
+            guard !self.isShowingLocationAlert else { return }
+            guard let topViewController = UIApplication.shared.topMostViewController() else { return }
+
+            self.isShowingLocationAlert = true
+
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "cancel".localized(), style: .cancel) { _ in
+                self.isShowingLocationAlert = false
+            }
+            let settingsAction = UIAlertAction(title: "confirm".localized(), style: .default) { _ in
+                self.isShowingLocationAlert = false
+                guard let url = URL(string: UIApplication.openSettingsURLString),
+                      UIApplication.shared.canOpenURL(url) else { return }
+                UIApplication.shared.open(url, completionHandler: nil)
+            }
+
+            alert.addAction(cancelAction)
+            alert.addAction(settingsAction)
+            topViewController.present(alert, animated: true)
+        }
     }
     
     func syncTemprature(weather: CurrentWeatherData) {
@@ -222,16 +255,12 @@ extension OpenWeatherManager: CLLocationManagerDelegate {
     }
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if (status == CLAuthorizationStatus.denied) {
-            // The user denied authorization
-        } else if (status == CLAuthorizationStatus.authorizedAlways) {
-            // The user accepted authorization
-                if CLLocationManager.locationServicesEnabled() {
-                    locationManager.requestLocation()
-                }
-            
-        } else if (status == CLAuthorizationStatus.authorizedWhenInUse) {
-            checkLocationAuthorization()
+        if status == .denied || status == .restricted {
+            showLocationServicesDeniedAlert()
+        } else if status == .authorizedAlways || status == .authorizedWhenInUse {
+            if CLLocationManager.locationServicesEnabled() {
+                requestLocation()
+            }
         }
     }
 }

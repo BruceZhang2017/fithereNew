@@ -168,7 +168,11 @@ class DevicesView: UIView {
             } else {
                 self.isHidden = false
                 cardImgView.image = UIImage(named: AppDelegate.IsDeviceNotRound() ? "icon_ewatch" : "icon_ewatch_2")
-                cardNameLabel.text = (currentModel?.name ?? "") + " - \(bleSelf.bleModel.screenWidth)*\(bleSelf.bleModel.screenHeight)"
+                if let metrics = AppDelegate.resolvedDeviceScreenMetrics() {
+                    cardNameLabel.text = (currentModel?.name ?? "") + " - \(metrics.width)*\(metrics.height)"
+                } else {
+                    cardNameLabel.text = currentModel?.name ?? ""
+                }
                 if currentModel!.mac == lastestDeviceMac && bleSelf.isConnected {
                     if XGZTBlueToothManager.shared.centralManager?.state == .poweredOff {
                         bConnected = false
@@ -191,5 +195,4 @@ class DevicesView: UIView {
         }
     }
 }
-
 
