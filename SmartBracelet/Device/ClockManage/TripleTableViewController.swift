@@ -128,10 +128,8 @@ class TripleTableViewController: UIViewController {
     }
     
     private func currentDeviceSize() -> CGSize {
-        let screenWidth = CGFloat(isXGZT ? (XGZTBlueToothManager.shared.device?.screenWidth ?? 0) : bleSelf.bleModel.screenWidth)
-        let screenHeight = CGFloat(isXGZT ? (XGZTBlueToothManager.shared.device?.screenHeight ?? 0) : bleSelf.bleModel.screenHeight)
-        if screenWidth > 0 && screenHeight > 0 {
-            return CGSize(width: screenWidth, height: screenHeight)
+        if let metrics = AppDelegate.resolvedDeviceScreenMetrics() {
+            return CGSize(width: metrics.width, height: metrics.height)
         }
         return CGSize(width: 240, height: 284)
     }
@@ -139,6 +137,16 @@ class TripleTableViewController: UIViewController {
     private func currentDeviceAspectRatio() -> CGFloat {
         let size = currentDeviceSize()
         return size.width > 0 ? size.height / size.width : 1.0
+    }
+
+    private func currentDeviceType() -> Int {
+        if isXGZT {
+            let screenType = XGZTBlueToothManager.shared.device?.screenType ?? 0
+            if screenType > 0 {
+                return screenType
+            }
+        }
+        return 0
     }
     
     private func calculateItemHeight(for item: ClockItem?) -> CGFloat {
@@ -175,84 +183,84 @@ class TripleTableViewController: UIViewController {
     
     // MARK: - 数据处理
     private func downloadStyle() {
-        // 打印方法开始日志
-        print("🔍 开始执行downloadStyle方法，准备下载样式数据")
+        XLogger.shared.log("🔍 开始执行downloadStyle方法，准备下载样式数据")
         
-        // 定义要上传的参数
-        let width = XGZTBlueToothManager.shared.device?.screenWidth ?? 240
-        let height = XGZTBlueToothManager.shared.device?.screenHeight ?? 284 // 根据实际需求设置的高度值
+        let deviceSize = currentDeviceSize()
+        let width = Int(deviceSize.width)
+        let height = Int(deviceSize.height)
         
-        // 打印请求参数日志
-        print("📤 请求参数 - width: \(width), height: \(height)")
+        XLogger.shared.log("📤 请求参数 - width: \(width), height: \(height)")
         let urlString = "https://u-watch.com.cn/api/app/ota/otaType"
-        print("📡 请求URL: \(urlString)")
+        XLogger.shared.log("📡 请求URL: \(urlString)")
         
-        // 准备表单参数
         let parameters: [String: Any] = [
-            "width": width,
-            "height": height,
-            "deviceType": XGZTBlueToothManager.shared.device?.screenType ?? 0,
+            "width": "\(width)",
+            "height": "\(height)",
+            "deviceType": currentDeviceType()
         ]
         
-        // 使用x-www-form-urlencoded格式发送POST请求
+        XLogger.shared.log("📤 请求参数 - deviceType: \(currentDeviceType())")
+
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Accept": "*/*"
+        ]
+        
         AF.request(
             urlString,
             method: .post,
             parameters: parameters,
-            encoding: URLEncoding.default // 这是x-www-form-urlencoded的默认编码方式
+            encoding: JSONEncoding.default,
+            headers: headers
         )
         .responseData { [weak self] response in
             guard let self = self else {
-                print("⚠️ self已释放，无法继续处理响应")
+                XLogger.shared.log("⚠️ self已释放，无法继续处理响应")
                 return
             }
             
-            // 打印响应状态码
             if let statusCode = response.response?.statusCode {
-                print("📥 收到响应，状态码: \(statusCode)")
+                XLogger.shared.log("📥 收到响应，状态码: \(statusCode)")
             } else {
-                print("📥 收到响应，但未获取到状态码")
+                XLogger.shared.log("📥 收到响应，但未获取到状态码")
             }
             
             switch response.result {
             case .success(let data):
-                print("✅ 网络请求成功，数据大小: \(data.count) bytes")
+                XLogger.shared.log("✅ 网络请求成功，数据大小: \(data.count) bytes")
                 
-                // 打印原始JSON用于调试
                 if let jsonString = String(data: data, encoding: .utf8) {
-                    print("📄 原始JSON数据: \(jsonString)")
+                    XLogger.shared.log("📄 原始JSON数据: \(jsonString)")
                 } else {
-                    print("❌ 无法将响应数据转换为UTF-8字符串")
+                    XLogger.shared.log("❌ 无法将响应数据转换为UTF-8字符串")
                 }
                 
                 do {
-                    // 禁用蛇形命名转换，使用原始键名
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .useDefaultKeys
-                    print("🔄 开始解析JSON数据...")
+                    XLogger.shared.log("🔄 开始解析JSON数据...")
                     mResponse = try decoder.decode(Response<OTAData>.self, from: data)
-                    print("✅ JSON数据解析成功")
+                    XLogger.shared.log("✅ JSON数据解析成功")
                     if mResponse?.data.otaStyle.count ?? 0 == 0 {
                         isUsrEnglish = true
                         self.downloadStyle()
                         return
                     }
-                    // 配置分段控制器
                     if let types = mResponse?.data.otaType, !types.isEmpty {
-                        print("📊 共获取到\(types.count)种OTA类型")
+                        XLogger.shared.log("📊 共获取到\(types.count)种OTA类型")
                         segmentControl.removeAllSegments()
                         for (index, type) in types.enumerated() {
                             let typeName = NSLocalizedString(type.dictValue ?? "", comment: type.dictValue ?? "")
                             segmentControl.insertSegment(withTitle: typeName, at: index, animated: false)
-                            print("➕ 添加分段控制器选项: \(typeName)")
+                            XLogger.shared.log("➕ 添加分段控制器选项: \(typeName)")
                         }
                         segmentControl.selectedSegmentIndex = 0
                         rightViewModel.type = types[0].dictValue ?? ""
                     } else {
-                        print("⚠️ 未获取到有效的type类型数据")
+                        XLogger.shared.log("⚠️ 未获取到有效的type类型数据")
                     }
                     
-                    print("🔄 刷新中间表格视图")
+                    XLogger.shared.log("🔄 刷新中间表格视图")
                     if mResponse?.data.otaStyle.count ?? 0 > 0 {
                         let array = mResponse?.data.otaStyle.filter {
                             (item) in
@@ -276,38 +284,35 @@ class TripleTableViewController: UIViewController {
                             self.fetchInitialData()
                         }
                     }
-                    print("🔄 调用fetchInitialData方法获取初始数据")
+                    XLogger.shared.log("🔄 调用fetchInitialData方法获取初始数据")
                     
                 } catch {
-                    print("❌ 解析错误: \(error)")
+                    XLogger.shared.log("❌ 解析错误: \(error)")
                     if let decodingError = error as? DecodingError {
-                        print("❌ 解码错误详情: \(decodingError.localizedDescription)")
-                        // 更详细的解码错误信息
+                        XLogger.shared.log("❌ 解码错误详情: \(decodingError.localizedDescription)")
                         switch decodingError {
                         case .typeMismatch(let type, let context):
-                            print("类型不匹配: 期望\(type)，上下文: \(context.debugDescription)")
+                            XLogger.shared.log("类型不匹配: 期望\(type)，上下文: \(context.debugDescription)")
                         case .valueNotFound(let type, let context):
-                            print("值未找到: 期望\(type)，上下文: \(context.debugDescription)")
+                            XLogger.shared.log("值未找到: 期望\(type)，上下文: \(context.debugDescription)")
                         case .keyNotFound(let key, let context):
-                            print("键未找到: \(key.stringValue)，上下文: \(context.debugDescription)")
+                            XLogger.shared.log("键未找到: \(key.stringValue)，上下文: \(context.debugDescription)")
                         case .dataCorrupted(let context):
-                            print("数据损坏: \(context.debugDescription)")
+                            XLogger.shared.log("数据损坏: \(context.debugDescription)")
                         @unknown default:
-                            print("未知解码错误")
+                            XLogger.shared.log("未知解码错误")
                         }
                     }
                 }
                 
             case .failure(let error):
-                print("❌ 网络请求失败：\(error.localizedDescription)")
-                // 打印更详细的错误信息
+                XLogger.shared.log("❌ 网络请求失败：\(error.localizedDescription)")
                 if let underlyingError = error.underlyingError {
-                    print("   底层错误: \(underlyingError.localizedDescription)")
+                    XLogger.shared.log("   底层错误: \(underlyingError.localizedDescription)")
                 }
-                // 可以添加错误提示UI
             }
             
-            print("📌 downloadStyle方法执行完毕")
+            XLogger.shared.log("📌 downloadStyle方法执行完毕")
         }
     }
 
@@ -606,6 +611,16 @@ class RightViewModel {
     var hasMoreData = true
     var type = ""
     var style = ""
+
+    private func currentDeviceType() -> Int {
+        if isXGZT {
+            let screenType = XGZTBlueToothManager.shared.device?.screenType ?? 0
+            if screenType > 0 {
+                return screenType
+            }
+        }
+        return 0
+    }
     
     func refreshData(completion: @escaping (Bool) -> Void) {
         let screenWidth = XGZTBlueToothManager.shared.device?.screenWidth ?? 240
@@ -619,14 +634,14 @@ class RightViewModel {
             "pageNum": 0,
             "width": screenWidth,
             "height": screenHeight,
+            "deviceType": currentDeviceType(),
             "type": type,
-            "style": style,
-            "deviceType": XGZTBlueToothManager.shared.device?.screenType ?? 0,
+            "style": style
         ]
         
         // 打印请求参数
-        print("请求参数:")
-        parameters.forEach { print("\($0.key): \($0.value)") }
+        XLogger.shared.log("请求参数:")
+        parameters.forEach { XLogger.shared.log("\($0.key): \($0.value)") }
         
         // 使用AF.request发送POST请求，采用x-www-form-urlencoded编码
         AF.request(
@@ -642,9 +657,9 @@ class RightViewModel {
             case .success(let data):
                 // 打印原始响应数据
                 if let responseString = String(data: data, encoding: .utf8) {
-                    print("网络请求返回内容：\n\(responseString)")
+                    XLogger.shared.log("网络请求返回内容：\n\(responseString)")
                 } else {
-                    print("网络请求返回数据无法转换为字符串")
+                    XLogger.shared.log("网络请求返回数据无法转换为字符串")
                 }
                 
                 do {
@@ -656,12 +671,12 @@ class RightViewModel {
                     self.hasMoreData = model.rows.count >= 20
                     completion(true)
                 } catch {
-                    print("刷新数据解析错误: \(error)")
+                    XLogger.shared.log("刷新数据解析错误: \(error)")
                     completion(false)
                 }
                 
             case .failure(let error):
-                print("刷新网络请求失败：\(error)")
+                XLogger.shared.log("刷新网络请求失败：\(error)")
                 completion(false)
             }
         }
@@ -669,7 +684,7 @@ class RightViewModel {
     
     func loadMoreData(completion: @escaping (Bool) -> Void) {
         guard !isLoading, hasMoreData else {
-            print("无需加载更多数据：isLoading=\(isLoading), hasMoreData=\(hasMoreData)")
+            XLogger.shared.log("无需加载更多数据：isLoading=\(isLoading), hasMoreData=\(hasMoreData)")
             completion(false)
             return
         }
@@ -687,13 +702,13 @@ class RightViewModel {
             "pageNum": nextPage,
             "width": screenWidth,
             "height": screenHeight,
+            "deviceType": currentDeviceType(),
             "type": type,
-            "style": style,
-            "deviceType": XGZTBlueToothManager.shared.device?.screenType ?? 0,
+            "style": style
         ]
         // 打印请求参数
-        print("开始加载第\(nextPage)页数据，请求参数：")
-        parameters.forEach { print("\($0.key): \($0.value)") }
+        XLogger.shared.log("开始加载第\(nextPage)页数据，请求参数：")
+        parameters.forEach { XLogger.shared.log("\($0.key): \($0.value)") }
         
         // 使用AF.request发送POST请求，采用x-www-form-urlencoded编码
         AF.request(
@@ -707,15 +722,15 @@ class RightViewModel {
             self.isLoading = false
             
             // 打印响应状态
-            print("请求完成，状态码：\(response.response?.statusCode ?? -1)")
+            XLogger.shared.log("请求完成，状态码：\(response.response?.statusCode ?? -1)")
             
             switch response.result {
             case .success(let data):
                 // 打印原始响应数据
                 if let responseString = String(data: data, encoding: .utf8) {
-                    print("网络请求返回内容：\n\(responseString)")
+                    XLogger.shared.log("网络请求返回内容：\n\(responseString)")
                 } else {
-                    print("网络请求返回数据无法转换为字符串")
+                    XLogger.shared.log("网络请求返回数据无法转换为字符串")
                 }
                 
                 do {
@@ -725,22 +740,22 @@ class RightViewModel {
                     self.items.append(contentsOf: model.rows)
                     self.currentPage = nextPage
                     self.hasMoreData = model.rows.count >= 20
-                    print("加载成功，新增\(model.rows.count)条数据，当前总数据量：\(self.items.count)")
+                    XLogger.shared.log("加载成功，新增\(model.rows.count)条数据，当前总数据量：\(self.items.count)")
                     completion(true)
                 } catch {
-                    print("加载更多解析错误: \(error)")
+                    XLogger.shared.log("加载更多解析错误: \(error)")
                     // 打印错误时的原始数据，便于调试
                     if let errorDataString = String(data: data, encoding: .utf8) {
-                        print("解析错误时的原始数据：\(errorDataString)")
+                        XLogger.shared.log("解析错误时的原始数据：\(errorDataString)")
                     }
                     completion(false)
                 }
                 
             case .failure(let error):
-                print("加载更多网络请求失败：\(error)")
+                XLogger.shared.log("加载更多网络请求失败：\(error)")
                 // 打印Alamofire错误详情
                 if let underlyingError = error.underlyingError {
-                    print("底层错误：\(underlyingError)")
+                    XLogger.shared.log("底层错误：\(underlyingError)")
                 }
                 completion(false)
             }
