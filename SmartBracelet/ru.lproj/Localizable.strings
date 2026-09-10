@@ -16,6 +16,12 @@
 "health_blood_pressure" = "крывяны ціск";
 "health_blood_pressure_unit" = "MMHG";
 "health_blood_oxygen" = "Кісларод крыві";
+"health_blood_glucose" = "Глюкоза в крови";
+"health_uric_acid" = "Мочевая кислота";
+"health_blood_lipid" = "Липиды в крови";
+"health_blood_glucose_desc" = "Измерение глюкозы в крови";
+"health_uric_acid_desc" = "Измерение мочевой кислоты";
+"health_blood_lipid_desc" = "Измерение липидов в крови";
 "health_data_dynamic" = "Дынаміка дадзеных";
 "device" = "абсталяванне";
 "add_device" = "Дадайце прыладу";
@@ -88,7 +94,7 @@
 "mine_device_ota_fail" = "Не ўдалося абнавіць OTA";
 "mine_about" = "каля";
 "mine_version" = "Версія";
-"mine_about_desc" = "Усе правы на пераклад належаць тлумачэнню Fit-here";
+"mine_about_desc" = "Усе правы на пераклад належаць тлумачэнню u-watch";
 "mine_account_info" = "звесткі аб уліковым запісе";
 "mine_userinfo" = "Асабістая інфармацыя";
 "mine_head_image" = "Аватар";
@@ -226,6 +232,13 @@
 "device_search_settings" = "найти настройки";
 "device_device_info" = "Информация об устройстве";
 "device_shark_photo" = "Удалённая фотография";
+"device_power_controls" = "Управление питанием";
+"device_factory_reset" = "Восстановить заводские настройки";
+"device_factory_reset_desc" = "Восстановление заводских настроек удалит все данные и настройки устройства. Продолжить?";
+"device_restart" = "Перезагрузить";
+"device_restart_desc" = "Перезагрузить устройство сейчас?";
+"device_shutdown" = "Выключить (при зарядке устройство включится автоматически)";
+"device_shutdown_desc" = "Вы действительно хотите выключить устройство? Его можно снова включить, подключив к зарядке.";
 "device_change" = "переключение устройств";
 "mine" = "мой";
 "mine_bluetooth_connect" = "Bluetooth подключен";
@@ -254,7 +267,7 @@
 "mine_device_ota_fail" = "ОТА-обновление не удалось";
 "mine_about" = "о";
 "mine_version" = "Версия";
-"mine_about_desc" = "Все права на интерпретацию принадлежат Fit-here";
+"mine_about_desc" = "Все права на интерпретацию принадлежат u-watch";
 "mine_account_info" = "Информация Об Учетной Записи";
 "mine_userinfo" = "персональная информация";
 "mine_head_image" = "аватар";
@@ -339,8 +352,8 @@
 "feedback_not_null" = "Содержание отзыва не может быть пустым";
 "feedback_success" = "обратная связь успех";
 "feedback_failed" = "Ошибка обратной связи";
-"dialog_location_permission_explain_above_s" = "Для поддержки функции отслеживания данных о состоянии здоровья Fit-here будет собирать данные Bluetooth и информацию о местоположении, даже если процесс приложения закрыт или не используется, такие данные все равно будут собираться.";
-"dialog_location_permission_explain" = "Для поддержки функции отслеживания данных о состоянии здоровья Fit-here будет собирать данные о местоположении, даже если приложение закрыто или не используется, такие данные все равно будут собираться.";
+"dialog_location_permission_explain_above_s" = "Для поддержки функции отслеживания данных о состоянии здоровья u-watch будет собирать данные Bluetooth и информацию о местоположении, даже если процесс приложения закрыт или не используется, такие данные все равно будут собираться.";
+"dialog_location_permission_explain" = "Для поддержки функции отслеживания данных о состоянии здоровья u-watch будет собирать данные о местоположении, даже если приложение закрыто или не используется, такие данные все равно будут собираться.";
 "go_to_setting_open_permissions" = "Из-за запрещенных разрешений вы не сможете нормально использовать это приложение, вы можете перейти на страницу настроек, чтобы включить вышеуказанные разрешения.";
 "permission_description" = "Описание разрешения";
 "add_contact" = "Добавить контакты";
@@ -409,10 +422,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Удалить устройство";
-"delete_device_2" = "Устройство было удалено из Fit-here, но все еще подключено к вашему телефону. Чтобы полностью удалить это устройство, выполните следующие действия:";
+"delete_device_2" = "Устройство было удалено из U-Watch, но все еще подключено к вашему телефону. Чтобы полностью удалить это устройство, выполните следующие действия:";
 "delete_device_3" = "1. В настройках вашего телефона > Bluetooth > Мои устройства найдите 'e watch' и нажмите 'i' справа.";
 "delete_device_4" = "2. Выберите 'Забыть это устройство'.";
-"delete_device_5" = "3. После завершения вернитесь в приложение 'Fit-here'.";
+"delete_device_5" = "3. После завершения вернитесь в приложение 'U-Watch'.";
 "delete_device_6" = "Я выполнил вышеперечисленные действия";
 "delete_device_7" = "Подтвердить";
 
@@ -501,7 +514,7 @@
 "female_cycle_pain_mild" = "Легкая";
 "female_cycle_pain_moderate" = "Умеренная";
 "female_cycle_pain_severe" = "Сильная";
-"female_cycle_record_time" = "Записано в 'Fit-here' в";
+"female_cycle_record_time" = "Записано в 'U-Watch' в";
 "female_cycle_symptom_category_whole_body" = "Все тело";
 "female_cycle_symptom_category_head" = "Голова";
 "female_cycle_symptom_category_abdomen" = "Живот";
@@ -572,3 +585,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "История ЭКГ";
+"ecg_history_detail" = "Подробности записи ЭКГ";
+"ecg_history_empty" = "Записей ЭКГ пока нет";
+"ecg_history_error" = "Не удалось загрузить запись ЭКГ";
+"ecg_save_error" = "Не удалось сохранить запись ЭКГ";
+"ecg_pause" = "Пауза";
+"ecg_resume" = "Продолжить воспроизведение";
+"ecg_replay" = "Повторить";
+"ecg_loading" = "Загрузка";
+"ecg_playback_time" = "%d / %d с";
+"ecg_history_duration" = "%@ · Длительность %@ с";
+"ecg_waveform_note" = "Волна создана на основе записанного пульса";
+"ecg_recorded_rate" = "Записанный пульс";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "Осталось %d секунд";
+"ppg_measure_complete" = "Измерение завершено";
+"ppg_real_time_pulse" = "Пульс в реальном времени: ";
+"ppg_worn_off" = "Браслет не надет или отстегнут, волна сброшена. Наденьте браслет";

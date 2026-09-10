@@ -1,18 +1,19 @@
 //
-// Copyright © 2015-2018  bruce Innovations Technology Limited All Rights Reserved.
+// Copyright © 2015-2018 bruce Innovations Technology Limited All Rights Reserved.
 // The program and materials is not free. Without our permission, any use, including but not limited to reproduction, retransmission, communication, display, mirror, download, modification, is expressly prohibited. Otherwise, it will be pursued for legal liability.
-// 
+//
 //  DevicesViewController.swift
 //  SmartBracelet
 //
-//  Created by  bruce on 2020/8/28.
+//  Created by bruce on 2020/8/28.
 //  Copyright © 2020 tjd. All rights reserved.
 //
-	
+    
 
 import UIKit
 import TJDWristbandSDK
 import Toaster
+import Kingfisher
 
 var localMac = ""
 
@@ -27,22 +28,68 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     @IBOutlet weak var dialViewHeightLC: NSLayoutConstraint!
     @IBOutlet weak var btView: UIView!
     let changeButton = UIButton(type: .system)
-    let dialButton = VerticalButton(type: .system)
+    let reconnectButton = UIButton(type: .system) // 新增重新连接按钮
     let btButton = UIButton(type: .system)
     var deviceSettingView: UIView? // 设备设置的视图
     var deviceView: DevicesView!
     var clockArray: [String] = []
     var width: CGFloat = 90
     var height: CGFloat = 150
-    var deviceSettingsViewHeightMultiplier = 13
+    var deviceSettingsViewHeightMultiplier = 10
     var deviceSettingsView: DeviceSettingsViewController?
     var lblTitle: UILabel?
     var refreshTimer: DispatchSourceTimer?
     var documentController: UIDocumentInteractionController?
     var bHavenScanResult = false
+    private let emptyStateContainer = UIView()
+    private let emptyStateImageView = UIImageView()
+    private let emptyStateButton = UIButton(type: .system)
+    
+    private var currentPrimaryDeviceIsNoScreen: Bool {
+        if let xgztDevice = XGZTBlueToothManager.shared.device {
+            return xgztDevice.isNoScreenDevice
+        }
+        if let cached = cacheDevices.first {
+            return cached.isNoScreenDevice
+        }
+        return false
+    }
+    
+    private func applyDialVisibilityAndAdjustLayout() {
+        let hasDevice = hasAnyDevice
+        let hideBecauseEmpty = !hasDevice
+        let hideBecauseNoScreen = hasDevice && currentPrimaryDeviceIsNoScreen
+        let hideDial = hideBecauseEmpty || hideBecauseNoScreen
+        
+        dialView.isHidden = hideDial
+        dialManagmentLabel.isHidden = hideDial
+        deviceSettingView?.snp.remakeConstraints { make in
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+            if hideDial {
+                make.top.equalTo(btView.snp.bottom).offset(15)
+            } else {
+                make.top.equalTo(dialView.snp.bottom).offset(15)
+            }
+        }
+        deviceSettingView?.superview?.setNeedsLayout()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // #region debug-point C:devices-viewdidload-entry
+        postSameCrashDebugEvent(
+            hypothesisId: "C",
+            location: "DevicesViewController.viewDidLoad",
+            msg: "设备页开始初始化",
+            data: [
+                "lastestDeviceMac": UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? "",
+                "deviceCount": DeviceManager.shared.devices.count,
+                "isConnected": bleSelf.isConnected,
+                "isXGZT": isXGZT
+            ]
+        )
+        // #endregion
         title = "device".localized()
         NotificationCenter.default.addObserver(
                self,
@@ -51,9 +98,9 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                object: nil
            )
         deviceView = DevicesView().then {
-            $0.backgroundColor = UIColor.white
+            $0.backgroundColor = UIColor.clear
             $0.layer.cornerRadius = 16
-            $0.clipsToBounds = true 
+            $0.clipsToBounds = true
         }
         topView.addSubview(deviceView)
         deviceView.snp.makeConstraints { make in
@@ -67,27 +114,45 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         
         contentView.backgroundColor = UIColor.clear
         
+        // #region debug-point D:before-get-switch
+        postSameCrashDebugEvent(
+            hypothesisId: "D",
+            location: "DevicesViewController.viewDidLoad",
+            msg: "准备调用 getSwitchForWristband",
+            data: [
+                "deviceCount": DeviceManager.shared.devices.count,
+                "lastestDeviceMac": UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? "",
+                "isConnected": bleSelf.isConnected
+            ]
+        )
+        // #endregion
         bleSelf.getSwitchForWristband()
+        // #region debug-point D:after-get-switch
+        postSameCrashDebugEvent(
+            hypothesisId: "D",
+            location: "DevicesViewController.viewDidLoad",
+            msg: "getSwitchForWristband 调用返回",
+            data: [
+                "isConnected": bleSelf.isConnected
+            ]
+        )
+        // #endregion
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)), name: Notification.Name("DevicesViewController"), object: nil)
         dialManagmentLabel.text = "dial_management".localized()
         initializeDeviceSettings()
-        collectionView.isScrollEnabled = false
-        collectionView.alwaysBounceVertical = false
-        collectionView.alwaysBounceHorizontal = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.collectionViewLayout.invalidateLayout()
-        
+        setupEmptyState()
+        applyEmptyStateIfNeeded()
+
         let randomBool = Bool.random()
         deviceBGImageView.image = UIImage(named: randomBool ? "device_bg1" : "device_bg2")
         deviceBGImageView.layer.cornerRadius = 16
         deviceBGImageView.clipsToBounds = true
-        
+
         dialView.layer.cornerRadius = 16
         dialView.clipsToBounds = true
         
         btView.layer.cornerRadius = 16
-        btView.clipsToBounds = true 
+        btView.clipsToBounds = true
         btView.addSubview(btButton)
         btButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(15)
@@ -112,18 +177,43 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         
         
         addChangeButton() // 切换设备
-        addDialButton() // 添加表盘
+        addReconnectButton() // 新增：添加重新连接按钮
         changeButtonAttr() // 切换设备入口
         
         width = (ScreenWidth - 60) / 3
+        let resolvedMetrics = AppDelegate.resolvedDeviceScreenMetrics()
+        // #region debug-point E:before-device-shape
+        postSameCrashDebugEvent(
+            hypothesisId: "E",
+            location: "DevicesViewController.viewDidLoad",
+            msg: "准备判断屏幕形态并计算表盘尺寸",
+            data: [
+                "screenWidth": resolvedMetrics?.width ?? 0,
+                "screenHeight": resolvedMetrics?.height ?? 0,
+                "screenType": resolvedMetrics == nil ? 0 : (resolvedMetrics?.isRect == true ? 1 : 2),
+                "isXGZT": isXGZT
+            ]
+        )
+        // #endregion
         if let metrics = AppDelegate.resolvedDeviceScreenMetrics(), metrics.isRect {
             height = CGFloat(width) * CGFloat(metrics.height) / CGFloat(metrics.width)
         } else { // 圆形
             height =  width
         }
         dialViewHeightLC.constant = height + 44
-        
+
         XLogger.shared.log("dialPreviewWidth: \(width) dialPreviewHeight: \(height)")
+        // #region debug-point E:after-device-shape
+        postSameCrashDebugEvent(
+            hypothesisId: "E",
+            location: "DevicesViewController.viewDidLoad",
+            msg: "表盘尺寸计算完成",
+            data: [
+                "width": width,
+                "height": height
+            ]
+        )
+        // #endregion
         
         // 获取 AppDelegate 实例
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -145,16 +235,16 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         documentController?.delegate = self
         
         // 创建按钮
-//            let button = UIBarButtonItem(
-//                title: "日志",
-//                style: .plain,
-//                target: self,
-//                action: #selector(didTapRightButton)
-//            )
-//            button.tintColor = .red  // 设置按钮颜色
-//
-//            // 添加到右上角
-//            navigationItem.rightBarButtonItem = button
+        // let button = UIBarButtonItem(
+        //     title: "日志",
+        //     style: .plain,
+        //     target: self,
+        //     action: #selector(didTapRightButton)
+        // )
+        // button.tintColor = .red  // 设置按钮颜色
+
+        // // 添加到右上角
+        // navigationItem.rightBarButtonItem = button
     }
     
     // 处理点击事件（注意使用 @objc 标记）
@@ -174,10 +264,12 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        applyEmptyStateIfNeeded()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        applyEmptyStateIfNeeded()
         deviceView?.refreshData()
         changeButtonAttr()
         refreshDevices()
@@ -203,7 +295,6 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
             }
         }
         
-        // 创建一个定时器，每 2 秒触发一次，并绑定到主线程队列
         if refreshTimer != nil {
             return
         }
@@ -224,18 +315,8 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         refreshTimer = nil
         
     }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
     
     private func refreshDevices() {
-        if deviceView.isHidden {
-            collectionView?.isHidden = true
-            dialButton.isHidden = true
-            return
-        }
         let lastestDeviceMac = UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? "00:00:00:00:00:00"
         let clockDir = UserDefaults.standard.dictionary(forKey: "MyClock") ?? [:]
         let clockStr = clockDir[lastestDeviceMac] as? [String] ?? ["_&&_&&_", "_&&_&&_", "_&&_&&_"]
@@ -245,13 +326,6 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
             clockArray.removeAll()
         }
         collectionView?.reloadData()
-        if checkIsNullForDial() {
-            collectionView?.isHidden = true
-            dialButton.isHidden = false
-        } else {
-            collectionView?.isHidden = false
-            dialButton.isHidden = true
-        }
     }
     
     private func checkIsNullForDial() -> Bool {
@@ -271,10 +345,78 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-        // 解除回调
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.foregroundObserver = nil
         }
+    }
+
+    private var hasAnyDevice: Bool {
+        !DeviceManager.shared.devices.isEmpty
+        || !cacheDevices.isEmpty
+        || (XGZTBlueToothManager.shared.device != nil)
+        || bleSelf.isConnected
+    }
+
+    private func setupEmptyState() {
+        emptyStateContainer.backgroundColor = .clear
+        emptyStateContainer.isHidden = true
+        view.addSubview(emptyStateContainer)
+        emptyStateContainer.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        emptyStateImageView.contentMode = .scaleAspectFit
+        emptyStateImageView.clipsToBounds = true
+        if #available(iOS 15.0, *) {
+            let config = UIImage.SymbolConfiguration(pointSize: 240, weight: .regular)
+            emptyStateImageView.image = UIImage(systemName: "applewatch", withConfiguration: config)?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        } else {
+            emptyStateImageView.image = UIImage(named: "icon_ewatch")
+        }
+        emptyStateContainer.addSubview(emptyStateImageView)
+        emptyStateImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(0.85)
+            make.width.equalTo(268)
+            make.height.equalTo(268)
+        }
+
+        emptyStateButton.setTitle("device_add".localized(), for: .normal)
+        emptyStateButton.setTitleColor(.white, for: .normal)
+        emptyStateButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        emptyStateButton.backgroundColor = UIColor(red: 0.07, green: 0.08, blue: 0.15, alpha: 1.0)
+        emptyStateButton.layer.cornerRadius = 22
+        emptyStateButton.clipsToBounds = true
+        emptyStateButton.addTarget(self, action: #selector(emptyStateAddDeviceTapped), for: .touchUpInside)
+        emptyStateContainer.addSubview(emptyStateButton)
+        emptyStateButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
+            make.height.equalTo(56)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-32)
+        }
+    }
+
+    private func applyEmptyStateIfNeeded() {
+        let empty = !hasAnyDevice
+        emptyStateContainer.isHidden = !empty
+        topView.isHidden = empty
+        btView.isHidden = empty
+        contentView.isHidden = empty
+        if !empty {
+            view.bringSubviewToFront(contentView)
+        } else {
+            view.bringSubviewToFront(emptyStateContainer)
+        }
+        applyDialVisibilityAndAdjustLayout()
+    }
+
+    @objc private func emptyStateAddDeviceTapped() {
+        let storyboard = UIStoryboard(name: "Device", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DeviceSearchViewController")
+        vc.title = "device_add".localized()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func appDidBecomeActive() {
@@ -313,18 +455,6 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                }
            }
        }
-
-    private func dialItemWidth(for collectionView: UICollectionView) -> CGFloat {
-        let columns: CGFloat = 3
-        let inset = self.collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAt: 0)
-        let spacing = self.collectionView(collectionView, layout: collectionView.collectionViewLayout, minimumInteritemSpacingForSectionAt: 0)
-        let totalSpacing = spacing * (columns - 1)
-        let availableWidth = collectionView.bounds.width - inset.left - inset.right - totalSpacing
-        if availableWidth > 0 {
-            return max(floor(availableWidth / columns) - 2, 1)
-        }
-        return max(floor((UIScreen.main.bounds.width - inset.left - inset.right - totalSpacing) / columns) - 2, 1)
-    }
     
     // 设备设置
     private func initializeDeviceSettings() {
@@ -356,6 +486,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         deviceSettingsView = storyboard.instantiateViewController(withIdentifier: "DeviceSettingsViewController") as? DeviceSettingsViewController
         addChild(deviceSettingsView!)
         deviceSettingView?.addSubview(deviceSettingsView!.view)
+        deviceSettingsViewHeightMultiplier = max(deviceSettingsView?.displayRowCount ?? deviceSettingsViewHeightMultiplier, 1)
         deviceSettingsView?.view.snp.makeConstraints {
             $0.left.equalTo(0)
             $0.top.equalTo(lblTitle!.snp.bottom).offset(10)
@@ -367,18 +498,9 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
     }
     
     public func refreshHeight() {
-        // 将 deviceSettingsViewHeightMultiplier 修改为 14
-        let f15 = (((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 15) & 0x0f) > 0
-        let f16 = (((XGZTBlueToothManager.shared.device?.functioncontrolflags ?? 0) >> 16) & 0x01) > 0
-        if f15 && f16 {
-            deviceSettingsViewHeightMultiplier = 16
-        } else if !f15 && !f16 {
-            deviceSettingsViewHeightMultiplier = 14
-        } else {
-            deviceSettingsViewHeightMultiplier = 15
-        }
-        
-            
+        deviceSettingsView?.view.setNeedsLayout()
+        deviceSettingsView?.view.layoutIfNeeded()
+        deviceSettingsViewHeightMultiplier = max(deviceSettingsView?.displayRowCount ?? 10, 1)
         deviceSettingsView?.view.snp.remakeConstraints {
             $0.left.equalTo(0)
             $0.top.equalTo(lblTitle!.snp.bottom).offset(10)
@@ -402,7 +524,8 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         changeButton.layer.borderColor = UIColor.brand.cgColor
         changeButton.layer.borderWidth = 1.0
         changeButton.backgroundColor = .white
-        changeButton.layer.cornerRadius = 22
+        changeButton.layer.cornerRadius = 15
+        changeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         // 设置图标的内边距
         changeButton.imageEdgeInsets = UIEdgeInsets(
             top: 0,
@@ -421,12 +544,32 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
         // 添加按钮到视图中
         topView.addSubview(changeButton)
         changeButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(150)
-            make.height.equalTo(44)
+            make.width.equalTo(120)
+            make.height.equalTo(30)
             make.bottom.equalTo(-20)
+            make.centerX.equalToSuperview().offset(-10)
         }
         changeButton.addTarget(self, action: #selector(addDevice), for: .touchUpInside)
+    }
+    
+    // 新增：添加重新连接按钮
+    public func addReconnectButton() {
+        reconnectButton.setTitle("reconnect_device".localized(), for: .normal)
+        reconnectButton.tintColor = UIColor.brand
+        reconnectButton.layer.borderColor = UIColor.brand.cgColor
+        reconnectButton.layer.borderWidth = 1.0
+        reconnectButton.backgroundColor = .white
+        reconnectButton.layer.cornerRadius = 15
+        reconnectButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        // 添加按钮到视图中
+        topView.addSubview(reconnectButton)
+        reconnectButton.snp.makeConstraints { make in
+            make.width.equalTo(110)
+            make.height.equalTo(30)
+            make.centerY.equalTo(changeButton)
+            make.leading.equalTo(changeButton.snp.trailing).offset(10)
+        }
+        reconnectButton.addTarget(self, action: #selector(reconnectDevice), for: .touchUpInside)
     }
     
     private func changeButtonAttr() {
@@ -434,7 +577,6 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
             deviceSettingView?.isHidden = true
             btView.isHidden = true
             collectionView.isHidden = true
-            dialView.isHidden = true
             changeButton.tintColor = UIColor.white
             changeButton.backgroundColor = .brand
             changeButton.setTitle("device_add".localized(), for: .normal)
@@ -442,11 +584,12 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                 changeButton.setImage(image, for: .normal)
             }
             changeButton.tag = 1
+            
+            reconnectButton.isHidden = true
         } else {
             deviceSettingView?.isHidden = false
             btView.isHidden = false
             collectionView.isHidden = false
-            dialView.isHidden = false
             changeButton.tintColor = UIColor.brand
             changeButton.backgroundColor = .white
             changeButton.setTitle("deivce_unbind".localized(), for: .normal)
@@ -454,26 +597,31 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                 changeButton.setImage(image, for: .normal)
             }
             changeButton.tag = 2
+            
+            if cacheDevices.count >= 1 && !XGZTBlueToothManager.shared.isconnected() {
+                reconnectButton.isHidden = false
+            } else {
+                reconnectButton.isHidden = true
+            }
         }
+        applyDialVisibilityAndAdjustLayout()
     }
     
-    // 添加表盘按钮
-    public func addDialButton() {
-        dialButton.setTitle("add_dial".localized(), for: .normal)
-        if let image = UIImage(named: "icon_add2") {
-            dialButton.setImage(image, for: .normal)
+    // 新增：重新连接按钮点击事件
+    @objc private func reconnectDevice() {
+        let lastestDeviceMac = UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? ""
+        if lastestDeviceMac.isEmpty {
+            Toast(text: "no_device_to_reconnect".localized()).show()
+            return
         }
-        dialButton.tintColor = UIColor.brand
-        dialButton.backgroundColor = UIColor.fill
-        dialButton.layer.cornerRadius = 16
-        dialView.addSubview(dialButton)
-        dialButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(130)
+        
+        Toast(text: "reconnecting_device".localized()).show()
+        
+        for device in cacheDevices {
+            if device.max == lastestDeviceMac {
+                XGZTBlueToothManager.shared.connectAndScan(to: lastestDeviceMac, deviceName: device.deviceName ?? "e watch")
+            }
         }
-        dialButton.addTarget(self, action: #selector(pushToDial), for: .touchUpInside)
     }
     
     @objc private func handleNotification(_ notification: Notification) {
@@ -490,6 +638,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                     guard localMac.count > 0 else {
                         return
                     }
+                    XLogger.shared.log("[unbind-debug] handleNotification 2000 start: localMac=\(localMac), lastestDeviceMac=\(lastestDeviceMac), cacheCount=\(cacheDevices.count), dbCount=\(DeviceManager.shared.devices.count), xgztDeviceExists=\(XGZTBlueToothManager.shared.device != nil)")
                     if XGZTBlueToothManager.shared.device != nil && localMac == lastestDeviceMac {
                         XGZTBlueToothManager.shared.disconnectDevice()
                         UserDefaults.standard.set(lastestDeviceMac, forKey: "deleteLastestDeviceMac")
@@ -497,6 +646,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                         lastestDeviceMac = ""
                         UserDefaults.standard.removeObject(forKey: "LastestDeviceMac")
                         XGZTBlueToothManager.shared.stopScanning() // 停止扫描
+                        XLogger.shared.log("[unbind-debug] handleNotification 2000 cleared latest mac for current xgzt device")
                     }
                     BluetoothWatchDevice.deleteFromSandbox(mac: localMac)
                     localMac = ""
@@ -530,6 +680,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                             }
                         }
                     }
+                    XLogger.shared.log("[unbind-debug] handleNotification 2000 finish: lastestDeviceMac=\(lastestDeviceMac), defaults.LastestDeviceMac=\(UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? ""), deleteLastestDeviceMac=\(UserDefaults.standard.string(forKey: "deleteLastestDeviceMac") ?? ""), cacheCount=\(cacheDevices.count), dbCount=\(DeviceManager.shared.devices.count)")
                     XLogger.shared.log("删除后2，新的macaddress=\(lastestDeviceMac)")
                     NotificationCenter.default.post(name: Notification.Name("DeviceList"), object: "2")
                 }
@@ -540,6 +691,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                     guard localMac.count > 0 else {
                         return
                     }
+                    XLogger.shared.log("[unbind-debug] handleNotification 3000 start: localMac=\(localMac), lastestDeviceMac=\(lastestDeviceMac), cacheCount=\(cacheDevices.count), dbCount=\(DeviceManager.shared.devices.count)")
                     XGZTBlueToothManager.shared.disconnectDevice()
                     UserDefaults.standard.set(lastestDeviceMac, forKey: "deleteLastestDeviceMac")
                     UserDefaults.standard.synchronize()
@@ -578,6 +730,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                             }
                         }
                     }
+                    XLogger.shared.log("[unbind-debug] handleNotification 3000 finish: lastestDeviceMac=\(lastestDeviceMac), defaults.LastestDeviceMac=\(UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? ""), deleteLastestDeviceMac=\(UserDefaults.standard.string(forKey: "deleteLastestDeviceMac") ?? ""), cacheCount=\(cacheDevices.count), dbCount=\(DeviceManager.shared.devices.count)")
                     XLogger.shared.log("删除后，新的macaddress=\(lastestDeviceMac)")
       
                     NotificationCenter.default.post(name: Notification.Name("HealthViewController"), object: "delete", userInfo: ["mac": localMac])
@@ -636,7 +789,6 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                                     let m = model.mac.replacingOccurrences(of: ":", with: "").lowercased()
                                     if m == mac.lowercased() {
                                         bleSelf.connectBleDevice(model: model)
-                                        XLogger.shared.log("连接旧设备：\(m)")
                                         break
                                     }
                                 }
@@ -648,13 +800,13 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                                             let m = model.mac.replacingOccurrences(of: ":", with: "").lowercased()
                                             if m == mac.lowercased() {
                                                 bleSelf.connectBleDevice(model: model)
-                                                XLogger.shared.log("连接旧设备：\(m)")
                                                 break
                                             }
                                         }
                                     }
                                 }
                             }
+
                         }
                     }
                     // 处理新设备（含k参数）
@@ -664,7 +816,6 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                         
                         // 手动解析k参数值（避免URLComponents旧系统兼容问题）
                         if let kParamStart = code.range(of: "k=")?.upperBound {
-                            // 找到k参数的结束位置（&符号或字符串结尾）
                             let kParamEnd = code[kParamStart...].range(of: "&")?.lowerBound ?? code.endIndex
                             let kValueStr = String(code[kParamStart..<kParamEnd])
                             XLogger.shared.log("解析k参数的原始值：\(kValueStr)")
@@ -682,9 +833,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                             // 提取各个部分并去除首尾空格
                             let macAddress = components[0].trimmingCharacters(in: .whitespacesAndNewlines)
                             let deviceName = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
-                            
                             XLogger.shared.log("解析到的mac地址是：\(macAddress)")
-                            XLogger.shared.log("解析到的设备名称是：\(deviceName)")
                             
                             if XGZTBlueToothManager.shared.isCurrentBleStateOFF() {
                                 Toast(text: "ble_off".localized()).show()
@@ -730,6 +879,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                 self?.deviceView?.refreshData()
                 self?.changeButtonAttr()
                 self?.refreshDevices()
+                self?.applyEmptyStateIfNeeded()
             }
         }
     }
@@ -760,9 +910,15 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
 
     /// 表盘管理
     func pushToClockManage(index: Int) {
+        if isXGZT, !(XGZTBlueToothManager.shared.device?.supportsWatchFaceMarket ?? true) {
+            Toast(text: "当前设备不支持表盘管理").show()
+            return
+        }
         if let metrics = AppDelegate.resolvedDeviceScreenMetrics(), metrics.width == 80, !isXGZT {
             let storyboard = UIStoryboard(name: "Device", bundle: nil)
-            let myClockVC = storyboard.instantiateViewController(withIdentifier: "MyClockViewController") as! MyClockViewController
+            guard let myClockVC = storyboard.instantiateViewController(withIdentifier: "MyClockViewController") as? MyClockViewController else {
+                return 
+            }
             myClockVC.index = index
             navigationController?.pushViewController(myClockVC, animated: true)
             return
@@ -784,7 +940,7 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
             count += cacheDevices.count
             let storyboard = UIStoryboard(name: "Device", bundle: nil)
             if count == 0 {
-                let vc = storyboard.instantiateViewController(withIdentifier: "DeviceSearchViewController")
+                let vc = UIStoryboard(name: "Device", bundle: nil).instantiateViewController(withIdentifier: "DeviceSearchViewController")
                 vc.title = "device_add".localized()
                 vc.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(vc, animated: true)
@@ -801,13 +957,20 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
             }))
             alert.addAction(UIAlertAction(title: "mine_confirm".localized(), style: .default, handler: { (action) in
                 localMac = lastestDeviceMac
+                XLogger.shared.log("删除设备：\(localMac)")
                 if XGZTBlueToothManager.shared.device != nil {
+                    XLogger.shared.log("自研手表，而且device不为空")
                     if XGZTBlueToothManager.shared.isReconnectingNow {
                         NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "2000")
                         return
                     }
+                    
                     XGZTBlueToothManager.shared.switchAutoDisconnect = true
-                    XGZTCommand.bindDevice(value: 2) // 解除绑定
+                    if isXGZT {
+                        XGZTCommand.bindDevice(value: 2) // 解除绑定
+                    } else {
+                        NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: "2000")
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         XGZTBlueToothManager.shared.cancelAllConnections()
                     }
@@ -830,8 +993,6 @@ class DevicesViewController: BaseViewController, UIDocumentInteractionController
                             NotificationCenter.default.post(name: Notification.Name("DevicesViewController"), object: nil)
                         }
                     }
-                    
-                    
                 }
             }))
             present(alert, animated: true) {
@@ -893,8 +1054,7 @@ extension DevicesViewController: UICollectionViewDataSource {
             cell.addImageView.isHidden = false
             cell.clockBGView.backgroundColor = UIColor.fill
         }
-        let itemWidth = dialItemWidth(for: collectionView)
-        cell.width.constant = itemWidth
+        cell.width.constant = width
         cell.height.constant = height
         return cell
     }
@@ -911,20 +1071,19 @@ extension DevicesViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = dialItemWidth(for: collectionView)
-        return CGSize(width: itemWidth, height: height)
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 8, bottom: 10, right: 8)
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 0
     }
 }
 
@@ -972,4 +1131,3 @@ class VerticalButton: UIButton {
         return CGSize(width: width, height: height)
     }
 }
-

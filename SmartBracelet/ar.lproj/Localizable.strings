@@ -16,6 +16,12 @@
 "health_blood_pressure" = "ضغط الدم";
 "health_blood_pressure_unit" = "MMHG";
 "health_blood_oxygen" = "أكسجين الدم";
+"health_blood_glucose" = "غلوكوز الدم";
+"health_uric_acid" = "حمض اليوريك";
+"health_blood_lipid" = "دهون الدم";
+"health_blood_glucose_desc" = "قياس غلوكوز الدم";
+"health_uric_acid_desc" = "قياس حمض اليوريك";
+"health_blood_lipid_desc" = "قياس دهون الدم";
 "health_data_dynamic" = "ديناميات البيانات";
 "device" = "معدات";
 "add_device" = "الرجاء إضافة الجهاز";
@@ -88,7 +94,7 @@
 "mine_device_ota_fail" = "فشلت ترقية OTA";
 "mine_about" = "حول";
 "mine_version" = "إصدار";
-"mine_about_desc" = "تنتمي جميع حقوق التفسير إلى تفسير Fit-here";
+"mine_about_desc" = "تنتمي جميع حقوق التفسير إلى تفسير u-watch";
 "mine_account_info" = "معلومات الحساب";
 "mine_userinfo" = "معلومات شخصية";
 "mine_head_image" = "الصورة الرمزية";
@@ -226,6 +232,13 @@
 "device_search_settings" = "ابحث عن الإعدادات";
 "device_device_info" = "معلومات الجهاز";
 "device_shark_photo" = "تصوير عن بعد";
+"device_power_controls" = "التحكم في الطاقة";
+"device_factory_reset" = "استعادة إعدادات المصنع";
+"device_factory_reset_desc" = "ستؤدي استعادة إعدادات المصنع إلى مسح جميع البيانات والإعدادات على الجهاز. هل تريد المتابعة؟";
+"device_restart" = "إعادة التشغيل";
+"device_restart_desc" = "هل تريد بالتأكيد إعادة تشغيل الجهاز الآن؟";
+"device_shutdown" = "إيقاف التشغيل (يؤدي الشحن إلى التشغيل تلقائيًا)";
+"device_shutdown_desc" = "هل تريد بالتأكيد إيقاف تشغيل الجهاز؟ يمكنك تشغيله مرة أخرى عن طريق الشحن.";
 "device_change" = "تبديل الجهاز";
 "mine" = "مِلكِي";
 "mine_bluetooth_connect" = "بلوتوث متصل";
@@ -254,7 +267,7 @@
 "mine_device_ota_fail" = "فشلت ترقية OTA";
 "mine_about" = "عن";
 "mine_version" = "إصدار";
-"mine_about_desc" = "تنتمي جميع حقوق الترجمة الفورية إلى Fit-here";
+"mine_about_desc" = "تنتمي جميع حقوق الترجمة الفورية إلى u-watch";
 "mine_account_info" = "معلومات الحساب";
 "mine_userinfo" = "معلومات شخصية";
 "mine_head_image" = "الصورة الرمزية";
@@ -339,8 +352,8 @@
 "feedback_not_null" = "لا يمكن أن يكون محتوى التعليقات فارغًا";
 "feedback_success" = "نجاح ردود الفعل";
 "feedback_failed" = "فشلت التعليقات";
-"dialog_location_permission_explain_above_s" = "من أجل دعم وظيفة تتبع البيانات الصحية ، ستجمع Fit-here بيانات Bluetooth وبيانات معلومات الموقع ، حتى إذا كانت عملية التطبيق مغلقة أو غير مستخدمة ، فسيستمر جمع هذه البيانات.";
-"dialog_location_permission_explain" = "من أجل دعم وظيفة تتبع البيانات الصحية ، ستجمع Fit-here بيانات معلومات الموقع ، حتى إذا كان التطبيق مغلقًا أو غير مستخدم ، فسيستمر جمع هذه البيانات.";
+"dialog_location_permission_explain_above_s" = "من أجل دعم وظيفة تتبع البيانات الصحية ، ستجمع u-watch بيانات Bluetooth وبيانات معلومات الموقع ، حتى إذا كانت عملية التطبيق مغلقة أو غير مستخدمة ، فسيستمر جمع هذه البيانات.";
+"dialog_location_permission_explain" = "من أجل دعم وظيفة تتبع البيانات الصحية ، ستجمع u-watch بيانات معلومات الموقع ، حتى إذا كان التطبيق مغلقًا أو غير مستخدم ، فسيستمر جمع هذه البيانات.";
 "go_to_setting_open_permissions" = "ستؤدي الأذونات المحظورة إلى عدم قدرتك على استخدام هذا التطبيق بشكل طبيعي ، يمكنك الانتقال إلى صفحة الإعدادات لتمكين الأذونات المذكورة أعلاه.";
 "permission_description" = "وصف الإذن";
 "add_contact" = "اضف جهات اتصال";
@@ -409,10 +422,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "حذف الجهاز";
-"delete_device_2" = "تمت إزالة الجهاز من Fit-here لكنه لا يزال متصلًا بجهازك المحمول. لإزالة الجهاز بالكامل، الرجاء تنفيذ الخطوات التالية:";
+"delete_device_2" = "تمت إزالة الجهاز من U-Watch لكنه لا يزال متصلًا بجهازك المحمول. لإزالة الجهاز بالكامل، الرجاء تنفيذ الخطوات التالية:";
 "delete_device_3" = "1. في إعدادات هاتفك > بلوتوث > أجهزتي، ابحث عن 'e watch' واضغط على 'i' справа.";
 "delete_device_4" = "2. اختر 'نسي هذا الجهاز'.";
-"delete_device_5" = "3. بعد الانتهاء، عد إلى تطبيق 'Fit-here'.";
+"delete_device_5" = "3. بعد الانتهاء، عد إلى تطبيق 'U-Watch'.";
 "delete_device_6" = "لقد أكملت الخطوات أعلاه";
 "delete_device_7" = "تأكيد";
 
@@ -501,7 +514,7 @@
 "female_cycle_pain_mild" = "Mild";
 "female_cycle_pain_moderate" = "Moderate";
 "female_cycle_pain_severe" = "Severe";
-"female_cycle_record_time" = "Recorded to 'Fit-here' at";
+"female_cycle_record_time" = "Recorded to 'U-Watch' at";
 "female_cycle_symptom_category_whole_body" = "Whole Body";
 "female_cycle_symptom_category_head" = "Head";
 "female_cycle_symptom_category_abdomen" = "Abdomen";
@@ -572,3 +585,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "سجل مخطط كهربية القلب";
+"ecg_history_detail" = "تفاصيل سجل مخطط كهربية القلب";
+"ecg_history_empty" = "لا توجد سجلات مخطط القلب بعد";
+"ecg_history_error" = "تعذّر تحميل سجل مخطط القلب";
+"ecg_save_error" = "تعذّر حفظ سجل مخطط القلب";
+"ecg_pause" = "إيقاف مؤقت";
+"ecg_resume" = "متابعة التشغيل";
+"ecg_replay" = "إعادة التشغيل";
+"ecg_loading" = "جارٍ التحميل";
+"ecg_playback_time" = "%d / %d ث";
+"ecg_history_duration" = "%@ · المدة %@ ث";
+"ecg_waveform_note" = "تم إنشاء الموجة من معدل ضربات القلب المسجل";
+"ecg_recorded_rate" = "معدل ضربات القلب المسجل";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "المتبقي %d ثوانٍ";
+"ppg_measure_complete" = "اكتمل القياس";
+"ppg_real_time_pulse" = "النبض اللحظي: ";
+"ppg_worn_off" = "السوار غير مُرتَد أو منزوع، تم تصفير الموجة. يرجى ارتداء السوار";

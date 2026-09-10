@@ -15,6 +15,12 @@
 "health_blood_pressure" = "krvní tlak";
 "health_blood_pressure_unit" = "MMHG";
 "health_blood_oxygen" = "Krvní kyslík";
+"health_blood_glucose" = "Krevní glukóza";
+"health_uric_acid" = "Kyselina močová";
+"health_blood_lipid" = "Krevní lipidy";
+"health_blood_glucose_desc" = "Měření krevní glukózy";
+"health_uric_acid_desc" = "Měření kyseliny močové";
+"health_blood_lipid_desc" = "Měření krevních lipidů";
 "health_data_dynamic" = "Dynamika dat";
 "device" = "zařízení";
 "add_device" = "Prosím, přidejte zařízení";
@@ -52,6 +58,13 @@
 "device_search_settings" = "Hledání nastavení";
 "device_device_info" = "Informace o zařízení";
 "device_shark_photo" = "Dálkové ovládání fotoaparátu";
+"device_power_controls" = "Ovládání napájení";
+"device_factory_reset" = "Obnovit tovární nastavení";
+"device_factory_reset_desc" = "Obnovení továrního nastavení smaže všechna data a nastavení v zařízení. Pokračovat?";
+"device_restart" = "Restartovat";
+"device_restart_desc" = "Opravdu chcete zařízení restartovat?";
+"device_shutdown" = "Vypnout (nabíjení zařízení automaticky zapne)";
+"device_shutdown_desc" = "Opravdu chcete zařízení vypnout? Lze jej znovu zapnout nabíjením.";
 "device_change" = "Změna zařízení";
 "mine" = "můj";
 "mine_bluetooth_connect" = "Bluetooth je připojen";
@@ -87,7 +100,7 @@
 "mine_device_ota_fail" = "OTA nadgradění se nezdařilo";
 "mine_about" = "o nás";
 "mine_version" = "Verze";
-"mine_about_desc" = "Všechna práva k interpretaci patří Fit-here";
+"mine_about_desc" = "Všechna práva k interpretaci patří u-watch";
 "mine_account_info" = "Informace o účtu";
 "mine_userinfo" = "Osobní informace";
 "mine_head_image" = "Avatar";
@@ -189,8 +202,8 @@
 "feedback_not_null" = "Obsah zpětné vazby nemůže být prázdný";
 "feedback_success" = "úspěšná zpětná vazba";
 "feedback_failed" = "Selhala zpětná vazba";
-"dialog_location_permission_explain_above_s" = "K podpoře funkce sledování zdravotních dat sběru Fit-here data Bluetooth a informace o polohi, i když je aplikace uzavřena nebo nepoužívána.";
-"dialog_location_permission_explain" = "K podpoře funkce sledování zdravotních dat sběru Fit-here informace o polohi, i když je aplikace uzavřena nebo nepoužívána.";
+"dialog_location_permission_explain_above_s" = "K podpoře funkce sledování zdravotních dat sběru u-watch data Bluetooth a informace o polohi, i když je aplikace uzavřena nebo nepoužívána.";
+"dialog_location_permission_explain" = "K podpoře funkce sledování zdravotních dat sběru u-watch informace o polohi, i když je aplikace uzavřena nebo nepoužívána.";
 "go_to_setting_open_permissions" = "Zakázané oprávnění způsobí, že aplikaci nelze používat normálně. Přejděte na stránku s nastavení, aby jste povolili výše uvedená oprávnění.";
 "permission_description" = "Popis oprávnění";
 "add_contact" = "Přidat kontakt";
@@ -261,10 +274,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Odstranit zařízení";
-"delete_device_2" = "Zařízení bylo odebráno z Fit-here, ale stále je připojeno k vašemu telefonu. Chcete-li toto zařízení úplně odstranit, proveďte následující kroky:";
+"delete_device_2" = "Zařízení bylo odebráno z U-Watch, ale stále je připojeno k vašemu telefonu. Chcete-li toto zařízení úplně odstranit, proveďte následující kroky:";
 "delete_device_3" = "1. V nastavení vašeho telefonu > Bluetooth > Moje zařízení najděte 'e watch' a klepněte na 'i' vpravo.";
 "delete_device_4" = "2. Vyberte 'Zapomenout na toto zařízení'.";
-"delete_device_5" = "3. Po dokončení se vraťte do aplikace 'Fit-here'.";
+"delete_device_5" = "3. Po dokončení se vraťte do aplikace 'U-Watch'.";
 "delete_device_6" = "Provedl jsem výše uvedené kroky";
 "delete_device_7" = "Potvrdit";
 
@@ -353,7 +366,7 @@
 "female_cycle_pain_mild" = "Mild";
 "female_cycle_pain_moderate" = "Moderate";
 "female_cycle_pain_severe" = "Severe";
-"female_cycle_record_time" = "Recorded to 'Fit-here' at";
+"female_cycle_record_time" = "Recorded to 'U-Watch' at";
 "female_cycle_symptom_category_whole_body" = "Whole Body";
 "female_cycle_symptom_category_head" = "Head";
 "female_cycle_symptom_category_abdomen" = "Abdomen";
@@ -424,3 +437,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "Historie EKG";
+"ecg_history_detail" = "Podrobnosti záznamu EKG";
+"ecg_history_empty" = "Zatím žádné záznamy EKG";
+"ecg_history_error" = "Nepodařilo se načíst záznam EKG";
+"ecg_save_error" = "Nepodařilo se uložit záznam EKG";
+"ecg_pause" = "Pauza";
+"ecg_resume" = "Pokračovat v přehrávání";
+"ecg_replay" = "Přehrát znovu";
+"ecg_loading" = "Načítání";
+"ecg_playback_time" = "%d / %d s";
+"ecg_history_duration" = "%@ · Délka %@ s";
+"ecg_waveform_note" = "Průběh generován ze zaznamenané srdeční frekvence";
+"ecg_recorded_rate" = "Zaznamenaná srdeční frekvence";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "Zbývá %d sekund";
+"ppg_measure_complete" = "Měření dokončeno";
+"ppg_real_time_pulse" = "Puls v reálném čase: ";
+"ppg_worn_off" = "Náramek není nasazen nebo se uvolnil, vlna je vynulována. Nasaďte si prosím náramek";

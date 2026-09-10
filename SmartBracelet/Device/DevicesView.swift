@@ -19,7 +19,9 @@ class DevicesView: UIView {
     let cardImgView = UIImageView()
     let btImgView = UIImageView()
     let cardNameLabel = UILabel()
+    let batteryLabel = UILabel()
     let macLabel = UILabel() // 蓝牙地址
+    let cardContainerView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,47 +33,57 @@ class DevicesView: UIView {
     }
     
     public func setupUI() {
-        self.addSubview(cardImgView)
-        cardImgView.snp.makeConstraints { make in
-            make.width.equalTo(88)
-            make.height.equalTo(88)
+        cardContainerView.backgroundColor = .white
+        cardContainerView.layer.cornerRadius = 16
+        cardContainerView.clipsToBounds = true
+        cardContainerView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(cardContainerView)
+
+        // 白色容器：水平左右与父视图保持 20，垂直居中，高度 80
+        cardContainerView.snp.makeConstraints { make in
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
             make.centerY.equalToSuperview()
-            make.leading.equalTo(0)
+            make.height.equalTo(80)
         }
-        
-    
+
+        cardContainerView.addSubview(cardImgView)
+        cardImgView.snp.makeConstraints { make in
+            make.width.equalTo(56)
+            make.height.equalTo(56)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(16)
+        }
+
         cardNameLabel.textColor = UIColor.text_primary
         cardNameLabel.font = UIFont.body1()
         cardNameLabel.textAlignment = .left
+        cardNameLabel.backgroundColor = .white
         cardNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        let stackView = UIStackView(arrangedSubviews: [cardNameLabel])
+
+        batteryLabel.textColor = UIColor.brand
+        batteryLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        batteryLabel.textAlignment = .left
+        batteryLabel.backgroundColor = .white
+        batteryLabel.isHidden = true
+        batteryLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        let stackView = UIStackView(arrangedSubviews: [cardNameLabel, batteryLabel])
         stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fill
         stackView.alignment = .center
         stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        addSubview(stackView)
-        
-        // 设置 stackView 的约束
+
+        cardContainerView.addSubview(stackView)
+
+        // 第一行：设备名 + 电量 + 蓝牙连接状态
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: cardImgView.trailingAnchor, constant: 5),
-            stackView.topAnchor.constraint(equalTo: cardImgView.topAnchor, constant: 10)
+            stackView.leadingAnchor.constraint(equalTo: cardImgView.trailingAnchor, constant: 10),
+            stackView.topAnchor.constraint(equalTo: cardContainerView.topAnchor, constant: 14)
         ])
-        
-        macLabel.textColor = UIColor.text_primary
-        macLabel.font = UIFont.body1()
-        macLabel.textAlignment = .left
-        macLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(macLabel)
-        
-        macLabel.snp.makeConstraints { make in
-            make.leading.equalTo(stackView.snp.trailing).offset(30)
-            make.centerY.equalTo(stackView)
-        }
-        
-        addSubview(btImgView)
+
+        cardContainerView.addSubview(btImgView)
         btImgView.image = UIImage(named: "content_blueteeth_unlink")
         btImgView.snp.makeConstraints { make in
             make.width.equalTo(10)
@@ -79,6 +91,34 @@ class DevicesView: UIView {
             make.centerY.equalTo(stackView)
             make.leading.equalTo(stackView.snp.trailing).offset(5)
         }
+
+        // 第二行：mac 地址
+        macLabel.textColor = UIColor.text_primary
+        macLabel.font = UIFont.body1()
+        macLabel.textAlignment = .left
+        macLabel.backgroundColor = .white
+        macLabel.translatesAutoresizingMaskIntoConstraints = false
+        cardContainerView.addSubview(macLabel)
+
+        macLabel.snp.makeConstraints { make in
+            make.leading.equalTo(cardImgView.snp.trailing).offset(10)
+            make.top.equalTo(stackView.snp.bottom).offset(4)
+            make.trailing.lessThanOrEqualToSuperview().offset(-12)
+        }
+    }
+
+    private func applyBatteryDisplay(using device: BluetoothWatchDevice?) {
+        guard let device = device,
+              device.isNoScreenDevice,
+              let batteryLevel = device.batteryLevel else {
+            batteryLabel.isHidden = true
+            batteryLabel.text = nil
+            return
+        }
+        let chargingSuffix = (device.isCharging ?? false) ? " ⚡" : ""
+        batteryLabel.text = "\(batteryLevel)%\(chargingSuffix)"
+        batteryLabel.textColor = batteryLevel >= 20 ? .systemGreen : .systemRed
+        batteryLabel.isHidden = false
     }
 
     public func refreshData(value: Int? = 0) {
@@ -86,6 +126,20 @@ class DevicesView: UIView {
         
         var count = DeviceManager.shared.devices.count
         count += cacheDevices.count
+        // #region debug-point C:devices-card-refresh
+        postSameCrashDebugEvent(
+            hypothesisId: "C",
+            location: "DevicesView.refreshData",
+            msg: "设备卡刷新",
+            data: [
+                "deviceCount": DeviceManager.shared.devices.count,
+                "cacheCount": cacheDevices.count,
+                "lastestDeviceMac": lastestDeviceMac,
+                "isConnected": bleSelf.isConnected,
+                "value": value ?? -1
+            ]
+        )
+        // #endregion
         if count == 0 {
             self.isHidden = true
         } else {
@@ -120,6 +174,7 @@ class DevicesView: UIView {
                         btImgView.image = UIImage(named: "content_blueteeth_unlink")
                     }
                     macLabel.text = device.max ?? ""
+                    applyBatteryDisplay(using: XGZTBlueToothManager.shared.device ?? device)
                     return
                 }
                 let deviceName = XGZTBlueToothManager.shared.getDeviceName(mac: lastestDeviceMac)
@@ -148,6 +203,7 @@ class DevicesView: UIView {
                         btImgView.image = UIImage(named: "content_blueteeth_unlink")
                     }
                     macLabel.text = lastestDeviceMac
+                    applyBatteryDisplay(using: XGZTBlueToothManager.shared.device)
                     return
                 }
             }
@@ -191,8 +247,9 @@ class DevicesView: UIView {
                     btImgView.image = UIImage(named: "content_blueteeth_unlink")
                 }
                 macLabel.text = currentModel?.mac ?? ""
+                batteryLabel.isHidden = true
+                batteryLabel.text = nil
             }
         }
     }
 }
-

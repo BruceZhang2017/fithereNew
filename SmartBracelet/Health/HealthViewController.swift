@@ -108,7 +108,7 @@ class HealthViewController: BaseViewController {
         super.viewDidLoad()
         // 设置导航栏标题颜色
         title = "health_head".localized()
-        for _ in 0..<4 {
+        for _ in 0..<8 {
             arrayValue.append(NSMutableAttributedString(string: "null_data".localized(), attributes: [.font: UIFont.body2(), .foregroundColor: UIColor.text_secondary]))
         }
         let openCount = UserDefaults.standard.integer(forKey: "APPOPEN") // 如果app打开次数
@@ -504,6 +504,38 @@ class HealthViewController: BaseViewController {
         }
     }
     
+    private func xgztHealthCard(at index: Int) -> (type: Int, titleKey: String, iconName: String, valueIndex: Int)? {
+        let device = XGZTBlueToothManager.shared.device
+        let flags = device?.healthcontrolflags ?? 0
+        var cards: [(type: Int, titleKey: String, iconName: String, valueIndex: Int)] = []
+        if flags & 1 == 1 {
+            cards.append((2, "health_heart_rate", "health_heart", 0))
+        }
+        if ((flags >> 4) & 1) == 1 {
+            cards.append((3, "health_sleep", "health_sleep", 1))
+        }
+        if ((flags >> 2) & 1) == 1 {
+            cards.append((4, "health_blood_pressure", "health_bloodpressure", 2))
+        }
+        if ((flags >> 1) & 1) == 1 {
+            cards.append((5, "health_blood_oxygen", "health_bloodoxygen", 3))
+        }
+        if device?.supportsPPG ?? false {
+            cards.append((10, "health_ppg", "health_ppg", 4))
+        }
+        if device?.supportsHRV ?? false {
+            cards.append((11, "health_hrv", "health_hrv", 5))
+        }
+        if device?.supportsStress ?? false {
+            cards.append((12, "health_stress", "health_stress", 6))
+        }
+        if device?.supportsFatigue ?? false {
+            cards.append((13, "health_fatigue", "health_fatigue", 7))
+        }
+        guard cards.indices.contains(index) else { return nil }
+        return cards[index]
+    }
+
     @objc private func handleNotification(_ notification: Notification) {
         let objc = notification.object as! String
         if objc == "step" {
@@ -691,6 +723,50 @@ class HealthViewController: BaseViewController {
                         self?.tableView.reloadData()
                     }
                 }
+            }
+        } else if objc == "ppg" {
+            guard isXGZT else { return }
+            DispatchQueue.main.async { [weak self] in
+                let value = XGZTBlueToothManager.shared.device?.currentPPG ?? 0
+                guard value > 0 else { return }
+                let v = NSMutableAttributedString()
+                v.append(NSAttributedString(string: "\(value)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .black), .foregroundColor: UIColor.black]))
+                v.append(NSAttributedString(string: "bpm", attributes: [.font: UIFont.systemFont(ofSize: 10, weight: .semibold), .foregroundColor: UIColor.text_secondary]))
+                self?.arrayValue[4] = v
+                self?.tableView.reloadData()
+            }
+        } else if objc == "hrv" {
+            guard isXGZT else { return }
+            DispatchQueue.main.async { [weak self] in
+                let value = XGZTBlueToothManager.shared.device?.currentHRV ?? 0
+                guard value > 0 else { return }
+                let v = NSMutableAttributedString()
+                v.append(NSAttributedString(string: "\(value)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .black), .foregroundColor: UIColor.black]))
+                v.append(NSAttributedString(string: "ms", attributes: [.font: UIFont.systemFont(ofSize: 10, weight: .semibold), .foregroundColor: UIColor.text_secondary]))
+                self?.arrayValue[5] = v
+                self?.tableView.reloadData()
+            }
+        } else if objc == "stress" {
+            guard isXGZT else { return }
+            DispatchQueue.main.async { [weak self] in
+                let value = XGZTBlueToothManager.shared.device?.currentStress ?? 0
+                guard value > 0 else { return }
+                let v = NSMutableAttributedString()
+                v.append(NSAttributedString(string: "\(value)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .black), .foregroundColor: UIColor.black]))
+                v.append(NSAttributedString(string: "health_score_unit".localized(), attributes: [.font: UIFont.systemFont(ofSize: 10, weight: .semibold), .foregroundColor: UIColor.text_secondary]))
+                self?.arrayValue[6] = v
+                self?.tableView.reloadData()
+            }
+        } else if objc == "fatigue" {
+            guard isXGZT else { return }
+            DispatchQueue.main.async { [weak self] in
+                let value = XGZTBlueToothManager.shared.device?.currentFatigue ?? 0
+                guard value > 0 else { return }
+                let v = NSMutableAttributedString()
+                v.append(NSAttributedString(string: "\(value)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .black), .foregroundColor: UIColor.black]))
+                v.append(NSAttributedString(string: "health_score_unit".localized(), attributes: [.font: UIFont.systemFont(ofSize: 10, weight: .semibold), .foregroundColor: UIColor.text_secondary]))
+                self?.arrayValue[7] = v
+                self?.tableView.reloadData()
             }
         } else if objc == "delete" {
             XLogger.shared.log("执行删除设备的动作")
@@ -1418,75 +1494,11 @@ extension HealthViewController: UITableViewDelegate {
         // 然后取消选中效果
         tableView.deselectRow(at: indexPath, animated: false)
         if isXGZT {
-            if xgztCount >= 4 {
-                flag = 2 + indexPath.item
-                let vc = HealthDetailViewController()
-                vc.type = flag
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else {
-                if indexPath.row == 0 {
-                    if (XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) & 1 == 1 {
-                        flag = 2
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 4) & 1 == 1 {
-                        flag = 3
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 2) & 1 == 1 {
-                        flag = 4
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 1) & 1 == 1 {
-                        flag = 5
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    }
-                } else if indexPath.row == 1 {
-                    if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 4) & 1 == 1 {
-                        flag = 3
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 2) & 1 == 1 {
-                        flag = 4
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 1) & 1 == 1 {
-                        flag = 5
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    }
-                } else if indexPath.row == 2 {
-                    if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 2) & 1 == 1 {
-                        flag = 4
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 1) & 1 == 1 {
-                        flag = 5
-                        let vc = HealthDetailViewController()
-                        vc.type = flag
-                        vc.hidesBottomBarWhenPushed = true
-                        navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
-            }
+            guard let card = xgztHealthCard(at: indexPath.item) else { return }
+            let vc = HealthDetailViewController()
+            vc.type = card.type
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
         } else {
             flag = 2 + indexPath.item
             let vc = HealthDetailViewController()
@@ -1521,6 +1533,18 @@ extension HealthViewController: UITableViewDataSource {
             if (((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 4) & 1 == 1) {
                 count += 1
             }
+            if XGZTBlueToothManager.shared.device?.supportsPPG ?? false {
+                count += 1
+            }
+            if XGZTBlueToothManager.shared.device?.supportsHRV ?? false {
+                count += 1
+            }
+            if XGZTBlueToothManager.shared.device?.supportsStress ?? false {
+                count += 1
+            }
+            if XGZTBlueToothManager.shared.device?.supportsFatigue ?? false {
+                count += 1
+            }
             xgztCount = count
             XLogger.shared.log("count = \(count)")
             return count
@@ -1533,60 +1557,30 @@ extension HealthViewController: UITableViewDataSource {
         // 设置点击无动效
         cell.selectionStyle = .none
         // 配置cell，这里只是示例数据
+        if isXGZT {
+            if let card = xgztHealthCard(at: indexPath.item) {
+                if card.type == 10 || card.type == 11 || card.type == 12 || card.type == 13 {
+                    let icon = UIImage(systemName: card.type == 10 ? "waveform.path.ecg" :
+                                        card.type == 11 ? "heart.text.square" :
+                                        card.type == 12 ? "brain.head.profile" : "bolt.heart")?
+                        .withTintColor(UIColor.brand, renderingMode: .alwaysOriginal)
+                    cell.configureCell(icon: icon, leftTitle: card.titleKey.localized(), rightTitle: arrayValue[card.valueIndex])
+                } else {
+                    cell.configureCell(icon: UIImage(named: card.iconName), leftTitle: card.titleKey.localized(), rightTitle: arrayValue[card.valueIndex])
+                }
+                cell.temImageView.isHidden = true
+            }
+            return cell
+        }
         if indexPath.item == 0 {
-            if isXGZT {
-                if (XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) & 1 == 1 {
-                    cell.configureCell(icon: UIImage(named: "health_heart"), leftTitle: "health_heart_rate".localized(), rightTitle: arrayValue[indexPath.item])
-                    cell.temImageView.isHidden = true
-                } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 4) & 1 == 1 {
-                    cell.configureCell(icon: UIImage(named: "health_sleep"), leftTitle: "health_sleep".localized(), rightTitle: arrayValue[indexPath.item + 1])
-                    cell.temImageView.isHidden = true
-                } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 2) & 1 == 1 {
-                    cell.configureCell(icon: UIImage(named: "health_bloodpressure"), leftTitle: "health_blood_pressure".localized(), rightTitle: arrayValue[indexPath.item + 2])
-                    cell.temImageView.isHidden = true
-                } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 1) & 1 == 1 {
-                    cell.configureCell(icon: UIImage(named: "health_bloodoxygen"), leftTitle: "health_blood_oxygen".localized(), rightTitle: arrayValue[indexPath.item + 3])
-                    cell.temImageView.isHidden = true
-                }
-            } else {
-                cell.configureCell(icon: UIImage(named: "health_heart"), leftTitle: "health_heart_rate".localized(), rightTitle: arrayValue[indexPath.item])
-                cell.temImageView.isHidden = true
-            }
-            
+            cell.configureCell(icon: UIImage(named: "health_heart"), leftTitle: "health_heart_rate".localized(), rightTitle: arrayValue[indexPath.item])
+            cell.temImageView.isHidden = true
         } else if indexPath.item == 1 {
-            if isXGZT {
-                if xgztCount > 1 {
-                    if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 4) & 1 == 1 {
-                        cell.configureCell(icon: UIImage(named: "health_sleep"), leftTitle: "health_sleep".localized(), rightTitle: arrayValue[indexPath.item])
-                        cell.temImageView.isHidden = true
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 2) & 1 == 1 {
-                        cell.configureCell(icon: UIImage(named: "health_bloodpressure"), leftTitle: "health_blood_pressure".localized(), rightTitle: arrayValue[indexPath.item + 1])
-                        cell.temImageView.isHidden = true
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 1) & 1 == 1 {
-                        cell.configureCell(icon: UIImage(named: "health_bloodoxygen"), leftTitle: "health_blood_oxygen".localized(), rightTitle: arrayValue[indexPath.item + 2])
-                        cell.temImageView.isHidden = true
-                    }
-                }
-            } else {
-                cell.configureCell(icon: UIImage(named: "health_sleep"), leftTitle: "health_sleep".localized(), rightTitle: arrayValue[indexPath.item])
-                cell.temImageView.isHidden = true
-            }
+            cell.configureCell(icon: UIImage(named: "health_sleep"), leftTitle: "health_sleep".localized(), rightTitle: arrayValue[indexPath.item])
+            cell.temImageView.isHidden = true
         } else if indexPath.item == 2 {
-            if isXGZT {
-                if xgztCount > 2 {
-                    if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 2) & 1 == 1 {
-                        cell.configureCell(icon: UIImage(named: "health_bloodpressure"), leftTitle: "health_blood_pressure".localized(), rightTitle: arrayValue[indexPath.item])
-                        cell.temImageView.isHidden = true
-                    } else if ((XGZTBlueToothManager.shared.device?.healthcontrolflags ?? 0) >> 1) & 1 == 1 {
-                        cell.configureCell(icon: UIImage(named: "health_bloodoxygen"), leftTitle: "health_blood_oxygen".localized(), rightTitle: arrayValue[indexPath.item + 1])
-                        cell.temImageView.isHidden = true
-                    }
-                }
-            } else {
-                cell.configureCell(icon: UIImage(named: "health_bloodpressure"), leftTitle: "health_blood_pressure".localized(), rightTitle: arrayValue[indexPath.item])
-                cell.temImageView.isHidden = true
-            }
-            
+            cell.configureCell(icon: UIImage(named: "health_bloodpressure"), leftTitle: "health_blood_pressure".localized(), rightTitle: arrayValue[indexPath.item])
+            cell.temImageView.isHidden = true
         } else {
             cell.configureCell(icon: UIImage(named: "health_bloodoxygen"), leftTitle: "health_blood_oxygen".localized(), rightTitle: arrayValue[indexPath.item])
             cell.temImageView.isHidden = true

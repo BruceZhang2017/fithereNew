@@ -6,6 +6,24 @@ import AVKit
 import Bugly
 import JRDB
 
+func postSameCrashDebugEvent(hypothesisId: String, location: String, msg: String, data: [String: Any] = [:]) {
+    guard let url = URL(string: "http://192.168.2.154:7777/event") else { return }
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    let payload: [String: Any] = [
+        "sessionId": "same-crash-project",
+        "runId": "pre-fix",
+        "hypothesisId": hypothesisId,
+        "location": location,
+        "msg": "[DEBUG] \(msg)",
+        "data": data,
+        "ts": Int(Date().timeIntervalSince1970 * 1000)
+    ]
+    request.httpBody = try? JSONSerialization.data(withJSONObject: payload, options: [])
+    URLSession.shared.dataTask(with: request).resume()
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?

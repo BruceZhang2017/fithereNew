@@ -15,6 +15,12 @@
 "health_blood_pressure" = "Pressione sanguigna";
 "health_blood_pressure_unit" = "Unità di pressione sanguigna";
 "health_blood_oxygen" = "Ossigenazione del sangue";
+"health_blood_glucose" = "Glicemia";
+"health_uric_acid" = "Acido urico";
+"health_blood_lipid" = "Lipidi nel sangue";
+"health_blood_glucose_desc" = "Misurazione della glicemia";
+"health_uric_acid_desc" = "Misurazione dell'acido urico";
+"health_blood_lipid_desc" = "Misurazione dei lipidi nel sangue";
 "health_data_dynamic" = "Dati in tempo reale";
 "device" = "Dispositivo";
 "add_device" = "Aggiungi dispositivo";
@@ -54,6 +60,13 @@
 "device_search_settings" = "Trova impostazioni";
 "device_device_info" = "Informazioni sul dispositivo";
 "device_shark_photo" = "Foto a distanza";
+"device_power_controls" = "Controllo alimentazione";
+"device_factory_reset" = "Ripristina impostazioni di fabbrica";
+"device_factory_reset_desc" = "Il ripristino delle impostazioni di fabbrica cancellerà tutti i dati e le impostazioni del dispositivo. Continuare?";
+"device_restart" = "Riavvia";
+"device_restart_desc" = "Vuoi davvero riavviare il dispositivo ora?";
+"device_shutdown" = "Spegni (la ricarica accende automaticamente il dispositivo)";
+"device_shutdown_desc" = "Vuoi davvero spegnere il dispositivo? Puoi riaccenderlo mettendolo in carica.";
 "device_change" = "Cambio del dispositivo";
 "mine" = "Mio";
 "mine_bluetooth_connect" = "Il Bluetooth è connesso";
@@ -89,7 +102,7 @@
 "mine_device_ota_fail" = "Aggiornamento non riuscito";
 "mine_about" = "Informazioni";
 "mine_version" = "Versione";
-"mine_about_desc" = "Tutti i diritti di interpretazione appartengono a Fit-here";
+"mine_about_desc" = "Tutti i diritti di interpretazione appartengono a u-watch";
 "mine_account_info" = "Informazioni account";
 "mine_userinfo" = "Informazioni personali";
 "mine_head_image" = "Avatar";
@@ -221,8 +234,8 @@
 "feedback_not_null" = "Il contenuto del feedback non può essere vuoto";
 "feedback_success" = "Feedback riuscito";
 "feedback_failed" = "Feedback non riuscito";
-"dialog_location_permission_explain_above_s" = "Al fine di supportare la funzione di tracciamento dei dati sanitari, Fit-here raccoglierà i dati Bluetooth e i dati sulle informazioni sulla posizione, anche se il processo di applicazione è chiuso o non è in uso, tali dati verranno comunque raccolti.";
-"dialog_location_permission_explain" = "Al fine di supportare la funzione di tracciamento dei dati sanitari, Fit-here raccoglierà i dati relativi alle informazioni sulla posizione, anche se l'applicazione è chiusa o non è in uso, tali dati verranno comunque raccolti.";
+"dialog_location_permission_explain_above_s" = "Al fine di supportare la funzione di tracciamento dei dati sanitari, u-watch raccoglierà i dati Bluetooth e i dati sulle informazioni sulla posizione, anche se il processo di applicazione è chiuso o non è in uso, tali dati verranno comunque raccolti.";
+"dialog_location_permission_explain" = "Al fine di supportare la funzione di tracciamento dei dati sanitari, u-watch raccoglierà i dati relativi alle informazioni sulla posizione, anche se l'applicazione è chiusa o non è in uso, tali dati verranno comunque raccolti.";
 "go_to_setting_open_permissions" = "Le autorizzazioni proibite ti impediranno di utilizzare normalmente questa app, puoi andare alla pagina delle impostazioni per abilitare le autorizzazioni di cui sopra.";
 "permission_description" = "Descrizione del permesso";
 "add_contact" = "Aggiungi contatti";
@@ -252,10 +265,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Elimina dispositivo";
-"delete_device_2" = "Il dispositivo è stato rimosso da Fit-here ma è ancora connesso al tuo telefono. Per eliminare completamente questo dispositivo, completa i seguenti passaggi:";
+"delete_device_2" = "Il dispositivo è stato rimosso da U-Watch ma è ancora connesso al tuo telefono. Per eliminare completamente questo dispositivo, completa i seguenti passaggi:";
 "delete_device_3" = "1. Nelle impostazioni del tuo telefono > Bluetooth > I miei dispositivi, trova 'e watch' e tocca l' 'i' sulla destra.";
 "delete_device_4" = "2. Seleziona 'Dimentica questo dispositivo'.";
-"delete_device_5" = "3. Dopo aver completato, torna all'App 'Fit-here'.";
+"delete_device_5" = "3. Dopo aver completato, torna all'App 'U-Watch'.";
 "delete_device_6" = "Ho completato i passaggi precedenti";
 "delete_device_7" = "Conferma";
 
@@ -344,7 +357,7 @@
 "female_cycle_pain_mild" = "Lieve";
 "female_cycle_pain_moderate" = "Moderato";
 "female_cycle_pain_severe" = "Grave";
-"female_cycle_record_time" = "Registrato in 'Fit-here' alle";
+"female_cycle_record_time" = "Registrato in 'U-Watch' alle";
 "female_cycle_symptom_category_whole_body" = "Tutto il corpo";
 "female_cycle_symptom_category_head" = "Testa";
 "female_cycle_symptom_category_abdomen" = "Addome";
@@ -415,3 +428,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "Cronologia ECG";
+"ecg_history_detail" = "Dettagli della registrazione ECG";
+"ecg_history_empty" = "Nessuna registrazione ECG ancora";
+"ecg_history_error" = "Impossibile caricare la registrazione ECG";
+"ecg_save_error" = "Impossibile salvare la registrazione ECG";
+"ecg_pause" = "Pausa";
+"ecg_resume" = "Riprendi riproduzione";
+"ecg_replay" = "Riproduci di nuovo";
+"ecg_loading" = "Caricamento";
+"ecg_playback_time" = "%d / %d s";
+"ecg_history_duration" = "%@ · Durata %@ s";
+"ecg_waveform_note" = "Forma d'onda generata dal battito registrato";
+"ecg_recorded_rate" = "Battito registrato";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "Restano %d secondi";
+"ppg_measure_complete" = "Misurazione completata";
+"ppg_real_time_pulse" = "Polso in tempo reale: ";
+"ppg_worn_off" = "Bracciale non indossato o slaccato, l'onda è stata azzerata. Indossare il bracciale";

@@ -14,6 +14,7 @@ class HealthTableViewCell: UITableViewCell {
     let iconImageView = UIImageView()
     let leftTitleLabel = UILabel()
     let rightTitleLabel = UILabel()
+    let arrowImageView = UIImageView()
     let temImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -60,6 +61,18 @@ class HealthTableViewCell: UITableViewCell {
             make.centerY.equalTo(iconImageView)
         }
         
+        arrowImageView.image = UIImage(systemName: "chevron.right")
+        arrowImageView.tintColor = UIColor(red: 0.56, green: 0.59, blue: 0.63, alpha: 1.0)
+        arrowImageView.contentMode = .scaleAspectFit
+        arrowImageView.isHidden = true
+        containerView.addSubview(arrowImageView)
+        
+        arrowImageView.snp.makeConstraints { make in
+            make.trailing.equalTo(-16)
+            make.centerY.equalTo(iconImageView)
+            make.width.height.equalTo(20)
+        }
+        
         temImageView.snp.makeConstraints { make in
             make.left.equalTo(16)
             make.right.equalTo(-16)
@@ -80,6 +93,15 @@ class HealthTableViewCell: UITableViewCell {
         iconImageView.image = icon
         leftTitleLabel.text = leftTitle
         rightTitleLabel.attributedText = rightTitle
+        rightTitleLabel.isHidden = false
+        arrowImageView.isHidden = true
+    }
+    
+    func configureCellWithArrow(icon: UIImage?, leftTitle: String) {
+        iconImageView.image = icon
+        leftTitleLabel.text = leftTitle
+        rightTitleLabel.isHidden = true
+        arrowImageView.isHidden = false
     }
     
     // 设置子视图的约束的方法

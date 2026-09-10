@@ -15,6 +15,12 @@
 "health_blood_pressure" = "Veretaht";
 "health_blood_pressure_unit" = "mmHg";
 "health_blood_oxygen" = "Veraoxygen";
+"health_blood_glucose" = "Vere glükoos";
+"health_uric_acid" = "Kusihape";
+"health_blood_lipid" = "Vere lipiidid";
+"health_blood_glucose_desc" = "Vere glükoosi mõõtmine";
+"health_uric_acid_desc" = "Kusihappe mõõtmine";
+"health_blood_lipid_desc" = "Vere lipiidide mõõtmine";
 "health_data_dynamic" = "Andmete dünaamilisus";
 "device" = "Seade";
 "add_device" = "Palun seadistage seade";
@@ -54,6 +60,13 @@
 "device_search_settings" = "Leia seaded";
 "device_device_info" = "Seadme info";
 "device_shark_photo" = "Kaugpildistamine";
+"device_power_controls" = "Toite juhtimine";
+"device_factory_reset" = "Taasta tehasesätted";
+"device_factory_reset_desc" = "Tehasesätete taastamine kustutab seadme kõik andmed ja sätted. Jätkame?";
+"device_restart" = "Taaskäivita";
+"device_restart_desc" = "Kas soovite seadme kindlasti taaskäivitada?";
+"device_shutdown" = "Lülita välja (laadimine lülitab seadme automaatselt sisse)";
+"device_shutdown_desc" = "Kas soovite seadme kindlasti välja lülitada? Selle saab laadimisega uuesti sisse lülitada.";
 "device_change" = "Seadme vahetamine";
 "mine" = "Minu";
 "mine_bluetooth_connect" = "Bluetooth ühendatud";
@@ -89,7 +102,7 @@
 "mine_device_ota_fail" = "OTA uuendamine ebaõnnestus";
 "mine_about" = "Teave";
 "mine_version" = "Versioon";
-"mine_about_desc" = "Kõik tõlgendusõigused kuuluvad Fit-here tõlgendustele";
+"mine_about_desc" = "Kõik tõlgendusõigused kuuluvad u-watch tõlgendustele";
 "mine_account_info" = "Konto info";
 "mine_userinfo" = "Isiklik info";
 "mine_head_image" = "Profiilpilt";
@@ -179,8 +192,8 @@
 "feedback_not_null" = "Tagasiside sisu ei tohi olla tühi";
 "feedback_success" = "Tagasiside edukas";
 "feedback_failed" = "Tagasiside ebaõnnestus";
-"dialog_location_permission_explain_above_s" = "Teenuse terviseandmete jälgimise toetamiseks kogub Fit-here Bluetooth-andmeid ja asukoha teavet, isegi kui rakendus on sulgedud või kasutamata.";
-"dialog_location_permission_explain" = "Teenuse terviseandmete jälgimise toetamiseks kogub Fit-here asukoha teavet, isegi kui rakendus on sulgedud või kasutamata.";
+"dialog_location_permission_explain_above_s" = "Teenuse terviseandmete jälgimise toetamiseks kogub u-watch Bluetooth-andmeid ja asukoha teavet, isegi kui rakendus on sulgedud või kasutamata.";
+"dialog_location_permission_explain" = "Teenuse terviseandmete jälgimise toetamiseks kogub u-watch asukoha teavet, isegi kui rakendus on sulgedud või kasutamata.";
 "go_to_setting_open_permissions" = "Keelatud õigused takistavad rakenduse normaalsel kasutamisel. Avage seadete leht ja lubage vajalikud õigused.";
 "permission_description" = "Õiguste kirjeldus";
 "add_contact" = "Lisa kontakt";
@@ -251,10 +264,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Kustuta seade";
-"delete_device_2" = "Seade on eemaldatud Fit-hereist, kuid see on endiselt ühendatud teie telefoniga. Selle seadme täielikuks kustutamiseks tehke järgmist:";
+"delete_device_2" = "Seade on eemaldatud U-Watchist, kuid see on endiselt ühendatud teie telefoniga. Selle seadme täielikuks kustutamiseks tehke järgmist:";
 "delete_device_3" = "1. Teie telefoni Seaded > Bluetooth > Minu seadmed leiate 'e watch' ja vajutage paremal 'i'.";
 "delete_device_4" = "2. Valige 'Unusta see seade'.";
-"delete_device_5" = "3. Pärast lõpetamist tagasipöördumine 'Fit-here'-rakendusse.";
+"delete_device_5" = "3. Pärast lõpetamist tagasipöördumine 'U-Watch'-rakendusse.";
 "delete_device_6" = "Olen ülaltoodud toimingud tehtud";
 "delete_device_7" = "Kinnita";
 
@@ -343,7 +356,7 @@
 "female_cycle_pain_mild" = "Mild";
 "female_cycle_pain_moderate" = "Moderate";
 "female_cycle_pain_severe" = "Severe";
-"female_cycle_record_time" = "Recorded to 'Fit-here' at";
+"female_cycle_record_time" = "Recorded to 'U-Watch' at";
 "female_cycle_symptom_category_whole_body" = "Whole Body";
 "female_cycle_symptom_category_head" = "Head";
 "female_cycle_symptom_category_abdomen" = "Abdomen";
@@ -414,3 +427,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "EKG ajalugu";
+"ecg_history_detail" = "EKG-salvestise üksikasjad";
+"ecg_history_empty" = "EKG-salvestisi veel pole";
+"ecg_history_error" = "EKG-salvestise laadimine ebaõnnestus";
+"ecg_save_error" = "EKG-salvestise salvestamine ebaõnnestus";
+"ecg_pause" = "Paus";
+"ecg_resume" = "Jätka esitamist";
+"ecg_replay" = "Esita uuesti";
+"ecg_loading" = "Laadimine";
+"ecg_playback_time" = "%d / %d s";
+"ecg_history_duration" = "%@ · Kestus %@ s";
+"ecg_waveform_note" = "Lainekuju on loodud salvestatud pulsist";
+"ecg_recorded_rate" = "Salvestatud pulss";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "Jäänud %d sekundit";
+"ppg_measure_complete" = "Mõõtmine lõpetatud";
+"ppg_real_time_pulse" = "Reaalajas pulss: ";
+"ppg_worn_off" = "Rihma ei kantud või see eemaldati, lainekuju nulliti. Palun kandke rihma";

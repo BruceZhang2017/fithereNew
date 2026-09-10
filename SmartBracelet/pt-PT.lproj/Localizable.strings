@@ -2,10 +2,10 @@
 "start_experience" = "Experimente agora";
 "health_head" = "saudável";
 "sport" = "Desporto";
-"health_step" = "Contagem de passos";
-"health_step_noun" = "Passo";
+"health_step" = "Passos";
+"health_step_noun" = "passos";
 "health_walk_unit" = "quilômetro";
-"health_goal" = "Alvo";
+"health_goal" = "Meta";
 "health_heat" = "Calorias";
 "health_kilo_calorie" = "Kcal";
 "health_heart_rate" = "Frequência cardíaca";
@@ -16,6 +16,12 @@
 "health_blood_pressure" = "pressão sanguínea";
 "health_blood_pressure_unit" = "MMHG";
 "health_blood_oxygen" = "Oxigênio no sangue";
+"health_blood_glucose" = "Glicemia";
+"health_uric_acid" = "Ácido úrico";
+"health_blood_lipid" = "Lipídios no sangue";
+"health_blood_glucose_desc" = "Medição de glicemia";
+"health_uric_acid_desc" = "Medição de ácido úrico";
+"health_blood_lipid_desc" = "Medição de lipídios no sangue";
 "health_data_dynamic" = "Dinâmica de dados";
 "device" = "equipamento";
 "add_device" = "Por favor, adicione o dispositivo";
@@ -48,7 +54,7 @@
 "device_hand_up_screen" = "Levante a mão para iluminar a tela";
 "device_longsit_amind" = "Lembrete de assento longo";
 "device_longsit_amind_time" = "Tempo de lembrete de assento longo";
-"device_weather_push" = "Impulso do clima";
+"device_weather_push" = "Clima";
 "device_alarm_settings" = "Configuração de alarme";
 "device_search_settings" = "Encontrar configurações";
 "device_device_info" = "Informação de dispositivo";
@@ -88,7 +94,7 @@
 "mine_device_ota_fail" = "A atualização OTA falhou";
 "mine_about" = "cerca de";
 "mine_version" = "Versão";
-"mine_about_desc" = "Todos os direitos de interpretação pertencem à interpretação Fit-here";
+"mine_about_desc" = "Todos os direitos de interpretação pertencem à interpretação u-watch";
 "mine_account_info" = "Informação da conta";
 "mine_userinfo" = "informações pessoais";
 "mine_head_image" = "Avatar";
@@ -111,12 +117,12 @@
 "mine_kg_unit" = "KG";
 
 "device_settings" = "Configurações do dispositivo";
-"health_distance" = "Distance";
+"health_distance" = "Distância";
 
-"every_day_goal" = "meta de passos diários";
+"every_day_goal" = "Meta diaria de passos";
 "device_settings" = "Configurações do dispositivo";
-"health_distance" = "distância";
-"setting_goal" = "determine uma meta";
+"health_distance" = "Distância";
+"setting_goal" = "Definir meta";
 "health_detail_sports" = "dicas de saúde esportiva";
 "health_detail_sports_desc" = "Caminhar depois de uma refeição ajuda na digestão?";
 "health_detail_apple" = "Uma maçã por dia mantém o médico longe";
@@ -172,10 +178,10 @@
 
 "start_experience" = "experiência agora";
 "health_head" = "saudável";
-"health_step" = "contagem de passos";
-"health_step_noun" = "etapa";
+"health_step" = "Passos";
+"health_step_noun" = "passos";
 "health_walk_unit" = "quilômetro";
-"health_goal" = "Alvo";
+"health_goal" = "Meta";
 "health_heat" = "caloria";
 "health_kilo_calorie" = "kcal";
 "health_heart_rate" = "frequência cardíaca";
@@ -221,11 +227,18 @@
 "device_longsit_amind_time" = "Hora do lembrete sedentário";
 "drink_water_reminder" = "beber água lembrete";
 "drink_water_reminder_time" = "tempo de lembrete de água potável";
-"device_weather_push" = "impulso do tempo";
+"device_weather_push" = "Clima";
 "device_alarm_settings" = "configuração do despertador";
 "device_search_settings" = "encontrar configurações";
 "device_device_info" = "Informação de dispositivo";
 "device_shark_photo" = "Fotografia remota";
+"device_power_controls" = "Controlo de energia";
+"device_factory_reset" = "Repor definições de fábrica";
+"device_factory_reset_desc" = "A reposição das definições de fábrica apagará todos os dados e definições do dispositivo. Continuar?";
+"device_restart" = "Reiniciar";
+"device_restart_desc" = "Tem a certeza de que pretende reiniciar o dispositivo agora?";
+"device_shutdown" = "Desligar (o carregamento liga automaticamente o dispositivo)";
+"device_shutdown_desc" = "Tem a certeza de que pretende desligar o dispositivo? Pode voltar a ligá-lo carregando-o.";
 "device_change" = "troca de dispositivo";
 "mine" = "meu";
 "mine_bluetooth_connect" = "bluetooth conectado";
@@ -254,7 +267,7 @@
 "mine_device_ota_fail" = "Falha na atualização OTA";
 "mine_about" = "sobre";
 "mine_version" = "Versão";
-"mine_about_desc" = "Todos os direitos de interpretação pertencem a Fit-here";
+"mine_about_desc" = "Todos os direitos de interpretação pertencem a u-watch";
 "mine_account_info" = "Informação da conta";
 "mine_userinfo" = "informações pessoais";
 "mine_head_image" = "avatar";
@@ -274,7 +287,7 @@
 "mine_cm_unit" = "CM";
 "mine_weight" = "peso";
 "mine_kg_unit" = "KG";
-"every_day_goal" = "meta diária de passos";
+"every_day_goal" = "Meta diaria de passos";
 "week_1" = "Segunda-feira";
 "week_2" = "Terça-feira";
 "week_3" = "Quarta-feira";
@@ -284,8 +297,8 @@
 "week_7" = "Domingo";
 "mine_unconnect" = "não conectado";
 "device_settings" = "configurações do dispositivo";
-"health_distance" = "distância";
-"setting_goal" = "Estabeleça uma meta";
+"health_distance" = "Distância";
+"setting_goal" = "Definir meta";
 "health_detail_sports" = "Dicas de esportes e saúde";
 "health_detail_sports_desc" = "Caminhar após as refeições ajuda na digestão?";
 "health_detail_apple" = "Uma maçã por dia mantém o médico longe";
@@ -339,8 +352,8 @@
 "feedback_not_null" = "O conteúdo do feedback não pode estar vazio";
 "feedback_success" = "feedback sucesso";
 "feedback_failed" = "Falha no feedback";
-"dialog_location_permission_explain_above_s" = "Para oferecer suporte à função de rastreamento de dados de saúde, o Fit-here coletará dados de Bluetooth e dados de informações de localização, mesmo que o processo do aplicativo esteja fechado ou não esteja em uso, esses dados ainda serão coletados.";
-"dialog_location_permission_explain" = "Para oferecer suporte à função de rastreamento de dados de saúde, o Fit-here coletará dados de informações de localização, mesmo que o aplicativo esteja fechado ou não esteja em uso, esses dados ainda serão coletados.";
+"dialog_location_permission_explain_above_s" = "Para oferecer suporte à função de rastreamento de dados de saúde, o u-watch coletará dados de Bluetooth e dados de informações de localização, mesmo que o processo do aplicativo esteja fechado ou não esteja em uso, esses dados ainda serão coletados.";
+"dialog_location_permission_explain" = "Para oferecer suporte à função de rastreamento de dados de saúde, o u-watch coletará dados de informações de localização, mesmo que o aplicativo esteja fechado ou não esteja em uso, esses dados ainda serão coletados.";
 "go_to_setting_open_permissions" = "As permissões proibidas farão com que você não consiga usar este aplicativo normalmente, você pode ir para a página de configurações para habilitar as permissões acima.";
 "permission_description" = "Descrição da permissão";
 "add_contact" = "Adicionar contatos";
@@ -350,8 +363,8 @@
 "toast_failed" = "falhar";
 "weather" = "clima";
 "temperature" = "temperatura";
-"max_temp" = "temperatura mais alta";
-"min_temp" = "temperatura mínima";
+"max_temp" = "Max";
+"min_temp" = "Min";
 "wind_speed" = "velocidade do vento";
 "humidity" = "umidade";
 "new_message_tips" = "Você tem uma nova mensagem, preste atenção para verificar";
@@ -364,7 +377,7 @@
 
 "today_sleep" = "O sono de hoje";
 "push_to_bt_settings" = "Por favor, vá para Configurações - Bluetooth e conecte manualmente ao Bluetooth.";
-"today_step" = "Contagem de passos de hoje";
+"today_step" = "Passos de hoje";
 "consumption" = "Consumo";
 
 // MARK: - Sport
@@ -409,10 +422,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Excluir dispositivo";
-"delete_device_2" = "O dispositivo foi removido do Fit-here, mas ainda está conectado ao seu telefone. Para excluir completamente este dispositivo, conclua as seguintes etapas:";
+"delete_device_2" = "O dispositivo foi removido do U-Watch, mas ainda está conectado ao seu telefone. Para excluir completamente este dispositivo, conclua as seguintes etapas:";
 "delete_device_3" = "1. Nas configurações do seu telefone > Bluetooth > Meus dispositivos, encontre 'e watch' e toque no 'i' à direita.";
 "delete_device_4" = "2. Selecione 'Esquecer este dispositivo'.";
-"delete_device_5" = "3. Após concluir, retorne ao aplicativo 'Fit-here'.";
+"delete_device_5" = "3. Após concluir, retorne ao aplicativo 'U-Watch'.";
 "delete_device_6" = "Eu conclui as etapas acima";
 "delete_device_7" = "Confirmar";
 
@@ -501,7 +514,7 @@
 "female_cycle_pain_mild" = "Leve";
 "female_cycle_pain_moderate" = "Moderado";
 "female_cycle_pain_severe" = "Grave";
-"female_cycle_record_time" = "Registrado em 'Fit-here' às";
+"female_cycle_record_time" = "Registrado em 'U-Watch' às";
 "female_cycle_symptom_category_whole_body" = "Corpo inteiro";
 "female_cycle_symptom_category_head" = "Cabeça";
 "female_cycle_symptom_category_abdomen" = "Abdómen";
@@ -572,3 +585,27 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "Histórico de ECG";
+"ecg_history_detail" = "Detalhes do registo de ECG";
+"ecg_history_empty" = "Ainda não existem registos de ECG";
+"ecg_history_error" = "Não foi possível carregar o registo de ECG";
+"ecg_save_error" = "Não foi possível guardar o registo de ECG";
+"ecg_pause" = "Pausa";
+"ecg_resume" = "Continuar reprodução";
+"ecg_replay" = "Reproduzir novamente";
+"ecg_loading" = "A carregar";
+"ecg_playback_time" = "%d / %d s";
+"ecg_history_duration" = "%@ · Duração %@ s";
+"ecg_waveform_note" = "Forma de onda gerada a partir da frequência cardíaca registada";
+"ecg_recorded_rate" = "Frequência cardíaca registada";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "Restam %d segundos";
+"ppg_measure_complete" = "Medição concluída";
+"ppg_real_time_pulse" = "Pulso em tempo real: ";
+"ppg_worn_off" = "Pulseira não colocada ou soltou-se, a onda foi reposta a zero. Use a pulseira";

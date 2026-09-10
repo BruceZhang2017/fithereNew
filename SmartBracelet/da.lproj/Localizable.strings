@@ -15,6 +15,12 @@
 "health_blood_pressure" = "blodtryk";
 "health_blood_pressure_unit" = "MMHG";
 "health_blood_oxygen" = "Blodoksygen";
+"health_blood_glucose" = "Blodsukker";
+"health_uric_acid" = "Urinsyre";
+"health_blood_lipid" = "Blodlipider";
+"health_blood_glucose_desc" = "Måling af blodsukker";
+"health_uric_acid_desc" = "Måling af urinsyre";
+"health_blood_lipid_desc" = "Måling af blodlipider";
 "health_data_dynamic" = "Datadynamik";
 "device" = "enhed";
 "add_device" = "Venligst tilføj en enhed";
@@ -52,6 +58,13 @@
 "device_search_settings" = "Find indstillinger";
 "device_device_info" = "Enhedsinformation";
 "device_shark_photo" = "Fjernstyret foto";
+"device_power_controls" = "Strømstyring";
+"device_factory_reset" = "Gendan fabriksindstillinger";
+"device_factory_reset_desc" = "Fabriksnulstilling sletter alle data og indstillinger på enheden. Vil du fortsætte?";
+"device_restart" = "Genstart";
+"device_restart_desc" = "Er du sikker på, at du vil genstarte enheden nu?";
+"device_shutdown" = "Sluk (opladning tænder automatisk enheden)";
+"device_shutdown_desc" = "Er du sikker på, at du vil slukke enheden? Den kan tændes igen ved opladning.";
 "device_change" = "Skift enhed";
 "mine" = "min";
 "mine_bluetooth_connect" = "Bluetooth er forbundet";
@@ -87,7 +100,7 @@
 "mine_device_ota_fail" = "OTA-opgradering mislykkedes";
 "mine_about" = "om";
 "mine_version" = "Version";
-"mine_about_desc" = "Alle fortolkningstykkelser tilhører Fit-here";
+"mine_about_desc" = "Alle fortolkningstykkelser tilhører u-watch";
 "mine_account_info" = "Kontoinformation";
 "mine_userinfo" = "Personlige oplysninger";
 "mine_head_image" = "Avatar";
@@ -189,8 +202,8 @@
 "feedback_not_null" = "Feedback-indhold kan ikke være tomt";
 "feedback_success" = "Feedback succeeds";
 "feedback_failed" = "Feedback mislykkedes";
-"dialog_location_permission_explain_above_s" = "For at understøtte sundhedsdata-tracking-funktionen, vil Fit-here indsamle Bluetooth-data og placeringsoinformationer, selv hvis applikationsprocessen er lukket eller ikke anvendes.";
-"dialog_location_permission_explain" = "For at understøtte sundhedsdata-tracking-funktionen, vil Fit-here indsamle placeringsoinformationer, selv hvis applikationen er lukket eller ikke anvendes.";
+"dialog_location_permission_explain_above_s" = "For at understøtte sundhedsdata-tracking-funktionen, vil u-watch indsamle Bluetooth-data og placeringsoinformationer, selv hvis applikationsprocessen er lukket eller ikke anvendes.";
+"dialog_location_permission_explain" = "For at understøtte sundhedsdata-tracking-funktionen, vil u-watch indsamle placeringsoinformationer, selv hvis applikationen er lukket eller ikke anvendes.";
 "go_to_setting_open_permissions" = "Forbudte tilladelser vil forhindre dig i at bruge denne app normalt. Du kan gå til indstillingssiden for at aktivere ovenstående tilladelser.";
 "permission_description" = "Tilladelsesbeskrivelse";
 "add_contact" = "Tilføj kontakter";
@@ -261,10 +274,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Slet enhed";
-"delete_device_2" = "Enheden er fjernet fra Fit-here, men er stadig tilsluttet din telefon. For at fuldstændig slette denne enhed, udfør følgende trin:";
+"delete_device_2" = "Enheden er fjernet fra U-Watch, men er stadig tilsluttet din telefon. For at fuldstændig slette denne enhed, udfør følgende trin:";
 "delete_device_3" = "1. I din telefonindstillinger > Bluetooth > Mine enheder, find 'e watch' og tryk på 'i' til højre.";
 "delete_device_4" = "2. Vælg 'Glem enhed'.";
-"delete_device_5" = "3. Når du er færdig, gå tilbage til 'Fit-here'-appen.";
+"delete_device_5" = "3. Når du er færdig, gå tilbage til 'U-Watch'-appen.";
 "delete_device_6" = "Jeg har udført ovenstående trin";
 "delete_device_7" = "Bekræft";
 
@@ -353,7 +366,7 @@
 "female_cycle_pain_mild" = "Mild";
 "female_cycle_pain_moderate" = "Moderate";
 "female_cycle_pain_severe" = "Severe";
-"female_cycle_record_time" = "Recorded to 'Fit-here' at";
+"female_cycle_record_time" = "Recorded to 'U-Watch' at";
 "female_cycle_symptom_category_whole_body" = "Whole Body";
 "female_cycle_symptom_category_head" = "Head";
 "female_cycle_symptom_category_abdomen" = "Abdomen";
@@ -424,3 +437,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "EKG-historik";
+"ecg_history_detail" = "Detaljer for EKG-optagelse";
+"ecg_history_empty" = "Ingen EKG-optagelser endnu";
+"ecg_history_error" = "Kan ikke indlæse EKG-optagelse";
+"ecg_save_error" = "Kan ikke gemme EKG-optagelse";
+"ecg_pause" = "Pause";
+"ecg_resume" = "Fortsæt afspilning";
+"ecg_replay" = "Afspil igen";
+"ecg_loading" = "Indlæser";
+"ecg_playback_time" = "%d / %d s";
+"ecg_history_duration" = "%@ · Varighed %@ s";
+"ecg_waveform_note" = "Bølgeform genereret ud fra registreret puls";
+"ecg_recorded_rate" = "Registreret puls";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "Resterende %d sekunder";
+"ppg_measure_complete" = "Måling fuldført";
+"ppg_real_time_pulse" = "Puls i realtid: ";
+"ppg_worn_off" = "Båndet er ikke båret eller er løsnet, bølgen er nulstillet. Bær venligst båndet";

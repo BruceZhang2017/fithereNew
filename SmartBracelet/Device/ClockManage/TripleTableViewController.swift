@@ -509,6 +509,9 @@ extension TripleTableViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let totalWidth = collectionView.bounds.width
         let itemWidth = totalWidth / 2 // 2列填满容器
+        guard indexPath.row < rightViewModel.items.count else {
+            return CGSize(width: floor(itemWidth), height: 0)
+        }
         let item = rightViewModel.items[indexPath.row]
         let itemHeight = calculateItemHeight(for: item)
         return CGSize(width: floor(itemWidth), height: itemHeight)
@@ -520,6 +523,9 @@ extension TripleTableViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RightCollectionCell", for: indexPath) as! RightCollectionCell
+        guard indexPath.row < rightViewModel.items.count else {
+            return cell
+        }
         let item = rightViewModel.items[indexPath.row]
         cell.configure(with: item)
         cell.tag = indexPath.row
@@ -529,6 +535,9 @@ extension TripleTableViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 这里保持原有逻辑不变
         collectionView.deselectItem(at: indexPath, animated: true)
+        guard indexPath.row < rightViewModel.items.count else {
+            return
+        }
         let storyboard = UIStoryboard(name: "Device", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ClockUseViewController") as? ClockUseViewController
         let item = rightViewModel.items[indexPath.row]

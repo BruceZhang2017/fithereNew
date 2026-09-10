@@ -15,6 +15,12 @@
 "health_blood_pressure" = "αρтеріальний πίεση";
 "health_blood_pressure_unit" = "MMHG";
 "health_blood_oxygen" = "Εξυγ巧νηση крови";
+"health_blood_glucose" = "Γλυκόζη αίματος";
+"health_uric_acid" = "Ουρικό οξύ";
+"health_blood_lipid" = "Λιπίδια αίματος";
+"health_blood_glucose_desc" = "Μέτρηση γλυκόζης αίματος";
+"health_uric_acid_desc" = "Μέτρηση ουρικού οξέος";
+"health_blood_lipid_desc" = "Μέτρηση λιπιδίων αίματος";
 "health_data_dynamic" = "Δυναμική δεδομένων";
 "device" = "συσκευή";
 "add_device" = "Παρακαλώ προσθέστε συσκευή";
@@ -52,6 +58,13 @@
 "device_search_settings" = "Αναζήτηση ρυθμίσεων";
 "device_device_info" = "Πληροφορίες συσκευής";
 "device_shark_photo" = "Τηλεχειριζόμενη φωτογραφία";
+"device_power_controls" = "Έλεγχος ισχύος";
+"device_factory_reset" = "Επαναφορά εργοστασιακών ρυθμίσεων";
+"device_factory_reset_desc" = "Η επαναφορά εργοστασιακών ρυθμίσεων θα διαγράψει όλα τα δεδομένα και τις ρυθμίσεις της συσκευής. Συνέχεια;";
+"device_restart" = "Επανεκκίνηση";
+"device_restart_desc" = "Θέλετε σίγουρα να επανεκκινήσετε τη συσκευή τώρα;";
+"device_shutdown" = "Απενεργοποίηση (η φόρτιση ενεργοποιεί αυτόματα τη συσκευή)";
+"device_shutdown_desc" = "Θέλετε σίγουρα να απενεργοποιήσετε τη συσκευή; Μπορεί να ενεργοποιηθεί ξανά με φόρτιση.";
 "device_change" = "Αλλαγή συσκευής";
 "mine" = "εγώ";
 "mine_bluetooth_connect" = "Το Bluetooth είναι συνδεδεμένο";
@@ -87,7 +100,7 @@
 "mine_device_ota_fail" = "Αποτυχία OTA αναβάθμισης";
 "mine_about" = "σχετικά με";
 "mine_version" = "Έκδοση";
-"mine_about_desc" = "Όλα τα δικαιώματα толковania ανήκουν στην Fit-here";
+"mine_about_desc" = "Όλα τα δικαιώματα толковania ανήκουν στην u-watch";
 "mine_account_info" = "Πληροφορίες λογαριασμού";
 "mine_userinfo" = "προσωπικές πληροφορίες";
 "mine_head_image" = "Αβάatar";
@@ -189,8 +202,8 @@
 "feedback_not_null" = "Το περιεχόμενο τηςτροφοδότησης δεν μπορεί να είναι κενό";
 "feedback_success" = "Επιτυχήςτροφοδότηση";
 "feedback_failed" = "Αποτυχίατροφοδότησης";
-"dialog_location_permission_explain_above_s" = "Για να υποστηρίξει τη λειτουργία παρακολούθησης δεδομένων υγείας, το Fit-here συλλέγει δεδομένα Bluetooth και πληροφορίες θέσης, ακόμα και αν η διεργασία της εφαρμογής είναι κλειστή ή δεν χρησιμοποιείται.";
-"dialog_location_permission_explain" = "Για να υποστηρίξει τη λειτουργία παρακολούθησης δεδομένων υγείας, το Fit-here συλλέγει πληροφορίες θέσης, ακόμα και αν η εφαρμογή είναι κλειστή ή δεν χρησιμοποιείται.";
+"dialog_location_permission_explain_above_s" = "Για να υποστηρίξει τη λειτουργία παρακολούθησης δεδομένων υγείας, το u-watch συλλέγει δεδομένα Bluetooth και πληροφορίες θέσης, ακόμα και αν η διεργασία της εφαρμογής είναι κλειστή ή δεν χρησιμοποιείται.";
+"dialog_location_permission_explain" = "Για να υποστηρίξει τη λειτουργία παρακολούθησης δεδομένων υγείας, το u-watch συλλέγει πληροφορίες θέσης, ακόμα και αν η εφαρμογή είναι κλειστή ή δεν χρησιμοποιείται.";
 "go_to_setting_open_permissions" = "Οι απαγορευμένες 권ώσεις θα σας εμποδίζουν να χρησιμοποιήσετε αυτήν την εφαρμογή κανονικά. Μπορείτε να πάτε στη σελίδα ρυθμίσεων για να ενεργοποιήσετε τις παραπάνω 권ώσεις.";
 "permission_description" = "Περιγραφή 권ώσεων";
 "add_contact" = "Προσθήκη επαφών";
@@ -261,10 +274,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Διαγραφή συσκευής";
-"delete_device_2" = "Η συσκευή έχει αφαιρεθεί από το Fit-here αλλά εξακολουθεί να είναι συνδεδεμένη με το τηλέφωνό σας. Για να διαγράψετε πλήρως αυτήν τη συσκευή, εκτελέστε τα ακόλουθα βήματα:";
+"delete_device_2" = "Η συσκευή έχει αφαιρεθεί από το U-Watch αλλά εξακολουθεί να είναι συνδεδεμένη με το τηλέφωνό σας. Για να διαγράψετε πλήρως αυτήν τη συσκευή, εκτελέστε τα ακόλουθα βήματα:";
 "delete_device_3" = "1. Στις ρυθμίσεις του τηλεφώνου σας > Bluetooth > Συσκευές μου, βρείτε το 'e watch' και πατήστε το 'i' στα δεξιά.";
 "delete_device_4" = "2. Επιλέξτε 'Ξεχάστε αυτήν τη συσκευή'.";
-"delete_device_5" = "3. Αφού ολοκληρώσετε, επιστρέψτε στην εφαρμογή 'Fit-here'.";
+"delete_device_5" = "3. Αφού ολοκληρώσετε, επιστρέψτε στην εφαρμογή 'U-Watch'.";
 "delete_device_6" = "Έχω ολοκληρώσει τα παραπάνω βήματα";
 "delete_device_7" = "Επιβεβαίωση";
 
@@ -353,7 +366,7 @@
 "female_cycle_pain_mild" = "Mild";
 "female_cycle_pain_moderate" = "Moderate";
 "female_cycle_pain_severe" = "Severe";
-"female_cycle_record_time" = "Recorded to 'Fit-here' at";
+"female_cycle_record_time" = "Recorded to 'U-Watch' at";
 "female_cycle_symptom_category_whole_body" = "Whole Body";
 "female_cycle_symptom_category_head" = "Head";
 "female_cycle_symptom_category_abdomen" = "Abdomen";
@@ -424,3 +437,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "Ιστορικό ΗΚΓ";
+"ecg_history_detail" = "Λεπτομέρειες καταγραφής ΗΚΓ";
+"ecg_history_empty" = "Δεν υπάρχουν ακόμη καταγραφές ΗΚΓ";
+"ecg_history_error" = "Δεν είναι δυνατή η φόρτωση καταγραφής ΗΚΓ";
+"ecg_save_error" = "Δεν είναι δυνατή η αποθήκευση καταγραφής ΗΚΓ";
+"ecg_pause" = "Παύση";
+"ecg_resume" = "Συνέχιση αναπαραγωγής";
+"ecg_replay" = "Επαναφορά αναπαραγωγής";
+"ecg_loading" = "Φόρτωση";
+"ecg_playback_time" = "%d / %d δευτ.";
+"ecg_history_duration" = "%@ · Διάρκεια %@ δευτ.";
+"ecg_waveform_note" = "Το κύμα δημιουργήθηκε από τον καταγεγραμμένο σφυγμό";
+"ecg_recorded_rate" = "Καταγεγραμμένος σφυγμός";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "Απομένουν %d δευτερόλεπτα";
+"ppg_measure_complete" = "Η μέτρηση ολοκληρώθηκε";
+"ppg_real_time_pulse" = "Παλμός σε πραγματικό χρόνο: ";
+"ppg_worn_off" = "Το βραχιόλι δεν φοριέται ή αφαιρέθηκε, το κύμα μηδενίστηκε. Παρακαλώ φορέστε το βραχιόλι";

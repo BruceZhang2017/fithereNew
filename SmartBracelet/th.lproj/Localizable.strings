@@ -16,6 +16,12 @@
 "health_blood_pressure" = "ความดันโลหิต";
 "health_blood_pressure_unit" = "MMHG";
 "health_blood_oxygen" = "ออกซิเจนในเลือด";
+"health_blood_glucose" = "กลูโคสในเลือด";
+"health_uric_acid" = "กรดยูริก";
+"health_blood_lipid" = "ไขมันในเลือด";
+"health_blood_glucose_desc" = "การวัดระดับกลูโคสในเลือด";
+"health_uric_acid_desc" = "การวัดกรดยูริก";
+"health_blood_lipid_desc" = "การวัดไขมันในเลือด";
 "health_data_dynamic" = "ไดนามิกของข้อมูล";
 "device" = "อุปกรณ์";
 "add_device" = "กรุณาเพิ่มอุปกรณ์";
@@ -88,7 +94,7 @@
 "mine_device_ota_fail" = "การอัปเกรด OTA ล้มเหลว";
 "mine_about" = "เกี่ยวกับ";
 "mine_version" = "เวอร์ชั่น";
-"mine_about_desc" = "สิทธิ์ในการตีความทั้งหมดเป็นของการตีความ Fit-here";
+"mine_about_desc" = "สิทธิ์ในการตีความทั้งหมดเป็นของการตีความ u-watch";
 "mine_account_info" = "ข้อมูลเกี่ยวกับบัญชี";
 "mine_userinfo" = "ข้อมูลส่วนบุคคล";
 "mine_head_image" = "สัญลักษณ์";
@@ -226,6 +232,13 @@
 "device_search_settings" = "ค้นหาการตั้งค่า";
 "device_device_info" = "ข้อมูลอุปกรณ์";
 "device_shark_photo" = "รีโมตถ่ายภาพ";
+"device_power_controls" = "จัดการพลังงาน";
+"device_factory_reset" = "คืนค่าโรงงาน";
+"device_factory_reset_desc" = "การคืนค่าโรงงานจะลบข้อมูลและการตั้งค่าทั้งหมดในอุปกรณ์ ดำเนินการต่อหรือไม่";
+"device_restart" = "รีสตาร์ท";
+"device_restart_desc" = "คุณแน่ใจหรือไม่ว่าต้องการรีสตาร์ทอุปกรณ์ตอนนี้";
+"device_shutdown" = "ปิดเครื่อง (การชาร์จจะเปิดเครื่องโดยอัตโนมัติ)";
+"device_shutdown_desc" = "คุณแน่ใจหรือไม่ว่าต้องการปิดเครื่อง สามารถเปิดเครื่องอีกครั้งได้ด้วยการชาร์จ";
 "device_change" = "การสลับอุปกรณ์";
 "mine" = "ของฉัน";
 "mine_bluetooth_connect" = "เชื่อมต่อบลูทูธแล้ว";
@@ -255,7 +268,7 @@
 "mine_device_ota_fail" = "การอัปเกรด OTA ล้มเหลว";
 "mine_about" = "เกี่ยวกับ";
 "mine_version" = "รุ่น";
-"mine_about_desc" = "สิทธิ์ในการตีความทั้งหมดเป็นของ Fit-here";
+"mine_about_desc" = "สิทธิ์ในการตีความทั้งหมดเป็นของ u-watch";
 "mine_account_info" = "ข้อมูลเกี่ยวกับบัญชี";
 "mine_userinfo" = "ข้อมูลส่วนบุคคล";
 "mine_head_image" = "สัญลักษณ์";
@@ -340,8 +353,8 @@
 "feedback_not_null" = "เนื้อหาความคิดเห็นต้องไม่ว่างเปล่า";
 "feedback_success" = "ความสำเร็จข้อเสนอแนะ";
 "feedback_failed" = "คำติชมล้มเหลว";
-"dialog_location_permission_explain_above_s" = "เพื่อรองรับฟังก์ชั่นการติดตามข้อมูลสุขภาพ Fit-here จะรวบรวมข้อมูลบลูทูธและข้อมูลตำแหน่ง แม้ว่ากระบวนการสมัครจะปิดหรือไม่ได้ใช้งาน ข้อมูลดังกล่าวจะยังคงถูกรวบรวม";
-"dialog_location_permission_explain" = "เพื่อรองรับฟังก์ชันการติดตามข้อมูลสุขภาพ Fit-here จะรวบรวมข้อมูลตำแหน่ง แม้ว่าจะปิดแอปพลิเคชันหรือไม่ได้ใช้งาน ข้อมูลดังกล่าวจะยังคงถูกรวบรวม";
+"dialog_location_permission_explain_above_s" = "เพื่อรองรับฟังก์ชั่นการติดตามข้อมูลสุขภาพ u-watch จะรวบรวมข้อมูลบลูทูธและข้อมูลตำแหน่ง แม้ว่ากระบวนการสมัครจะปิดหรือไม่ได้ใช้งาน ข้อมูลดังกล่าวจะยังคงถูกรวบรวม";
+"dialog_location_permission_explain" = "เพื่อรองรับฟังก์ชันการติดตามข้อมูลสุขภาพ u-watch จะรวบรวมข้อมูลตำแหน่ง แม้ว่าจะปิดแอปพลิเคชันหรือไม่ได้ใช้งาน ข้อมูลดังกล่าวจะยังคงถูกรวบรวม";
 "go_to_setting_open_permissions" = "การอนุญาตที่ไม่อนุญาตจะทำให้คุณไม่สามารถใช้แอปนี้ได้ตามปกติ คุณสามารถไปที่หน้าการตั้งค่าเพื่อเปิดใช้งานการอนุญาตข้างต้น";
 "permission_description" = "คำอธิบายสิทธิ์";
 "add_contact" = "เพิ่มผู้ติดต่อ";
@@ -410,10 +423,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "ลบอุปกรณ์";
-"delete_device_2" = "อุปกรณ์ถูกลบออกจาก Fit-here แต่ยังคงเชื่อมต่อกับโทรศัพท์ของคุณ อย่างไรก็ตาม, หากคุณต้องการลบอุปกรณ์นี้อย่างสมบูรณ์, โปรดทำตามขั้นตอนต่อไปนี้:";
+"delete_device_2" = "อุปกรณ์ถูกลบออกจาก U-Watch แต่ยังคงเชื่อมต่อกับโทรศัพท์ของคุณ อย่างไรก็ตาม, หากคุณต้องการลบอุปกรณ์นี้อย่างสมบูรณ์, โปรดทำตามขั้นตอนต่อไปนี้:";
 "delete_device_3" = "1. ในเมนู 'การตั้งค่า' ของโทรศัพท์ > 'Bluetooth' > 'อุปกรณ์ของฉัน' ค้นหา 'e watch' แล้วแตะที่ 'i' ทางด้านขวา.";
 "delete_device_4" = "2. เลือก 'ลบการเชื่อมต่ออุปกรณ์นี้'.";
-"delete_device_5" = "3. หลังจากทำเสร็จแล้ว, กลับไปที่แอป 'Fit-here'.";
+"delete_device_5" = "3. หลังจากทำเสร็จแล้ว, กลับไปที่แอป 'U-Watch'.";
 "delete_device_6" = "ฉันได้ทำตามขั้นตอนข้างต้นแล้ว";
 "delete_device_7" = "ยืนยัน";
 
@@ -502,7 +515,7 @@
 "female_cycle_pain_mild" = "เล็กน้อย";
 "female_cycle_pain_moderate" = "ปานกลาง";
 "female_cycle_pain_severe" = "รุนแรง";
-"female_cycle_record_time" = "บันทึกไว้ใน 'Fit-here' เวลา";
+"female_cycle_record_time" = "บันทึกไว้ใน 'U-Watch' เวลา";
 "female_cycle_symptom_category_whole_body" = "ทั้งตัว";
 "female_cycle_symptom_category_head" = "ศีรษะ";
 "female_cycle_symptom_category_abdomen" = "ช่องท้อง";
@@ -573,3 +586,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "ประวัติคลื่นไฟฟ้าหัวใจ";
+"ecg_history_detail" = "รายละเอียดบันทึกคลื่นไฟฟ้าหัวใจ";
+"ecg_history_empty" = "ยังไม่มีบันทึกคลื่นไฟฟ้าหัวใจ";
+"ecg_history_error" = "ไม่สามารถโหลดบันทึกคลื่นไฟฟ้าหัวใจได้";
+"ecg_save_error" = "ไม่สามารถบันทึกคลื่นไฟฟ้าหัวใจได้";
+"ecg_pause" = "หยุดชั่วคราว";
+"ecg_resume" = "เล่นต่อ";
+"ecg_replay" = "เล่นซ้ำ";
+"ecg_loading" = "กำลังโหลด";
+"ecg_playback_time" = "%d / %d วินาที";
+"ecg_history_duration" = "%@ · ระยะเวลา %@ วินาที";
+"ecg_waveform_note" = "คลื่นสร้างจากอัตราการเต้นของหัวใจที่บันทึกไว้";
+"ecg_recorded_rate" = "อัตราการเต้นของหัวใจที่บันทึก";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "เหลืออีก %d วินาที";
+"ppg_measure_complete" = "การวัดเสร็จสมบูรณ์";
+"ppg_real_time_pulse" = "ชีพจรแบบเรียลไทม์: ";
+"ppg_worn_off" = "ไม่ได้สวมสายหรือสายหลุด รูปคลื่นถูกรีเซ็ตเป็นศูนย์ กรุณาสวมสาย";

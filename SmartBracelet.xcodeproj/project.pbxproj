@@ -530,6 +530,7 @@
 		9AF3F2D72BCBFA6500AFBC55 /* HealthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3F2D62BCBFA6500AFBC55 /* HealthTableViewCell.swift */; };
 		9AF3F2DB2BCBFF2600AFBC55 /* icon_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF3F2DA2BCBFF2600AFBC55 /* icon_default.png */; };
 		9AF3F2DD2BCC229B00AFBC55 /* HNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3F2DC2BCC229B00AFBC55 /* HNavigationController.swift */; };
+		9AF3F2E12BCBFA6600AFBC55 /* FemaleHealthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3F2E02BCBFA6600AFBC55 /* FemaleHealthTableViewCell.swift */; };
 		9AFAE8712A8F21F7005EF8F8 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE85A2A8F21F7005EF8F8 /* JGProgressHUDIndeterminateIndicatorView.m */; };
 		9AFAE8722A8F21F7005EF8F8 /* JGProgressHUDErrorIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE85B2A8F21F7005EF8F8 /* JGProgressHUDErrorIndicatorView.m */; };
 		9AFAE8732A8F21F7005EF8F8 /* JGProgressHUDAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE85D2A8F21F7005EF8F8 /* JGProgressHUDAnimation.m */; };
@@ -542,6 +543,9 @@
 		9AFAE87A2A8F21F7005EF8F8 /* JGProgressHUDRingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE86E2A8F21F7005EF8F8 /* JGProgressHUDRingIndicatorView.m */; };
 		9AFAE87B2A8F21F7005EF8F8 /* JGProgressHUDPieIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE86F2A8F21F7005EF8F8 /* JGProgressHUDPieIndicatorView.m */; };
 		9AFAE87C2A8F21F7005EF8F8 /* JGProgressHUDShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFAE8702A8F21F7005EF8F8 /* JGProgressHUDShadow.m */; };
+		D1ECG0032F00000100ECG001 /* EcgHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1ECG0012F00000100ECG001 /* EcgHistoryViewController.swift */; };
+		D1ECG0042F00000100ECG001 /* EcgHistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1ECG0022F00000100ECG001 /* EcgHistoryDetailViewController.swift */; };
+		D1ECG0062F00000100ECG001 /* EcgWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1ECG0052F00000100ECG001 /* EcgWaveformView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1202,6 +1206,7 @@
 		9AF3F2D62BCBFA6500AFBC55 /* HealthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCell.swift; sourceTree = "<group>"; };
 		9AF3F2DA2BCBFF2600AFBC55 /* icon_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_default.png; sourceTree = "<group>"; };
 		9AF3F2DC2BCC229B00AFBC55 /* HNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNavigationController.swift; sourceTree = "<group>"; };
+		9AF3F2E02BCBFA6600AFBC55 /* FemaleHealthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FemaleHealthTableViewCell.swift; sourceTree = "<group>"; };
 		9AFAE8582A8F21F7005EF8F8 /* JGProgressHUDSuccessIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDSuccessIndicatorView.h; sourceTree = "<group>"; };
 		9AFAE8592A8F21F7005EF8F8 /* JGProgressHUDImageIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDImageIndicatorView.h; sourceTree = "<group>"; };
 		9AFAE85A2A8F21F7005EF8F8 /* JGProgressHUDIndeterminateIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDIndeterminateIndicatorView.m; sourceTree = "<group>"; };
@@ -1229,6 +1234,9 @@
 		9AFAE8702A8F21F7005EF8F8 /* JGProgressHUDShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDShadow.m; sourceTree = "<group>"; };
 		B1F15B2E89955DD6187F274A /* Pods_SmartBracelet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartBracelet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0967DDE3410784139DF5B20 /* Pods-TJDWristbandSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TJDWristbandSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TJDWristbandSDKDemo/Pods-TJDWristbandSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D1ECG0012F00000100ECG001 /* EcgHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcgHistoryViewController.swift; sourceTree = "<group>"; };
+		D1ECG0022F00000100ECG001 /* EcgHistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcgHistoryDetailViewController.swift; sourceTree = "<group>"; };
+		D1ECG0052F00000100ECG001 /* EcgWaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcgWaveformView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2125,7 +2133,11 @@
 				9AEBEC3C26DE5AD0008D13AA /* TTADataPickerView.swift */,
 				9A820B6D24CD06AC00A62C6F /* HealthViewController.swift */,
 				9AF3F2D62BCBFA6500AFBC55 /* HealthTableViewCell.swift */,
+				9AF3F2E02BCBFA6600AFBC55 /* FemaleHealthTableViewCell.swift */,
 				9A820B7524CEA2A500A62C6F /* HealthDetailViewController.swift */,
+				D1ECG0012F00000100ECG001 /* EcgHistoryViewController.swift */,
+				D1ECG0022F00000100ECG001 /* EcgHistoryDetailViewController.swift */,
+				D1ECG0052F00000100ECG001 /* EcgWaveformView.swift */,
 				9A3C55C42BD35EE6007737A2 /* HealthValueView.swift */,
 				9A3C55CC2BD39A5E007737A2 /* FanView.swift */,
 				9A3C55CE2BD3ECA3007737A2 /* RoundView.swift */,
@@ -2889,6 +2901,9 @@
 				9A8CA52225272C5200EC01A7 /* CVCalendarManager.swift in Sources */,
 				9A56D2B725216FC70082CC08 /* ILineRadarChartDataSet.swift in Sources */,
 				9A820B7624CEA2A500A62C6F /* HealthDetailViewController.swift in Sources */,
+				D1ECG0032F00000100ECG001 /* EcgHistoryViewController.swift in Sources */,
+				D1ECG0042F00000100ECG001 /* EcgHistoryDetailViewController.swift in Sources */,
+				D1ECG0062F00000100ECG001 /* EcgWaveformView.swift in Sources */,
 				9A2184D8255AE3D4000330E5 /* RegisterResponse.swift in Sources */,
 				9A820B8F24D1B15B00A62C6F /* UIButton+Extension.swift in Sources */,
 				9A56D2AB25216FC70082CC08 /* CandleChartData.swift in Sources */,
@@ -2910,6 +2925,7 @@
 				9A56D23E25216FC60082CC08 /* BubbleChartRenderer.swift in Sources */,
 				9A60DED9252F002400E0D849 /* CurrentCityTableViewCell.swift in Sources */,
 				9AF3F2D72BCBFA6500AFBC55 /* HealthTableViewCell.swift in Sources */,
+				9AF3F2E12BCBFA6600AFBC55 /* FemaleHealthTableViewCell.swift in Sources */,
 				9A8CA52525272C5200EC01A7 /* CVPresent.swift in Sources */,
 				9A20FA342D2A2CA10027A26F /* Int+String.swift in Sources */,
 				9A93EE552CFDE78C00C02370 /* XGZTSwitchDevice.swift in Sources */,
@@ -3468,7 +3484,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 20;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
@@ -3483,7 +3499,7 @@
 					"$(PROJECT_DIR)/SmartBracelet",
 				);
 				INFOPLIST_FILE = SmartBracelet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3492,7 +3508,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 1.6.6;
+				MARKETING_VERSION = 1.6.7;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;
@@ -3517,7 +3533,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = TJDWristbandSDK.framework;
 				DEVELOPMENT_TEAM = NXP7YS2U8G;
 				ENABLE_BITCODE = NO;
@@ -3531,7 +3547,7 @@
 					"$(PROJECT_DIR)/SmartBracelet",
 				);
 				INFOPLIST_FILE = SmartBracelet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3540,7 +3556,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SmartBracelet/JL/BLEUsage",
 				);
-				MARKETING_VERSION = 1.6.6;
+				MARKETING_VERSION = 1.6.7;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D WeiZhongYun -D DisplayPrint -D TestMode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhao.herefit;
 				PRODUCT_NAME = FitDAY;

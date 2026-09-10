@@ -16,6 +16,12 @@
 "health_blood_pressure" = "Blodtryck";
 "health_blood_pressure_unit" = "mmHG";
 "health_blood_oxygen" = "Blodsocker";
+"health_blood_glucose" = "Blodsocker";
+"health_uric_acid" = "Urinsyra";
+"health_blood_lipid" = "Blodfetter";
+"health_blood_glucose_desc" = "Blodsockermätning";
+"health_uric_acid_desc" = "Urinsyramätning";
+"health_blood_lipid_desc" = "Blodfettmätning";
 "health_data_dynamic" = "Dataförändringar";
 "device" = "Enhet";
 "add_device" = "Lägg till enhet";
@@ -56,6 +62,13 @@
 "device_search_settings" = "Hitta inställningar";
 "device_device_info" = "Enhetsinformation";
 "device_shark_photo" = "Fjärrfoto";
+"device_power_controls" = "Strömhantering";
+"device_factory_reset" = "Återställ fabriksinställningar";
+"device_factory_reset_desc" = "Om du återställer fabriksinställningarna raderas alla data och inställningar på enheten. Fortsätta?";
+"device_restart" = "Starta om";
+"device_restart_desc" = "Vill du verkligen starta om enheten nu?";
+"device_shutdown" = "Stäng av (laddning slår på enheten automatiskt)";
+"device_shutdown_desc" = "Vill du verkligen stänga av enheten? Den kan slås på igen genom laddning.";
 "device_change" = "Byt enhet";
 "mine" = "mina";
 "mine_bluetooth_connect" = "Bluetooth ansluten";
@@ -91,7 +104,7 @@
 "mine_device_ota_fail" = "OTA-uppdatering misslyckades";
 "mine_about" = "Om oss";
 "mine_version" = "Version";
-"mine_about_desc" = "Alla tolkningsrättigheter tillhör Fit-here";
+"mine_about_desc" = "Alla tolkningsrättigheter tillhör u-watch";
 "mine_account_info" = "Kontoinformation";
 "mine_userinfo" = "Personlig information";
 "mine_head_image" = "Avatar";
@@ -261,10 +274,10 @@
 "ble_off" = "Bluetooth is not enabled. Please enable it first.";
 
 "delete_device_1" = "Ta bort enhet";
-"delete_device_2" = "Enheten har tagits bort från Fit-here men är fortfarande ansluten till din telefon. För att helt ta bort denna enhet, följ dessa steg:";
+"delete_device_2" = "Enheten har tagits bort från U-Watch men är fortfarande ansluten till din telefon. För att helt ta bort denna enhet, följ dessa steg:";
 "delete_device_3" = "1. I din telefoninställning > Bluetooth > Mina enheter, hitta 'e watch' och tryck på 'i' till höger.";
 "delete_device_4" = "2. Välj 'Glöm enhet'.";
-"delete_device_5" = "3. När du är klar, gå tillbaka till 'Fit-here'-appen.";
+"delete_device_5" = "3. När du är klar, gå tillbaka till 'U-Watch'-appen.";
 "delete_device_6" = "Jag har utfört ovanstående steg";
 "delete_device_7" = "Bekräfta";
 
@@ -353,7 +366,7 @@
 "female_cycle_pain_mild" = "Mild";
 "female_cycle_pain_moderate" = "Moderate";
 "female_cycle_pain_severe" = "Severe";
-"female_cycle_record_time" = "Recorded to 'Fit-here' at";
+"female_cycle_record_time" = "Recorded to 'U-Watch' at";
 "female_cycle_symptom_category_whole_body" = "Whole Body";
 "female_cycle_symptom_category_head" = "Head";
 "female_cycle_symptom_category_abdomen" = "Abdomen";
@@ -424,3 +437,28 @@
 "user_info_step_length" = "Step length";
 "user_info_done" = "Done";
 
+
+// MARK: - ECG fallback (en)
+"health_ecg" = "ECG";
+"ecg_history" = "EKG-historik";
+"ecg_history_detail" = "Detaljer för EKG-inspelning";
+"ecg_history_empty" = "Inga EKG-inspelningar ännu";
+"ecg_history_error" = "Det gick inte att läsa in EKG-inspelningen";
+"ecg_save_error" = "Det gick inte att spara EKG-inspelningen";
+"ecg_pause" = "Paus";
+"ecg_resume" = "Fortsätt uppspelning";
+"ecg_replay" = "Spela igen";
+"ecg_loading" = "Läser in";
+"ecg_playback_time" = "%d / %d s";
+"ecg_history_duration" = "%@ · Varaktighet %@ s";
+"ecg_waveform_note" = "Vågform genererad från registrerad puls";
+"ecg_recorded_rate" = "Registrerad puls";
+
+"health_ecg_subtitle" = "Start caring for your heart health now";
+"ecg_desc" = "Real-time ECG measurement";
+
+// MARK: - PPG realtime pulse
+"ppg_measure_remaining" = "Återstående %d sekunder";
+"ppg_measure_complete" = "Mätningen är klar";
+"ppg_real_time_pulse" = "Puls i realtid: ";
+"ppg_worn_off" = "Bandet är inte på eller har lossnat, vågen har nollställts. Sätt på bandet";

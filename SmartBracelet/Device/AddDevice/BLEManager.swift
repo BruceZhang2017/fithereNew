@@ -69,7 +69,9 @@ class BLEManager: NSObject {
         
         JLSelf.JLProgressBlock = { result in
             let s = String(format: "%.02f%%", result*100.0)
-            NotificationCenter.default.post(name: Notification.Name("ClockUseViewController"), object: 1, userInfo: ["p": s])
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Notification.Name("ClockUseViewController"), object: 1, userInfo: ["p": s])
+            }
         }
         
         
@@ -114,6 +116,9 @@ class BLEManager: NSObject {
     }
 
     public func unbind() {
+        // #region debug-point A:blemanager-unbind
+        XLogger.shared.log("[unbind-debug] BLEManager.unbind before: lastestDeviceMac=\(UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? ""), deleteLastestDeviceMac=\(UserDefaults.standard.string(forKey: "deleteLastestDeviceMac") ?? ""), bleModel.mac=\(bleSelf.bleModel.mac)")
+        // #endregion
         bleSelf.disconnectBleDevice()
         //解绑
         let model = WUBleModel()
@@ -121,6 +126,9 @@ class BLEManager: NSObject {
         WUBleModel.setModel(bleSelf.bleModel) // 设置一个全新的设备
         Toast(text: "unbind_device_desc".localized()).show()
         wuPrint("解绑成功 - 设置 - 手动忽略该设备后可重新扫描蓝牙进行重连")
+        // #region debug-point A:blemanager-unbind-finish
+        XLogger.shared.log("[unbind-debug] BLEManager.unbind after: lastestDeviceMac=\(UserDefaults.standard.string(forKey: "LastestDeviceMac") ?? ""), deleteLastestDeviceMac=\(UserDefaults.standard.string(forKey: "deleteLastestDeviceMac") ?? ""), bleModel.mac=\(bleSelf.bleModel.mac)")
+        // #endregion
     }
     
     public func startTimer(timerTnternal: TimeInterval) {
@@ -608,11 +616,11 @@ class BLEManager: NSObject {
                 XLogger.shared.log("将血氧数据保存至数据库中：\(model.timeStamp)")
                 try? oxygenModel.er.save(update: true)
             }
-            let str = String(format: "oxygen：%d, %d, %d", model.oxygen, model.indexOfTotal, model.totalCount)
+            let str = String(format: "oxygen: %d, %d, %d", Int32(model.oxygen), Int32(model.indexOfTotal), Int32(model.totalCount))
             wuPrint(str)
             oxygenArray.append(model)
             if model.indexOfTotal == model.totalCount {
-                let str1 = String(format: "oxygen history complete, total %d line", model.totalCount)
+                let str1 = String(format: "oxygen history complete, total %d line", Int32(model.totalCount))
                 wuPrint(str1)
                 stepArray = Array(repeating: [], count: 6)
                 // 处理需要读取几天的数据

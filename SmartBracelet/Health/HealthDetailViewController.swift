@@ -34,6 +34,19 @@ class HealthDetailViewController: BaseViewController {
     var mTimer: Timer?
     var alpha: CGFloat = 0.3
     var maxValue = 0
+    // MARK: 脉搏波 PPG
+    var ppgWaveforms: [Double] = []
+    var ppgTimer: Timer?
+    var ppgPhase: Double = 0
+    var isPPGMeasuring = false
+    var ppgWorn = false
+    var ppgHeartRateBPM: Int?
+    let ppgBaseline: Double = 1000.0
+    let ppgSampleRate: Double = 60.0
+    let ppgWindowSeconds: Double = 10.0
+    var ppgHeartRateLabel: UILabel = UILabel()
+    var ppgWornLabel: UILabel?
+    var ppgMeasureCountdown = 30
     
     override func viewDidLoad() {
         bStyle = 1
@@ -104,6 +117,8 @@ class HealthDetailViewController: BaseViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)), name: Notification.Name("healthDetail"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePPGHeartRate(_:)), name: Notification.Name("ppg_heart_rate"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePPGWornStatus(_:)), name: Notification.Name("ppg_worn_status"), object: nil)
         
         if type == 0 {
             title = "health_step".localized()
@@ -181,10 +196,88 @@ class HealthDetailViewController: BaseViewController {
             addTest()
             
         }
+        if type == 10 {
+            title = "health_ppg".localized()
+            fanView.isHidden = true
+            roundView.isHidden = true
+            testView.isHidden = true
+            testView.setupView()
+            ppgHeartRateLabel.textAlignment = .center
+            ppgHeartRateLabel.numberOfLines = 1
+            ppgHeartRateLabel.alpha = 1.0
+            updatePPGPulseDisplay(nil)
+            view.addSubview(ppgHeartRateLabel)
+            ppgHeartRateLabel.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(12)
+                make.leading.equalToSuperview().offset(20)
+                make.trailing.equalToSuperview().offset(-20)
+            }
+            let worn = UILabel()
+            worn.text = "ppg_worn_off".localized()
+            worn.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+            worn.textColor = UIColor(red: 0.90, green: 0.24, blue: 0.28, alpha: 1.0)
+            worn.textAlignment = .center
+            worn.numberOfLines = 0
+            worn.isHidden = true
+            view.addSubview(worn)
+            worn.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(valueView.snp.top).offset(-14)
+                make.leading.equalToSuperview().offset(20)
+                make.trailing.equalToSuperview().offset(-20)
+            }
+            ppgWornLabel = worn
+            valueView.refreshLabel(text: "health_ppg_desc".localized())
+            addTest()
+            startPPGRealtimeRendering()
+        }
+        if type == 11 {
+            title = "health_hrv".localized()
+            fanView.isHidden = true
+            roundView.isHidden = false
+            testView.isHidden = true
+            testView.setupView()
+            let b = NSMutableAttributedString()
+            b.append(NSAttributedString(string: "--", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+            b.append(NSAttributedString(string: " ", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+            roundView.setupView(value: b)
+            valueView.refreshLabel(text: "health_hrv_desc".localized())
+            addTest()
+        }
+        if type == 12 {
+            title = "health_stress".localized()
+            fanView.isHidden = true
+            roundView.isHidden = false
+            testView.isHidden = true
+            testView.setupView()
+            let b = NSMutableAttributedString()
+            b.append(NSAttributedString(string: "--", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+            b.append(NSAttributedString(string: " ", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+            roundView.setupView(value: b)
+            valueView.refreshLabel(text: "health_stress_desc".localized())
+            addTest()
+        }
+        if type == 13 {
+            title = "health_fatigue".localized()
+            fanView.isHidden = true
+            roundView.isHidden = false
+            testView.isHidden = true
+            testView.setupView()
+            let b = NSMutableAttributedString()
+            b.append(NSAttributedString(string: "--", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+            b.append(NSAttributedString(string: " ", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+            roundView.setupView(value: b)
+            valueView.refreshLabel(text: "health_fatigue_desc".localized())
+            addTest()
+        }
         
         if type == 3 {
             setBarChartView()
             setBarData()
+        } else if type == 10 {
+            setupChart()
+            setPPGChartViewData()
         } else {
             setupChart()
             setChartViewData()
@@ -217,7 +310,7 @@ class HealthDetailViewController: BaseViewController {
             return
         }
         
-        if isXGZT {
+        if isXGZT && type != 6 && !(XGZTBlueToothManager.shared.device?.isNoScreenDevice ?? false) {
             return
         }
         
@@ -237,29 +330,53 @@ class HealthDetailViewController: BaseViewController {
             // 将UIBarButtonItem设置为navigationItem的右侧按钮
             self.navigationItem.rightBarButtonItem = rightButton
         } else {
-            let testButton = UIButton(type: .custom)
-            testButton.tag = 8888
-            testButton.setTitle("health_start_test".localized(), for: .normal)
-            testButton.setTitleColor(UIColor.brand, for: .normal)
-            testButton.layer.borderColor = UIColor.brand.cgColor
-            testButton.layer.borderWidth = 1.0
-            testButton.backgroundColor = .white
-            testButton.layer.cornerRadius = 22
-            // 添加按钮到视图中
-            view.addSubview(testButton)
-            testButton.snp.makeConstraints { make in
-                make.centerX.equalToSuperview()
-                make.width.equalTo(150)
-                make.height.equalTo(44)
-                make.bottom.equalTo(valueView.snp.top).offset(-10)
+            let testButton: UIButton
+            if let existed = view.viewWithTag(8888) as? UIButton {
+                testButton = existed
+            } else {
+                testButton = UIButton(type: .custom)
+                testButton.tag = 8888
+                testButton.setTitleColor(UIColor.brand, for: .normal)
+                testButton.layer.borderColor = UIColor.brand.cgColor
+                testButton.layer.borderWidth = 1.0
+                testButton.backgroundColor = .white
+                testButton.layer.cornerRadius = 22
+                testButton.addTarget(self, action: #selector(rightBarButtonAction), for: .touchUpInside)
+                view.addSubview(testButton)
+                testButton.snp.makeConstraints { make in
+                    make.centerX.equalToSuperview()
+                    make.width.equalTo(type == 6 ? 180 : 150)
+                    make.height.equalTo(44)
+                    make.bottom.equalTo(valueView.snp.top).offset(-10)
+                }
             }
-            testButton.addTarget(self, action: #selector(rightBarButtonAction), for: .touchUpInside)
+            testButton.isHidden = false
+            testButton.setTitle("health_start_test".localized(), for: .normal)
         }
         
     }
     
     // UIBarButtonItem的点击事件处理器
     @objc func rightBarButtonAction() {
+        if type == 10 {
+            if screenHeight <= 667 {
+                self.navigationItem.rightBarButtonItem = nil
+            } else {
+                if let btn = view.viewWithTag(8888) as? UIButton {
+                    btn.isHidden = true
+                }
+            }
+            roundView.isHidden = true
+            fanView.isHidden = true
+            testView.isHidden = false
+            testView.testing()
+            valueView.refreshView(isHideNull: true)
+            valueView.refreshLabel(text: "health_ppg_desc".localized())
+            lineChartView.isHidden = false
+            setPPGChartViewData()
+            handleStartTest()
+            return
+        }
         if screenHeight <= 667 {
             // 隐藏按钮
             self.navigationItem.rightBarButtonItem = nil
@@ -295,12 +412,17 @@ class HealthDetailViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        if type == 10, isPPGMeasuring {
+            finishPPGMeasurement(showComplete: false)
+        }
         UINavigationBar.appearance().tintColor = UIColor.text_primary
     }
 
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        ppgTimer?.invalidate()
+        ppgTimer = nil
     }
     
     // 前一天按钮点击事件
@@ -326,6 +448,24 @@ class HealthDetailViewController: BaseViewController {
     }
     
     @objc private func handleNotification(_ notification: Notification) {
+        // BLE 回调在后台线程同步 post healthDetail，UI 操作必须切回主线程
+        if Thread.isMainThread {
+            handleNotificationOnMain()
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.handleNotificationOnMain()
+            }
+        }
+    }
+
+    private func handleNotificationOnMain() {
+        if type == 10 {
+            // 实时脉搏波页面：healthDetail 帧不打断平滑波形，仅结束倒计时
+            stopPPGCountdown()
+            testView.isHidden = true
+            valueView.refreshLabel(text: "ppg_measure_complete".localized())
+            return
+        }
         if testView.isHidden == false {
             testView.stop()
             if type == 0 {
@@ -354,7 +494,12 @@ class HealthDetailViewController: BaseViewController {
                 testView.isHidden = true
                 
             }
-            if type == 2 || type == 4 || type == 5 {
+            if type == 10 || type == 11 || type == 12 || type == 13 {
+                fanView.isHidden = true
+                roundView.isHidden = false
+                testView.isHidden = true
+            }
+            if type == 2 || type == 4 || type == 5 || type == 10 || type == 11 || type == 12 || type == 13 {
                 if screenHeight <= 667 {
                     addTest()
                 } else {
@@ -393,9 +538,15 @@ class HealthDetailViewController: BaseViewController {
         
         lineChartView.xAxis.labelTextColor = UIColor(hex: 0x9097A0, alpha: 1)
         lineChartView.xAxis.avoidFirstLastClippingEnabled = true
-        lineChartView.xAxis.axisMinimum = Double(0)
-        lineChartView.xAxis.axisMaximum = Double(23)
-        lineChartView.xAxis.setLabelCount(24, force: true)
+        if type == 10 {
+            lineChartView.xAxis.axisMinimum = 0.0
+            lineChartView.xAxis.axisMaximum = ppgWindowSeconds
+            lineChartView.xAxis.setLabelCount(3, force: true)
+        } else {
+            lineChartView.xAxis.axisMinimum = Double(0)
+            lineChartView.xAxis.axisMaximum = Double(23)
+            lineChartView.xAxis.setLabelCount(24, force: true)
+        }
         lineChartView.xAxis.gridColor = UIColor.clear
         lineChartView.xAxis.drawGridLinesEnabled = true
         lineChartView.xAxis.drawAxisLineEnabled = false
@@ -410,7 +561,12 @@ class HealthDetailViewController: BaseViewController {
         lineChartView.leftAxis.drawAxisLineEnabled = false
         
         lineChartView.rightAxis.labelTextColor = UIColor(hex: 0x9097A0, alpha: 1)
-        lineChartView.rightAxis.axisMinimum = 0
+        if type == 10 {
+            lineChartView.rightAxis.axisMinimum = ppgBaseline - 120
+            lineChartView.rightAxis.axisMaximum = ppgBaseline + 120
+        } else {
+            lineChartView.rightAxis.axisMinimum = 0
+        }
         if type == 0 {
             lineChartView.rightAxis.axisMaximum = 5000
         } else if type == 2 {
@@ -418,6 +574,12 @@ class HealthDetailViewController: BaseViewController {
         } else if type == 4 {
             lineChartView.rightAxis.axisMaximum = 200
         } else if type == 5 {
+            lineChartView.rightAxis.axisMaximum = 100
+        } else if type == 11 {
+            lineChartView.rightAxis.axisMaximum = 200
+        } else if type == 12 {
+            lineChartView.rightAxis.axisMaximum = 100
+        } else if type == 13 {
             lineChartView.rightAxis.axisMaximum = 100
         }
         lineChartView.rightAxis.setLabelCount(6, force: true)
@@ -893,6 +1055,178 @@ class HealthDetailViewController: BaseViewController {
                 }
                 completion(values)
             }
+        } else if type == 10 { // 脉搏 PPG
+            if isXGZT {
+                var count = 0
+                let dispatchGroup = DispatchGroup()
+                dispatchGroup.enter()
+                readXGZTDBPpg { [weak self] ppgObjs in
+                    guard let self = self else {
+                        dispatchGroup.leave()
+                        return
+                    }
+                    let array = ppgObjs
+                    if array.count > 0 {
+                        count = array.count
+                        let zero = self.mDate.zeroTimeStampUTC()
+                        for i in 0..<array.count {
+                            let value = array[i].value
+                            let x = (array[i].time - Int(zero)) / 3660
+                            if x >= 0 && x < 24 {
+                                values[x] = ChartDataEntry(x: Double(x), y: Double(value))
+                            }
+                        }
+                    }
+                    if count > 0 {
+                        let b = NSMutableAttributedString()
+                        b.append(NSAttributedString(string: "\(array.last?.value ?? 0)", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+                        b.append(NSAttributedString(string: " bpm", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+                        self.roundView.refreshView(value: b)
+                        self.roundView.setProgress(CGFloat(array.last?.value ?? 0) / 200)
+                    } else {
+                        let b = NSMutableAttributedString()
+                        b.append(NSAttributedString(string: "--", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+                        b.append(NSAttributedString(string: " bpm", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+                        self.roundView.refreshView(value: b)
+                        self.roundView.setProgress(0)
+                    }
+                    dispatchGroup.leave()
+                }
+                dispatchGroup.notify(queue: .main) {
+                    completion(values)
+                }
+            } else {
+                completion(values)
+            }
+        } else if type == 11 { // HRV
+            if isXGZT {
+                var count = 0
+                let dispatchGroup = DispatchGroup()
+                dispatchGroup.enter()
+                readXGZTDBHRV { [weak self] hrvObjs in
+                    guard let self = self else {
+                        dispatchGroup.leave()
+                        return
+                    }
+                    let array = hrvObjs
+                    if array.count > 0 {
+                        count = array.count
+                        let zero = self.mDate.zeroTimeStampUTC()
+                        for i in 0..<array.count {
+                            let value = array[i].value
+                            let x = (array[i].time - Int(zero)) / 3660
+                            if x >= 0 && x < 24 {
+                                values[x] = ChartDataEntry(x: Double(x), y: Double(value))
+                            }
+                        }
+                    }
+                    if count > 0 {
+                        let b = NSMutableAttributedString()
+                        b.append(NSAttributedString(string: "\(array.last?.value ?? 0)", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+                        b.append(NSAttributedString(string: " ms", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+                        self.roundView.refreshView(value: b)
+                        self.roundView.setProgress(CGFloat(array.last?.value ?? 0) / 200)
+                    } else {
+                        let b = NSMutableAttributedString()
+                        b.append(NSAttributedString(string: "--", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+                        b.append(NSAttributedString(string: " ms", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+                        self.roundView.refreshView(value: b)
+                        self.roundView.setProgress(0)
+                    }
+                    dispatchGroup.leave()
+                }
+                dispatchGroup.notify(queue: .main) {
+                    completion(values)
+                }
+            } else {
+                completion(values)
+            }
+        } else if type == 12 { // 精神压力
+            if isXGZT {
+                var count = 0
+                let dispatchGroup = DispatchGroup()
+                dispatchGroup.enter()
+                readXGZTDBStress { [weak self] stressObjs in
+                    guard let self = self else {
+                        dispatchGroup.leave()
+                        return
+                    }
+                    let array = stressObjs
+                    if array.count > 0 {
+                        count = array.count
+                        let zero = self.mDate.zeroTimeStampUTC()
+                        for i in 0..<array.count {
+                            let value = array[i].value
+                            let x = (array[i].time - Int(zero)) / 3660
+                            if x >= 0 && x < 24 {
+                                values[x] = ChartDataEntry(x: Double(x), y: Double(value))
+                            }
+                        }
+                    }
+                    if count > 0 {
+                        let b = NSMutableAttributedString()
+                        b.append(NSAttributedString(string: "\(array.last?.value ?? 0)", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+                        b.append(NSAttributedString(string: " health_score_unit".localized(), attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+                        self.roundView.refreshView(value: b)
+                        self.roundView.setProgress(CGFloat(array.last?.value ?? 0) / 100)
+                    } else {
+                        let b = NSMutableAttributedString()
+                        b.append(NSAttributedString(string: "--", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+                        b.append(NSAttributedString(string: " health_score_unit".localized(), attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+                        self.roundView.refreshView(value: b)
+                        self.roundView.setProgress(0)
+                    }
+                    dispatchGroup.leave()
+                }
+                dispatchGroup.notify(queue: .main) {
+                    completion(values)
+                }
+            } else {
+                completion(values)
+            }
+        } else if type == 13 { // 疲劳度
+            if isXGZT {
+                var count = 0
+                let dispatchGroup = DispatchGroup()
+                dispatchGroup.enter()
+                readXGZTDBFatigue { [weak self] fatigueObjs in
+                    guard let self = self else {
+                        dispatchGroup.leave()
+                        return
+                    }
+                    let array = fatigueObjs
+                    if array.count > 0 {
+                        count = array.count
+                        let zero = self.mDate.zeroTimeStampUTC()
+                        for i in 0..<array.count {
+                            let value = array[i].value
+                            let x = (array[i].time - Int(zero)) / 3660
+                            if x >= 0 && x < 24 {
+                                values[x] = ChartDataEntry(x: Double(x), y: Double(value))
+                            }
+                        }
+                    }
+                    if count > 0 {
+                        let b = NSMutableAttributedString()
+                        b.append(NSAttributedString(string: "\(array.last?.value ?? 0)", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+                        b.append(NSAttributedString(string: " health_score_unit".localized(), attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+                        self.roundView.refreshView(value: b)
+                        self.roundView.setProgress(CGFloat(array.last?.value ?? 0) / 100)
+                    } else {
+                        let b = NSMutableAttributedString()
+                        b.append(NSAttributedString(string: "--", attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 40, weight: .black)]))
+                        b.append(NSAttributedString(string: " health_score_unit".localized(), attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14, weight: .medium)]))
+                        self.roundView.refreshView(value: b)
+                        self.roundView.setProgress(0)
+                    }
+                    dispatchGroup.leave()
+                }
+                dispatchGroup.notify(queue: .main) {
+                    completion(values)
+                }
+            } else {
+                completion(values)
+            }
         }
     }
     
@@ -1164,6 +1498,34 @@ extension HealthDetailViewController {
             completion(oxgenObjs)
         }
     }
+    
+    func readXGZTDBPpg(completion: @escaping ([PpgObj]) -> Void) {
+        DatabaseManager.shared.getPpgObj(byDate: mDate.stringFromYmd()) { results in
+            let objs = results?.map { $0 } ?? []
+            completion(objs)
+        }
+    }
+    
+    func readXGZTDBHRV(completion: @escaping ([HRVObj]) -> Void) {
+        DatabaseManager.shared.getHRVObj(byDate: mDate.stringFromYmd()) { results in
+            let objs = results?.map { $0 } ?? []
+            completion(objs)
+        }
+    }
+    
+    func readXGZTDBStress(completion: @escaping ([StressObj]) -> Void) {
+        DatabaseManager.shared.getStressObj(byDate: mDate.stringFromYmd()) { results in
+            let objs = results?.map { $0 } ?? []
+            completion(objs)
+        }
+    }
+    
+    func readXGZTDBFatigue(completion: @escaping ([FatigueObj]) -> Void) {
+        DatabaseManager.shared.getFatigueObj(byDate: mDate.stringFromYmd()) { results in
+            let objs = results?.map { $0 } ?? []
+            completion(objs)
+        }
+    }
 }
 
 extension HealthDetailViewController: TTADataPickerViewDelegate {
@@ -1191,6 +1553,261 @@ extension HealthDetailViewController: TTADataPickerViewDelegate {
     }
 }
 
+extension HealthDetailViewController {
+    // MARK: - 脉搏波 PPG 实时平滑波形渲染（算法对齐 mock_phone_app._get_ppg_point）
+
+    func setPPGChartViewData() {
+        let count = ppgWaveforms.count
+        var values: [ChartDataEntry] = []
+        if count > 0 {
+            for i in 0..<count {
+                let t = Double(i) / ppgSampleRate
+                values.append(ChartDataEntry(x: t, y: ppgWaveforms[i]))
+            }
+        } else {
+            let totalSamples = Int(ppgWindowSeconds * ppgSampleRate)
+            for i in 0..<totalSamples {
+                values.append(ChartDataEntry(x: Double(i) / ppgSampleRate, y: ppgBaseline))
+            }
+        }
+        let set1 = LineChartDataSet(entries: values, label: "")
+        set1.drawIconsEnabled = false
+        set1.setColor(UIColor(red: 0.20, green: 0.50, blue: 0.99, alpha: 1.0))
+        set1.lineWidth = 1.6
+        set1.mode = .cubicBezier
+        set1.valueFont = .systemFont(ofSize: 9)
+        set1.formLineWidth = 0.5
+        set1.drawValuesEnabled = false
+        set1.drawCirclesEnabled = false
+        set1.drawFilledEnabled = false
+
+        let data = LineChartData(dataSet: set1)
+        lineChartView.data = data
+        let duration = Double(max(count, Int(ppgWindowSeconds * ppgSampleRate))) / ppgSampleRate
+        lineChartView.xAxis.axisMinimum = 0.0
+        lineChartView.xAxis.axisMaximum = ppgWindowSeconds
+        lineChartView.rightAxis.axisMinimum = ppgBaseline - 120
+        lineChartView.rightAxis.axisMaximum = ppgBaseline + 120
+        lineChartView.rightAxis.labelTextColor = UIColor.clear
+        lineChartView.moveViewToX(max(0, duration - ppgWindowSeconds))
+        valueView.refreshView(isHideNull: true)
+        lineChartView.isHidden = false
+    }
+
+    @objc private func handlePPGHeartRate(_ notification: Notification) {
+        guard type == 10 else { return }
+        // BLE 回调在后台线程同步 post，UI 更新必须切回主线程
+        if Thread.isMainThread {
+            handlePPGHeartRateOnMain(notification)
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.handlePPGHeartRateOnMain(notification)
+            }
+        }
+    }
+
+    private func handlePPGHeartRateOnMain(_ notification: Notification) {
+        let bpm = notification.userInfo?["bpm"] as? Int
+        ppgHeartRateBPM = bpm
+        ppgWorn = (bpm != nil && bpm! > 0)
+        updatePPGPulseDisplay(bpm)
+        ppgWornLabel?.isHidden = ppgWorn
+    }
+
+    @objc private func handlePPGWornStatus(_ notification: Notification) {
+        guard type == 10 else { return }
+        // BLE 回调在后台线程同步 post，UI 更新必须切回主线程
+        if Thread.isMainThread {
+            handlePPGWornStatusOnMain(notification)
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.handlePPGWornStatusOnMain(notification)
+            }
+        }
+    }
+
+    private func handlePPGWornStatusOnMain(_ notification: Notification) {
+        let worn = (notification.userInfo?["worn"] as? Bool) ?? false
+        ppgWorn = worn
+        if !worn {
+            ppgHeartRateBPM = nil
+        }
+        updatePPGPulseDisplay(ppgHeartRateBPM)
+        ppgWornLabel?.isHidden = worn
+    }
+
+    private func updatePPGPulseDisplay(_ bpm: Int?) {
+        let text = NSMutableAttributedString()
+        let baseFont = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        let valueFont = UIFont.systemFont(ofSize: 26, weight: .black)
+        let baseColor = UIColor.white
+        text.append(NSAttributedString(string: "ppg_real_time_pulse".localized(), attributes: [.foregroundColor: baseColor, .font: baseFont]))
+        if let b = bpm, b > 0 {
+            text.append(NSAttributedString(string: "\(b)", attributes: [.foregroundColor: baseColor, .font: valueFont]))
+            text.append(NSAttributedString(string: " bpm", attributes: [.foregroundColor: baseColor.withAlphaComponent(0.85), .font: baseFont]))
+        } else {
+            text.append(NSAttributedString(string: "--", attributes: [.foregroundColor: baseColor, .font: valueFont]))
+            text.append(NSAttributedString(string: " bpm", attributes: [.foregroundColor: baseColor.withAlphaComponent(0.85), .font: baseFont]))
+        }
+        ppgHeartRateLabel.attributedText = text
+    }
+
+    private func appendPPGSample(_ value: Double) {
+        ppgWaveforms.append(value)
+        let totalPoints = ppgWaveforms.count
+        let duration = Double(totalPoints) / ppgSampleRate
+        if duration <= ppgWindowSeconds {
+            lineChartView.xAxis.axisMinimum = 0.0
+            lineChartView.xAxis.axisMaximum = ppgWindowSeconds
+        } else {
+            let axisMin = duration - ppgWindowSeconds
+            lineChartView.xAxis.axisMinimum = axisMin
+            lineChartView.xAxis.axisMaximum = duration
+        }
+        refreshPPGChartIncrementally()
+    }
+
+    private func refreshPPGChartIncrementally() {
+        let count = ppgWaveforms.count
+        let duration = Double(count) / ppgSampleRate
+        var values: [ChartDataEntry] = []
+        values.reserveCapacity(count)
+        for i in 0..<count {
+            let t = Double(i) / ppgSampleRate
+            values.append(ChartDataEntry(x: t, y: ppgWaveforms[i]))
+        }
+        let viewStart = max(0, duration - ppgWindowSeconds)
+        if let data = lineChartView.data as? LineChartData,
+           let set = data.dataSets.first as? LineChartDataSet {
+            set.replaceEntries(values)
+            data.notifyDataChanged()
+            lineChartView.notifyDataSetChanged()
+            lineChartView.moveViewToX(viewStart)
+        } else {
+            setPPGChartViewData()
+            lineChartView.moveViewToX(viewStart)
+        }
+    }
+
+    /// 标准连续医疗 PPG 脉搏波动力学模型：
+    /// 1. 收缩期快速射血陡升支 2. 收缩主峰 3. 重搏切迹 (Dicrotic Notch) 4. 舒张期反射次峰 5. 连续光滑的血管弹性舒张径流衰减
+    private func ppgWaveValue(_ t: Double, bpm: Double) -> Double {
+        if t < 0 || bpm <= 0 {
+            return ppgBaseline + Double.random(in: -0.5...0.5)
+        }
+        let hr = Double(max(48.0, min(130.0, bpm)))
+        let scale = 0.48 + ((hr - 48.0) / 75.0) * 0.85
+        let cycleSec = 60.0 / hr
+        let theta = (t.truncatingRemainder(dividingBy: cycleSec)) / cycleSec
+        let amp = 55.0
+
+        // 1. 收缩期主波峰（快速射血）
+        let mainPeak = 56.0 * scale * amp * exp(-pow(theta - 0.18, 2) / (2 * 0.065 * 0.065))
+        // 2. 舒张期次峰（主动脉瓣关闭反射波）
+        let diastolicPeak = 20.0 * scale * amp * exp(-pow(theta - 0.38, 2) / (2 * 0.055 * 0.055))
+        // 3. 连续血管弹性舒张底基（消除死平基线，平滑延续至下一个周期起点）
+        let decayBase: Double
+        if theta >= 0.16 {
+            decayBase = 26.0 * scale * amp * exp(-(theta - 0.16) / 0.32)
+        } else {
+            decayBase = 26.0 * scale * amp * exp(-(theta + 1.0 - 0.16) / 0.32)
+        }
+
+        let val = mainPeak + diastolicPeak + decayBase
+        let noise = Double.random(in: -1.0...1.0) * 0.5
+        return ppgBaseline - val + noise
+    }
+
+    private func startPPGRealtimeRendering() {
+        ppgWaveforms.removeAll()
+        ppgPhase = 0.0
+        ppgTimer?.invalidate()
+        let timer = Timer(timeInterval: 1.0 / ppgSampleRate, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            let hasDevice = XGZTBlueToothManager.shared.device != nil
+            // 无设备或未在测量：用默认脉率模拟波形，保证直接运行（无设备）也能看到平滑脉搏波
+            let simBPM: Double = 75.0
+            if !hasDevice || !self.isPPGMeasuring {
+                let v = self.ppgWaveValue(self.ppgPhase, bpm: simBPM)
+                self.appendPPGSample(v)
+                self.ppgPhase += 1.0 / self.ppgSampleRate
+                if self.ppgPhase >= 60.0 / simBPM * 2 {
+                    self.ppgPhase.formTruncatingRemainder(dividingBy: 60.0 / simBPM)
+                }
+                return
+            }
+            // 有设备且正在测量：真实脉率驱动，脱腕/0 时平直基线 + 微小底噪
+            guard self.ppgWorn, let bpm = self.ppgHeartRateBPM, bpm > 0 else {
+                self.appendPPGSample(self.ppgBaseline + Double.random(in: -0.5...0.5))
+                self.ppgPhase = 0.0
+                return
+            }
+            let period = 60.0 / Double(bpm)
+            let v = self.ppgWaveValue(self.ppgPhase, bpm: Double(bpm))
+            self.appendPPGSample(v)
+            self.ppgPhase += 1.0 / self.ppgSampleRate
+            if self.ppgPhase >= period * 2 {
+                self.ppgPhase.formTruncatingRemainder(dividingBy: period)
+            }
+        }
+        RunLoop.main.add(timer, forMode: .common)
+        ppgTimer = timer
+    }
+
+    private func stopPPGRealtimeRendering() {
+        ppgTimer?.invalidate()
+        ppgTimer = nil
+        setPPGChartViewData()
+    }
+
+    // MARK: - 脉搏波 PPG 倒计时提示
+    private func ppgCountdownString(_ seconds: Int) -> String {
+        String(format: "ppg_measure_remaining".localized(), seconds)
+    }
+
+    private func startPPGCountdown() {
+        stopPPGCountdown()
+        ppgMeasureCountdown = 30
+        valueView.refreshLabel(text: ppgCountdownString(ppgMeasureCountdown))
+        let timer = Timer(timeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.ppgMeasureCountdown -= 1
+            if self.ppgMeasureCountdown <= 0 {
+                self.stopPPGCountdown()
+            } else {
+                self.valueView.refreshLabel(text: self.ppgCountdownString(self.ppgMeasureCountdown))
+            }
+        }
+        RunLoop.main.add(timer, forMode: .common)
+        mTimer = timer
+    }
+
+    private func stopPPGCountdown() {
+        mTimer?.invalidate()
+        mTimer = nil
+    }
+
+    private func finishPPGMeasurement(showComplete: Bool) {
+        guard isPPGMeasuring else { return }
+        if isXGZT {
+            XGZTCommand.startTest(cmdType: 7, control: 0)
+        }
+        isPPGMeasuring = false
+        stopPPGCountdown()
+        fanView.isHidden = true
+        roundView.isHidden = true
+        testView.isHidden = true
+        if screenHeight <= 667 {
+            addTest()
+        } else {
+            if let btn = view.viewWithTag(8888) as? UIButton {
+                btn.isHidden = false
+            }
+        }
+        valueView.refreshLabel(text: showComplete ? "ppg_measure_complete".localized() : "health_ppg_desc".localized())
+    }
+}
+
 extension HealthDetailViewController: TestViewDelegate {
     func handleStartTest() {
         if isXGZT{
@@ -1212,6 +1829,44 @@ extension HealthDetailViewController: TestViewDelegate {
             
             if type == 5 {
                 XGZTCommand.startTest(cmdType: 1, control: 1)
+                testView.testing()
+                measureAsync = Async.main(after: 30) {
+                    // do something for update UI
+                }
+            }
+
+            if type == 10 {
+                XGZTCommand.startTest(cmdType: 7, control: 1)
+                testView.testing()
+                isPPGMeasuring = true
+                ppgHeartRateBPM = nil
+                ppgWorn = false
+                ppgWornLabel?.isHidden = true
+                startPPGRealtimeRendering()
+                startPPGCountdown()
+                measureAsync = Async.main(after: 30) { [weak self] in
+                    self?.finishPPGMeasurement(showComplete: true)
+                }
+            }
+
+            if type == 11 {
+                XGZTCommand.startTest(cmdType: 8, control: 1)
+                testView.testing()
+                measureAsync = Async.main(after: 30) {
+                    // do something for update UI
+                }
+            }
+
+            if type == 12 {
+                XGZTCommand.startTest(cmdType: 9, control: 1)
+                testView.testing()
+                measureAsync = Async.main(after: 30) {
+                    // do something for update UI
+                }
+            }
+
+            if type == 13 {
+                XGZTCommand.startTest(cmdType: 10, control: 1)
                 testView.testing()
                 measureAsync = Async.main(after: 30) {
                     // do something for update UI
