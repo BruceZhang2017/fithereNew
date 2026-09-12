@@ -610,3 +610,26 @@
 "ppg_measure_complete" = "Измерение завершено";
 "ppg_real_time_pulse" = "Пульс в реальном времени: ";
 "ppg_worn_off" = "Браслет не надет или отстегнут, волна сброшена. Наденьте браслет";
+"sync_contacts" = "Sync contacts";
+
+"health_disclaimer" = "Данные предназначены только для справки и не должны использоваться для оценки здоровья или медицинских рекомендаций. При проблемах со здоровьем обратитесь в медицинское учреждение.";
+"health_conclusion_normal" = "Норма";
+"health_conclusion_bradycardia" = "Брадикардия";
+"health_conclusion_tachycardia" = "Тахикардия";
+"health_conclusion_low" = "Ниже нормы";
+"health_conclusion_too_low" = "Слишком низкий";
+"health_conclusion_relaxed" = "Расслаблен";
+"health_conclusion_moderate_stress" = "Умеренный стресс";
+"health_conclusion_high_stress" = "Высокий стресс";
+"health_conclusion_no_fatigue" = "Заметной усталости нет";
+"health_conclusion_moderate_fatigue" = "Умеренная усталость";
+"health_conclusion_severe_fatigue" = "Сильная усталость";
+"health_conclusion_hrv_reference" = "Справочное значение по возрасту и полу";
+"health_conclusion_reference" = "Справочное значение";
+"health_conclusion_signal_good" = "Сигнал хороший";
+"health_conclusion_not_worn" = "Браслет не надет, форма волны сброшена";
+"health_conclusion_sleep_reference" = "Для справки";
+
+"ecg_measure_fail_reason" = "Measurement failed: the band may not be worn or the signal is too weak, please re-measure";
+"health_ecg_measure_complete" = "Measurement completed";
+"health_ecg_measure_remaining" = "Remaining %d seconds";

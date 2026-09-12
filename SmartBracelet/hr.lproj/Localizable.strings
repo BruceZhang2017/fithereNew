@@ -380,3 +380,31 @@
 "ppg_measure_complete" = "Mjerenje završeno";
 "ppg_real_time_pulse" = "Puls uživo: ";
 "ppg_worn_off" = "Narukvica se ne nosi ili je skliznula, val je nuliran. Molimo nosite narukvicu";
+"cardbag"="Card Wallet";
+"drink_water_reminder" = "drink water reminder";
+"drink_water_reminder_time" = "drinking water reminder time";
+"ota"="Firmware Update";
+"sync_contacts" = "Sync contacts";
+"synchronize_data" = "Synchronize data";
+
+"health_disclaimer" = "Ovi podaci su samo za referencu i ne bi se trebali koristiti kao osnova za procjenu zdravlja ili liječnički savjet. Za zdravstvene probleme obratite se zdravstvenoj ustanovi.";
+"health_conclusion_normal" = "Normalno";
+"health_conclusion_bradycardia" = "Bradikardija";
+"health_conclusion_tachycardia" = "Tahikardija";
+"health_conclusion_low" = "Nisko";
+"health_conclusion_too_low" = "Pre nisko";
+"health_conclusion_relaxed" = "Opušteno";
+"health_conclusion_moderate_stress" = "Umjereni stres";
+"health_conclusion_high_stress" = "Visoki stres";
+"health_conclusion_no_fatigue" = "Nema značajnog umora";
+"health_conclusion_moderate_fatigue" = "Umjereni umor";
+"health_conclusion_severe_fatigue" = "Teški umor";
+"health_conclusion_hrv_reference" = "Referenca prema dobi i spolu";
+"health_conclusion_reference" = "Referentna vrijednost";
+"health_conclusion_signal_good" = "Signal dobar";
+"health_conclusion_not_worn" = "Narukvica nije nošena, valni oblik poništen";
+"health_conclusion_sleep_reference" = "Samo za referencu";
+
+"ecg_measure_fail_reason" = "Measurement failed: the band may not be worn or the signal is too weak, please re-measure";
+"health_ecg_measure_complete" = "Measurement completed";
+"health_ecg_measure_remaining" = "Remaining %d seconds";

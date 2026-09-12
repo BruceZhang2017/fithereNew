@@ -440,3 +440,27 @@
 "ppg_measure_complete" = "המדידה הושלמה";
 "ppg_real_time_pulse" = "דופק בזמן אמת: ";
 "ppg_worn_off" = "הצמיד אינו ענוד או נותר, הגל אופס. אנא ענדו את הצמיד";
+"device_dial_mall" = "Dial market";
+"sync_contacts" = "Sync contacts";
+
+"health_disclaimer" = "נתונים אלה מיועדים לעיון בלבד ואינם מהווים בסיס להערכת בריאות או ייעוץ רפואי. אם ישנן בעיות בריאות, פנה למתקן רפואי.";
+"health_conclusion_normal" = "תקין";
+"health_conclusion_bradycardia" = "ברדיקרדיה";
+"health_conclusion_tachycardia" = "טכיקרדיה";
+"health_conclusion_low" = "נמוך";
+"health_conclusion_too_low" = "נמוך מדי";
+"health_conclusion_relaxed" = "רגוע";
+"health_conclusion_moderate_stress" = "לחץ בינוני";
+"health_conclusion_high_stress" = "לחץ גבוה";
+"health_conclusion_no_fatigue" = "אין עייפות משמעותית";
+"health_conclusion_moderate_fatigue" = "עייפות בינונית";
+"health_conclusion_severe_fatigue" = "עייפות קשה";
+"health_conclusion_hrv_reference" = "התייחסות לפי גיל ומין";
+"health_conclusion_reference" = "ערך התייחסות";
+"health_conclusion_signal_good" = "אות תקין";
+"health_conclusion_not_worn" = "הצמיד אינו ענוד, הגל אופס";
+"health_conclusion_sleep_reference" = "לעיון בלבד";
+
+"ecg_measure_fail_reason" = "Measurement failed: the band may not be worn or the signal is too weak, please re-measure";
+"health_ecg_measure_complete" = "Measurement completed";
+"health_ecg_measure_remaining" = "Remaining %d seconds";

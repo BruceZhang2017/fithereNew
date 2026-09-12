@@ -461,3 +461,26 @@
 "ppg_measure_complete" = "Mērījums pabeigts";
 "ppg_real_time_pulse" = "Pulss reāllaikā: ";
 "ppg_worn_off" = "Rokassprādze netiek nēsāta vai atvienojās, vilnis ir atiestatīts. Lūdzu uzlieciet rokassprādzi";
+"sync_contacts" = "Sync contacts";
+
+"health_disclaimer" = "Šie dati ir tikai informācijas nolūkiem un tos nedrīkst izmantot kā veselības novērtējuma vai medicīniskas konsultācijas pamatu. Veselības problēmu gadījumā vērsieties veselības aprūpes iestādē.";
+"health_conclusion_normal" = "Normāls";
+"health_conclusion_bradycardia" = "Bradikardija";
+"health_conclusion_tachycardia" = "Tahikardija";
+"health_conclusion_low" = "Zems";
+"health_conclusion_too_low" = "Pārāk zems";
+"health_conclusion_relaxed" = "Atpūties";
+"health_conclusion_moderate_stress" = "Mērens stress";
+"health_conclusion_high_stress" = "Augsts stress";
+"health_conclusion_no_fatigue" = "Nav izteikta noguruma";
+"health_conclusion_moderate_fatigue" = "Mērens nogurums";
+"health_conclusion_severe_fatigue" = "Smags nogurums";
+"health_conclusion_hrv_reference" = "Atsauce pēc vecuma un dzimuma";
+"health_conclusion_reference" = "Atsauces vērtība";
+"health_conclusion_signal_good" = "Signāls labs";
+"health_conclusion_not_worn" = "Aproce nenēsāta, viļņa forma atiestatīta";
+"health_conclusion_sleep_reference" = "Tikai informācijai";
+
+"ecg_measure_fail_reason" = "Measurement failed: the band may not be worn or the signal is too weak, please re-measure";
+"health_ecg_measure_complete" = "Measurement completed";
+"health_ecg_measure_remaining" = "Remaining %d seconds";
